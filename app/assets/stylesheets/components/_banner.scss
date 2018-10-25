@@ -2,21 +2,65 @@
   color: white;
   text-align: center;
   height: 100vh;
-  height: calc(100vh - 70px);
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
+
 .banner p {
   font-size: 25px;
   font-weight: lighter;
   color: rgb(255, 255, 255);
-  opacity: 0.6;
+  opacity: 0.7;
   margin-bottom: 30px;
+  width: 350px;
+  margin-top:30px;
+}
+
+.banner-content-flex{
+  display:flex;
+  flex-direction: column;
+}
+
+.banner-content-flex p{
+  margin-top: 0px;
+}
+
+.tab{
+  position:absolute;
+  bottom: 0;
+  background-color: white;
+  border-radius: 2px 2px 0px 0px;
+  color: black;
+  padding: 10px 30px;
+}
+
+.tab_bottom{
+  position:absolute;
+  top: 0px;
+  background-color: inherit;
+  color: white;
+  padding: 10px;
+}
+
+.team{
+    position:relative;
+}
+
+.right-line{
+  margin-left: -100px;
+  margin-top: 15px;
+}
+
+.left-line{
+  margin-right: -100px;
+  margin-top: 15px;
+
 }

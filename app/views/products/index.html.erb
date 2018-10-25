@@ -1,4 +1,15 @@
-<%= render "shared/header", text: "Our Products" %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('home.jpg') %>);">
+  <%= image_tag "leftline.png", class: "left-line" %>
+  <div class="banner-content">
+    <h1>Our New Collection</h1>
+  </div>
+    <%= image_tag "rline.png", class: "right-line" %>
+  <div class="tab">
+    FlowCBD
+  </div>
+</div>
+
+<% if false %>
 <div class="container">
   <div class="row">
     <% @products.each do |product| %>
@@ -14,5 +25,26 @@
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+<% end %>
+
+
+<div class="container">
+  <div class="product-index">
+    <div class="product">
+      <%= image_tag Product.first.photo_url, width: "500px", height: "500px" %>
+    </div>
+    <div class="product-right">
+      <div class="desc">
+        <h2>Our Product</h2>
+        <p>Desc of product</p>
+      </div>
+      <div class="form">
+        <%= simple_form_for(:cart) do |f| %>
+          <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

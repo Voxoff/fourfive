@@ -1,11 +1,14 @@
-
-
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('home.jpg') %>);">
-  <div class="banner-content">
-    <h1>Ecommerce Template</h1>
-      <a class="navigation_link" href="/">
-        Home
-      </a>
+    <div class="banner-content">
+      <h1>FlowCBD</h1>
+        <a class="btn btn-primary btn-lg home" href="/">
+          Home
+        </a>
+    </div>
+
+  </div>
+  <div class="tab">
+    FlowCBD
   </div>
 </div>
 <% if false %>
@@ -64,6 +67,8 @@
 
 
 <% end %>
+
+
 <div class="container">
 <div class="graphics">
   <div class="card-graphics">
@@ -91,26 +96,41 @@
 </div>
 
 <!-- Products -->
-<h2 class="home-title">Our products</h2>
-<div class="container">
-  <%# @products.in_groups_of(3) do |product| %>
-  <div class="row">
-    <% @products.compact.each do |product| %>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="product-card">
-          <%= link_to product_path(product) do %>
-            <%= cl_image_tag product.photo,crop: :fit, class: "image"%>
-            <div class="bar">
-              <div class="top-row">
-                <h4><%= product.name %></h4>
-                <h4>£<%= product.price %></h4>
-              </div>
-              <%= product.review_average || "Be the first to review this!" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+<div class="product">
+  <div class="product-description">
+    <div class="home-title">
+      <h2>Our products</h2>
+    </div>
+    <div class="desc">
+      <p>We offer a variety of flavors</p>
+    </div>
+    <div class="form">
+      <%= simple_form_for(:cart) do |f| %>
+        <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
+    
+      <% end %>
+    </div>
   </div>
-  <%# end %>
+  <div class="image">
+    <%= link_to products_path do %>
+      <%= image_tag "floyd.jpeg" %>
+    <% end %>
+  </div>  
 </div>
+
+<!-- Image of george and dom -->
+<div class="team">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('domgeorge.jpg') %>);">
+  <div class="cover left"></div>
+  <div class="cover right"></div>
+  <div class="banner-content">
+    <h1 id="dom">Dom and George</h1>
+      <p>Co-founders Dominic and George each have over 10 years experience in professional sport. </p>
+      <p>Between them they have been under the surgeons knife 12 times and have played and trained through pain and injury more often than they would have liked.</p>
+  </div>
+  <div class="tab_bottom">
+    Our Founders
+  </div>
+</div>
+</div>
+
