@@ -1,16 +1,16 @@
 .footer {
-	// height: 20vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 0 1.5rem;
-  margin-top: 250px;
 	background: $primary-color-dark;
+  position: relative;
   
-  .graphics {
+  .footer-graphics {
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    justify-content: center;
+    margin-top:70px; //50 for green add 20
     a {
       color: white;
       opacity: 0.6;
@@ -26,13 +26,13 @@
 
   .links{
     display: flex;
-    color: $secondary-color-light;
+    color: rgba(255,255,255,0.8);
     list-style: none;
-    justify-content: space-around;
+    justify-content: center;
     padding-left: 0;
     a{
       text-decoration: none;
-      color: $secondary-color-light;
+      color: rgba(255,255,255,0.8);
       &:hover{
         text-decoration: none;
         color: white;
@@ -55,4 +55,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.green-stripe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: $primary-color-light; 
 }

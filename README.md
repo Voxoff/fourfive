@@ -1,3 +1,10 @@
+eliminate
+refresh channelr
+refesh js
+routes
+refresh js appl js
+yml
+
 Todo:
 # Pagination
 # Pages: Home, Order show, payment, sign in, sign up, 

@@ -74,21 +74,21 @@
   <div class="card-graphics">
     <%= image_tag "legal.png", size: "120x120"%>
     <div class="how-it-works-text">
-      <h3>Find it</h3>
+      <h3>100% Legal</h3>
       <p>CBD is legal and has been since 2016</p>
     </div>
   </div>
   <div class="card-graphics">
     <%= image_tag "plaster.png", size: "120x120" %>
     <div class="how-it-works-text">
-      <h3>Find it</h3>
+      <h3>Health benefits</h3>
       <p>Widespread beneficial medicinal effects</p>
     </div>
   </div>
   <div class="card-graphics">
     <%= image_tag "002-medical.svg", size: "120x120" %>
     <div class="how-it-works-text">
-      <h3>Find it</h3>
+      <h3>Browse here</h3>
       <p>Quick and simple search</p>
     </div>
   </div>
@@ -98,11 +98,12 @@
 <!-- Products -->
 <div class="product">
   <div class="product-description">
-    <div class="home-title">
-      <h2>Our products</h2>
+    <div>
+      <h2 class="home-title">Five flavors, five strengths.</h2>
     </div>
     <div class="desc">
-      <p>We offer a variety of flavors</p>
+      <p>We offer a variety of flavors which are priced the same. </p>
+      <p>Each flavor has a different essence.</p>
     </div>
     <div class="form">
       <%= simple_form_for(:cart) do |f| %>
@@ -113,7 +114,7 @@
   </div>
   <div class="image">
     <%= link_to products_path do %>
-      <%= image_tag "floyd.jpeg" %>
+      <%= image_tag "floyd.jpeg",height: "340px" %>
     <% end %>
   </div>  
 </div>

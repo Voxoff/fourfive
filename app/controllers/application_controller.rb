@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  # skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user
 
   # def find_or_create_cart
   #   if current_user
@@ -14,23 +14,28 @@ class ApplicationController < ActionController::Base
   #   @cart
   # end
 
-  def find_cart
+  
+  def self.find_cart
+    # binding.pry
     if current_user
       @cart = Cart.find_by(user_id: current_user.id, active: true)
     else
       @cart = Cart.find(session[:cart_id])
     end
-    @cart ||= yield if block_given?
+    create_cart unless @cart
     @cart
   end
 
-  def create_cart
+  def self.create_cart
     if current_user
       @cart = Cart.create(user_id: current_user.id)
     else
       @cart = Cart.create
-      session[:cart_id] ||= @cart.id
+      session[:cart_id] = @cart.id
     end
     @cart
   end
+
+  @cart = self.find_cart
+
 end

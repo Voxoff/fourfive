@@ -1,5 +1,6 @@
 //= require rails-ujs
 //= require ./cable
+//= require ./refresh
 //= require jquery  
 // require bootstrap
 // require bootstrap-sprockets

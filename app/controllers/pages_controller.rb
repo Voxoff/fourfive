@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  # skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user
   def home
     # @cart = find_cart { create_cart }
     @products = Product.all
@@ -13,5 +13,9 @@ class PagesController < ApplicationController
   end
 
   def education
+  end
+
+  def privacy_policy
+
   end
 end
