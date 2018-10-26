@@ -96,7 +96,7 @@
 </div>
   <div class="read-banner">
     <%#= link_to "Read more", class: "btn btn-primary btn-lg" %>
-    <a class="btn btn-primary btn-lg" href="/">
+    <a class="btn btn-primary btn-lg read-more" href="/">
       Read More
     </a>
   </div>
@@ -112,9 +112,11 @@
       <p>Each flavor has a different essence.</p>
     </div>
     <div class="form">
-      <%= simple_form_for(:cart) do |f| %>
+      <%= simple_form_for(:cart, {wrapper: :vertical_col}) do |f| %>
+        <%= f.input :quantity, collection: Product.all.collect(&:name), selected: 1, label: false, class: "form-dropdown"%>
+        <%= f.input :quantity, collection: [100,200,300,400,500], selected: 1, label: false, class: "form-dropdown"%>
+        <%#= f.hidden_field :product_id, value: Product.first.id %>
         <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
-    
       <% end %>
     </div>
   </div>

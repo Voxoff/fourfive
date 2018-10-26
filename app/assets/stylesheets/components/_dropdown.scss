@@ -2,10 +2,13 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  padding-left: 20px;
 }
 
 .product-form-group select {
-  background-color: $primary-color-light;
+  background-color: white;
+  border: 1px solid #C4C4C4 !important;
+  min-width: 145px;
   color: #fff;
   font-size: inherit;
   padding: .5em;
