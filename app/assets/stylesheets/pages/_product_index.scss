@@ -1,8 +1,18 @@
 .product-index{
-  margin-top: 250px;
+  // margin-top: 250px;
   display: flex;
 }
 
 .product-right{
   padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.product-right h2{
+  font-weight: bolder;
 }

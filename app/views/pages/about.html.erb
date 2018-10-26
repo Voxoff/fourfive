@@ -1,2 +1,11 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('home.jpg') %>);">
+  <%= image_tag "leftline.png", class: "left-line" %>
+  <div class="banner-content-flex">
+    <h1>About us</h1>
+    <p>Learn more about our team</p>
+  </div>
+  <%= image_tag "rline.png", class: "right-line" %>
+  <div class="tab">
+    Learn more
+  </div>
+</div>

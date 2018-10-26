@@ -52,17 +52,17 @@
 
 <% end %>
 <!-- first lets get none modal validations working -->
-<%= simple_form_for(@user, :url => session_path(:user)) do |f| %>
-  <div class="email-container">
-    <%= f.text_field :email, :class =>"form-control",placeholder: "Email", value:"", error: "Please Try again", validate: { presence: true, uniqueness: false }%>
-  </div>
-  <div class="password-container">
-    <%= f.password_field :password, :label =>"Password", :class =>"form-control", placeholder:"Password", value:"" %>
-  </div>
-  <%= f.submit 'Login', :class =>"form-control" %>
-  <%= f.check_box :remember_me, label: "Remember me", value: "true" %>
-  <%= f.label :remember_me %>
-<% end %>
+  <%= simple_form_for(@user, :url => session_path(:user)) do |f| %>
+    <div class="email-container">
+      <%= f.text_field :email, :class =>"form-control",placeholder: "Email", value:"", error: "Please Try again", validate: { presence: true, uniqueness: false }%>
+    </div>
+    <div class="password-container">
+      <%= f.password_field :password, :label =>"Password", :class =>"form-control", placeholder:"Password", value:"" %>
+    </div>
+    <%= f.submit 'Login', :class =>"form-control" %>
+    <%= f.check_box :remember_me, label: "Remember me", value: "true" %>
+    <%= f.label :remember_me %>
+  <% end %>
 
 
 
@@ -72,21 +72,21 @@
 <div class="container">
 <div class="graphics">
   <div class="card-graphics">
-    <%= image_tag "legal.png", size: "120x120"%>
+    <%= image_tag "legal.png", size: "160x160"%>
     <div class="how-it-works-text">
       <h3>100% Legal</h3>
       <p>CBD is legal and has been since 2016</p>
     </div>
   </div>
   <div class="card-graphics">
-    <%= image_tag "plaster.png", size: "120x120" %>
+    <%= image_tag "plaster.png", size: "160x160" %>
     <div class="how-it-works-text">
       <h3>Health benefits</h3>
       <p>Widespread beneficial medicinal effects</p>
     </div>
   </div>
   <div class="card-graphics">
-    <%= image_tag "002-medical.svg", size: "120x120" %>
+    <%= image_tag "002-medical.svg", size: "160x160" %>
     <div class="how-it-works-text">
       <h3>Browse here</h3>
       <p>Quick and simple search</p>
@@ -118,6 +118,8 @@
     <% end %>
   </div>  
 </div>
+
+<div class="space"></div>
 
 <!-- Image of george and dom -->
 <div class="team">

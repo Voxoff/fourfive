@@ -27,7 +27,6 @@
     <% end %>
   </div>
 </div>
-<% end %>
 
 
 <div class="container">
@@ -37,8 +36,8 @@
     </div>
     <div class="product-right">
       <div class="desc">
-        <h2>Our Product</h2>
-        <p>Desc of product</p>
+        <h2>Chocolate</h2>
+        <p>Savour our smooth tasting orange flavour reminiscent of a freshly squeezed glass of OJ. </p>
       </div>
       <div class="form">
         <%= simple_form_for(:cart) do |f| %>
@@ -48,3 +47,28 @@
     </div>
   </div>
 </div>
+
+<% end %>
+
+<div class="container">
+  <%= @products.each do |product| %>
+    <div class="product-index">
+      <div class="product">
+        <%= image_tag product.photo_url, width: "500px", height: "500px" %>
+      </div>
+      <div class="product-right">
+        <div class="desc">
+          <h2><%= product.name %></h2>
+          <p><%= product.description %></p>
+        </div>
+        <div class="form">
+          <%= simple_form_for(:cart) do |f| %>
+            <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+    </div>  
+  <% end %>
+</div>
+
+<div class="space"></div>

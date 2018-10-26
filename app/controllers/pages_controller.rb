@@ -1,9 +1,10 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user
+  skip_before_action :authenticate_user!
   def home
     # @cart = find_cart { create_cart }
     @products = Product.all
     @user = User.new
+    @cart = Cart.find_by(user_id: current_user&.id, active: true)
   end
 
   def about
