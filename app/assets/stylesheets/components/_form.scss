@@ -14,8 +14,39 @@
 label{
   color: white;
   font-weight: lighter;
+  display: flex;
 }
 
 .form-check-input.boolean{
   margin-right: 10px;
+  // display: flex;
+}
+
+.form-check{
+  display: flex;
+}
+// A hack for Chromes browser autofills
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//        transition: background-color 5000s ease-in-out 0s;
+//        -webkit-text-fill-color: white;
+// }
+
+@-webkit-keyframes autofill {
+    to {
+        color: #666;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+.devise-box{
+  background-color: inherit;
+  color: white !important;
 }

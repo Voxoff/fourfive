@@ -1,16 +1,20 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.65) 100%, rgba(0,0,0,0.65) 100%), url(<%= image_url('home.jpg') %>);">
-      <% if @header %>
-    <div class="banner-content">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.4) 100%), url(<%= image_url('home.jpg') %>);">
+  <% if local_assigns[:header] %>
+    <%= image_tag "leftline.png", class: "left-line" if local_assigns[:box] %>
+    <div class="banner-content-flex">
       <h1><%= header%></h1>
+      <p>Learn more about our products</p>
+      <% if local_assigns[:button] %>
         <a class="btn btn-primary btn-lg home" href="/">
-          Home
+          <%= button %>
         </a>
+      <% end %>
     </div>
-  </div>
+    <%= image_tag "rline.png", class: "right-line" if local_assigns[:box] %>
   <% end %>
-  <% if @tab %>
-  <div class="tab">
-    Flow CBD
-  </div>
+  <% if local_assigns[:tab] %>
+    <div class="tab">
+      <%= tab %>
+    </div>
   <% end %>
 </div>

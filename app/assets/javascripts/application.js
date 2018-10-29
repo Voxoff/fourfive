@@ -1,9 +1,5 @@
 //= require rails-ujs
 //= require ./cable
-//= require ./refresh
 //= require jquery  
-// require bootstrap
-// require bootstrap-sprockets
-// require rails.validations
-// require rails.validations.simple_form
+//= require hotloader
 // We cannot use tree . since this would require activeadmin everywhere.

@@ -27,7 +27,6 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'carrierwave', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'friendly_id'
-# gem 'bootstrap-select-rails'
 gem 'jquery-rails'
 gem 'arctic_admin'
 
