@@ -67,3 +67,27 @@
   margin-top: 15px;
 
 }
+
+@media(min-width:1199px){
+  #left-p {
+    padding-top : 3%;
+    position: absolute;
+    left: 30%;
+    width: 38%;
+  }
+}
+
+@media(max-width:1199px){
+  #left-p {
+    padding-top: 12%;
+    position: absolute;
+    left: 11%;
+    width: 76%;
+  }
+
+}
+
+.team{
+  height: 150vh;
+  background-position-x: center 
+}

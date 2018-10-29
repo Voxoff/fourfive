@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('home.jpg') %>);">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.65) 100%, rgba(0,0,0,0.65) 100%), url(<%= image_url('home.jpg') %>);">
     <div class="banner-content">
       <h1>FlowCBD</h1>
         <a class="btn btn-primary btn-lg home" href="/">
@@ -115,7 +115,6 @@
       <%= simple_form_for(:cart, {wrapper: :vertical_col}) do |f| %>
         <%= f.input :quantity, collection: Product.all.collect(&:name), selected: 1, label: false, class: "form-dropdown"%>
         <%= f.input :quantity, collection: [100,200,300,400,500], selected: 1, label: false, class: "form-dropdown"%>
-        <%#= f.hidden_field :product_id, value: Product.first.id %>
         <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
       <% end %>
     </div>
@@ -132,13 +131,12 @@
 
 <!-- Image of george and dom -->
 <div class="team">
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('domgeorge.jpg') %>);">
+<div class="banner team" style="background-image: linear-gradient(-225deg, rgba(0,100,170,0.6) 0%, rgba(0,35,60,0.6) 50%), url(<%= image_url('domgeorge.jpg') %>);">
   <div class="cover left"></div>
   <div class="cover right"></div>
   <div class="banner-content">
-    <h1 id="dom">Dom and George</h1>
-      <p>Co-founders Dominic and George each have over 10 years experience in professional sport. </p>
-      <p>Between them they have been under the surgeons knife 12 times and have played and trained through pain and injury more often than they would have liked.</p>
+    <h1 class="hidden-md hidden-sm hidden-xs" id="dom">The team</h1>
+      <p id="left-p">Co-founders Dominic and George each have over 10 years experience in professional sport. Between them they have been under the surgeons knife 12 times and have played and trained through pain and injury more often than they would have liked.</p>
   </div>
   <div class="tab_bottom">
     Our Founders

@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   monetize :price_cents
   has_many :reviews
   validates :name, :price, presence: true
-  mount_uploader :photo, PhotoUploader
+  # mount_uploader :photo, PhotoUploader
   # validates :price, presence: true
 
   extend FriendlyId
