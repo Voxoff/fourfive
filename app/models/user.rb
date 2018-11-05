@@ -27,4 +27,10 @@ class User < ApplicationRecord
     end
     return user
   end
+
+  def full_name
+    if self.first_name && self.last_name
+      return "#{self.first_name} #{self.last_name}"
+    end
+  end
 end
