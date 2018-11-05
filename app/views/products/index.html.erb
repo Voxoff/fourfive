@@ -4,53 +4,53 @@
     <h1>Our New Collection</h1>
   </div>
     <%= image_tag "rline.png", class: "right-line" %>
-  <div class="tab">
-    FlowCBD
-  </div>
+  <%= link_to :anchor => "products" do %>
+    <div class="tab">
+      FlowCBD
+    </div>
+  <% end %>
 </div>
 
 <% if false %>
-<div class="container">
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-sm-6 col-md-4">
-        <div class="product-card">
-          <div class="thumbnail">
-            <%= link_to image_tag(product.photo_url), product_path(product) %>
-            <div class="caption">
-              <h3><%= link_to product.name, product_path(product) %></h3>
-              <p>Amount: <%= humanized_money_with_symbol(product.price) %></p>
+  <div class="container">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="product-card">
+            <div class="thumbnail">
+              <%= link_to image_tag(product.photo_url), product_path(product) %>
+              <div class="caption">
+                <h3><%= link_to product.name, product_path(product) %></h3>
+                <p>Amount: <%= humanized_money_with_symbol(product.price) %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="product-index">
-    <div class="product">
-      <%= image_tag Product.first.photo_url, width: "500px", height: "500px" %>
-    </div>
-    <div class="product-right">
-      <div class="desc">
-        <h2>Chocolate</h2>
-        <p>Savour our smooth tasting orange flavour reminiscent of a freshly squeezed glass of OJ. </p>
-      </div>
-      <div class="form">
-        <%= simple_form_for(:cart) do |f| %>
-          <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
 
+  <div class="container" >
+    <div class="product-index">
+      <div class="product">
+        <%= image_tag Product.first.photo_url, width: "500px", height: "500px" %>
+      </div>
+      <div class="product-right">
+        <div class="desc">
+          <h2>Chocolate</h2>
+          <p>Savour our smooth tasting orange flavour reminiscent of a freshly squeezed glass of OJ. </p>
+        </div>
+        <div class="form">
+          <%= simple_form_for(:cart) do |f| %>
+            <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<div class="container">
+<div class="container" id="products">
   <% @products.each do |product| %>
     <div class="product-index">
       <div class="product">

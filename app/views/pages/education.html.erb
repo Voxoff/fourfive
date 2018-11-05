@@ -5,13 +5,14 @@
     <p>Learn more about our products</p>
   </div>
   <%= image_tag "rline.png", class: "right-line" %>
-  <div class="tab">
-    Learn more
-  </div>
+  <%= link_to :anchor => "faq" do %>
+    <div class="tab">
+      Learn more
+    </div>
+  <% end %>
 </div>
 
-
-<div class="container">
+<div class="container" id="faq">
   <div class="border-bottom">
     <h3>Frequently Asked Questions</h3>
   </div>

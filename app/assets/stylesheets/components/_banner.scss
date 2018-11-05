@@ -84,7 +84,12 @@
     left: 11%;
     width: 76%;
   }
+}
 
+@media(max-height:700px){
+  .banner{
+    height: 130vh;
+  }
 }
 
 .team{

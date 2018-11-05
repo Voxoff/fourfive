@@ -15,8 +15,8 @@ Product.create!(price: 3, description: "A very popular flavour our mint tincture
 user = User.create!(email: "admin@admin.com", password: "123123")
 puts 'Creating Reviews...'
 
-Review.create!(product_id: p.id, user_id: user.id, rating: 5)
-Review.create!(product_id: p.id, user_id: user.id, rating: 4)
-Review.create!(product_id: p.id, user_id: user.id, rating: 4)
+Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "This had miraculous healing effects upon my back pain.")
+Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had miraculous healing effects upon my back pain.")
+Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had miraculous healing effects upon my back pain.")
 
 puts 'Finished!'

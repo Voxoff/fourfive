@@ -7,9 +7,11 @@
     </div>
 
   </div>
-  <div class="tab">
-    Flow CBD
-  </div>
+  <%= link_to :anchor => "graphics" do %>
+    <div class="tab">
+      Flow CBD
+    </div>
+  <% end %>
 </div>
 <% if false %>
 <!-- Modal -->
@@ -46,7 +48,6 @@
     $(document).on('shown.bs.modal', '.modal', function() {
     $('form[data-client-side-validations]').enableClientSideValidations();
   });
-  console.log("in afterjs")
 </script>
 
 
@@ -63,14 +64,11 @@
     <%= f.check_box :remember_me, label: "Remember me", value: "true" %>
     <%= f.label :remember_me %>
   <% end %>
-
-
-
 <% end %>
 
 
 <div class="container">
-<div class="graphics">
+<div class="graphics" id="graphics">
   <div class="card-graphics">
     <%= image_tag "legal.png", size: "160x160"%>
     <div class="how-it-works-text">
@@ -143,4 +141,4 @@
   </div>
 </div>
 </div>
-
+<%= javascript_pack_tag "scroll" %>
