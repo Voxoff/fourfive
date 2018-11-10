@@ -2,7 +2,9 @@ class PagesController < ApplicationController
   include CartControllable
   before_action :get_cart
   def home
-    puts params
+    if !checkout_params.present?
+      
+    end
     @products = Product.all
     @cart_item = CartItem.new
   end
