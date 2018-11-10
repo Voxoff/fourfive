@@ -61,8 +61,11 @@
           <h2><%= product.name %></h2>
           <p><%= product.description %></p>
         </div>
-        <div class="form">
-          <%= simple_form_for(:cart) do |f| %>
+        <div class="product-form">
+          <%= simple_form_for(@cart_item, {wrapper: :vertical_col}) do |f| %>
+            <%= f.input :quantity, collection: Product.all.collect(&:name), selected: 1, label: false, class: "form-dropdown"%>
+            <%= f.input :strength, collection: [100,200,300,400,500], selected: 1, label: false, class: "form-dropdown"%>
+            <%= f.input :cart_id, input_html: { value: @cart.id }, as: :hidden %>
             <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
           <% end %>
         </div>

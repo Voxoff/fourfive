@@ -40,3 +40,14 @@ input:-webkit-autofill {
 .text-muted{
   color: #DDD;
 }
+
+.product-form{
+  input{
+    width: 100%;
+  }
+
+  .product-form-group{
+    padding-left: 0px;
+    margin-bottom: 10px;
+  }
+}
