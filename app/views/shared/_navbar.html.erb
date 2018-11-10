@@ -1,16 +1,13 @@
 <%= link_to root_path, class: "navbar-hdn-brand logo" do %>
   <%= image_tag "logo_white.svg", height: 50 %>
 <% end %>
-<div class="navbar-hd">
-  <div class="navbar-hd-right hidden-xs hidden-sm">
+<div class="navbar-hd hidden-xs hidden-sm">
+  <div class="navbar-hd-right">
     <%= link_to "SHOP", products_path, class: "navbar-hd-item navbar-hd-link" %>
-    <%= link_to "CONTACT", pages_contact_path, class: "navbar-hd-item navbar-hd-link" %>
     <%= link_to "REVIEWS", reviews_path, class: "navbar-hd-item navbar-hd-link" %>
     <%= link_to "EDUCATION", pages_education_path, class: "navbar-hd-item navbar-hd-link" %>    
     <%= link_to "ABOUT", pages_about_path, class: "navbar-hd-item navbar-hd-link" %>
-    <% if @cart %>  
-        <%= link_to "CHECKOUT", new_cart_payment_path(@cart), class: "navbar-hd-item navbar-hd-link" %>
-    <% end %>
+    <%= link_to "CHECKOUT", new_cart_payment_path(@cart), class: "navbar-hd-item navbar-hd-link" if @cart %>
     <% if user_signed_in? %>
     <%= link_to t(".sign_out", default: "LOGOUT"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
     <% else %>
@@ -52,9 +49,10 @@
       </div>
     </div>
   </div>
-
+</div>
+<div class="navbar-hd hidden-md hidden-lg" id="mobile-navbar">
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-hd-item hidden-md hidden-lg">
+  <div class="navbar-hd-item ">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-hd-dropdown-menu">

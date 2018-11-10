@@ -1,16 +1,9 @@
-<!-- app/views/payments/new.html.erb -->
-<% if false %>
-<h1>Purchase of product <%= @order.product_sku %></h1>
-<%= form_tag order_payments_path(@order) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-    </label>
-  </article>
-<% end %>
 
-<% end %>
- 
+<ul>
+	<% @cart_items.each do |cart_item| %>
+		<li>You are buying <%= cartitem.quantity %> of <%= cartitem.flavor %> </li>
+	<% end %>
+</ul>
   <script src=<%="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=#{@checkoutId}"%> ></script>
 
   <form action=<%= "#{root_url}" %> class="paymentWidgets" data-brands="VISA VISADEBIT MASTER MASTERDEBIT"></form>
