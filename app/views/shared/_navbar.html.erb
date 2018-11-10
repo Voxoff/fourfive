@@ -8,7 +8,9 @@
     <%= link_to "REVIEWS", reviews_path, class: "navbar-hd-item navbar-hd-link" %>
     <%= link_to "EDUCATION", pages_education_path, class: "navbar-hd-item navbar-hd-link" %>    
     <%= link_to "ABOUT", pages_about_path, class: "navbar-hd-item navbar-hd-link" %>
-  
+    <% if @cart %>  
+        <%= link_to "CHECKOUT", new_cart_payment_path(@cart), class: "navbar-hd-item navbar-hd-link" %>
+    <% end %>
     <% if user_signed_in? %>
     <%= link_to t(".sign_out", default: "LOGOUT"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
     <% else %>
