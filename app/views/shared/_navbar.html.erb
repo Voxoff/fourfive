@@ -8,19 +8,21 @@
     <%= link_to "REVIEWS", reviews_path, class: "navbar-hd-item navbar-hd-link" %>
     <%= link_to "EDUCATION", pages_education_path, class: "navbar-hd-item navbar-hd-link" %>    
     <%= link_to "ABOUT", pages_about_path, class: "navbar-hd-item navbar-hd-link" %>
-    <% if @cart %>
-      <%= link_to cart_path(@cart), class: "navbar-hd-item navbar-hd-link" do %>
-      <i class="fa fa-shopping-cart fa-lg"></i>
-      <!-- This is old (version four). If you want to upgrade, put 'fas' and use the cdn. Gem not out yet -->
-      <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
-      <% end %>
-    <% end %>
+  
     <% if user_signed_in? %>
     <%= link_to t(".sign_out", default: "LOGOUT"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
     <% else %>
       <!-- Login link for non-modal(when logged out) -->
       <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-hd-item navbar-hd-link" %>
       <%#= button_tag("Sign in", class: "btn btn-primary", data: {toggle: "modal", target: "#Modalid"}) %>
+    <% end %>
+
+    <% if @cart %>
+      <%= link_to cart_path(@cart), class: "navbar-hd-item navbar-hd-link" do %>
+      <i class="fa fa-shopping-cart fa-lg"></i>
+      <!-- This is old (version four). If you want to upgrade, put 'fas' and use the cdn. Gem not out yet -->
+      <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
+      <% end %>
     <% end %>
 
     <div class="navbar-hd-item">

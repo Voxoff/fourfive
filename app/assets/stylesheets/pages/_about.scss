@@ -1,0 +1,62 @@
+.section {
+	display: flex;
+	h2{
+		padding-bottom: 10px;
+	}
+	hr {
+	    display: block;
+	    height: 1px;
+	    border: 0;
+	    border-top: 1px solid #ccc;
+	    margin: 1em 0;
+	    padding: 0;
+	    margin-bottom: 60px;
+	}
+
+	p{
+		text-align: justify;
+	}
+}
+
+.right{
+	padding: 60px 0 60px 60px;
+}
+
+.left{
+	padding: 60px 60px 60px 0px;
+}
+
+.flow{
+	.flow-text{
+		column-count: 2;
+		column-gap: 134px;
+		margin-bottom: 60px;
+	}
+	h2{
+		margin-bottom: 15px;
+	}
+	p{
+		text-align: justify;
+	}
+}
+
+@media(max-width:985px){
+	.section{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.right{
+		padding: 15px;
+	}
+
+	.left{
+		padding: 15px;
+	}
+
+	.team-titles{
+		display: flex;
+
+
+	}
+}
