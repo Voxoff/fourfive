@@ -1,4 +1,4 @@
-.product-card{
+.product-card {
   height: 100%;
   position: relative;
   background-color: white;
@@ -6,45 +6,45 @@
   text-decoration: none;
   margin-bottom: 40px;
   
-  &h4{
+  &h4 {
     position: absolute;
   }
-  &:hover{
+  &:hover {
     -webkit-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
     -moz-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
     box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
   }
-  a{
+  a {
     text-decoration: none;
     color:black;
 
-    &:hover{
+    &:hover {
       text-decoration: none;
       color:black;      
     }    
   }
 }
 
-.bar{
+.bar {
   margin-top: 10px;
   border-top: 1px solid black;
 
-  .top-row{
+  .top-row {
     display: flex;
     justify-content: space-between;
-    h4:hover{
+    h4:hover {
       text-decoration: none;
     }
   }
 }
 
 
-h4:hover{
+h4:hover {
   text-decoration: none;
   text-decoration-color: black;
 }
 
-.card-accordion{
+.card-accordion {
   position: relative;
 display: flex;
 flex-direction: column;
@@ -61,23 +61,52 @@ border-radius: .25rem;
     border-bottom-left-radius: 0.25rem;
 }
 
-.card-header{
+.card-header {
   padding: .75rem 1.25rem;
 margin-bottom: 0;
 background-color: rgba(0,0,0,.03);
 border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
-.card-body{
+.card-body {
   flex: 1 1 auto;
 padding: 1.25rem;
 }
 
-.no-transition {
-  // -webkit-transition: height 0.01s;
-  // -moz-transition: height 0.01s;
-  // -ms-transition: height 0.01s;
-  // -o-transition: height 0.01s;
-  // transition: height 0.01s;
-}
+.review-card {
+  height: 400px;
+  width: 350px;
+  border: 1px black solid;
+  margin: 20px;
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
 
+  .header {
+    height: 45%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    p {
+      position: absolute;
+      bottom: -5px;
+      left: 10px;
+    }
+    .avatar {
+      border-radius: 100%;
+      width: 100px;
+      height: 100px;
+    }
+  }
+  
+  .body {
+    height: 55%;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    overflow: hidden;
+  }
+}

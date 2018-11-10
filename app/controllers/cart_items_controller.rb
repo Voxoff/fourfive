@@ -1,9 +1,9 @@
 class CartItemsController < ApplicationController
   def create
     # Review efficiency
-    @cart = find_cart { create_cart }
-    cart_items_params[:cart_id] = @cart.id
-    if @cart_item = CartItem.create!(cart_items_params)
+    # raise
+    @cart = Cart.find(cart_items_params[:cart_id])
+    if CartItem.create(cart_items_params)
       flash[:notice] = "That's been added to your cart!"
     end    
     redirect_back(fallback_location: cart_path(@cart.id))
@@ -12,7 +12,6 @@ class CartItemsController < ApplicationController
   private
 
   def cart_items_params
-    hash = {}
-    hash.merge! params.permit(cart_item: [:strength, :volume, :product_id])
+    params.require(:cart_item).permit(:cart_id, :strength, :quantity)
   end
 end

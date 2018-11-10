@@ -12,14 +12,25 @@
 
 <div class="container">
   <div class="row">
-	  <%= @review.each do |review| %>
-      <div class="card">
-        <div class="header">
-          <%#= image_tag @review.user.photo %>
-          <%#= review.user.name %>
-        </div>
-        <div class="content">
-          <%= review.content %>
+	  <% @reviews.each do |review| %>
+      <div class="col-md-4">
+        <div class="review-card">
+          <div class="header">
+            <% if review.user.photo.url.nil? %>
+              <%= image_tag "https://picsum.photos/100/100" %>
+            <% else %>
+            <%= image_tag review.user.photo_url, class: "avatar" %>
+            <% end %>
+            <p><%= review.user.full_name %></p>
+          </div>
+          <div class="body">
+            <div class="rating">
+              <% review.rating.times do %>
+                <i class="fa fa-star-o fa-lg"></i>
+              <% end %>
+            </div>
+            <%= review.content %>
+          </div>
         </div>
       </div>
 	  <% end %>

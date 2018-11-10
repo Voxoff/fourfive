@@ -27,6 +27,7 @@
 .banner-content-flex{
   display:flex;
   flex-direction: column;
+  position: relative;
 }
 
 .banner-content-flex p{
@@ -95,4 +96,27 @@
 .team{
   height: 150vh;
   background-position-x: center 
+}
+
+/* Vector */
+.big-l-line{
+  position: absolute;
+  width: 203px;
+  height: 212px;
+  left: -140px;
+  top: -30px;
+  border: 1px solid #FFFFFF;
+  border-right: none;
+}
+
+.big-r-line{
+  position: absolute;
+  width: 203px;
+  height: 212px;
+  left: 260px;
+  top: -30px;
+  border: 1px solid #FFFFFF;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  border-right: none;
+
 }
