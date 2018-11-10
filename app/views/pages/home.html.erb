@@ -1,9 +1,7 @@
 <%=  render "shared/banner" %>
-    <div class="banner-content">
-      <h1>FlowCBD</h1>
-    </div>
-
-  </div>
+<div class="banner-content">
+  <h1>FlowCBD</h1>
+</div>
   <%= link_to :anchor => "graphics" do %>
     <div class="tab">
       Flow CBD
@@ -23,41 +21,41 @@
     <%= f.check_box :remember_me, label: "Remember me", value: "true" %>
     <%= f.label :remember_me %>
   <% end %>
-<% end %>
-
 
 <div class="container">
-<div class="graphics" id="graphics">
-  <div class="card-graphics">
-    <%= image_tag "legal.png", size: "160x160"%>
-    <div class="how-it-works-text">
-      <h3>100% Legal</h3>
-      <p>CBD is legal and has been since 2016</p>
+  <div class="graphics" id="graphics">
+    <div class="card-graphics">
+      <%= image_tag "legal.png", size: "160x160"%>
+      <div class="how-it-works-text">
+        <h3>100% Legal</h3>
+        <p>CBD is legal and has been since 2016</p>
+      </div>
     </div>
-  </div>
-  <div class="card-graphics">
-    <%= image_tag "plaster.png", size: "160x160" %>
-    <div class="how-it-works-text">
-      <h3>Health benefits</h3>
-      <p>Widespread beneficial medicinal effects</p>
+    <div class="card-graphics">
+      <%= image_tag "plaster.png", size: "160x160" %>
+      <div class="how-it-works-text">
+        <h3>Health benefits</h3>
+        <p>Widespread beneficial medicinal effects</p>
+      </div>
     </div>
-  </div>
-  <div class="card-graphics">
-    <%= image_tag "002-medical.svg", size: "160x160" %>
-    <div class="how-it-works-text">
-      <h3>Browse here</h3>
-      <p>Quick and simple search</p>
+    <div class="card-graphics">
+      <%= image_tag "002-medical.svg", size: "160x160" %>
+      <div class="how-it-works-text">
+        <h3>Browse here</h3>
+        <p>Quick and simple search</p>
+      </div>
     </div>
   </div>
 </div>
-</div>
+
+
   <div class="read-banner">
     <%#= link_to "Read more", class: "btn btn-primary btn-lg" %>
     <a class="btn btn-primary btn-lg read-more" href="/">
       Read More
     </a>
   </div>
-<div>
+  
 <!-- Products -->
 <div class="product">
   <div class="product-description">
@@ -90,16 +88,16 @@
 
 <!-- Image of george and dom -->
 <div class="team">
-<div class="banner team" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.4) 100%), url(<%= image_url('domgeorge.jpg') %>);">
-  <div class="cover left"></div>
-  <div class="cover right"></div>
-  <div class="banner-content">
-    <h1 class="hidden-md hidden-sm hidden-xs" id="dom">The team</h1>
-      <p id="left-p">Co-founders Dominic and George each have over 10 years experience in professional sport. Between them they have been under the surgeons knife 12 times and have played and trained through pain and injury more often than they would have liked.</p>
+  <div class="banner team" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.4) 100%), url(<%= image_url('domgeorge.jpg') %>);">
+    <div class="cover left"></div>
+    <div class="cover right"></div>
+    <div class="banner-content">
+      <h1 class="hidden-md hidden-sm hidden-xs" id="dom">The team</h1>
+        <p id="left-p">Co-founders Dominic and George each have over 10 years experience in professional sport. Between them they have been under the surgeons knife 12 times and have played and trained through pain and injury more often than they would have liked.</p>
+    </div>
+    <div class="tab_bottom">
+      Our Founders
+    </div>
   </div>
-  <div class="tab_bottom">
-    Our Founders
-  </div>
-</div>
 </div>
 <%= javascript_pack_tag "scroll" %>

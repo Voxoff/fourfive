@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   def create
-    raise
+    # raise
     @cart = Cart.find(cart_items_params[:cart_id])
     if CartItem.create(cart_items_params)
       flash[:notice] = "That's been added to your cart!"

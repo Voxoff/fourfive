@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'education', to: 'pages#education'
   get 'privacy_policy', to: 'pages#privacy_policy'
+
   resources :products, only: [:show, :index]
   resources :cart_items, only: [:show, :create, :index] do
   end
-  resources :cart, only: [:show] do
-    resources :payments, only: [:new, :create]
-  end
+  # resources :users, only: :show do
+    resources :carts, only: [:show] do
+      resources :payments, only: [:new, :create]
+    end
+  # end
   resources :reviews, only: :index
 end
