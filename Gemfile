@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.1'
+# For secure gem fetches
+git_source(:github) { |name| "https://github.com/#{name}.git" }
 
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
