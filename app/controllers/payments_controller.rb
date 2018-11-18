@@ -3,7 +3,6 @@ class PaymentsController < ApplicationController
   before_action :get_cart
 
   def new
-    # raise
     @cart_items = @cart.cart_items
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"

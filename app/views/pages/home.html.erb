@@ -9,19 +9,6 @@
   <% end %>
 </div>
 
-<!-- first lets get none modal validations working -->
-  <%= simple_form_for(@user, :url => session_path(:user)) do |f| %>
-    <div class="email-container">
-      <%= f.text_field :email, :class =>"form-control",placeholder: "Email", value:"", error: "Please Try again", validate: { presence: true, uniqueness: false }%>
-    </div>
-    <div class="password-container">
-      <%= f.password_field :password, :label =>"Password", :class =>"form-control", placeholder:"Password", value:"" %>
-    </div>
-    <%= f.submit 'Login', :class =>"form-control" %>
-    <%= f.check_box :remember_me, label: "Remember me", value: "true" %>
-    <%= f.label :remember_me %>
-  <% end %>
-
 <div class="container">
   <div class="graphics" id="graphics">
     <div class="card-graphics">
@@ -55,7 +42,7 @@
       Read More
     </a>
   </div>
-  
+
 <!-- Products -->
 <div class="product">
   <div class="product-description">

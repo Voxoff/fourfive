@@ -1,9 +1,26 @@
+<%=  render "shared/banner" %>
+<div class="banner-content">
+  <h1>Your cart</h1>
+</div>
+  <%= link_to :anchor => "graphics" do %>
+    <div class="tab">
+      Your cart
+    </div>
+  <% end %>
+</div>
+
+
 <div class="container">
-    <% @cart.cart_items.each do |item| %>
-      <div class="row">
-        <div class="card"> 
-          <p><%= item %></p>
-        </div>
-      </div>
-    <% end %>
+	<h2>Cart</h2>
+	<% if @cart_items.nil? %>
+		<!-- Could have some stuff here instead of the redirect -->
+	<% else %>
+	    <% @cart_items.each do |item| %>
+	      <div class="row">
+	        <div class="card"> 
+	          <p><%= item %></p>
+	        </div>
+	      </div>
+	    <% end %>
+	<% end %>
 </div>
