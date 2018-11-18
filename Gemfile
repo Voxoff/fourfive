@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.5.3'
 # For secure gem fetches
 git_source(:github) { |name| "https://github.com/#{name}.git" }
 
@@ -21,7 +21,6 @@ gem 'uglifier'
 gem 'webpacker'
 
 gem 'money-rails'
-gem 'stripe'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
@@ -35,7 +34,6 @@ gem 'devise-guests', '~> 0.6.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  # gem 'hotloader'
 end
 
 group :development, :test do
