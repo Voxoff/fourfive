@@ -46,12 +46,12 @@
 <!-- Products -->
 <div class="product">
   <div class="product-description">
-    <div>
+    <div class="product-padding">
       <h2 class="home-title">Five flavors, five strengths.</h2>
-    </div>
-    <div class="desc">
-      <p>We offer a variety of flavors which are priced the same. </p>
-      <p>Each flavor has a different essence.</p>
+      <div class="desc">
+        <p>We offer a variety of flavors which are priced the same. </p>
+        <p>Each flavor has a different essence.</p>
+      </div>
     </div>
     <div class="form">
       <!-- Either we could nest routes cartitem inside cart. Or we could just ref a cartitem and pass cart as hidden -->
@@ -67,7 +67,7 @@
     <%= link_to products_path do %>
       <%= image_tag "floyd.jpg",height: "340px" %>
     <% end %>
-  </div>  
+  </div>
 </div>
 </div>
 

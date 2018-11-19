@@ -9,4 +9,3 @@ module CartControllable
 	  @cart
 	end
 end
-

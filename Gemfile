@@ -30,7 +30,7 @@ gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'jquery-rails'
 gem 'arctic_admin'
-gem 'devise-guests', '~> 0.6.1'
+# gem 'devise-guests', '~> 0.6.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

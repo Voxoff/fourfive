@@ -38,12 +38,12 @@
 }
 
 .navbar-hd-link {
-  color: white;
+  color: $light-gray;
   padding-right: 30px;
 
   font-size: 18px;
   &:hover {
-    color: $primary-color-light;
+    color: $primary-color-mid;
     text-decoration: none;
   }
 }

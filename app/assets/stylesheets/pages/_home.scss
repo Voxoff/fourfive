@@ -13,6 +13,9 @@
   p{
     max-width: 200px;
   }
+  .how-it-works-text{
+    text-align: center;
+  }
 }
 
 .cover{
@@ -40,12 +43,21 @@
 .product-description{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   padding-right: 50px;
+}
+
+.product-padding{
+  padding-left: 60px;
 }
 
 .form{
   padding: 50px;
+
+  .btn-lg{
+    margin-left: 10px;
+  }
 }
 
 #dom{

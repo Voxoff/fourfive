@@ -13,14 +13,14 @@ Product.create!(price: 1, description: "Our Pure tincture is a flavourless oil. 
 Product.create!(price: 3, description: "A very popular flavour our mint tincture is cool and invigorating without being overpowering.", name: 'Mint', photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431749/t8dqz9exgaseh2fkmw0v.jpg"))
 
 
-user = User.create!(email: "admin@admin.com", password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
+user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
 puts 'Creating Reviews...'
 
-Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "This had miraculous healing effects upon my back pain.")
-Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had miraculous healing effects upon my back pain.")
-Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had miraculous healing effects upon my back pain.")
-Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had miraculous healing effects upon my back pain.")
-Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "This had miraculous healing effects upon my back pain.")
+Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ")
+Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: " quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate")
+Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "velit esse cillum dolore eu fugiat nulla pariatur.")
+Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "Excepteur sint occaecat cupidatat non proident.")
+Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "ipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur")
 Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "This had miraculous healing effects upon my back pain.")
 
 Strength.create(strength: 100)

@@ -16,11 +16,13 @@
       <div class="col-md-4">
         <div class="review-card">
           <div class="header">
-            <% if review.user.photo.url.nil? %>
-              <%= image_tag "https://picsum.photos/100/100" %>
-            <% else %>
-            <%= image_tag review.user.photo_url, class: "avatar" %>
-            <% end %>
+            <div class="image-div">
+              <% if review.user.photo.url.nil? %>
+                <%= image_tag "https://picsum.photos/100/100" %>
+              <% else %>
+              <%= image_tag "george.png", class: "avatar" %>
+              <% end %>
+            </div>
             <p><%= review.user.full_name %></p>
           </div>
           <div class="body">
