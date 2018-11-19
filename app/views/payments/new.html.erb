@@ -1,7 +1,7 @@
-
+<div class="space"></div>
 <ul>
 	<% @cart_items.each do |cart_item| %>
-		<li>You are buying <%= cartitem.quantity %> of <%= cartitem.flavor %> </li>
+		<li>You are buying <%= cart_item.product.name %> FlowCBD at a strength of <%= cart_item.strength.strength %> </li>
 	<% end %>
 </ul>
   <script src=<%="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=#{@checkoutId}"%> ></script>

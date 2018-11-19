@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.boolean :availability
       t.integer :strength
       t.string :photo
-
+      
       t.timestamps
     end
   end
