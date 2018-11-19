@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: low_production
-  username: flow
-  password: <%= ENV['FLOW_DATABASE_PASSWORD'] %>
+  database: flow_production
