@@ -56,7 +56,7 @@
     <div class="form">
       <!-- Either we could nest routes cartitem inside cart. Or we could just ref a cartitem and pass cart as hidden -->
       <%= simple_form_for(@cart_item, {wrapper: :vertical_col}) do |f| %>
-        <%= f.input :quantity, collection: Product.all.collect(&:name), selected: 1, label: false, class: "form-dropdown"%>
+        <%= f.input :product_name, collection: Product.all.collect(&:name), selected: 1, label: false, class: "form-dropdown"%>
         <%= f.input :strength, collection: [100,200,300,400,500], selected: 1, label: false, class: "form-dropdown"%>
         <%= f.input :cart_id, input_html: { value: @cart.id }, as: :hidden %>
         <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>

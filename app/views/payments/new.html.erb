@@ -1,32 +1,19 @@
-<%=  render "shared/banner" %>
-  <div class="banner-content-flex">
-    <div class="big-l-line"></div>
-    <h1>Pay Below</h1>
-    <div class="big-r-line"></div>
-  </div>
-  <%= link_to :anchor => "Pay" do %>
-    <div class="tab">
-      Pay here
-    </div>
+<div class="space"></div>
+<% if false %>
+  <%= link_to root_path, class: "navbar-hdn-brand logo" do %>
+    <%= image_tag "logo_white.svg", height: 50 %>
   <% end %>
-</div>
+<% end %>
 
 
 <div id="pay">
 	<ul>
 		<% @cart_items.each do |cart_item| %>
-			<li>You are buying <%= cartitem.quantity %> of <%= cartitem.flavor %> </li>
+    <li>You are buying <%= cart_item.product.name %> FlowCBD at a strength of <%= cart_item.strength.strength %> </li>
 		<% end %>
 	</ul>
 </div>
-
-<div class="space"></div>
-<ul>
-	<% @cart_items.each do |cart_item| %>
-		<li>You are buying <%= cart_item.product.name %> FlowCBD at a strength of <%= cart_item.strength.strength %> </li>
-	<% end %>
-</ul>
-
   <script src=<%="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=#{@checkoutId}"%> ></script>
 
   <form action=<%= "#{root_url}" %> class="paymentWidgets" data-brands="VISA VISADEBIT MASTER MASTERDEBIT"></form>
+<div class="space"></div>
