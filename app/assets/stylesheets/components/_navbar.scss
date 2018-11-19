@@ -2,7 +2,7 @@
   margin-top:15vh;
   transition: all 0.3s ease;
   height: 70px;
-  padding: 0px 20vw;
+  padding: 0px 5vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,12 +38,12 @@
 }
 
 .navbar-hd-link {
-  color: white;
+  color: $light-gray;
   padding-right: 30px;
 
   font-size: 18px;
   &:hover {
-    color: $primary-color-light;
+    color: $primary-color-mid;
     text-decoration: none;
   }
 }
