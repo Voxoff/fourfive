@@ -21,11 +21,11 @@
 }
 $palatino: "palatino";
 
-@font-face {
-	font-family: 'hansief';
-	src: url('fonts/hansief.eot') format('truetype');
-}
-$hansief: "hansief";
+// @font-face {
+// 	font-family: 'hansief';
+// 	src: url('fonts/hansief.eot') format('truetype');
+// }
+// $hansief: "hansief";
 
-$body-font: "Open Sans", "hansief", "sans-serif";
-$headers-font: "Raleway", "hansief", "sans-serif";
+$body-font: $palatino;
+$headers-font: $palatino;
