@@ -1,14 +1,14 @@
-// .navbar-hd {
-//   margin-top:15vh;
-//   transition: all 0.3s ease;
-//   height: 70px;
-//   padding: 0px 20vw;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: absolute;
-//   width: 100%;
-// }
+.navbar-hd {
+  margin-top:15vh;
+  transition: all 0.3s ease;
+  height: 70px;
+  padding: 0px 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+}
 
 #mobile-navbar{
   margin-top: 0;
@@ -82,5 +82,5 @@
 .logo{
   position:absolute;
   top:20px;
-  left: 20px; 
+  left: 20px;
 }

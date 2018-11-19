@@ -108,8 +108,6 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-guests (0.6.1)
-      devise
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.5.0)
@@ -336,7 +334,6 @@ DEPENDENCIES
   carrierwave (~> 1.2)
   cloudinary
   devise
-  devise-guests (~> 0.6.1)
   dotenv-rails
   font-awesome-sass
   friendly_id
@@ -364,4 +361,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
