@@ -1,6 +1,7 @@
 puts 'Cleaning database...'
 Review.destroy_all
 Order.destroy_all
+Strength.destroy_all
 Product.destroy_all
 User.destroy_all
 puts 'Creating products...'
@@ -21,5 +22,15 @@ Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had
 Review.create!(product_id: p.id, user_id: user.id, rating: 4, content: "This had miraculous healing effects upon my back pain.")
 Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "This had miraculous healing effects upon my back pain.")
 Review.create!(product_id: p.id, user_id: user.id, rating: 5, content: "This had miraculous healing effects upon my back pain.")
+
+Strength.create(strength: 100)
+Strength.create(strength: 500)
+Strength.create(strength: 1000)
+
+Product.all.each do |product|
+  Strength.all.each do |strength|
+    ProductStrength.create!(product: product, strength: strength)
+  end
+end
 
 puts 'Finished!'

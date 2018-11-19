@@ -3,12 +3,13 @@ class PaymentsController < ApplicationController
   before_action :get_cart
 
   def new
+    @disable_nav = true
     @cart_items = @cart.cart_items
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"
       redirect_to root_path
     end
-    ['net/https', 'uri', 'json'].each(&method(:require)) 
+    ['net/https', 'uri', 'json'].each(&method(:require))
     uri = URI('https://test.oppwa.com/v1/checkouts')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true

@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
   mount_uploader :photo, PhotoUploader
   has_many :orders
-  has_many :carts
-  has_one :cart, -> { where(active: true) } 
+  has_many :carts, dependent: :destroy
+  has_one :cart, -> { where(active: true) }
+  has_many :cart_items, through: :cart
 
   validates_confirmation_of :password
 
