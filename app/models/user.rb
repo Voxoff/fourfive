@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_one :cart, -> { where(active: true) }
   has_many :cart_items, through: :cart
-  has_many :addresses
+  has_many :addresses, dependent: :destroy
 
   validates_confirmation_of :password
 

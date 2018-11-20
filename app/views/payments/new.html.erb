@@ -10,25 +10,78 @@
 </div>
 
 <div id="pay">
-	<div>
+	<div class="flex">
 		<% @cart_items.each do |cart_item| %>
     <div class="product-card">
       <div class="top">
         <%= image_tag "floyd.jpeg"%>
       </div>
       <div class="bottom">
-        <%= cart_item.strength.strength %>
-        <%= cart_item.product.name %>
-        <%= cart_item.price %>
+        <div class="bottom-bar">
+          <%= cart_item.strength.strength %>
+          <%= cart_item.product.name %>
+          <%= cart_item.product.price %>
+        </div>
       </div>
     </div>
 		<% end %>
 	</div>
 </div>
 
-<div class="space grey"></div>
+<div class="grey-stripe"></div>
 
-<h2>Order Details</h2>
-<%= simple_form_for @address %>
-  
-<%= end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Order Details</h3>
+      <div class="cart-form">
+        <%= simple_form_for :checkout do |f| %>
+          <%= f.input :first_line, required: true, label: true %>
+          <%= f.input :second_line, label: true %>
+          <%= f.input :postcode, required: true, label: true %>
+          <%= f.input :phone_number, required: true, label: true %>
+          <%= f.input :email, required: true, label: true %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="summary">
+        <div class="flex-column names">
+          <h4>Product Name</h4>
+          <% @cart_items.each do |cart_item| %>
+            <p>
+              <%= cart_item.product.name %>
+            </p>
+          <% end %>
+        </div>
+        <div class="flex-column price">
+          <h4>Price per unit</h4>
+          <% @cart_items.each do |cart_item| %>
+            <p>
+              <%= cart_item.product.price %>
+            </p>
+          <% end %>
+        </div>
+        <div class="flex-column quantity">
+          <h4>Quantity</h4>
+          <% @cart_items.each do |cart_item| %>
+            <p>
+              <%= cart_item.product.name %>
+            </p>
+          <% end %>
+        </div>
+        <div class="flex-column total">
+          <h4>Product Name</h4>
+          <% @cart_items.each do |cart_item| %>
+            <p>
+              <%= cart_item.product.price %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div class="purchase">
+        <%= link_to "Purchase", new_cart_payment_path, class: "btn btn-lg btn-danger"%>
+      </div>
+    </div>
+  </div>
+</div>

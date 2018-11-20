@@ -30,6 +30,14 @@ class PaymentsController < ApplicationController
     @checkoutId = @result["id"]
   end
 
+  def new
+    @cart_items = @cart.cart_items
+    if @cart_items.empty?
+      flash[:notice] = "You need to put items in your cart in order to buy them!"
+      redirect_to root_path
+    end
+  end
+
 #   "result":{
 #     "code":"000.200.100",
 #     "description":"successfully created checkout"
