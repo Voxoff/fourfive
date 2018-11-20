@@ -17,7 +17,6 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Info" do
-          para "Some other useful stuff"
         end
       end
     end
