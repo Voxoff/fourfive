@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   resources :products, only: [:show, :index]
   resources :cart_items, only: [:show, :create, :index] do
   end
-  # resources :users, only: :show do
     resources :carts, only: [:show] do
-      resources :payments, only: [:new, :create]
+      resources :payments, only: [:new, :create] do
+        collection do
+          get 'checkout'
+        end
+      end
     end
-  # end
   resources :reviews, only: :index
 end

@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   include CartControllable
   before_action :get_cart
 
-  def new
+  def checkout
     @disable_nav = true
     @cart_items = @cart.cart_items
     if @cart_items.empty?
