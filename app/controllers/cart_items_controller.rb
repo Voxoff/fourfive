@@ -1,10 +1,10 @@
 class CartItemsController < ApplicationController
   def create
     # raise
-    @cart = Cart.find(cart_items_params[:cart_id])
-    @cart_item = CartItem.new(cart_id: cart_items_params[:cart_id])
-    @cart_item.product = Product.where(name: cart_items_params[:product_name]).first
-    @cart_item.strength = Strength.where(strength: cart_items_params[:strength]).first
+    @cart = Cart.find(cart_params[:cart_id])
+    @cart_item = CartItem.new(cart_params)
+      @cart_item.product = Product.find(cart_items_params[:product])
+      @cart_item.strength = Strength.where(strength: cart_items_params[:strength]).first
     if @cart_item.save
       flash[:notice] = "That's been added to your cart!"
     else
@@ -15,7 +15,12 @@ class CartItemsController < ApplicationController
 
   private
 
+  #refactor
   def cart_items_params
-    params.require(:cart_item).permit(:cart_id, :strength, :product_name)
+    params.require(:cart_item).permit(:strength, :product)
+  end
+
+  def cart_params
+    params.permit(:cart_id)
   end
 end
