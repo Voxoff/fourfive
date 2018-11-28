@@ -3,7 +3,7 @@
 <% end %>
 <div class="navbar-hd hidden-xs hidden-sm">
   <div class="navbar-hd-right">
-    <%= link_to "ADMIN", admin_root_path, class: "navbar-hd-item navbar-hd-link" if current_user&.admin?%>    
+    <%= link_to "ADMIN", admin_root_path, class: "navbar-hd-item navbar-hd-link" if current_user&.admin?%>
     <%= link_to "SHOP", products_path, class: "navbar-hd-item navbar-hd-link" %>
     <%= link_to "REVIEWS", reviews_path, class: "navbar-hd-item navbar-hd-link" %>
     <%= link_to "EDUCATION", education_path, class: "navbar-hd-item navbar-hd-link" %>

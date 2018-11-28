@@ -5,9 +5,18 @@ class PaymentsController < ApplicationController
   def checkout
     @disable_nav = true
     @cart_items = @cart.cart_items
+    @amount = @cart_items.map{|i| i.product.price }.reduce(:+)
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"
       redirect_to root_path
+    end
+    puts
+    if !coupons.includes?(checkout_params[:coupon].upcase)
+      flash[:notice] = "That coupon code did not work"
+      redirect_to new_cart_payment_path
+    else
+      flash[:notice] = "Coupon successfully applied."
+      @amount = @amount.to_f * 0.9
     end
     ['net/https', 'uri', 'json'].each(&method(:require))
     uri = URI('https://test.oppwa.com/v1/checkouts')
@@ -18,10 +27,7 @@ class PaymentsController < ApplicationController
       'authentication.userId' => '8a8294174b7ecb28014b9699220015cc',
       'authentication.password' => 'sy6KJsT8',
       'authentication.entityId' => '8a8294174b7ecb28014b9699220015ca',
-      # user 8ac7a4c866f2eab20166f9151d3f0ad5
-      # password Cyafbt5J7a
-      # entity 8ac7a4c866f2eab20166f91c44630b10
-      'amount' => '92.00',
+      'amount' => "#{humanized_money @amount}",
       'currency' => 'EUR',
       'paymentType' => 'DB'
     })
@@ -38,13 +44,13 @@ class PaymentsController < ApplicationController
     end
   end
 
-#   "result":{
-#     "code":"000.200.100",
-#     "description":"successfully created checkout"
-#   },
-#   "buildNumber":"49725d9aff046abbdc8fa9d5f2054425e35a91b5@2018-11-09 11:57:41 +0000",
-#   "timestamp":"2018-11-10 13:57:25+0000",
-#   "ndc":"650576A89D6589ED640F72D326515207.uat01-vm-tx01",
-#   "id":"650576A89D6589ED640F72D326515207.uat01-vm-tx01"
-# }
+  private
+
+  def checkout_params
+    params.permit(:first_line, :second_line, :postcode, :phone_number, :email, :coupon)
+  end
+
+  def coupons
+    ["DOMDAY", "COUPON"]
+  end
 end

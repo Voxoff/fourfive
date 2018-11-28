@@ -9,6 +9,24 @@
   </div>
 </div>
 
+<div class="space"></div>
+
+<div class="cart-card">
+  <div class="left">
+    <i class="fa fa-shopping-cart fa-5x"></i>
+    <div class="vertical-line" style="border-left: thick solid #ff0000;">
+      <div class="cart-contents">
+        <% @cart_items.each do |cart_item| %>
+          <div class="cart-item-card">
+            <%= cart_item.product.name %>
+            <%= cart_item.strength.strength %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="pay">
 	<div class="flex">
 		<% @cart_items.each do |cart_item| %>
@@ -41,6 +59,7 @@
           <%= f.input :postcode, required: true, label: true %>
           <%= f.input :phone_number, required: true, label: true %>
           <%= f.input :email, required: true, label: true %>
+          <%= f.input :coupon, require: false, label: true %>
         <% end %>
       </div>
     </div>
