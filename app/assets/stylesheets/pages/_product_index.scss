@@ -16,3 +16,19 @@
 .product-right h2{
   font-weight: bolder;
 }
+
+@media(max-width: 900px){
+  .product-index{
+    flex-direction: column
+  }
+
+  .product-right{
+    padding: 10px 10%;
+    width: 100%;
+    .desc{
+      h2{
+        text-align: center;
+      }
+    }
+  }
+}

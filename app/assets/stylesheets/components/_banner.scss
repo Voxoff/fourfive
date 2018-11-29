@@ -9,8 +9,14 @@
 
 }
 
-@media(max-width: 900px){
+@media(max-width: 970px){
   .banner{
+    background-position-x: 100%;
+  }
+}
+
+@media(max-width: 900px){
+  #banner_about{
     background-position: center;
   }
 }
@@ -142,5 +148,21 @@
 
   .big-r-line{
   right: 10%;
+  }
+}
+
+
+@media(max-width: 750px){
+  .big-l-line{
+    display: none
+  }
+  .big-r-line{
+    display: none;
+  }
+
+  .banner{
+    h1{
+      padding: 20px;
+    }
   }
 }
