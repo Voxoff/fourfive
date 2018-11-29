@@ -98,12 +98,11 @@
   background-position-x: center
 }
 
-/* Vector */
 .big-l-line{
   position: absolute;
   width: 203px;
   height: 212px;
-  left: 290px;
+  left: 28%;
   border: 1px solid #FFFFFF;
   border-right: none;
 }
@@ -112,9 +111,29 @@
   position: absolute;
   width: 203px;
   height: 212px;
-  right: 260px;
+  right: 28%;
   border: 1px solid #FFFFFF;
   transform: matrix(-1, 0, 0, 1, 0, 0);
   border-right: none;
 
+}
+
+@media(max-width: 1050px){
+  .big-l-line{
+  left: 19%;
+  }
+
+  .big-r-line{
+  right: 19%;
+  }
+}
+
+@media(max-width: 750px){
+  .big-l-line{
+  left: 10%;
+  }
+
+  .big-r-line{
+  right: 10%;
+  }
 }
