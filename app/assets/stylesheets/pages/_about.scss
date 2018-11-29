@@ -56,7 +56,13 @@
 
 	.team-titles{
 		display: flex;
+    h4{
+      padding-left: 40px;
+      padding-top: 16px;
+    }
+  }
 
-
+	.flow-text{
+		column-count: 1 !important;
 	}
 }
