@@ -53,21 +53,12 @@
         <p>Each flavor has a different essence.</p>
       </div>
     </div>
-
-    <ul>
-      li.default
-      li.animals.cat
-      li.animals.dog
-    </ul>
-
-
-
     <div class="form">
-      <% if false %>
+      <% if true %>
       <%= form_for @cart_item, html: {:class => "btn-group"}   do |f| %>
         <%= f.collection_select :product, Product.order(:name), :id, :name, {include_blank: true}, { class: "form-control" } %>
 
-        <%= f.select :strength, [100,500,1000], {include_blank: true}, {class: "dropdown-menu"} %>
+        <%= f.select :strength, [100,500,1000], {include_blank: true}, {class: "form-control"} %>
 
         <%= hidden_field_tag :cart_id, @cart.id %>
         <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
