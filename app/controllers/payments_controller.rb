@@ -11,13 +11,13 @@ class PaymentsController < ApplicationController
       redirect_to root_path
     end
     puts
-    if !coupons.includes?(checkout_params[:coupon].upcase)
-      flash[:notice] = "That coupon code did not work"
-      redirect_to new_cart_payment_path
-    else
-      flash[:notice] = "Coupon successfully applied."
-      @amount = @amount.to_f * 0.9
-    end
+    # if !coupons.includes?(checkout_params[:coupon].upcase)
+    #   flash[:notice] = "That coupon code did not work"
+    #   redirect_to new_cart_payment_path
+    # else
+    #   flash[:notice] = "Coupon successfully applied."
+    #   @amount = @amount.to_f * 0.9
+    # end
     ['net/https', 'uri', 'json'].each(&method(:require))
     uri = URI('https://test.oppwa.com/v1/checkouts')
     http = Net::HTTP.new(uri.host, uri.port)
@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
       'authentication.userId' => '8a8294174b7ecb28014b9699220015cc',
       'authentication.password' => 'sy6KJsT8',
       'authentication.entityId' => '8a8294174b7ecb28014b9699220015ca',
-      'amount' => "#{humanized_money @amount}",
+      'amount' => "79",
       'currency' => 'EUR',
       'paymentType' => 'DB'
     })
