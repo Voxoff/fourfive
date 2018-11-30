@@ -1,10 +1,10 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.55) 100%, rgba(0,0,0,0.55) 100%), url(<%= image_url('domgeorge.jpg') %>);">
-  <%= image_tag "leftline.png", class: "left-line" %>
-  <div class="banner-content-flex">
-    <h1>About us</h1>
-    <p>Learn more about our team</p>
-  </div>
-  <%= image_tag "rline.png", class: "right-line" %>
+<div class="banner" id="about_banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.4) 100%), url(<%= image_url('domgeorge.jpg') %>);">
+  <div class="big-l-line"></div>
+    <div class="banner-content-flex">
+      <h1>About us</h1>
+      <p>Learn more about our team</p>
+    </div>
+  <div class="big-r-line"></div>
   <div class="tab">
     Learn more
   </div>
@@ -25,9 +25,11 @@
 	<div class="space"></div>
 	<div class="section">
 		<div class="left-team">
-			<h2>George Kruisz</h2>
-			<h4>Co-Founder  - Professional Rugby Player</h4>
-			<hr />
+    <div class="team-titles">
+			  <h2>George Kruisz</h2>
+			  <h4>Co-Founder  - Professional Rugby Player</h4>
+			</div>
+      <hr />
 			<p>George has been playing professional rugby for 10 years and is a seasoned international and British Lion. He has over 150 appearances for Saracens winning 2 European titles and 3 Premiership trophies. Still only 28 George has plenty left to achieve.</p>
 		</div>
 		<%= image_tag "george.png", size: "500x500" %>

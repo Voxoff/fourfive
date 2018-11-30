@@ -15,6 +15,14 @@
   left: 5vw;
 }
 
+#mobile-navbar{
+  .navbar-hd-item{
+    right: 10%;
+    position: absolute;
+    top: 30px;
+  }
+}
+
 .navbar-hd-brand img {
   height: 50px;
 }
