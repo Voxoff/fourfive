@@ -9,43 +9,43 @@
   </div>
 </div>
 
-<div class="space"></div>
 
-<div class="cart-card">
-  <div class="left">
-    <i class="fa fa-shopping-cart fa-5x"></i>
-    <div class="vertical-line" style="border-left: thick solid #ff0000;">
-      <div class="cart-contents">
-        <% @cart_items.each do |cart_item| %>
-          <div class="cart-item-card">
-            <%= cart_item.product.name %>
-            <%= cart_item.strength.strength %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="pay">
-	<div class="flex">
-		<% @cart_items.each do |cart_item| %>
-    <div class="product-card">
-      <div class="top">
-        <%= image_tag "floyd.jpeg"%>
-      </div>
-      <div class="bottom">
-        <div class="bottom-bar">
-          <%= cart_item.strength.strength %>
-          <%= cart_item.product.name %>
-          <%= cart_item.product.price %>
+<div class="container">
+  <div class="cart-card">
+    <div class="left">
+      <i class="fa fa-shopping-cart fa-5x"></i>
+      <div class="vertical-line" style="border-left: thick solid #ff0000;">
+        <div class="cart-contents">
+          <% @cart_items.each do |cart_item| %>
+            <div class="cart-item-card">
+              <%= cart_item.product.name %>
+              <%= cart_item.strength.strength %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-		<% end %>
-	</div>
-</div>
+  </div>
 
+  <div id="pay">
+    <div class="flex">
+      <% @cart_items.each do |cart_item| %>
+      <div class="product-card">
+        <div class="top">
+          <%= image_tag "floyd.jpeg"%>
+        </div>
+        <div class="bottom">
+          <div class="bottom-bar">
+            <%= cart_item.strength.strength %>
+            <%= cart_item.product.name %>
+            <%= cart_item.product.price %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <div class="grey-stripe"></div>
 
 <div class="container">
@@ -54,12 +54,12 @@
       <h3>Order Details</h3>
       <div class="cart-form">
         <%= simple_form_for :checkout do |f| %>
-          <%= f.input :first_line, required: true, label: true %>
-          <%= f.input :second_line, label: true %>
-          <%= f.input :postcode, required: true, label: true %>
-          <%= f.input :phone_number, required: true, label: true %>
-          <%= f.input :email, required: true, label: true %>
-          <%= f.input :coupon, require: false, label: true %>
+          <%= f.input :first_line,  label: "First line" %>
+          <%= f.input :second_line, label: "Second line" %>
+          <%= f.input :postcode, required: true, label: "Postcode" %>
+          <%= f.input :phone_number, required: true, label: "Phone number" %>
+          <%= f.input :email, required: true, label: "Email" %>
+          <%= f.input :coupon, require: false, label: "Coupon" %>
         <% end %>
       </div>
     </div>
