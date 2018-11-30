@@ -40,7 +40,7 @@
     }
   }
 .copyright {
-  color: black;
+  color: $charcoal;
   display: flex;
   justify-content: center;
 }
@@ -48,7 +48,7 @@
 .footer-line {
   width: 280px;
   height: 2px;
-  background-color: grey;
+  background-color: $charcoal;
 }
 .f-line {
   margin-top: 20px;
@@ -57,11 +57,11 @@
   margin-bottom: 20px;
 }
 
-.green-stripe{
+.yellow-stripe{
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 50px;
-  background-color: #FFE000;
+  background-color: $yellow;
 }

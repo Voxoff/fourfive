@@ -2,19 +2,19 @@
 
 // For example:
 $red: #EE5F5B;
-$blue: #469AE0;
-$yellow: #FDB631;
-$orange: #E67E22;
-$green: #32B796;
-$gray: #000000;
-$light-gray: #F4F4F4;
-$black: #000000;
-$grey: #E6E6E6;
+// $blue: #469AE0;
+// $orange: #E67E22;
+// $green: #32B796;
+// $light-gray: #F4F4F4;
+// $black: #000000;
+// $grey: #E6E6E6;
+$white: white;
 // 669933
-// $primary-color-light: rgba(106, 184, 96, 1);
-$primary-color-light: #37852D;
-$primary-color-dark: $black;
-$primary-color-mid: #78CC6A;
 
-$secondary-color-light: #202320;
-$secondary-color-dark: #000500;
+$yellow: #FFE600;
+$charcoal: black;
+$light-gray: $charcoal;
+$grey: $charcoal;
+
+$secondary-color-light: $yellow;
+$secondary-color-dark: $charcoal;
