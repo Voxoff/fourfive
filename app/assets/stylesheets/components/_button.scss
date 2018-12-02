@@ -69,3 +69,60 @@
     transition: all .3s ease-out;
     color: #FFF;
 }
+
+.bigger{
+  width: 170px !important;
+}
+
+.button-container{
+  border: 2px $charcoal solid;
+  width: 87px;
+  height:50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+
+  .master-quantity{
+    display: flex;
+    p{
+      margin-bottom: 0px;
+    }
+    .cart-button{
+      // z-index: -1;
+      padding: 0px 8px;
+    }
+
+    #quantity{
+      margin: 0 8px;
+    }
+  }
+
+  .add-to-cart{
+    display: flex;
+    padding: 10px 20px;
+  }
+
+  p#buy-now{
+      padding: 0px 14px 0px 0px;
+  }
+
+  p#price{
+    padding-left: 0px;
+  }
+
+  p#pound{
+    padding: 0px 0px 0px 10px;
+  }
+}
+
+.vertical-line{
+  height: 20px;
+  width: 2px;
+  background-color: $charcoal;
+}
+
+  .no-button{
+      border: none;
+      outline: none;
+  }

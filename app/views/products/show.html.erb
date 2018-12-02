@@ -1,23 +1,40 @@
-<% if false %><p id="notice"><%= notice %></p> <% end %>
-<%= render 'shared/header', text: "FOUR FIVE CBD TINCTURE" %>
 
-
-<%#= link_to 'Back', products_path %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-5">
       <%= cl_image_tag(@product.photo_url, class: "image-responsive") %>
     </div>
-    <div class="col-sm-12 col-md-6">
+    <div class="col-md-2"></div>
+    <div class="col-sm-12 col-md-5">
       <h1><%= @product.name %></h1>
       <p>Some awesome description of our amazing product.</p>
       <div class="product-info">
         <span><p>Amount: </p></span>
-        <p><span id="price">£<%= humanized_money(@product.price) %></span></p>
+        <p><span>£<%= humanized_money(@product.price) %></span></p>
       </div>
-      <div class="product-info">
-        <span><p>Quantity</p></span>
-        <%= simple_form_for(@cart_item, {wrapper: :vertical_col}) do |f| %>
+      <div class="button-container">
+        <div class="master-quantity">
+          <button class="cart-button no-button" id="less">-</button>
+          <p id="quantity">1</p>
+          <button class="cart-button no-button" id="more">+</button>
+        </div>
+      </div>
+      <div class="button-container bigger">
+        <div class="master-quantity">
+          <button class="add-to-cart no-button">
+          <p id="buy-now">Buy now</p>
+          <div class="vertical-line"></div>
+          <p id="pound">£</p>
+          <p id="price"><%= @product.price.to_i %></p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if false %>
+          <%= simple_form_for(@cart_item, {wrapper: :vertical_col}) do |f| %>
           <%= f.input :quantity, collection: 1..9, selected: 1, label: false, class: "form-dropdown"%>
           <%= f.hidden_field :product_id, value: @product.id %>
       </div>
@@ -26,19 +43,31 @@
           <%= f.input :strength, collection: 1..5, selected: 1, label: false%>
       </div>
       <div class="product-submit">
-          <%= f.submit "Purchase", class: "btn btn-primary" %>
+          <%= f.submit "Buy now", class: "btn btn-primary" %>
         <% end %>
-      </div>
-      <% if false %>
-      <%= simple_form_for(@order, {wrapper: :vertical_collection}) do |f| %>
-        <%= f.input "Quantity", required: false, collection: 1..9, as: :select, input_html: {id: "dropdown"}, selected: 1 %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.submit "Purchase", class: "btn btn-primary" %>
-      <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<%= content_for :after_js do %>
-<% end %>
 
+<% end %>
+<script>
+  const price = Number.parseInt("<%= @product.price.to_i %>")
+  const lessbutton = document.querySelector('#less')
+  lessbutton.addEventListener("click", (e) => {
+    console.log("click")
+    let quantity = document.querySelector('#quantity')
+    let number = Number.parseInt(quantity.innerText)
+    if (number > 1){
+      quantity.innerHTML = number - 1
+    }
+    const amount = document.querySelector('#price')
+    amount.innerHTML = quantity.innerText / price
+  })
+
+  const morebutton = document.querySelector('#more')
+    morebutton.addEventListener("click", (e) => {
+      console.log("click")
+      let quantity = document.querySelector('#quantity')
+      let number = Number.parseInt(quantity.innerText)
+      quantity.innerHTML = number + 1
+      let amount = document.querySelector('#price')
+        amount.innerHTML = price * quantity.innerHTML
+    })
+</script>
