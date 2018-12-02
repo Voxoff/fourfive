@@ -134,9 +134,6 @@ GEM
       actionpack (>= 4.1)
       activesupport (>= 4.1)
     hashie (3.5.7)
-    hotloader (1.0.6)
-      listen (~> 3.0, >= 3.0.5)
-      rails (~> 5.2, >= 5.1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.0.1)
@@ -340,7 +337,6 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   friendly_id
-  hotloader
   inherited_resources!
   jbuilder (~> 2.0)
   jquery-rails
