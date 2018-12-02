@@ -1,8 +1,8 @@
-
 <div class="container">
   <div class="tag-line">
     <h3>Specialised cbd products to help you rest, recover and rise</h3>
   </div>
+
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-xs-12 col-md-4">
@@ -20,6 +20,7 @@
       </div>
     <% end %>
   </div>
+
   <div class="info-line">
     <h3>friends from the world of sport share their stories</h3>
     <h5>we asked our community to share their experiences of cbd</h5>
@@ -38,10 +39,54 @@
       <div class="thin-grey-line"></div>
     <% end %>
   </div>
+
+  <div class="our-story">
+    <h2>Our story</h2>
+  </div>
+
+  <%= image_tag "cartoon.jpeg",  class: "img-responsive center-block" %>
+  <div class="stripes">
+    <div class="yellow-thin-stripe"></div>
+    <div class="white-thin-stripe"></div>
+    <div class="yellow-thin-stripe"></div>
+  </div>
+
+  <div class="info-line">
+    <p>As professional rugby players we use cbd as part of our daily routine. We believe it helps us rest after training, recover quicker between injuries and rise to compete at the highest level. </p>
+    <p>Now we want to spread the word about the benefits of cbd and create the best products to help you rest, recover or rise. </p>
+    <p id="founder">Dom & George</p>
+    <div class="fat-yellow-stripe"></div>
+    <p>Founders of fourfive</p>
+  </div>
 </div>
 
-<div class="our-story">
-  <h2>Our story</h2>
+<div class="graphics" id="graphics">
+  <h4>a cbd brand for the active</h4>
+    <div class="container">
+    <div class="graphic-icons">
+      <div class="card-graphics">
+        <i class="fa fa-star-o fa-lg"></i>
+        <div class="how-it-works-text">
+          <h3>100% Legal</h3>
+          <p>CBD is legal and has been since 2016</p>
+        </div>
+      </div>
+      <div class="card-graphics">
+        <i class="fa fa-star-o fa-lg"></i>
+        <div class="how-it-works-text">
+          <h3>Health benefits</h3>
+          <p>Widespread beneficial medicinal effects</p>
+        </div>
+      </div>
+      <div class="card-graphics">
+        <i class="fa fa-star-o fa-lg"></i>
+        <div class="how-it-works-text">
+          <h3>Browse here</h3>
+          <p>Quick and simple search</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -56,8 +101,14 @@
 
 
 
+
+
+
+
+<% if false %>
 <div class="container">
   <div class="graphics" id="graphics">
+    <h4>a cbd brand for the active</h4>
     <div class="card-graphics">
       <%= image_tag "legal.png", size: "160x160"%>
       <div class="how-it-works-text">
@@ -83,3 +134,4 @@
 </div>
 
 
+<% end %>

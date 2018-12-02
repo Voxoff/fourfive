@@ -12,3 +12,5 @@ https://codepen.io/madshaakansson/pen/xwmzK
 
 Zion
 carts guest logging
+
+the cartoon out story needs to be put in cludinary

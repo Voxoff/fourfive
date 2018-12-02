@@ -11,25 +11,44 @@
   margin-top: 50px;
   margin-bottom: 50px;
   text-align: center;
+  #founder{
+    margin-bottom: 0;
+  }
 }
 
-.home-title{
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 80px;
-  font-weight: bold;
+
+.stripes{
+  position: relative;
+  z-index: 2;
+  margin-top: -130px;
 }
+
+.fat-yellow-stripe{
+  width: 120px;
+  background-color: $yellow;
+  height: 10px;
+  margin: auto;
+}
+
 
 .graphics{
-  display: flex;
-  justify-content: space-between;
-  p{
-    max-width: 200px;
-  }
-  .how-it-works-text{
-    text-align: center;
-  }
+    background-color: $yellow;
+    h4{
+      text-align: center;
+      font-weight: bolder;
+    }
+
+    .graphic-icons{
+      display: flex;
+      justify-content: space-between;
+
+      p{
+        max-width: 200px;
+      }
+      .how-it-works-text{
+        text-align: center;
+      }
+    }
 }
 
 .cover{
