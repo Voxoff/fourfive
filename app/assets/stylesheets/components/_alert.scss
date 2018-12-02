@@ -8,8 +8,16 @@
   color: $light-grey;
 }
 .alert-info {
-  background: $yellow;
+  background-color: $charcoal;
+  span{
+    color: $yellow;
+  }
 }
 .alert-warning {
   background: $red;
 }
+
+.close{
+  opacity: 1
+}
+

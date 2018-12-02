@@ -2,9 +2,20 @@
   <div class="dropdown">
     <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
     <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
-      <li><a href="#">Host</a></li>
-      <li><a href="#">Trips</a></li>
-      <li><a href="#">Messagese</a></li>
+
+      <li>
+      <% if user_signed_in? %>
+        <%= link_to t(".sign_out", default: "Logout"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
+        <% else %>
+          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-hd-item navbar-hd-link" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "Education", education_path, class: "navbar-hd-item navbar-hd-link" %>
+      </li>
+      <li>
+        <%= link_to "About", about_path, class: "navbar-hd-item navbar-hd-link" %>
+      </li>
     </ul>
   </div>
   <div class="title">
@@ -41,6 +52,7 @@
   <div class="navbar-cbd-right hidden-xs hidden-sm">
 
     <a href="" class="navbar-cbd-item navbar-cbd-link">Host</a>
+
     <a href="" class="navbar-cbd-item navbar-cbd-link">Trips</a>
     <a href="" class="navbar-cbd-item navbar-cbd-link">Messages</a>
 

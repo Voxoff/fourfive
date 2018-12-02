@@ -1,15 +1,5 @@
-<%=  render "shared/banner" %>
-  <div class="big-l-line"></div>
-    <div class="banner-content-flex">
-      <h1>Your Shopping cart</h1>
-    </div>
-  <div class="big-r-line"></div>
-  <div class="tab">
-    Shopping cart
-  </div>
-</div>
-
 <div class="container">
+<% if false %>
   <div class="cart-card">
     <div class="left">
       <i class="fa fa-shopping-cart fa-5x"></i>
@@ -18,7 +8,6 @@
           <% @cart_items.each do |cart_item| %>
             <div class="cart-item-card">
               <%= cart_item.product.name %>
-              <%= cart_item.strength.strength %>
             </div>
           <% end %>
         </div>
@@ -35,7 +24,6 @@
         </div>
         <div class="bottom">
           <div class="bottom-bar">
-            <%= cart_item.strength.strength %>
             <%= cart_item.product.name %>
             <%= cart_item.product.price %>
           </div>
@@ -44,8 +32,8 @@
       <% end %>
     </div>
   </div>
+    <% end %>
 </div>
-<div class="grey-stripe"></div>
 
 <div class="container">
   <div class="row">

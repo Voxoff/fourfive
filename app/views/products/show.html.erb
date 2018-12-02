@@ -21,12 +21,14 @@
       </div>
       <div class="button-container bigger">
         <div class="master-quantity">
-          <button class="add-to-cart no-button">
-          <p id="buy-now">Buy now</p>
-          <div class="vertical-line"></div>
-          <p id="pound">£</p>
-          <p id="price"><%= @product.price.to_i %></p>
-          </button>
+          <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "add-to-cart no-button" do %>
+          <%# <button class="add-to-cart no-button"> %>
+            <p id="buy-now">Buy now</p>
+            <div class="vertical-line"></div>
+            <p id="pound">£</p>
+            <p id="price"><%= @product.price.to_i %></p>
+          <%# </button> %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -48,26 +50,36 @@
 
 <% end %>
 <script>
+// a script to update quantity bought.
   const price = Number.parseInt("<%= @product.price.to_i %>")
-  const lessbutton = document.querySelector('#less')
-  lessbutton.addEventListener("click", (e) => {
+  const lessButton = document.querySelector('#less')
+  const buyButton = document.querySelector('.button_to')
+  let quantityParam = buyButton.getElementsByTagName("input")[3]
+
+  lessButton.addEventListener("click", (e) => {
     console.log("click")
     let quantity = document.querySelector('#quantity')
     let number = Number.parseInt(quantity.innerText)
     if (number > 1){
       quantity.innerHTML = number - 1
+      quantityParam.value = number - 1
     }
     const amount = document.querySelector('#price')
-    amount.innerHTML = quantity.innerText / price
+    amount.innerHTML = price * (number - 1)
+
   })
 
-  const morebutton = document.querySelector('#more')
-    morebutton.addEventListener("click", (e) => {
-      console.log("click")
-      let quantity = document.querySelector('#quantity')
-      let number = Number.parseInt(quantity.innerText)
-      quantity.innerHTML = number + 1
-      let amount = document.querySelector('#price')
-        amount.innerHTML = price * quantity.innerHTML
-    })
+  const moreButton = document.querySelector('#more')
+  moreButton.addEventListener("click", (e) => {
+    console.log("click")
+    let quantity = document.querySelector('#quantity')
+    let number = Number.parseInt(quantity.innerText)
+    quantity.innerHTML = number + 1
+    quantityParam.value = number + 1
+    let amount = document.querySelector('#price')
+    amount.innerHTML = price * quantity.innerHTML
+  })
+
+
+
 </script>

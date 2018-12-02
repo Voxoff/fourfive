@@ -3,11 +3,10 @@
 }
 .devise-forms{
   text-align: center;
-  color: white;
 }
 
 label{
-  color: white;
+  color: $charcoal;
   font-weight: lighter;
   display: flex;
 }
@@ -20,26 +19,17 @@ label{
   display: flex;
 }
 
-@-webkit-keyframes autofill {
-    to {
-        color: white;
-        background: transparent;
-    }
-}
+  @-webkit-keyframes autofill {
+      to {
+          background: $yellow;
+      }
+  }
 
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
 }
 
-.devise-box{
-  background-color: inherit;
-  color: white !important;
-}
-
-.text-muted{
-  color: #DDD;
-}
 
 .product-form{
   input{
