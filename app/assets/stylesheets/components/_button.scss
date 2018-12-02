@@ -126,3 +126,13 @@
       border: none;
       outline: none;
   }
+
+.accordion-box{
+  .btn-link{
+    color: $charcoal;
+  }
+
+  :focus, :active, :active:focus{
+    outline-color: $charcoal;
+  }
+}
