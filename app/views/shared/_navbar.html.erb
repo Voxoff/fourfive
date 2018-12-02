@@ -7,7 +7,11 @@
       <li><a href="#">Messagese</a></li>
     </ul>
   </div>
-  <h1>fourfive cbd</h1>
+  <div class="title">
+    <%= link_to root_path do %>
+      <h1>fourfive cbd</h1>
+    <% end %>
+  </div>
   <% if @cart %>
       <%= link_to new_cart_payment_path(@cart), class: "navbar-item navbar-link" do %>
       <i class="fa fa-shopping-cart fa-lg"></i>

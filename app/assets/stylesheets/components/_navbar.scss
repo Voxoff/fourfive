@@ -8,9 +8,16 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-  h1{
+  .title{
     flex-basis: 80%;
     text-align: center;
+    a{
+      color: inherit;
+    }
+    a:hover{
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }
 
