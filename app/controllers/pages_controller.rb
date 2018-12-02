@@ -3,8 +3,9 @@ class PagesController < ApplicationController
   before_action :get_cart
   def home
     @user = current_or_guest_user
-    @products = Product.all
+    @products = Product.all.take(3)
     @cart_item = CartItem.new
+    @reviews = Review.all.take(3)
   end
 
   def about

@@ -1,13 +1,60 @@
-<%=  render "shared/banner" %>
-<div class="banner-content">
-  <h1>FourFiveCBD</h1>
+
+<div class="container">
+  <div class="tag-line">
+    <h3>Specialised cbd products to help you rest, recover and rise</h3>
+  </div>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-xs-12 col-md-4">
+        <div class="product-card">
+          <div class="image-background">
+            <%= image_tag product.photo_url, width: "264px", height: "400px" %>
+          </div>
+          <div class="product-info">
+            <h2><%= product.name %></h2>
+            <div class="btn btn-primary btn-lg">
+              Buy now
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="info-line">
+    <h3>friends from the world of sport share their stories</h3>
+    <h5>we asked our community to share their experiences of cbd</h5>
+  </div>
+
+  <div class="review-section">
+    <% @reviews.each do |review| %>
+      <div class="review-card">
+        <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
+        <div class="review-text">
+          <h4><%= review.content %></h4>
+          <p><%= review.name %></p>
+          <p><%= review.position %></p>
+        </div>
+      </div>
+      <div class="thin-grey-line"></div>
+    <% end %>
+  </div>
 </div>
-  <%= link_to :anchor => "graphics" do %>
-    <div class="tab">
-      FourFive CBD
-    </div>
-  <% end %>
+
+<div class="our-story">
+  <h2>Our story</h2>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="container">
   <div class="graphics" id="graphics">
@@ -36,83 +83,3 @@
 </div>
 
 
-  <div class="read-banner">
-    <%#= link_to "Read more", class: "btn btn-primary btn-lg" %>
-    <a class="btn btn-primary btn-lg read-more" href="/">
-      Read More
-    </a>
-  </div>
-
-<!-- Products -->
-<div class="product">
-  <div class="product-description">
-    <div class="product-padding">
-      <h2 class="home-title">Five flavors, five strengths.</h2>
-      <div class="desc">
-        <p>We offer a variety of flavors which are priced the same. </p>
-        <p>Each flavor has a different essence.</p>
-      </div>
-    </div>
-    <div class="form">
-      <% if true %>
-      <%= form_for @cart_item, html: {:class => "btn-group"}   do |f| %>
-        <%= f.collection_select :product, Product.order(:name), :id, :name, {include_blank: true}, { class: "form-control" } %>
-
-        <%= f.select :strength, [100,500,1000], {include_blank: true}, {class: "form-control"} %>
-
-        <%= hidden_field_tag :cart_id, @cart.id %>
-        <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
-      <% end %>
-    </div>
-    <% else %>
-    <div class="form">
-      <!-- Either we could nest routes cartitem inside cart. Or we could just ref a cartitem and pass cart as hidden -->
-      <%= simple_form_for(@cart_item, {wrapper: :vertical_col}) do |f| %>
-        <%= f.input :product_name, collection: Product.all.collect(&:name), selected: 1, label: false, class: "form-dropdown"%>
-            <ul class="dropdown-menu">
-          <% Product.all.each do |p|%>
-            <li><a href="#"><%= p.name %></a></li>
-            <% unless p.name == "Mint" %>
-              <li role="separator" class="divider"></li>
-            <% end%>
-          <% end %>
-        </ul>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-        <%= f.input :strength, collection: [100,200,300,400,500], selected: 1, label: false, class: "form-dropdown"%>
-        <%= f.input :cart_id, input_html: { value: @cart.id }, as: :hidden %>
-        <%= f.submit "Purchase", class: "btn btn-primary btn-lg" %>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
-  <div class="image">
-    <%= link_to products_path do %>
-      <%= image_tag "floyd.jpg",height: "340px" %>
-    <% end %>
-  </div>
-</div>
-</div>
-
-<div class="space"></div>
-
-<!-- Image of george and dom -->
-<div class="team">
-  <div class="banner team" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.4) 100%), url(<%= image_url('domgeorge.jpg') %>);">
-    <div class="cover left"></div>
-    <div class="cover right"></div>
-    <div class="banner-content">
-      <h1 class="hidden-md hidden-sm hidden-xs" id="dom">The team</h1>
-        <p id="left-p">Co-founders Dominic and George each have over 10 years experience in professional sport. Between them they have been under the surgeons knife 12 times and have played and trained through pain and injury more often than they would have liked.</p>
-    </div>
-    <div class="tab_bottom">
-      Our Founders
-    </div>
-  </div>
-</div>
-<%= javascript_pack_tag "scroll" %>

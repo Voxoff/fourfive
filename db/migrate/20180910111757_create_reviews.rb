@@ -3,8 +3,10 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
       t.references :product, foreign_key: true
       t.references :user, foreign_key: true
-      t.integer :rating
+      t.string :position
       t.string :content
+      t.string :photo
+      t.string :name
 
       t.timestamps
     end
@@ -16,7 +18,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string :payment
       t.string :jsonb
       t.references :user, foreign_key: true
-      
+
 
       t.timestamps
     end

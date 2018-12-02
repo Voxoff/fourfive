@@ -1,51 +1,104 @@
 .product-card {
   height: 100%;
-  position: relative;
-  background-color: white;
-  padding: 5px;
+  // padding: 5px;
   text-decoration: none;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 
-  // .image-div {
-  //   width: 100px;
-  // }
-  // img {
-  //   display: block;
-  //   width: 100%;
-  //   height: auto;
-  // }
-
-  &h4 {
-    position: absolute;
-  }
-  &:hover {
-    -webkit-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
-    -moz-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
-    box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
-  }
-  a {
-    text-decoration: none;
-    color:black;
-
-    &:hover {
-      text-decoration: none;
-      color:black;
-    }
-  }
-}
-
-.bar {
-  margin-top: 10px;
-  border-top: 1px solid black;
-
-  .top-row {
+  .image-background{
     display: flex;
-    justify-content: space-between;
-    h4:hover {
-      text-decoration: none;
-    }
+    justify-content: center;
+    background-color: $light-grey;
+  }
+  .product-info{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn{
+    width: 70%;
   }
 }
+
+.review-card{
+  display: flex;
+  justify-content: center;
+  // finetune
+  margin-left: -20px;
+  .review-image-gap{
+  margin-right: 30px;
+  }
+  .review-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+  .thin-grey-line{
+    height: 2px;
+    background-color: $light-grey;
+    width: 60%;
+    margin: 5% auto;
+  }
+
+.our-story{
+  text-align: center;
+  margin: 40px auto;
+}
+// .review-card{
+
+// }
+
+// .product-card {
+//   height: 100%;
+//   position: relative;
+//   background-color: white;
+//   padding: 5px;
+//   text-decoration: none;
+//   margin-bottom: 40px;
+
+//   // .image-div {
+//   //   width: 100px;
+//   // }
+//   // img {
+//   //   display: block;
+//   //   width: 100%;
+//   //   height: auto;
+//   // }
+
+//   &h4 {
+//     position: absolute;
+//   }
+//   &:hover {
+//     -webkit-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
+//     -moz-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
+//     box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
+//   }
+//   a {
+//     text-decoration: none;
+//     color:black;
+
+//     &:hover {
+//       text-decoration: none;
+//       color:black;
+//     }
+//   }
+// }
+
+// .bar {
+//   margin-top: 10px;
+//   border-top: 1px solid black;
+
+//   .top-row {
+//     display: flex;
+//     justify-content: space-between;
+//     h4:hover {
+//       text-decoration: none;
+//     }
+//   }
+// }
 
 
 h4:hover {
@@ -82,40 +135,40 @@ border-bottom: 1px solid rgba(0,0,0,.125);
 padding: 1.25rem;
 }
 
-.review-card {
-  height: 400px;
-  width: 350px;
-  border: 1px black solid;
-  margin: 10px;
-  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+// .review-card {
+//   height: 400px;
+//   width: 350px;
+//   border: 1px black solid;
+//   margin: 10px;
+//   box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
 
-  .header {
-    height: 45%;
-    width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: $light-gray;
-    position: relative;
-    p {
-      position: absolute;
-      bottom: -5px;
-      left: 20px;
-    }
-    .avatar {
-      border-radius: 100%;
-      width: 100px;
-      height: 100px;
-    }
-  }
+//   .header {
+//     height: 45%;
+//     width: 100%;
+//     background-color: black;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
+//     color: $light-grey;
+//     position: relative;
+//     p {
+//       position: absolute;
+//       bottom: -5px;
+//       left: 20px;
+//     }
+//     .avatar {
+//       border-radius: 100%;
+//       width: 100px;
+//       height: 100px;
+//     }
+//   }
 
-  .body {
-    height: 55%;
-    width: 100%;
-    background-color: white;
-    padding: 20px;
-    overflow: hidden;
-  }
-}
+//   .body {
+//     height: 55%;
+//     width: 100%;
+//     background-color: white;
+//     padding: 20px;
+//     overflow: hidden;
+//   }
+// }

@@ -1,3 +1,18 @@
+.tag-line{
+  text-align:center;
+  font-weight:lighter;
+  padding-bottom: 40px;
+  font-style: italic;
+  color: $grey;
+}
+
+
+.info-line{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
 .home-title{
   display: flex;
   justify-content: center;
@@ -7,7 +22,6 @@
 }
 
 .graphics{
-  // margin-top: 40px;
   display: flex;
   justify-content: space-between;
   p{

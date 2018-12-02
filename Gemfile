@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'arctic_admin'
 # gem 'devise-guests', '~> 0.6.1'
 gem 'dotenv-rails'
+# gem 'hotloader'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
