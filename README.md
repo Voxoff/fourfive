@@ -10,7 +10,12 @@ https://codepen.io/jpdanks/pen/rEJhK
 https://codepen.io/madshaakansson/pen/xwmzK
 
 
-Zion
-carts guest logging
+Zion payments in production
+everything in production
+what happens on checkout
+admin side after checkout
+mobile responsiveness
+
+<!-- carts guest logging -->
 
 the cartoon out story needs to be put in cludinary

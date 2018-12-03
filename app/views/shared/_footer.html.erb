@@ -1,6 +1,8 @@
 <div class="footer">
   <div class="content">
-    <!-- <div class="yellow-stripe"></div> -->
+    <% unless @disable_stripe %>
+      <div class="yellow-stripe"></div>
+    <% end %>
     <div class="footer-graphics">
       <!-- <a href="#"><i class="fa fa-github fa-2x"></i></a> -->
       <a href="#"><i class="fa fa-instagram fa-2x"></i></a>

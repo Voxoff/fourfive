@@ -6,16 +6,19 @@
   color: $grey;
 }
 
-
 .info-line{
   margin-top: 50px;
   margin-bottom: 50px;
   text-align: center;
+  p{
+    max-width: 450px;
+    margin: auto;
+    margin-top: 15px;
+  }
   #founder{
     margin-bottom: 0;
   }
 }
-
 
 .stripes{
   position: relative;
@@ -33,15 +36,18 @@
 
 .graphics{
     background-color: $yellow;
-    h4{
+    #for-the-active{
       text-align: center;
       font-weight: bolder;
+      margin-bottom: 18px;
+      margin-top: -30px;
     }
 
     .graphic-icons{
       display: flex;
       justify-content: space-between;
-
+      margin-bottom: -15px;
+      padding-top: 10px;
       p{
         max-width: 200px;
       }
