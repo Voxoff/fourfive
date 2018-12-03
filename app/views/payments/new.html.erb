@@ -40,14 +40,15 @@
     <div class="col-sm-4">
       <h3>Order Details</h3>
       <div class="cart-form">
-        <%= simple_form_for :checkout do |f| %>
-          <%= f.input :first_line,  label: "First line" %>
-          <%= f.input :second_line, label: "Second line" %>
+        <%= simple_form_for :checkout, url: checkout_cart_payments_path do |f| %>
+          <%= f.input :first_line,  label: "First line", required: true %>
+          <%= f.input :second_line, required: false, label: "Second line" %>
+          <%= f.input :city, required: true, label: "City" %>
           <%= f.input :postcode, required: true, label: "Postcode" %>
-          <%= f.input :phone_number, required: true, label: "Phone number" %>
-          <%= f.input :email, required: true, label: "Email" %>
-          <%= f.input :coupon, require: false, label: "Coupon" %>
-        <% end %>
+          <%#= f.input :phone_number, required: true, label: "Phone number" %>
+          <%= f.input :email, required: true, label: "Email", required: true %>
+          <%= f.input :coupon, required: false, label: "Coupon" %>
+
       </div>
     </div>
     <div class="col-sm-8">
@@ -86,7 +87,9 @@
         </div>
       </div>
       <div class="purchase">
-        <%= link_to "Purchase", checkout_cart_payments_path, class: "btn btn-lg btn-danger"%>
+        <%= f.submit "Purchase", class: "btn btn-lg btn-danger" %>
+        <% end %>
+        <%#= link_to "Purchase", checkout_cart_payments_path, class: "btn btn-lg btn-danger"%>
       </div>
     </div>
   </div>

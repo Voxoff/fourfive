@@ -3,21 +3,29 @@ class PaymentsController < ApplicationController
   before_action :get_cart
 
   def checkout
-    @disable_nav = true
     @cart_items = @cart.cart_items
     @amount = @cart_items.map{|i| i.product.price }.reduce(:+)
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"
       redirect_to root_path
     end
-    puts
-    # if !coupons.includes?(checkout_params[:coupon].upcase)
-    #   flash[:notice] = "That coupon code did not work"
-    #   redirect_to new_cart_payment_path
-    # else
-    #   flash[:notice] = "Coupon successfully applied."
-    #   @amount = @amount.to_f * 0.9
-    # end
+    user = current_or_guest_user
+    if user.cart != @cart
+      flash[:notice] = "Error!"
+      redirect_to root_path
+    end
+    @address = Address.new(address_params)
+    guest_user.address = @address if @address.save
+    guest_user.email = checkout_params[:email] if checkout_params[:email]
+    raise
+    coupon = checkout_params[:coupon]
+    if coupon && !coupons.includes?(coupon)
+      flash[:notice] = "That coupon code did not work"
+      redirect_to new_cart_payment_path
+    else
+      flash[:notice] = "Coupon successfully applied."
+      @amount = @amount.to_f * 0.9
+    end
     ['net/https', 'uri', 'json'].each(&method(:require))
     uri = URI('https://test.oppwa.com/v1/checkouts')
     http = Net::HTTP.new(uri.host, uri.port)
@@ -47,7 +55,11 @@ class PaymentsController < ApplicationController
   private
 
   def checkout_params
-    params.permit(:first_line, :second_line, :postcode, :phone_number, :email, :coupon)
+    params.require(:checkout).permit(:phone_number, :email, :coupon)
+  end
+
+  def address_params
+    params.require(:checkout).permit(:first_line, :second_line, :postcode, :city)
   end
 
   def coupons

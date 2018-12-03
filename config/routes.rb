@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:show] do
     resources :payments, only: [:new, :create] do
       collection do
-        get 'checkout'
+        post 'checkout'
       end
     end
   end
