@@ -3,24 +3,25 @@ class PaymentsController < ApplicationController
   before_action :get_cart
 
   def checkout
+
     @amount = @cart.amount
+    @cart_items = @cart.cart_items
+    user = current_or_guest_user
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"
       redirect_to root_path
-    end
-    user = current_or_guest_user
-    if user.cart != @cart
+    elsif user.cart != @cart
       flash[:notice] = "Error!"
       redirect_to root_path
     end
     @address = Address.new(address_params)
     @address.user = guest_user
     flash[:notice] = "Address was invalid" if !@address.save
-
-    guest_user.email = checkout_params[:email] if checkout_params[:email]
-    raise
+    if user.guest && checkout_params[:email]
+      guest_user.email = checkout_params[:email]
+    end
     coupon = checkout_params[:coupon]
-    if coupon && !coupons.includes?(coupon)
+    if coupon.present? && !coupons.include?(coupon)
       flash[:notice] = "That coupon code did not work"
       redirect_to new_cart_payment_path
     else

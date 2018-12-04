@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
   belongs_to :user, required: false
   has_many :cart_items
 
-  def total
+  def amount
     self.cart_items.map{|i| i.product.price}.reduce(:+)
   end
 end
