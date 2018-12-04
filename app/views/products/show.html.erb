@@ -7,11 +7,13 @@
     <div class="col-md-2"></div>
     <div class="col-sm-12 col-md-5">
       <h1><%= @product.name %></h1>
-      <p>Some awesome description of our amazing product.</p>
+      <p style="margin-bottom:50px;">Some awesome description of our amazing product.</p>
+      <% if false %>
       <div class="product-info">
         <span><p>Amount: </p></span>
         <p><span>£<%= humanized_money(@product.price) %></span></p>
       </div>
+      <% end %>
       <div class="button-container">
         <div class="master-quantity">
           <button class="cart-button no-button" id="less">-</button>
