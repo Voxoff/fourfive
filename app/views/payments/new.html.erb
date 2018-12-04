@@ -73,12 +73,12 @@
           <h4>Quantity</h4>
           <% @cart_items.each do |cart_item| %>
             <p>
-              <%= cart_item.product.name %>
+              <%= cart_item.quantity %>
             </p>
           <% end %>
         </div>
         <div class="flex-column total">
-          <h4>Product Name</h4>
+          <h4>Total Cost</h4>
           <% @cart_items.each do |cart_item| %>
             <p>
               <%= cart_item.product.price %>
