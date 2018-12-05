@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
   mount_uploader :photo, PhotoUploader
+
   has_many :orders
   has_many :carts, dependent: :destroy
   has_one :cart, -> { where(active: true) }
@@ -10,6 +11,8 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
 
   validates_confirmation_of :password
+
+  after_create :send_welcome_email
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -35,5 +38,11 @@ class User < ApplicationRecord
     if self.first_name && self.last_name
       return "#{self.first_name} #{self.last_name}"
     end
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end
