@@ -49,6 +49,36 @@
   text-align: center;
   margin: 40px auto;
 }
+
+@media(max-width: 700px){
+  .review-card{
+    .review-text{
+      min-width: 0px;
+    }
+
+    .review-image-gap{
+      height: 120px;
+    }
+    .review-text{
+      h4{
+        font-size: 18px;
+        font-weight: bolder;
+      }
+      #position{
+        font-style: italic;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
 // .review-card{
 
 // }

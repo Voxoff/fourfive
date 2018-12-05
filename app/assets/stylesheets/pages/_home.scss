@@ -55,10 +55,16 @@
       }
     }
 }
-
+// Mobile
 @media(max-width:750px){
   .product-info{
     margin-bottom: 70px !important;
+  }
+
+  // Graphics should be vertical
+  .graphics .graphic-icons{
+
+      flex-direction:column;
   }
 }
 

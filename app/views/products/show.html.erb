@@ -14,23 +14,25 @@
         <p><span>£<%= humanized_money(@product.price) %></span></p>
       </div>
       <% end %>
-      <div class="button-container">
-        <div class="master-quantity">
-          <button class="cart-button no-button" id="less">-</button>
-          <p id="quantity">1</p>
-          <button class="cart-button no-button" id="more">+</button>
+      <div class="all-btn-container">
+        <div class="button-container">
+          <div class="master-quantity">
+            <button class="cart-button no-button" id="less">-</button>
+            <p id="quantity">1</p>
+            <button class="cart-button no-button" id="more">+</button>
+          </div>
         </div>
-      </div>
-      <div class="button-container bigger">
-        <div class="master-quantity">
-          <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "add-to-cart no-button" do %>
-          <%# <button class="add-to-cart no-button"> %>
-            <p id="buy-now">Buy now</p>
-            <div class="vertical-line"></div>
-            <p id="pound">£</p>
-            <p id="price"><%= @product.price.to_i %></p>
-          <%# </button> %>
-          <% end %>
+        <div class="button-container bigger">
+          <div class="master-quantity">
+            <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "add-to-cart no-button" do %>
+            <%# <button class="add-to-cart no-button"> %>
+              <p id="buy-now">Buy now</p>
+              <div class="vertical-line"></div>
+              <p id="pound">£</p>
+              <p id="price"><%= @product.price.to_i %></p>
+            <%# </button> %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

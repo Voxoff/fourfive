@@ -21,6 +21,15 @@
   }
 }
 
+// Title on mobile
+@media(max-width: 700px){
+  .title h1{
+      margin-bottom: 25px;
+      margin-left:10px;
+      font-size: 38px;
+  }
+}
+
 .stripe-gap{
   margin-bottom: 70px;
 }
