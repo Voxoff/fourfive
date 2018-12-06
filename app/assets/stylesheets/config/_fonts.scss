@@ -13,19 +13,19 @@
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
-@font-face {
-  font-family: 'palatino';
-  src:font-url('palatino/palatino.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-$palatino: "palatino";
-
 // @font-face {
-// 	font-family: 'hansief';
-// 	src: url('fonts/hansief.eot') format('truetype');
+//   font-family: 'palatino';
+//   src:font-url('palatino/palatino.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
 // }
-// $hansief: "hansief";
+// $palatino: "palatino";
 
-$body-font: $palatino;
-$headers-font: $palatino;
+@font-face {
+	font-family: 'helvetica';
+	src: url('fonts/helvetica.ttf') format('truetype');
+}
+$helvetica: "helvetica";
+
+$body-font: $helvetica;
+$headers-font: $helvetica;

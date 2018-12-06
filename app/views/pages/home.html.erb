@@ -1,6 +1,12 @@
+<%# height: 350px; %>
+
 <div class="container margin-top-100">
   <div class="tag-line">
-    <h3>Specialised cbd products to help you rest, recover and rise</h3>
+    <h3>At fourfive we create specialised cbd products to help those who live an active life rest, recover and rise</h3>
+  </div>
+
+  <div class="border-bottom" style="margin-left: 5%;">
+    <h3>Our range</h3>
   </div>
 
   <div class="row">
@@ -13,38 +19,51 @@
             <% end %>
           </div>
           <div class="product-info">
-            <h2><%= product.name %></h2>
-            <%= link_to "Buy Now", product_path(product), class: "btn btn-primary btn-lg" %>
+            <h2><%= product.name.downcase %></h2>
+            <h3 style="font-size: 14px; margin-top: 0px;">lorem Ipsum</h3>
+            <div class="button-container bigger">
+              <div class="master-quantity">
+                <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: product.id}, class: "add-to-cart no-button" do %>
+                  <p id="buy-now">buy now</p>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 
+  <div class="thin-grey-line wider"></div>
+
   <div class="info-line">
-    <h3>friends from the world of sport share their stories</h3>
-    <h5>we asked our community to share their experiences of cbd</h5>
+    <h3>Friends from the world of sport share their stories</h3>
+    <h5>We asked our community to share their experiences of cbd</h5>
   </div>
 
   <div class="review-section">
-    <% @reviews.each do |review| %>
+    <% @reviews.each_with_index do |review, i| %>
       <div class="review-card">
         <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
         <div class="review-text">
           <h4><%= review.content %></h4>
-          <p><%= review.name %></p>
+          <p style="font-size: 15px"><%= review.name %></p>
           <p id="position"><%= review.position %></p>
         </div>
       </div>
-      <div class="thin-grey-line"></div>
+      <% if i == 2 %>
+        <div class="thin-grey-line wider" style="margin-top: 50px;"></div>
+      <% else %>
+        <div class="thin-grey-line"></div>
+      <% end %>
     <% end %>
   </div>
 
   <div class="our-story">
-    <h2>Our story</h2>
+    <h2 style="margin-bottom: -4%;">Our story</h2>
   </div>
-
-  <%= image_tag "cartoon.jpeg",  class: "img-responsive center-block" %>
+<%# img-responsive %>
+  <%= image_tag "cartoon.jpeg", height: 500, class: "center-block" %>
   <div class="stripes">
     <div class="yellow-thin-stripe"></div>
     <div class="white-thin-stripe"></div>
@@ -61,7 +80,7 @@
 </div>
 
 <div class="graphics" id="graphics">
-  <h4 id="for-the-active">a cbd brand for the active</h4>
+  <h4 id="for-the-active">A cbd brand for the active</h4>
     <div class="container">
     <div class="graphic-icons">
       <div class="card-graphics">

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @disable_stripe = true
     @user = current_or_guest_user
-    @products = Product.all.take(3)
+    @products = Product.all[0..2]
     @cart_item = CartItem.new
     @reviews = Review.all.take(3)
   end

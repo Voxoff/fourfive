@@ -7,7 +7,11 @@
   .image-background{
     display: flex;
     justify-content: center;
-    background-color: $light-grey;
+    // background-color: $light-grey;
+    img{
+      height: 308px;
+      width: 205px;
+    }
   }
   .product-info{
     text-align: center;
@@ -15,6 +19,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    h2{
+      font-size: 20px;
+      margin-top: 8px;
+      margin-bottom: 6px;
+      font-weight: bolder;
+    }
   }
   .btn{
     width: 70%;
@@ -27,7 +37,9 @@
   // finetune
   margin-left: -20px;
   .review-image-gap{
-  margin-right: 30px;
+    margin-right: 30px;
+    height: 85px;
+
   }
   .review-text{
     display: flex;
@@ -35,6 +47,19 @@
     justify-content: center;
     // keeps cards in line
     min-width: 270px;
+    h4{
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    p{
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+    #position{
+      font-weight: lighter
+      // THIN
+    }
   }
 }
 
@@ -42,7 +67,11 @@
     height: 2px;
     background-color: $light-grey;
     width: 60%;
-    margin: 5% auto;
+    margin: 2% auto;
+  }
+
+  .wider{
+    width: 82% !important;
   }
 
 .our-story{
@@ -57,7 +86,7 @@
     }
 
     .review-image-gap{
-      height: 120px;
+      height: 85px;
     }
     .review-text{
       h4{
@@ -138,34 +167,6 @@ h4:hover {
   text-decoration-color: black;
 }
 
-.card-accordion {
-  position: relative;
-display: flex;
-flex-direction: column;
-min-width: 0;
-word-wrap: break-word;
-background-color: #fff;
-background-clip: border-box;
-border: 1px solid rgba(0,0,0,.125);
-    border-bottom-color: rgba(0, 0, 0, 0.125);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-border-radius: .25rem;
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-}
-
-.card-header {
-  padding: .75rem 1.25rem;
-margin-bottom: 0;
-background-color: rgba(0,0,0,.03);
-border-bottom: 1px solid rgba(0,0,0,.125);
-}
-
-.card-body {
-  flex: 1 1 auto;
-padding: 1.25rem;
-}
 
 // .review-card {
 //   height: 400px;

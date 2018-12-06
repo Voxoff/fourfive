@@ -67,16 +67,20 @@
 }
 
 .bigger{
-  width: 170px !important;
+  width: 127px !important;
 }
 
 .button-container{
-  border: 2px $charcoal solid;
-  width: 87px;
-  height:50px;
+  border: 1px $charcoal solid;
+  // width: 87px;
+  height:40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  &:hover{
+    border: 1px $yellow solid;
+    // color: $yellow;
+  }
 
 
   .master-quantity{
@@ -96,11 +100,16 @@
 
   .add-to-cart{
     display: flex;
-    padding: 10px 20px;
+    // padding: 10px 20px;
+    font-size: 13px;
   }
 
   p#buy-now{
-      padding: 0px 14px 0px 0px;
+      padding: 0px 0px 0px 0px;
+  }
+
+  p#pad-right{
+      padding: 0px 5px 0px 0px;
   }
 
   p#price{
@@ -129,6 +138,13 @@
   }
 
   :focus, :active, :active:focus{
-    outline-color: $charcoal;
+    outline-color: white;
+  }
+}
+
+
+.show .button-container{
+  &:hover{
+    border: 1px black solid !important;
   }
 }

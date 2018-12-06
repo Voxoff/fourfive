@@ -6,15 +6,13 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-12 col-md-5">
-      <h1><%= @product.name %></h1>
-      <p style="margin-bottom:50px;">Some awesome description of our amazing product.</p>
-      <% if false %>
+      <h2 style="font-size: 20px;"><%= @product.name %></h2>
       <div class="product-info">
-        <span><p>Amount: </p></span>
-        <p><span>£<%= humanized_money(@product.price) %></span></p>
+        <p style="margin-bottom:50px; font-weight: lighter; font-size: 15px;">
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </p>
       </div>
-      <% end %>
-      <div class="all-btn-container">
+      <div class="all-btn-container show">
         <div class="button-container">
           <div class="master-quantity">
             <button class="cart-button no-button" id="less">-</button>
@@ -25,12 +23,10 @@
         <div class="button-container bigger">
           <div class="master-quantity">
             <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "add-to-cart no-button" do %>
-            <%# <button class="add-to-cart no-button"> %>
-              <p id="buy-now">Buy now</p>
+              <p id="pad-right">Buy now</p>
               <div class="vertical-line"></div>
               <p id="pound">£</p>
               <p id="price"><%= @product.price.to_i %></p>
-            <%# </button> %>
             <% end %>
           </div>
         </div>

@@ -1,3 +1,26 @@
+SEND ME CHARCOAL
+CBD or Cbd or cbd
+
+fontweight lighter for show page more lorem and jstuify
+
+<!-- footer charcoal -->
+
+hover over review card main line goes yellow
+
+mmembership option
+
+modal for email
+
+
+clsing review card gap
+cards switch into grid
+new faqs
+
+
+hover on product iamges
+
+
+
 FourFive CBD
 
 Buy your CBD needs here!
