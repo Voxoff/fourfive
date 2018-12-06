@@ -1,16 +1,16 @@
 .product-card {
   height: 100%;
-  // padding: 5px;
   text-decoration: none;
-  // margin-bottom: 40px;
 
   .image-background{
     display: flex;
     justify-content: center;
-    // background-color: $light-grey;
     img{
       height: 308px;
       width: 205px;
+      &:hover{
+        // HOVER
+      }
     }
   }
   .product-info{
@@ -30,8 +30,19 @@
     width: 70%;
   }
 }
+.card-and-line{
+  &:hover{
+    .yellow-hover{
+      background-color: $yellow;
+    }
+  }
+}
+
 
 .review-card{
+  // &:hover{
+    // color: yellow;
+  // }
   display: flex;
   justify-content: center;
   // finetune
@@ -77,6 +88,12 @@
 .our-story{
   text-align: center;
   margin: 40px auto;
+}
+
+@media(min-width: 1000px){
+  .review-card .review-image-gap{
+    margin-right: 70px;
+  }
 }
 
 @media(max-width: 700px){

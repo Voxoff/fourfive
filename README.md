@@ -1,36 +1,29 @@
+FRONT
+
 SEND ME CHARCOAL
 CBD or Cbd or cbd
-
-fontweight lighter for show page more lorem and jstuify
+For the flip grid of reviews: do we need six? Three may look bare? Only 6 for that grid otherwise 3?
 
 <!-- footer charcoal -->
 
 hover over review card main line goes yellow
 
-mmembership option
 
-modal for email
+modal for email??
 
 
 clsing review card gap
 cards switch into grid
-new faqs
-
 
 hover on product iamges
 
 
 
-FourFive CBD
-
-Buy your CBD needs here!
 
 
-https://codepen.io/cssinate/pen/KVdYjz
 
-https://codepen.io/jpdanks/pen/rEJhK
 
-https://codepen.io/madshaakansson/pen/xwmzK
+BACK
 
 
 Zion payments in production
@@ -39,6 +32,8 @@ what happens on checkout
 admin side after checkout
 mobile responsiveness
 
+
+mmembership option
 
 <!-- carts guest logging -->
 

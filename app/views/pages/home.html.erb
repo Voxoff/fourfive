@@ -1,7 +1,7 @@
 <%# height: 350px; %>
 
 <div class="container margin-top-100">
-  <div class="tag-line">
+  <div class="tag-line" style="margin-top: -5%;">
     <h3>At fourfive we create specialised cbd products to help those who live an active life rest, recover and rise</h3>
   </div>
 
@@ -43,6 +43,7 @@
 
   <div class="review-section">
     <% @reviews.each_with_index do |review, i| %>
+      <div class="card-and-line">
       <div class="review-card">
         <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
         <div class="review-text">
@@ -54,8 +55,9 @@
       <% if i == 2 %>
         <div class="thin-grey-line wider" style="margin-top: 50px;"></div>
       <% else %>
-        <div class="thin-grey-line"></div>
+        <div class="thin-grey-line yellow-hover"></div>
       <% end %>
+      </div>
     <% end %>
   </div>
 
