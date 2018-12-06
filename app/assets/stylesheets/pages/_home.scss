@@ -20,7 +20,7 @@
     font-weight: bolder;
   }
   p{
-    max-width: 450px;
+    max-width: 372px;
     margin: auto;
     margin-top: 15px;
 
@@ -37,10 +37,12 @@
 }
 
 .fat-yellow-stripe{
-  width: 120px;
-  background-color: $yellow;
-  height: 10px;
-  margin: auto;
+    width: 166px;
+    background-color: #FFE600;
+    height: 7px;
+    margin: auto;
+    margin-top: 8px;
+
 }
 
 .graphics{
@@ -62,6 +64,7 @@
       }
       .how-it-works-text{
         text-align: center;
+        margin-top: 20px;
       }
     }
 }
@@ -69,9 +72,8 @@
 @media(max-width:750px){
   .product-info{
     margin-bottom: 70px !important;
-  }
 
-  // Graphics should be vertical
+  }
   .graphics .graphic-icons{
 
       flex-direction:column;
@@ -144,4 +146,12 @@ select {
   position:relative;
   width:250px;
   height:40px;
+}
+
+@media(min-width: 900px){
+
+  .shorter-row{
+    margin-left: 200px;
+    margin-right: 200px
+  }
 }

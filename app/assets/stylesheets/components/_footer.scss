@@ -50,8 +50,8 @@
 
 .footer-line {
   width: 280px;
-  height: 2px;
-  background-color: $charcoal;
+  height: 1px;
+  background-color: $light-grey;
 }
 .f-line {
   margin-top: 20px;
@@ -75,10 +75,14 @@
   left: 0;
   width: 100%;
   height: 50px;
-  // background-color: $yellow;
 }
 
 li a{
-  font-size: 15px;
+  font-size: 12px;
 }
 
+.copyright{
+  p{
+    font-size: 12px;
+  }
+}

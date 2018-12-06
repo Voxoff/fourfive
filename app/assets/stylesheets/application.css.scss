@@ -55,3 +55,22 @@ h3{
 p{
   font-size: 15px;
 }
+
+.yellow-hover{
+  color: $charcoal;
+  &:hover{
+    color: $yellow !important;
+  }
+}
+
+
+// .yellow-text-hover{
+//   color: $charcoal;
+//   &:hover{
+//     color: $yellow !important;
+//   }
+// }
+
+a:hover, a:focus{
+      text-decoration: none;
+}

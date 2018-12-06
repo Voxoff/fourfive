@@ -16,7 +16,21 @@ clsing review card gap
 cards switch into grid
 
 hover on product iamges
+yellow stripe all the way across
 
+thin line on footer
+
+accrodion for reviews
+
+cbd capitals
+
+fourfive should be bold
+
+number of cart items in bold
+
+dropdown oils balms capsules
+
+search option
 
 
 
@@ -24,7 +38,7 @@ hover on product iamges
 
 
 BACK
-
+add slug to review
 
 Zion payments in production
 everything in production
