@@ -9,9 +9,6 @@
         <%= link_to "Our story", about_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
       </li>
       <li>
-        <%= link_to "Testimonials", reviews_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
-      </li>
-      <li>
         <%= link_to "Learn more", education_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
       </li>
 
@@ -37,129 +34,15 @@
       <% end %>
     <% end %>
 </div>
-<div class="stripe-gap">
+<div class="stripe-gap <%= "margin-bottom-100" unless @disable_top_margin %>">
   <div class="yellow-thin-stripe"></div>
   <div class="white-thin-stripe"></div>
   <div class="yellow-thin-stripe"></div>
 </div>
- <% if false %>
-<div class="navbar-cbd">
-  <!-- Logo -->
-  <%# <a href="/" class="navbar-cbd-brand">
-    <img src="images/logo_white.svg" alt="logo">
-  </a> %>
-
-  <%= link_to root_path, class: "navbar-cbd-brand logo" do %>
-    <%= image_tag "logo_white.svg", height: 50 %>
-  <% end %>
-
-  <!-- Right Navigation -->
-  <div class="navbar-cbd-right hidden-xs hidden-sm">
-
-    <a href="" class="navbar-cbd-item navbar-cbd-link">Host</a>
-
-    <a href="" class="navbar-cbd-item navbar-cbd-link">Trips</a>
-    <a href="" class="navbar-cbd-item navbar-cbd-link">Messages</a>
-
-    <!-- Profile picture with dropdown list -->
-    <div class="navbar-cbd-item">
-      <div class="dropdown">
-        <% avatar_url = current_user&.facebook_picture_url || "https://picsum.photos/30/30/?random" %>
-        <img src=<%= "#{avatar_url}" %> class="avatar dropdown-toggle" id="navbar-cbd-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-cbd-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-cbd-item">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-cbd-dropdown-menu">
-        <li><a href="#">Host</a></li>
-        <li><a href="#">Trips</a></li>
-        <li><a href="#">Messagese</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<% end %>
 
 
 
 
 
 
-<% if false %>
-<%= link_to root_path, class: "navbar-hdn-brand logo" do %>
-  <%= image_tag "logo_white.svg", height: 50 %>
-<% end %>
-<div class="navbar-hd hidden-xs hidden-sm">
-  <div class="navbar-hd-right">
-    <%= link_to "ADMIN", admin_root_path, class: "navbar-hd-item navbar-hd-link" if current_user&.admin?%>
-    <% if false %>
-    <%= link_to "SHOP", products_path, class: "navbar-hd-item navbar-hd-link" %>
-    <%= link_to "REVIEWS", reviews_path, class: "navbar-hd-item navbar-hd-link" %>
-    <%= link_to "EDUCATION", education_path, class: "navbar-hd-item navbar-hd-link" %>
-    <%= link_to "ABOUT", about_path, class: "navbar-hd-item navbar-hd-link" %>
-    <% end %>
-    <%= link_to "CHECKOUT", new_cart_payment_path(@cart), class: "navbar-hd-item navbar-hd-link" if @cart %>
-    <% if user_signed_in? %>
-    <%= link_to t(".sign_out", default: "LOGOUT"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
-    <% else %>
-      <!-- Login link for non-modal(when logged out) -->
-      <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-hd-item navbar-hd-link" %>
-      <%#= button_tag("Sign in", class: "btn btn-primary", data: {toggle: "modal", target: "#Modalid"}) %>
-    <% end %>
 
-    <% if @cart %>
-      <%= link_to cart_path(@cart), class: "navbar-hd-item navbar-hd-link" do %>
-      <i class="fa fa-shopping-cart fa-lg"></i>
-      <!-- This is old (version four). If you want to upgrade, put 'fas' and use the cdn. Gem not out yet -->
-      <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
-      <% end %>
-    <% end %>
-
-    <div class="navbar-hd-item">
-      <div class="dropdown">
-        <% avatar_url = current_user&.facebook_picture_url || "https://picsum.photos/30/30/?random" %>
-        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-hd-menu", "data-toggle" => "dropdown" %>
-
-        <ul class="dropdown-menu dropdown-menu-right navbar-hd-dropdown-menu">
-          <li>
-            <%= link_to "#" do %>
-            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "#" do %>
-            <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="navbar-hd hidden-md hidden-lg" id="mobile-navbar">
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-hd-item ">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-hd-dropdown-menu">
-        <li><%= link_to "Products", products_path %></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<% end %>

@@ -36,29 +36,16 @@
   }
 }
 
-// @media(max-width: 992px){
-//   .review-card .review-text {
-//     min-width: 250px
-//   }
-// }
-
-// @media(max-width: 992px){
-//   .review-card .review-text {
-//     min-width: 250px
-//   }
-// }
-
-@media(max-width: 650pc){
-  .review-card .review-text{
-    max-width: 200px;
-    min-width: 0px;
+@media(max-width: 1000px){
+  .review-card .review-text {
+    min-width: 250px
   }
 }
 
 @media(max-width: 700px){
   .review-card{
     .review-text{
-      // min-width: 200px;
+      min-width: 0px;
     }
 
     .review-image-gap{
