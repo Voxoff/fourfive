@@ -39,51 +39,18 @@
 }
 
 
-.review-card{
-  // &:hover{
-    // color: yellow;
-  // }
-  display: flex;
-  justify-content: center;
-  // finetune
-  margin-left: -20px;
-  .review-image-gap{
-    margin-right: 30px;
-    height: 85px;
 
-  }
-  .review-text{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    // keeps cards in line
-    min-width: 270px;
-    h4{
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 3px;
-    }
-    p{
-      font-size: 15px;
-      margin-bottom: 3px;
-    }
-    #position{
-      font-weight: lighter
-      // THIN
-    }
-  }
+
+.thin-grey-line{
+  height: 2px;
+  background-color: $light-grey;
+  width: 60%;
+  margin: 2% auto;
 }
 
-  .thin-grey-line{
-    height: 2px;
-    background-color: $light-grey;
-    width: 60%;
-    margin: 2% auto;
-  }
-
-  .wider{
-    width: 82% !important;
-  }
+.wider{
+  width: 82% !important;
+}
 
 .our-story{
   text-align: center;

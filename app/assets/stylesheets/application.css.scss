@@ -42,13 +42,6 @@ a:hover, a:focus{
   }
 }
 // REVIEW TEXT HOVERS
-// .review-text:hover #name {
-//   color: $yellow !important;
-// }
-
-// .review-text:hover #position {
-//   color: $yellow !important;
-// }
 
 #content-span:hover h4 {
   color: $yellow !important;
@@ -62,3 +55,9 @@ a:hover, a:focus{
 #position-span:hover p {
   color: $yellow !important;
 }
+
+// @media(min-width:1000px){
+//   .review-text{
+//     min-width: 312px;
+//   }
+// }
