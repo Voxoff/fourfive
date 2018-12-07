@@ -57,7 +57,7 @@
         <div class="product-card">
           <div class="image-background">
             <%= link_to product_path(product) do %>
-              <%= image_tag product.photo_url, width: "264px", height: "400px" if product.photo_url%>
+              <%= image_tag product.photo_url, width: "264px", height: "400px" if product.photo_url %>
             <% end %>
           </div>
           <div class="product-info">
@@ -93,9 +93,9 @@
       <div class="review-card">
         <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
         <div class="review-text">
-          <h4 class="yellow-hover"><%= review.content %></h4>
-          <p class="yellow-hover" style="font-size: 15px"><%= review.name %></p>
-          <p class="yellow-hover" id="position"><%= review.position %></p>
+          <span id="content-span"><h4 class="yellow-hover-p"><%= review.content %></h4></span>
+          <span id="name-span"><p class="yellow-hover-p" style="font-size: 15px"><%= review.name %></p></span>
+          <span id="position-span"><p class="yellow-hover-p" id="position"><%= review.position %></p></span>
         </div>
       </div>
       <% if i == 2 %>
