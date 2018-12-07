@@ -16,16 +16,10 @@
 // @import "bootstrap-select";
 
 
-@font-face {
-	font-family: 'icofonts';
-	src:url('fonts/icofonts.eot');
-	src:url('fonts/icofonts.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icofonts.ttf') format('truetype'),
-		url('fonts/icofonts.woff') format('woff'),
-		url('fonts/icofonts.svg#icofonts') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'helvetica';
+// 	src:url('fonts/helvetica.ttf') format('truetype');
+// }
 
 // Short term
 body{
@@ -76,9 +70,4 @@ a:hover, a:focus{
 }
 
 
-#carousel-example-generic{
-  &:focus{
-    outline: none;
-  }
-}
 
