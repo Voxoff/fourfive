@@ -18,7 +18,7 @@ puts 'Creating Reviews...'
 
 photo = open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543757174/eb8bk1ntavsaotcdmui0.png")
 
-Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Tom", position: "PE Teacher", content: "Help with sleep pattern")
+Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Tom", position: "PE Teacher", content: "Help with sleep pattern ")
 Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "Concussion")
 Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "Recovery from knee ligament injury")
 
@@ -31,5 +31,7 @@ Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Chris Di
 #     ProductStrength.create!(product: product, strength: strength)
 #   end
 # end
-
+Product.find(2).update(name: 'cbd oils', subtitle: "Flavored oils for quick absorption")
+Product.find(3).update(name: 'cbd balms', subtitle: "Organic balms for damaged skin")
+Product.find(4).update(name: 'cbd capsules', subtitle: "Easy-to-take capsules for slower release")
 puts 'Finished!'

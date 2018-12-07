@@ -57,7 +57,7 @@
         <div class="product-card">
           <div class="image-background">
             <%= link_to product_path(product) do %>
-              <%= image_tag product.photo_url, width: "264px", height: "400px" %>
+              <%= image_tag product.photo_url, width: "264px", height: "400px" if product.photo_url%>
             <% end %>
           </div>
           <div class="product-info">
