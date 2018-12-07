@@ -150,3 +150,7 @@
     border: 1px black solid !important;
   }
 }
+
+input:focus{
+   outline-color: white;
+}

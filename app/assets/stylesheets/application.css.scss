@@ -56,8 +56,12 @@ a:hover, a:focus{
   color: $yellow !important;
 }
 
-.margin-bottom-100{
-  margin-bottom: 100px;
+#yes:hover {
+  color: $yellow !important;
+}
+
+.margin-bottom-80{
+  margin-bottom: 80px;
 }
 
 // @media(min-width:1000px){

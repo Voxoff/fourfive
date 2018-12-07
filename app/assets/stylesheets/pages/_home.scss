@@ -33,7 +33,7 @@
 .stripes{
   position: relative;
   z-index: 2;
-  margin-top: -12%;
+  margin-top: -11%;
 }
 
 .fat-yellow-stripe{
@@ -93,10 +93,14 @@
   }
 }
 
+#toggleDemo{
+  display: flex;
+  justify-content: center;
+}
 
-
-
-
+#extra-text{
+  max-width: 300px;
+}
 
 
 

@@ -1,7 +1,6 @@
 FRONT
 
 SEND ME CHARCOAL
-CBD or Cbd or cbd
 For the flip grid of reviews: do we need six? Three may look bare? Only 6 for that grid otherwise 3?
 
 <!-- footer charcoal -->
@@ -9,46 +8,34 @@ For the flip grid of reviews: do we need six? Three may look bare? Only 6 for th
 hover over review card main line goes yellow
 
 
-modal for email??
+<!-- modal for email?? -->
 
-
-clsing review card gap
-cards switch into grid
-
-hover on product iamges
+<!-- hover on product iamges -->
 yellow stripe all the way across
-
-thin line on footer
 
 accrodion for reviews
 
-cbd capitals
+number of cart items in bold WAITING FOR JAMES
 
-fourfive should be bold
+<!-- dropdown oils balms capsules -->
 
-number of cart items in bold
-
-dropdown oils balms capsules
-
-search option
-
-dependent destroy
+<!-- search option -->
 
 
+mobile responsiveness
 
 
 BACK
-review doens't need a user
-add slug to review
+<!-- dependent destroy -->
+<!-- review doens't need a user -->
 
 Zion payments in production
 everything in production
 what happens on checkout
 admin side after checkout
-mobile responsiveness
 
 
-mmembership option
+<!-- mmembership option -->
 
 <!-- carts guest logging -->
 

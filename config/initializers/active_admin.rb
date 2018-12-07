@@ -3,7 +3,7 @@ def authenticate_admin!
 end
 
 ActiveAdmin.setup do |config|
-  config.site_title = "FlowCBD"
+  config.site_title = "Flowcbd"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

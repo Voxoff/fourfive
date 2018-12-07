@@ -2,9 +2,11 @@
   <div class="dropdown">
     <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
     <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
+      <% if false %>
       <li>
         <%= link_to "Our products", products_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
       </li>
+      <% end %>
       <li>
         <%= link_to "Our story", about_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
       </li>
@@ -34,7 +36,7 @@
       <% end %>
     <% end %>
 </div>
-<div class="stripe-gap <%= "margin-bottom-100" unless @disable_top_margin %>">
+<div class="stripe-gap <%= "margin-bottom-80" unless @disable_top_margin %>">
   <div class="yellow-thin-stripe"></div>
   <div class="white-thin-stripe"></div>
   <div class="yellow-thin-stripe"></div>

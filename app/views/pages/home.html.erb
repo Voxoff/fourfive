@@ -44,7 +44,7 @@
 <div class="container margin-top-100">
 
   <div class="tag-line" style="margin-top: -5%;">
-    <h3>At fourfive we create specialised cbd products to help those who live an active life rest, recover and rise</h3>
+    <h3>At <span style="font-weight:bolder">fourfive</span> we create specialised cbd products to help those who live an active life rest, recover and rise</h3>
   </div>
 
   <div class="border-bottom" style="margin-left: 20%;margin-right: 20%;">
@@ -90,19 +90,29 @@
   <div class="review-section">
     <% @reviews.each_with_index do |review, i| %>
       <div class="card-and-line">
-      <div class="review-card">
-        <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
-        <div class="review-text">
-          <span id="content-span"><h4 class="yellow-hover-p"><%= review.content %></h4></span>
-          <span id="name-span"><p class="yellow-hover-p" style="font-size: 15px"><%= review.name %></p></span>
-          <span id="position-span"><p class="yellow-hover-p" id="position"><%= review.position %></p></span>
+        <div class="review-card">
+          <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
+          <div class="review-text">
+            <span id="content-span"><h4 class="yellow-hover-p"><%= review.content %></h4></span>
+            <span id="name-span"><p class="yellow-hover-p" style="font-size: 15px"><%= review.name %></p></span>
+            <span id="position-span"><p class="yellow-hover-p" id="position"><%= review.position %></p></span>
+            <% if i == 0  %>
+              <div id="accordion">
+                <p id="yes" class="accordion-toggle" style="font-weight: lighter;">More info...</p>
+                <div id="no" class="accordion-content default" style="font-size:12px; font-style:italic; font-weight: lighter;">
+                  Cras malesuada ultrices augue molestie risus. Cras.
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <% if i == 2 %>
-        <div class="thin-grey-line wider" style="margin-top: 50px;"></div>
-      <% else %>
-        <div class="thin-grey-line yellow-hover"></div>
-      <% end %>
+
+        <%#= render 'shared/accordion.html.erb' %>
+        <% if i == 2 %>
+          <div class="thin-grey-line wider" style="margin-top: 50px;"></div>
+        <% else %>
+          <div class="thin-grey-line yellow-hover"></div>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -135,7 +145,7 @@
       <div class="card-graphics">
         <i class="fa fa-star-o fa-lg"></i>
         <div class="how-it-works-text">
-          <p>CBD is legal and has been since 2016</p>
+          <p>cbd is legal and has been since 2016</p>
         </div>
       </div>
       <div class="card-graphics">
@@ -157,46 +167,86 @@
 
 
 
+<style>
+  .accordion-toggle {cursor: pointer;}
+  .accordion-content {display: none;}
+  .accordion-content.default {display: block;}
+  #no {
+      display: none;
+  }
+</style>
+
+<%= content_for :after_js do %>
+  <script type="text/javascript">
+'use strict';
+    /**
+    * getHeight - for elements with display:none
+     */
+var getHeight = function(el) {
+        var el_style      = window.getComputedStyle(el),
+            el_display    = el_style.display,
+            el_position   = el_style.position,
+            el_visibility = el_style.visibility,
+            el_max_height = el_style.maxHeight.replace('px', '').replace('%', ''),
+
+            wanted_height = 0;
 
 
+        // if its not hidden we just return normal height
+        if(el_display !== 'none' && el_max_height !== '0') {
+            return el.offsetHeight;
+        }
+
+        // the element is hidden so:
+        // making the el block so we can meassure its height but still be hidden
+        el.style.position   = 'absolute';
+        el.style.visibility = 'hidden';
+        el.style.display    = 'block';
+
+        wanted_height     = el.offsetHeight;
+
+        // reverting to the original values
+        el.style.display    = el_display;
+        el.style.position   = el_position;
+        el.style.visibility = el_visibility;
+
+        return wanted_height;
+    },
 
 
+    /**
+    * toggleSlide mimics the jQuery version of slideDown and slideUp
+    * all in one function comparing the max-heigth to 0
+     */
+    toggleSlide = function(el) {
+        var el_max_height = 0;
 
+        if(el.getAttribute('data-max-height')) {
+            // we've already used this before, so everything is setup
+            if(el.style.maxHeight.replace('px', '').replace('%', '') === '0') {
+                el.style.maxHeight = el.getAttribute('data-max-height');
+            } else {
+                el.style.maxHeight = '0';
+            }
+        } else {
+            el_max_height                  = getHeight(el) + 'px';
+            el.style['transition']         = 'max-height 0.5s ease-in-out';
+            el.style.overflowY             = 'hidden';
+            el.style.maxHeight             = '0';
+            el.setAttribute('data-max-height', el_max_height);
+            el.style.display               = 'block';
 
+            // we use setTimeout to modify maxHeight later than display (to we have the transition effect)
+            setTimeout(function() {
+                el.style.maxHeight = el_max_height;
+            }, 10);
+        }
+    };
 
-
-
-
-
-
-
-<% if false %>
-<div class="container">
-  <div class="graphics" id="graphics">
-    <h4>a cbd brand for an active lifestyle</h4>
-    <div class="card-graphics">
-      <%= image_tag "legal.png", size: "160x160"%>
-      <div class="how-it-works-text">
-        <h3>100% Legal</h3>
-        <p>CBD is legal and has been since 2016</p>
-      </div>
-    </div>
-    <div class="card-graphics">
-      <%= image_tag "plaster.png", size: "160x160" %>
-      <div class="how-it-works-text">
-        <h3>Health benefits</h3>
-        <p>Widespread beneficial medicinal effects</p>
-      </div>
-    </div>
-    <div class="card-graphics">
-      <%= image_tag "002-medical.svg", size: "160x160" %>
-      <div class="how-it-works-text">
-        <h3>Browse here</h3>
-        <p>Quick and simple search</p>
-      </div>
-    </div>
-  </div>
-</div>
-
+document.getElementById('yes').addEventListener('click', function(e) {
+    toggleSlide(document.querySelector('#no'));
+}, false);
+</script>
 
 <% end %>
+
