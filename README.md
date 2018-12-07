@@ -38,6 +38,7 @@ dependent destroy
 
 
 BACK
+review doens't need a user
 add slug to review
 
 Zion payments in production

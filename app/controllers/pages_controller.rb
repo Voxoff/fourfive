@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @disable_stripe = true
     @user = current_or_guest_user
-    @products = [Product.find(2), Product.find(4), Product.find(6)]
+    @products = [Product.where(name: 'cbd oils'), Product.where(name: 'cbd balms'), Product.where(name: 'cbd capsules')]
     @cart_item = CartItem.new
     @reviews = Review.all.take(3)
   end
