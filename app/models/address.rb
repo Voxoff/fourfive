@@ -14,4 +14,11 @@ class Address < ApplicationRecord
     user_addrs << self.get_address
     user_addrs.count != user_addrs.uniq.count
   end
+
+  def full_address
+    "#{self.first_line} \n \
+    #{self.second_line} \n \
+    #{self.city} \n \
+    #{self.postcode}  \n"
+  end
 end

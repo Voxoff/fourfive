@@ -1,17 +1,25 @@
 ActiveAdmin.register Cart do
 
   scope :all
-  scope :orders
+  scope :orders, default: true
 
   index do
     selectable_column
     id_column
     column :amount
-    column :user
-    column :active
-    column :created_at
-    column :update_at
-    actions
+    column :user do |cart|
+      "Guest user" if cart.user.nil?
+      # item "Guest", admin_user_path if user.nil?
+    end
+    column "Orders", :active do |cart|
+      !cart.active?
+    end
+    column :address do |cart|
+      cart.user.addresses.order('id DESC').limit(1)
+    end
+    # column :created_at
+    # column :updated_at
+    actions name: "Actions"
   end
 
 

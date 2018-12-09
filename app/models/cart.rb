@@ -5,6 +5,7 @@ class Cart < ApplicationRecord
 
   scope :orders, -> { where(active: false)}
   scope :has_user, -> { where(user: !nil ) }
+  # scope :last24, -> { where("update")}
 
   def amount
     self.cart_items.map{|i| i.product.price}.reduce(:+)

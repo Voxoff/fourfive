@@ -41,11 +41,11 @@ class User < ApplicationRecord
     return user
   end
 
-  private
-
   def full_name
     "#{self.first_name} #{self.last_name}" if self.first_name && self.last_name
   end
+  private
+
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now unless self.guest?

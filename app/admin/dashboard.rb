@@ -23,5 +23,26 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
+
+    columns do
+      column do
+        panel "ActiveAdmin Demo" do
+          div do
+            link_to("All current orders", admin_carts_path)
+          end
+        end
+      end
+
+      column do
+        panel "Last 24 hours" do
+          div do
+            Cart.orders.has_user.map(&:amount).reduce(:+)
+          end
+          div do
+            # Cart.orders.has_user.
+          end
+        end
+      end
+    end
   end
 end

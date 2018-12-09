@@ -42,8 +42,3 @@ bullet gem for n + 1
 <!-- carts guest logging -->
 
 the cartoon out story needs to be put in cludinary
-
-so everything is good when it goes to zion. Things that need to change are the cart and its status.
-All old carts can be old orders?
-But I need to check status after zion has done its thing(home_page or redirect page) and then change the
-cart status and ??

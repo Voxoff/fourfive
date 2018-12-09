@@ -3,7 +3,7 @@ def authenticate_admin!
 end
 
 ActiveAdmin.setup do |config|
-  config.site_title = "Flowcbd"
+  config.site_title = "fourfive cbd"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -160,7 +160,7 @@ ActiveAdmin.setup do |config|
 
   # == Setting a Favicon
   #
-  # config.favicon = 'favicon.ico'
+  config.favicon = 'favicon.ico'
 
   # == Meta Tags
   #
