@@ -9,8 +9,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Sign ups" do
           table_for User.not_guests.order("id desc").limit(10).each do |_user|
             column(:email) { |user| link_to(user.email, admin_user_path(user)) }
-            column(:name) { |user| link_to(user.first_name + " " + user.last_name, admin_user_path(user)) }
-
+            column(:name) { |user| link_to(user.first_name + " " +   user.last_name, admin_user_path(user)) }
           end
         end
       end

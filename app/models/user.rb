@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
   mount_uploader :photo, PhotoUploader
 
-  has_many :orders
   has_many :carts, dependent: :nullify
   has_one :cart, -> { where(active: true) }
   has_many :cart_items, through: :cart
@@ -15,6 +14,12 @@ class User < ApplicationRecord
   after_create :send_welcome_email
 
   scope :not_guests, -> { where(guest: false)}
+  # scope :orders, -> { where(active: true)}
+  # user has many carts, all false active, with cart items
+
+  def orders
+    self.carts.where(active: false).map(&:cart_items)
+  end
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -36,13 +41,11 @@ class User < ApplicationRecord
     return user
   end
 
-  def full_name
-    if self.first_name && self.last_name
-      return "#{self.first_name} #{self.last_name}"
-    end
-  end
-
   private
+
+  def full_name
+    "#{self.first_name} #{self.last_name}" if self.first_name && self.last_name
+  end
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now unless self.guest?
