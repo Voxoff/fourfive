@@ -23,7 +23,9 @@ number of cart items in bold WAITING FOR JAMES
 
 
 mobile responsiveness
+no cart on sign in page so navbar is fucked
 
+sign up button on login page
 
 BACK
 <!-- dependent destroy -->
@@ -34,7 +36,7 @@ everything in production
 what happens on checkout
 admin side after checkout
 
-
+bullet gem for n + 1
 <!-- mmembership option -->
 
 <!-- carts guest logging -->

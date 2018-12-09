@@ -5,7 +5,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   has_many :orders
-  has_many :carts, dependent: :destroy
+  has_many :carts, dependent: :nullify
   has_one :cart, -> { where(active: true) }
   has_many :cart_items, through: :cart
   has_many :addresses, dependent: :destroy
@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   after_create :send_welcome_email
+
+  scope :not_guests, -> { where(guest: false)}
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)

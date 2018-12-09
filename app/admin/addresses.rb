@@ -1,8 +1,8 @@
-ActiveAdmin.register Review do
+ActiveAdmin.register Address do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# permit_params :list, :of, :attributes, :on, :model
+permit_params :first_line, :second_line, :city, :postcode
 #
 # or
 #
@@ -11,16 +11,5 @@ ActiveAdmin.register Review do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  index do
-    selectable_column
-    column :id
-    column :product
-    column :user
-    column :name
-    column :position
-    column :content
-    column :photo
-    column :updated_at
-    actions
-  end
+
 end

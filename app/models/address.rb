@@ -4,4 +4,14 @@ class Address < ApplicationRecord
   validates :first_line, presence: true
   # validates :phone_number, presence: true, numericality: {integer: true}
   validates :city, presence: true
+
+  def get_address
+    [self.first_line, self.second_line, self.postcode, self.city]
+  end
+
+  def duplicate?(user)
+    user_addrs = user.addresses.map(&:get_address)
+    user_addrs << self.get_address
+    user_addrs.count != user_addrs.uniq.count
+  end
 end
