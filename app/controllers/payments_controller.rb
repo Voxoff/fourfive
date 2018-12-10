@@ -21,15 +21,16 @@ class PaymentsController < ApplicationController
       flash[:notice] = "That coupon code did not work"
       return redirect_to new_cart_payment_path
     end
-    @address = user.addresses.build(address_params)
-    unless @address.duplicate?(user)
-      flash[:notice] = "Address was invalid" unless @address.save
+    if user.guest?
+      @address = @cart.address.build(address_params)
+    else
+      @address = user.addresses.build(address_params)
     end
+    flash[:notice] = "Address was invalid" unless @address.save
     if user.guest? && checkout_params[:email]
       guest_user.email = checkout_params[:email]
     end
     # @cart.update(status:  "")
-    # Now we need to store the cart, change it to false and create a new cart
     @checkoutId = zion
   end
 

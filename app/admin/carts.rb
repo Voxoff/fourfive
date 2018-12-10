@@ -15,10 +15,12 @@ ActiveAdmin.register Cart do
       !cart.active?
     end
     column :address do |cart|
-      cart.user.addresses.order('id DESC').limit(1)
+      if cart.user
+        cart.user.addresses.order('id DESC').limit(1)
+      else
+        cart.address
+      end
     end
-    # column :created_at
-    # column :updated_at
     actions name: "Actions"
   end
 

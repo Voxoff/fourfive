@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_122200) do
+ActiveRecord::Schema.define(version: 2018_11_20_204545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(version: 2018_12_06_122200) do
     t.string "second_line"
     t.string "postcode"
     t.string "phone_number"
-    t.string "town"
+    t.string "city"
     t.string "email"
     t.bigint "user_id"
+    t.bigint "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city"
+    t.index ["cart_id"], name: "index_addresses_on_cart_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -47,9 +48,9 @@ ActiveRecord::Schema.define(version: 2018_12_06_122200) do
     t.bigint "cart_id"
     t.bigint "product_id"
     t.bigint "strength_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["product_id"], name: "index_cart_items_on_product_id"
     t.index ["strength_id"], name: "index_cart_items_on_strength_id"
@@ -96,8 +97,6 @@ ActiveRecord::Schema.define(version: 2018_12_06_122200) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "cart_id"
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -117,10 +116,10 @@ ActiveRecord::Schema.define(version: 2018_12_06_122200) do
     t.boolean "availability"
     t.integer "strength"
     t.string "photo"
+    t.string "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
-    t.string "subtitle"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -164,12 +163,12 @@ ActiveRecord::Schema.define(version: 2018_12_06_122200) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "carts"
   add_foreign_key "addresses", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "cart_items", "strengths"
   add_foreign_key "carts", "users"
-  add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
   add_foreign_key "product_strengths", "products"
   add_foreign_key "product_strengths", "strengths"

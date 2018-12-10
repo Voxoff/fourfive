@@ -5,9 +5,10 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :second_line
       t.string :postcode
       t.string :phone_number
-      t.string :town
+      t.string :city
       t.string :email
       t.references :user, foreign_key: true
+      t.references :cart, foreign_key: true
 
       t.timestamps
     end

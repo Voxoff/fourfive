@@ -1,6 +1,5 @@
 puts 'Cleaning database...'
 Review.destroy_all
-Order.destroy_all
 Strength.destroy_all
 Product.destroy_all
 User.destroy_all
