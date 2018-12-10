@@ -7,7 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
+  margin-top: 5px;
   .title{
     flex-basis: 80%;
     text-align: center;
@@ -94,10 +95,9 @@
   height: 5px;
 }
 
-
-
-
-
+.margin-bottom-7{
+  margin-bottom: 7px;
+}
 
 
 

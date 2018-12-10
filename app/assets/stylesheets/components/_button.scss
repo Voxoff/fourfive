@@ -72,14 +72,12 @@
 
 .button-container{
   border: 1px $charcoal solid;
-  // width: 87px;
   height:40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   &:hover{
     border: 1px $yellow solid;
-    // color: $yellow;
   }
 
 
@@ -89,8 +87,6 @@
       margin-bottom: 0px;
     }
     .cart-button{
-      // z-index: -1;
-      // padding: 0px 8px;
       margin: -3px 0px;
     }
 
@@ -101,7 +97,6 @@
 
   .add-to-cart{
     display: flex;
-    // padding: 10px 20px;
     font-size: 13px;
   }
 

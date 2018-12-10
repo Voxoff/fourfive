@@ -32,7 +32,7 @@
 }
 .card-and-line{
   &:hover{
-    .yellow-hover{
+    .yellow-background-hover{
       background-color: $yellow;
     }
   }
@@ -55,6 +55,7 @@
 .our-story{
   text-align: center;
   margin: 40px auto;
+  margin-bottom: 8%;
 }
 
 @media(min-width: 1000px){

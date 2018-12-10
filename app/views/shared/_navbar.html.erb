@@ -25,30 +25,24 @@
   </div>
   <div class="title">
     <%= link_to root_path do %>
-      <h1>fourfive cbd</h1>
+      <h1 style="margin-top:10px; font-size: 36px">fourfive cbd</h1>
     <% end %>
   </div>
   <% if @cart %>
       <%= link_to new_cart_payment_path(@cart), class: "navbar-item navbar-link" do %>
-      <i class="fa fa-shopping-cart fa-lg"></i>
+        <%= image_tag "shopping-bag.png", size: "24x30"  %>
       <!-- This is old (version four). If you want to upgrade, put 'fas' and use the cdn. Gem not out yet -->
       <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
-      <% end %>
+    <% end %>
+
     <% else %>
-      <div class="navbar-item navbar-link">
-        <i class="fa fa-shopping-cart fa-lg"></i>
-      </div>
+    <%= link_to new_cart_payment_path(@cart), class: "navbar-item navbar-link" do %>
+      <%= image_tag "shopping-bag.png", size: "16x10" %>
+    <% end %>
     <% end %>
 </div>
-<div class="stripe-gap <%= "margin-bottom-80" unless @disable_top_margin %>">
-  <div class="yellow-thin-stripe"></div>
-  <div class="white-thin-stripe"></div>
-  <div class="yellow-thin-stripe"></div>
-</div>
-
-
-
-
-
-
-
+  <div class="stripe-gap <%= @disable_top_margin ? "margin-bottom-7" : "margin-bottom-80"  %>">
+    <div class="yellow-thin-stripe"></div>
+    <div class="white-thin-stripe"></div>
+    <div class="yellow-thin-stripe"></div>
+  </div>

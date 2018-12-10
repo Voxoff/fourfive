@@ -13,14 +13,19 @@ NEED
 
 FRONT
 
+product show
+checkout
+address
+
+<!-- if you hover over title, turn both things yellow -->
+<!-- same for proucts -->
+
 <!-- For the flip grid of reviews: do we need six? Three may look bare? Only 6 for that grid otherwise 3? -->
 
 <!-- hover on product iamges -->
 yellow stripe all the way across
 
 accrodion for reviews
-
-number of cart items in bold WAITING FOR JAMES
 
 <!-- dropdown oils balms capsules -->
 

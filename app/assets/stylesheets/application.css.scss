@@ -38,28 +38,19 @@ a:hover, a:focus{
 
 .yellow-hover{
   &:hover{
-    color: $yellow !important;
+    p, h4, a{
+      color: $yellow !important;
+    }
+    // h4{
+    //   color: $yellow !important;
+    // }
+    // a{
+    //   color: $yellow !important;
+    // }
+    cursor: pointer;
   }
 }
 // REVIEW TEXT HOVERS
-
-#content-span:hover h4 {
-  color: $yellow !important;
-}
-
-#name-span:hover p {
-  color: $yellow !important;
-}
-
-
-#position-span:hover p {
-  color: $yellow !important;
-}
-
-#yes:hover {
-  color: $yellow !important;
-}
-
 .margin-bottom-80{
   margin-bottom: 80px;
 }
@@ -69,3 +60,7 @@ a:hover, a:focus{
 //     min-width: 312px;
 //   }
 // }
+
+.fourfive{
+  font-weight: bolder;
+}

@@ -11,21 +11,18 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= image_tag "placeholderbanner.jpg"%>
+      <%= image_tag "carousel-stripe.jpg"%>
       <div class="carousel-caption">
-        <%# ... %>
       </div>
     </div>
     <div class="item">
-      <%= image_tag "placeholderbanner.jpg"%>
+      <%= image_tag "carousel-stripe.jpg"%>
       <div class="carousel-caption">
-        <%# ... %>
       </div>
     </div>
     <div class="item">
-      <%= image_tag "placeholderbanner.jpg"%>
+      <%= image_tag "carousel-stripe.jpg"%>
       <div class="carousel-caption">
-        <%# ... %>
       </div>
     </div>
   </div>
@@ -41,19 +38,14 @@
   </a>
 </div>
 <%# CAROUSEL %>
-<div class="container margin-top-100">
-
-  <div class="tag-line" style="margin-top: -5%;">
-    <h3>At <span style="font-weight:bolder">fourfive</span> we create specialised cbd products to help those who live an active life rest, recover and rise</h3>
-  </div>
-
+<div class="container">
   <div class="border-bottom" style="margin-left: 20%;margin-right: 20%;">
     <h3 style="font-weight: bolder">Our products</h3>
   </div>
 
-<div class="row shorter-row" style="margin-left: 200px; margin-right: 200px;">
+<div class="row shorter-row">
     <% @products.each do |product| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="product-card">
           <div class="image-background">
             <%= link_to product_path(product) do %>
@@ -61,12 +53,14 @@
             <% end %>
           </div>
           <div class="product-info">
-            <%= link_to product_path(product) do %>
-              <h2 class="yellow-hover"><%= product.name.downcase %></h2>
-            <% end %>
-            <p class="yellow-hover" style="font-size: 10px; margin-top: 0px; font-weight: lighter">
-              <%= product.subtitle %>
-            </p>
+            <span class="yellow-hover">
+              <%= link_to product_path(product), class: "yellow-hover" do %>
+                <h2><%= product.name.downcase %></h2>
+              <% end %>
+              <p style="font-size: 10px; margin-top: 0px; font-weight: lighter">
+                <%= product.subtitle %>
+              </p>
+            </span>
             <div class="button-container bigger">
               <div class="master-quantity">
                 <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: product.id}, class: "add-to-cart no-button" do %>
@@ -93,25 +87,28 @@
         <div class="review-card">
           <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
           <div class="review-text">
-            <span id="content-span"><h4 class="yellow-hover-p"><%= review.content %></h4></span>
-            <span id="name-span"><p class="yellow-hover-p" style="font-size: 15px"><%= review.name %></p></span>
-            <span id="position-span"><p class="yellow-hover-p" id="position"><%= review.position %></p></span>
+            <%# Spans are needed for my inexpert css. or are they? %>
+            <span class="yellow-hover">
+              <h4><%= review.content %></h4>
+              <p style="font-size: 15px"><%= review.name %></p>
+            </span>
+            <p id="position"><%= review.position %></p>
             <% if i == 0  %>
-              <div id="accordion">
-                <p id="yes" class="accordion-toggle" style="font-weight: lighter;">More info...</p>
-                <div id="no" class="accordion-content default" style="font-size:12px; font-style:italic; font-weight: lighter;">
+              <div id="accordion ">
+                <span class="yellow-hover">
+                  <p id="more-info-toggle" class="accordion-toggle more-info-toggle-class" style="font-weight: lighter;">More info...</p>
+                </span>
+                <div id="more-info" class="accordion-content default more-info-toggle-class" style="font-size:12px; font-style:italic; font-weight: lighter;">
                   Cras malesuada ultrices augue molestie risus. Cras.
                 </div>
               </div>
             <% end %>
           </div>
         </div>
-
-        <%#= render 'shared/accordion.html.erb' %>
         <% if i == 2 %>
           <div class="thin-grey-line wider" style="margin-top: 50px;"></div>
         <% else %>
-          <div class="thin-grey-line yellow-hover"></div>
+          <div class="thin-grey-line yellow-background-hover"></div>
         <% end %>
       </div>
     <% end %>
@@ -120,11 +117,9 @@
   <div class="our-story">
     <h2 style="margin-bottom: -4%; font-weight: bolder; position: absolute; right: 50%; transform: translateX(50%)">Our story</h2>
   </div>
-<%# img-responsive %>
-  <%= image_tag "cartoon.jpeg", height: 500, class: "center-block" %>
+  <%= image_tag "cartoon.jpg", height: 500, class: "center-block" %>
   <div class="stripes" style="height: 45px;">
     <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
-    <%# <div class="white-thin-stripe" id="over-image" style="width: 100vw; top: 5px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div> %>
     <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; top: 25px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
   </div>
 
@@ -164,33 +159,15 @@
   </div>
 </div>
 
-
-
-
-<style>
-  .accordion-toggle {cursor: pointer;}
-  .accordion-content {display: none;}
-  .accordion-content.default {display: block;}
-  #no {
-      display: none;
-  }
-</style>
-
 <%= content_for :after_js do %>
   <script type="text/javascript">
-'use strict';
-    /**
-    * getHeight - for elements with display:none
-     */
-var getHeight = function(el) {
-        var el_style      = window.getComputedStyle(el),
-            el_display    = el_style.display,
-            el_position   = el_style.position,
-            el_visibility = el_style.visibility,
-            el_max_height = el_style.maxHeight.replace('px', '').replace('%', ''),
-
-            wanted_height = 0;
-
+let getHeight = function(el) {
+        let el_style      = window.getComputedStyle(el)
+        let el_position   = el_style.position
+        let el_display    = el_style.display
+        let el_visibility = el_style.visibility
+        let el_max_height = el_style.maxHeight.replace('px', '').replace('%', '')
+        let  wanted_height = 0;
 
         // if its not hidden we just return normal height
         if(el_display !== 'none' && el_max_height !== '0') {
@@ -219,7 +196,7 @@ var getHeight = function(el) {
     * all in one function comparing the max-heigth to 0
      */
     toggleSlide = function(el) {
-        var el_max_height = 0;
+        let el_max_height = 0;
 
         if(el.getAttribute('data-max-height')) {
             // we've already used this before, so everything is setup
@@ -243,8 +220,8 @@ var getHeight = function(el) {
         }
     };
 
-document.getElementById('yes').addEventListener('click', function(e) {
-    toggleSlide(document.querySelector('#no'));
+document.getElementById('more-info-toggle').addEventListener('click', function(e) {
+    toggleSlide(document.querySelector('#more-info'));
 }, false);
 </script>
 
