@@ -122,10 +122,10 @@
   </div>
 <%# img-responsive %>
   <%= image_tag "cartoon.jpeg", height: 500, class: "center-block" %>
-  <div class="stripes">
-    <div class="yellow-thin-stripe"></div>
-    <div class="white-thin-stripe"></div>
-    <div class="yellow-thin-stripe"></div>
+  <div class="stripes" style="height: 45px;">
+    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
+    <%# <div class="white-thin-stripe" id="over-image" style="width: 100vw; top: 5px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div> %>
+    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; top: 25px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
   </div>
 
   <div class="info-line">

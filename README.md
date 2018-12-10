@@ -27,7 +27,6 @@ number of cart items in bold WAITING FOR JAMES
 <!-- search option -->
 
 mobile responsiveness
-no cart on sign in page so navbar is fucked
 
 sign up button on login page
 

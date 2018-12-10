@@ -34,6 +34,10 @@
       <!-- This is old (version four). If you want to upgrade, put 'fas' and use the cdn. Gem not out yet -->
       <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
       <% end %>
+    <% else %>
+      <div class="navbar-item navbar-link">
+        <i class="fa fa-shopping-cart fa-lg"></i>
+      </div>
     <% end %>
 </div>
 <div class="stripe-gap <%= "margin-bottom-80" unless @disable_top_margin %>">
