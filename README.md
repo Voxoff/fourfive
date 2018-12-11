@@ -9,7 +9,7 @@ carts guest logging
 
 <!-- the cartoon out story needs to be put in cludinary -->
 NEED
-
+the social media links
 
 FRONT
 
