@@ -13,6 +13,7 @@
     color: $yellow;
   }
 }
+
 .alert-warning {
   background: $red;
 }
@@ -21,3 +22,6 @@
   opacity: 1
 }
 
+#alert-no-margin{
+  margin: none;
+}

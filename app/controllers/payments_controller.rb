@@ -21,11 +21,7 @@ class PaymentsController < ApplicationController
       flash[:notice] = "That coupon code did not work"
       return redirect_to new_cart_payment_path
     end
-    if user.guest?
-      @address = @cart.address.build(address_params)
-    else
-      @address = user.addresses.build(address_params)
-    end
+    @address = @cart.build_address(address_params)
     flash[:notice] = "Address was invalid" unless @address.save
     if user.guest? && checkout_params[:email]
       guest_user.email = checkout_params[:email]
@@ -47,7 +43,52 @@ class PaymentsController < ApplicationController
     code_check(payments["result"])
     @cart = @cart.checkout
     # email
-    return redirect_to root_path
+    item = InvoicePrinter::Document::Item.new(
+      name: 'Web consultation',
+      quantity: nil,
+      unit: 'hours',
+      price: '$ 25',
+      tax: '$ 1',
+      amount: '$ 100'
+    )
+
+    invoice = InvoicePrinter::Document.new(
+      number: '201604030001',
+      provider_name: 'Business s.r.o.',
+      provider_tax_id: '56565656',
+      provider_tax_id2: '465454',
+      provider_street: 'Rolnicka',
+      provider_street_number: '1',
+      provider_postcode: '747 05',
+      provider_city: 'Opava',
+      provider_city_part: 'Katerinky',
+      provider_extra_address_line: 'Czech Republic',
+      purchaser_name: 'Adam',
+      purchaser_tax_id: '',
+      purchaser_tax_id2: '',
+      purchaser_street: 'Ostravska',
+      purchaser_street_number: '1',
+      purchaser_postcode: '747 70',
+      purchaser_city: 'Opava',
+      purchaser_city_part: '',
+      purchaser_extra_address_line: '',
+      issue_date: '19/03/3939',
+      due_date: '19/03/3939',
+      subtotal: '175',
+      tax: '5',
+      tax2: '10',
+      tax3: '20',
+      total: '$ 200',
+      bank_account_number: '156546546465',
+      account_iban: 'IBAN464545645',
+      account_swift: 'SWIFT5456',
+      items: [item],
+      note: 'A note...'
+    )
+    InvoicePrinter.render(
+      document: invoice
+    )
+    # return redirect_to root_path
   end
 
   private

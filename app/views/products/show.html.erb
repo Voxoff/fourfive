@@ -2,14 +2,21 @@
 <div class="container" style="margin-bottom: 70px;">
   <div class="row">
     <div class="col-sm-12 col-md-5">
-      <%= cl_image_tag(@product.photo_url, class: "image-responsive") %>
+      <%= cl_image_tag(@product.photo_url, class: "image-responsive", style: "max-width: 90%") %>
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-12 col-md-5">
-      <h2 style="font-size: 20px;"><%= @product.name %></h2>
+      <h2 class="border-bottom" style="font-size: 20px; padding-bottom: 10px;"><%= @product.name %></h2>
       <div class="product-info">
-        <p style="margin-bottom:50px; font-weight: lighter; font-size: 15px; margin-right:13%; text-align:justify">
-A hand-blended and hard-working balm that protects your skin. As your skin it the largest working organ, we’ve created a soothing, safe and natural application for it. Made with organic ingredients so it’s kind to all skin types. ContainingCoconut Oil, Shea Butter, Theobroma Cacao, Grape Seed Oil, Rosemaryand Cannabis Sativa L.        </p>
+        <div class="text lighter" style="margin-bottom:50px; font-size: 15px; margin-right:13%; text-align:justify">
+          <p>
+            A hand-blended and hard-working balm that protects your skin. As your skin it the largest working organ, we’ve created a soothing, safe and natural application for it. Made with organic ingredients so it’s kind to all skin types.
+            </p>
+            <p>
+            Containing Coconut Oil, Shea Butter, Theobroma Cacao, Grape Seed Oil, Rosemaryand Cannabis Sativa L.
+          </p>
+          <p>Size: 300mg / 0.11 oz</p>
+        </div>
       </div>
       <div class="all-btn-container show">
         <div class="button-container">
@@ -19,9 +26,9 @@ A hand-blended and hard-working balm that protects your skin. As your skin it th
             <button class="cart-button no-button" id="more">+</button>
           </div>
         </div>
-        <div class="button-container bigger">
+        <div class="button-container bigger yellow-border-hover">
           <div class="master-quantity">
-            <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "add-to-cart no-button" do %>
+            <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "flex  add-to-cart no-button" do %>
               <p id="pad-right">Buy now</p>
               <div class="vertical-line"></div>
               <p id="pound">£</p>
@@ -32,31 +39,51 @@ A hand-blended and hard-working balm that protects your skin. As your skin it th
       </div>
     </div>
   </div>
-  <div id="icon-banner">
+  <div class="icon-banner lighter">
+    <div class="column" style="padding-right: 100px;">
+      <h3 style="margin-top: 10px;">What is it?</h3>
+      <p>A cosmetic balm product for skin care.</p>
 
-    <div class="icon-card">
-      <%= image_tag "icons/natural.png", size: '90' %>
-      <p>Natural</p>
+      <h3>How to use:</h3>
+      <p>Apply on to the targeted area of your skin and rub until transparent.  For external use only.</p>
+
+      <h3>Ingredients:</h3>
+      <p>Coconut Oil</p>
+      <p>Shea Butter</p>
+      <p>Theobroma Cacao</p>
+      <p>Grape Seed Oil</p>
+      <p>Rosemary</p>
+      <p>Cannabis Sativa L.</p>
     </div>
-    <div class="icon-card">
-      <%= image_tag "icons/co2.png", size: '90' %>
-      <p>Co2</p>
-    </div>
-    <div class="icon-card">
-      <%= image_tag "icons/no-chemicals.png", size: '90' %>
-      <p>Herbicide Free</p>
-    </div>
-    <div class="icon-card">
-      <%= image_tag "icons/lab.png", size: '90' %>
-      <p>Lab Tested</p>
-    </div>
-    <div class="icon-card">
-      <%= image_tag "icons/vegetarian.png", size: '90' %>
-      <p>Natural</p>
-    </div>
-    <div class="icon-card">
-      <%= image_tag "icons/vegan.png", size: '90' %>
-      <p>Natural</p>
+    <div class="column flex">
+      <div class="sub-column">
+        <div class="icon-card">
+          <%= image_tag "icons/natural.png", size: '90' %>
+          <p>Natural</p>
+        </div>
+        <div class="icon-card">
+          <%= image_tag "icons/co2.png", size: '90' %>
+          <p>Co2</p>
+        </div>
+        <div class="icon-card">
+          <%= image_tag "icons/no-chemicals.png", size: '90' %>
+          <p>Herbicide Free</p>
+        </div>
+      </div>
+      <div class="sub-column">
+        <div class="icon-card">
+          <%= image_tag "icons/lab.png", size: '90' %>
+          <p>Lab Tested</p>
+        </div>
+        <div class="icon-card">
+          <%= image_tag "icons/vegetarian.png", size: '90' %>
+          <p>Natural</p>
+        </div>
+        <div class="icon-card">
+          <%= image_tag "icons/vegan.png", size: '90' %>
+          <p>Natural</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

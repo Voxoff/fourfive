@@ -1,8 +1,21 @@
-#icon-banner{
+.icon-banner{
+  display: flex;
+  margin-top: 50px;
+}
+
+.icon-card{
+  display: flex;
+  align-items: center;
+}
+.icons{
   display: flex;
   flex-direction: column;
 }
 
-.icon-card{
-  dislay: flex
+.column{
+  flex: 1 50%;
+}
+
+.sub-column{
+  flex: 1 0 25%;
 }

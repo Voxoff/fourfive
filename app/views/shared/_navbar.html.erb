@@ -13,8 +13,7 @@
       <li>
         <%= link_to "Learn more", education_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
       </li>
-
-            <li>
+      <li>
       <% if user_signed_in? %>
         <%= link_to t(".sign_out", default: "Logout"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
         <% else %>
@@ -36,9 +35,7 @@
     <% end %>
 
     <% else %>
-    <%= link_to new_cart_payment_path(@cart), class: "navbar-item navbar-link" do %>
-      <%= image_tag "shopping-bag.png", size: "16x10" %>
-    <% end %>
+      <%= image_tag "shopping-bag.png", size: "24x30" %>
     <% end %>
 </div>
   <div class="stripe-gap <%= @disable_top_margin ? "margin-bottom-7" : "margin-bottom-80"  %>">

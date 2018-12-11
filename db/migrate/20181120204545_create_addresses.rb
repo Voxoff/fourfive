@@ -7,7 +7,6 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.string :city
       t.string :email
-      t.references :user, foreign_key: true
       t.references :cart, foreign_key: true
 
       t.timestamps

@@ -24,23 +24,32 @@ gem 'money-rails'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'cloudinary'
+gem 'cloudinary', '1.10.1.pre.rc'
 gem 'carrierwave', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'jquery-rails'
-gem 'arctic_admin'
-# gem 'devise-guests', '~> 0.6.1'
+# gem 'arctic_admin'
+gem 'active_skin'
+
 gem 'dotenv-rails'
+gem 'invoice_printer'
+gem 'prawn'
+gem 'prawn-table'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem "letter_opener", group: :development
+  gem "letter_opener"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem "selenium-webdriver"
+  gem 'capybara'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

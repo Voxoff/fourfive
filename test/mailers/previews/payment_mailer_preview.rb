@@ -2,9 +2,9 @@
 class PaymentMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/payment_mailer/Success
-  def Success
+  def success
     user = User.first
-    PaymentMailer.Success(user)
+    PaymentMailer.success(user)
   end
 
 end

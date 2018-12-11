@@ -3,6 +3,18 @@ ActiveAdmin.register Cart do
   scope :all
   scope :orders, default: true
 
+  action_item :print, method: :get do
+    if params[:id].present?
+      cart = Cart.find(params[:id])
+      link_to 'Print Invoice', print_admin_cart_path(cart)
+    end
+  end
+
+  member_action :print, method: :get do
+    pdf = InvoicePdf.new
+    send_data pdf.render
+  end
+
   index do
     selectable_column
     id_column
@@ -22,6 +34,7 @@ ActiveAdmin.register Cart do
       end
     end
     actions name: "Actions"
+    column {|cart| link_to 'Print Invoice', print_admin_cart_path(cart) }
   end
 
 
@@ -43,7 +56,4 @@ ActiveAdmin.register Cart do
       column :created_at
       actions
     end
-
-
-
 end

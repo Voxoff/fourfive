@@ -15,7 +15,6 @@
 @import "pages/index";
 // @import "bootstrap-select";
 
-// Short term
 body{
   padding-right: 0px;
   font-family: $helvetica;
@@ -41,12 +40,6 @@ a:hover, a:focus{
     p, h4, a{
       color: $yellow !important;
     }
-    // h4{
-    //   color: $yellow !important;
-    // }
-    // a{
-    //   color: $yellow !important;
-    // }
     cursor: pointer;
   }
 }
@@ -55,12 +48,31 @@ a:hover, a:focus{
   margin-bottom: 80px;
 }
 
-// @media(min-width:1000px){
-//   .review-text{
-//     min-width: 312px;
-//   }
-// }
 
-.fourfive{
+.bold{
   font-weight: bolder;
+}
+
+.flex{
+  display: flex
+}
+
+.lighter{
+  font-weight: lighter;
+  p{
+    font-weight: lighter;
+  }
+}
+
+
+h2{
+  font-size: 20px;
+}
+
+h3{
+  font-size: 18px;
+}
+
+p{
+  font-size: 15px;
 }

@@ -76,9 +76,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  &:hover{
-    border: 1px $yellow solid;
-  }
+  // &:hover{
+  //   border: 1px $yellow solid;
+  // }
 
 
   .master-quantity{
@@ -96,7 +96,6 @@
   }
 
   .add-to-cart{
-    display: flex;
     font-size: 13px;
   }
 
@@ -139,10 +138,9 @@
   }
 }
 
-
-.show .button-container{
+.yellow-border-hover{
   &:hover{
-    border: 1px black solid !important;
+    border: 1px $yellow solid !important;
   }
 }
 

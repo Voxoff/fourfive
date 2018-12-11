@@ -57,13 +57,13 @@
               <%= link_to product_path(product), class: "yellow-hover" do %>
                 <h2><%= product.name.downcase %></h2>
               <% end %>
-              <p style="font-size: 10px; margin-top: 0px; font-weight: lighter">
+              <p class="lighter" style="font-size: 10px; margin-top: 0px;">
                 <%= product.subtitle %>
               </p>
             </span>
-            <div class="button-container bigger">
+            <div class="button-container bigger yellow-border-hover">
               <div class="master-quantity">
-                <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: product.id}, class: "add-to-cart no-button" do %>
+                <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: product.id}, class: "flex add-to-cart no-button" do %>
                   <p id="buy-now" class="yellow-hover">shop now</p>
                 <% end %>
               </div>
@@ -96,9 +96,9 @@
             <% if i == 0  %>
               <div id="accordion ">
                 <span class="yellow-hover">
-                  <p id="more-info-toggle" class="accordion-toggle more-info-toggle-class" style="font-weight: lighter;">More info...</p>
+                  <p id="more-info-toggle" class="accordion-toggle more-info-toggle-class lighter">More info...</p>
                 </span>
-                <div id="more-info" class="accordion-content default more-info-toggle-class" style="font-size:12px; font-style:italic; font-weight: lighter;">
+                <div id="more-info" class="accordion-content default more-info-toggle-class lighter" style="font-size:12px; font-style:italic;">
                   Cras malesuada ultrices augue molestie risus. Cras.
                 </div>
               </div>

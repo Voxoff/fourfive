@@ -23,7 +23,6 @@ address
 <!-- For the flip grid of reviews: do we need six? Three may look bare? Only 6 for that grid otherwise 3? -->
 
 <!-- hover on product iamges -->
-yellow stripe all the way across
 
 accrodion for reviews
 
