@@ -9,7 +9,10 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Sign ups" do
           table_for User.not_guests.order("id desc").limit(10).each do |_user|
             column(:email) { |user| link_to(user.email, admin_user_path(user)) }
-            column(:name) { |user| link_to(user.first_name + " " +   user.last_name, admin_user_path(user)) }
+            column(:created_at)
+            # if user.first_name && user.last_name
+            #   column(:name) { |user| link_to(user.full_name, admin_user_path(user)) }
+            # end
           end
         end
       end
@@ -17,8 +20,9 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Orders" do
           table_for Cart.orders.has_user.limit(10) do
-            column("Customer") { |order| link_to(order.user, admin_user_path(order.user)) }
-            column("Total") { |order| number_to_currency order.amount }
+            column("Customer") { |order| link_to(order.user.email, admin_user_path(order.user)) }
+            column("Total") { |order| number_to_currency(order.amount, unit: "£") }
+            column("Created at") { |order| order.created_at }
           end
         end
       end
@@ -26,7 +30,7 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "ActiveAdmin Demo" do
+        panel "Useful Links" do
           div do
             link_to("All current orders", admin_carts_path)
           end
@@ -34,12 +38,10 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Last 24 hours" do
+        panel "Last 24 hour Revenue" do
           div do
-            Cart.orders.has_user.map(&:amount).reduce(:+)
-          end
-          div do
-            # Cart.orders.has_user.
+            amount = Cart.orders.has_user.map(&:amount).reduce(:+)
+            number_to_currency(amount, unit: "£")
           end
         end
       end

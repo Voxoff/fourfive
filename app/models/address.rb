@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :cart, optional: true
+  belongs_to :cart
   validates :postcode, presence: true, format: { with: /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/}
   validates :first_line, presence: true
   # validates :phone_number, presence: true, numericality: {integer: true}
@@ -16,9 +16,9 @@ class Address < ApplicationRecord
   end
 
   def full_address
-    "#{self.first_line} \n \
-    #{self.second_line} \n \
-    #{self.city} \n \
-    #{self.postcode}  \n"
+    "#{self.first_line},
+    #{self.second_line},
+    #{self.city},
+    #{self.postcode} "
   end
 end

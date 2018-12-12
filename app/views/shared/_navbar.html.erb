@@ -15,10 +15,13 @@
       </li>
       <li>
       <% if user_signed_in? %>
-        <%= link_to t(".sign_out", default: "Logout"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
-        <% else %>
-          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-hd-item navbar-hd-link" %>
+        <% if current_user.admin? %>
+          <%= link_to "Admin", admin_root_path, class: "navbar-hd-item navbar-hd-link yellow-hover" %>
         <% end %>
+        <%= link_to t(".sign_out", default: "Logout"), destroy_user_session_path, method: :delete,  class: "navbar-hd-item navbar-hd-link" %>
+      <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-hd-item navbar-hd-link" %>
+      <% end %>
       </li>
     </ul>
   </div>

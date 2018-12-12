@@ -26,7 +26,6 @@ class PaymentsController < ApplicationController
     if user.guest? && checkout_params[:email]
       guest_user.email = checkout_params[:email]
     end
-    # @cart.update(status:  "")
     @checkoutId = zion
   end
 
@@ -40,55 +39,13 @@ class PaymentsController < ApplicationController
 
   def success
     payments = zion_info
-    code_check(payments["result"])
-    @cart = @cart.checkout
-    # email
-    item = InvoicePrinter::Document::Item.new(
-      name: 'Web consultation',
-      quantity: nil,
-      unit: 'hours',
-      price: '$ 25',
-      tax: '$ 1',
-      amount: '$ 100'
-    )
+    code = payments["result"]["code"]
+    code_check(code)
+    if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
+      @cart = @cart.checkout
+    end
+    redirect_to root_path
 
-    invoice = InvoicePrinter::Document.new(
-      number: '201604030001',
-      provider_name: 'Business s.r.o.',
-      provider_tax_id: '56565656',
-      provider_tax_id2: '465454',
-      provider_street: 'Rolnicka',
-      provider_street_number: '1',
-      provider_postcode: '747 05',
-      provider_city: 'Opava',
-      provider_city_part: 'Katerinky',
-      provider_extra_address_line: 'Czech Republic',
-      purchaser_name: 'Adam',
-      purchaser_tax_id: '',
-      purchaser_tax_id2: '',
-      purchaser_street: 'Ostravska',
-      purchaser_street_number: '1',
-      purchaser_postcode: '747 70',
-      purchaser_city: 'Opava',
-      purchaser_city_part: '',
-      purchaser_extra_address_line: '',
-      issue_date: '19/03/3939',
-      due_date: '19/03/3939',
-      subtotal: '175',
-      tax: '5',
-      tax2: '10',
-      tax3: '20',
-      total: '$ 200',
-      bank_account_number: '156546546465',
-      account_iban: 'IBAN464545645',
-      account_swift: 'SWIFT5456',
-      items: [item],
-      note: 'A note...'
-    )
-    InvoicePrinter.render(
-      document: invoice
-    )
-    # return redirect_to root_path
   end
 
   private
@@ -128,14 +85,14 @@ class PaymentsController < ApplicationController
     @checkoutId = @result["id"]
   end
 
-  def code_check(hash)
-    if hash["code"] =~ /^(000\.000\.|000\.100\.1|000\.[36])/
+  def code_check(code)
+    if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/
       flash[:notice] = "Thank you. Your payment has been processed."
-    elsif hash["code"] =~ /^(000\.400\.0[^3]|000\.400\.100)/
+    elsif code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       flash[:notice] = "Thank you. Your payment has been processed."
-    elsif hash["code"] =~ /^(000\.200)/
+    elsif code =~ /^(000\.200)/
       flash[:notice] = "Pending. Please wait."
-    elsif hash["code"] =~ /^(800\.400\.5|100\.400\.500)/
+    elsif code =~ /^(800\.400\.5|100\.400\.500)/
       flash[:notice] = "Waiting for confirmation/external risk. Denied for now."
     else
       flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly"

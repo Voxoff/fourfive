@@ -9,7 +9,7 @@ class Cart < ApplicationRecord
   # scope :last24, -> { where("update")}
 
   def amount
-    self.cart_items.map{|i| i.product.price}.reduce(:+)
+    self.cart_items.map{|i| i.product.price * i.quantity}.reduce(:+)
   end
 
   def checkout

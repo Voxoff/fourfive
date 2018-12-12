@@ -18,19 +18,29 @@ ActiveAdmin.register Cart do
   index do
     selectable_column
     id_column
-    column :amount
+    column :amount, sortable: :amount do |cur|
+      number_to_currency(cur.amount, unit: "£")
+    end
     column :user do |cart|
-      "Guest user" if cart.user.nil?
+      if cart.user.nil?
+        "Guest user"
+      else
+        link_to "#{cart.user.id}", admin_user_path(cart.user)
+      end
       # item "Guest", admin_user_path if user.nil?
     end
-    column "Orders", :active do |cart|
-      !cart.active?
+    column :cart_items do |cart|
+      cart.cart_items.map {|item| "#{item.product.name} x #{item.quantity}"}
     end
+    column "Orders", :active do |cart| !cart.active? end
     column :address do |cart|
+      # raise
       if cart.user
-        cart.user.addresses.order('id DESC').limit(1)
+        cart.user.addresses.order('id DESC').limit(1).first.full_address
+      elsif cart.address
+        cart.address.full_address
       else
-        cart.address
+        "No address has been added. (Payment not made)."
       end
     end
     actions name: "Actions"
@@ -38,22 +48,28 @@ ActiveAdmin.register Cart do
   end
 
 
+  show do
+    attributes_table do
+      row :id
+      row "Order", :active do |cart| !cart.active? end
+      row :created_at
+      row :updated_at
+      row :amount do |cart| number_to_currency(cart.amount, unit: "£") end
+      row "Items" do |cart|
+        cart.cart_items.map {|item| "#{item.product.name} x #{item.quantity}"}
+      end
+      cart.cart_items.each do |item|
+        row("#{item.product.name}") {item.quantity}
+      end
+    end
+    active_admin_comments
+  end
+
   permit_params :user, :active, :created_at, :updated_at
     menu priority: 4
-    config.batch_actions = true
 
     filter :username
     filter :email
     filter :created_at
 
-    permit_params :username, :email, :password
-
-    index do
-      selectable_column
-      id_column
-      column :username
-      column :email
-      column :created_at
-      actions
-    end
 end
