@@ -37,7 +37,7 @@ gem 'prawn-table'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  # gem "letter_opener"
+  gem "letter_opener"
   gem "better_errors"
   gem "binding_of_caller"
 end
