@@ -1,4 +1,9 @@
 ActiveAdmin.register Cart do
+  controller do
+    def csv_filename
+      'Order Details.csv'
+    end
+  end
 
   scope :all
   scope :orders, default: true
@@ -9,6 +14,11 @@ ActiveAdmin.register Cart do
       link_to 'Print Invoice', print_admin_cart_path(cart)
     end
   end
+
+  # member_action :export do
+  #   cart = Cart.find(params[:id])
+  #   link_to "Export to CSV", export_admin_cart_path(cart), method: :get, format: "csv"
+  # end
 
   member_action :print, method: :get do
     pdf = InvoicePdf.new
@@ -45,6 +55,7 @@ ActiveAdmin.register Cart do
     end
     actions name: "Actions"
     column {|cart| link_to 'Print Invoice', print_admin_cart_path(cart) }
+    # column {|cart| link_to 'Export CSV', export_admin_cart_path(cart), format: "csv"}
   end
 
 
@@ -72,4 +83,12 @@ ActiveAdmin.register Cart do
     filter :email
     filter :created_at
 
+
+  csv force_quotes: true, column_names: true do
+    column :address do |cart| cart.address.full_address if cart.address end
+    column(:amount) do |cart| number_to_currency(cart.amount, unit: "£") end
+    column "Items" do |cart|
+      cart.cart_items.map {|item| "#{item.product.name} x #{item.quantity}"}.join(", ")
+    end
+  end
 end

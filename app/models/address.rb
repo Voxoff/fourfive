@@ -16,9 +16,6 @@ class Address < ApplicationRecord
   end
 
   def full_address
-    "#{self.first_line},
-    #{self.second_line},
-    #{self.city},
-    #{self.postcode} "
+    "#{self.first_line}, #{self.second_line}, #{self.city}, #{self.postcode} "
   end
 end

@@ -15,7 +15,6 @@ gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.5.0'
 gem 'sass-rails'
 
-
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
@@ -29,7 +28,6 @@ gem 'carrierwave', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'jquery-rails'
-# gem 'arctic_admin'
 gem 'active_skin'
 
 gem 'dotenv-rails'
@@ -39,7 +37,7 @@ gem 'prawn-table'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem "letter_opener"
+  # gem "letter_opener"
   gem "better_errors"
   gem "binding_of_caller"
 end
