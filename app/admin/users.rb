@@ -17,30 +17,30 @@ ActiveAdmin.register User do
   show title: :first_name do
     panel "Order History" do
       table_for(user.orders) do
-        column("Order", sortable: :id) do |order|
-          link_to "##{order.id}", admin_order_path(order)
+
+        column("Order", sortable: :id) do |cart|
+          link_to "Order", admin_cart_path(cart)
         end
-        # column("State") { |order| status_tag(order.state) }
-        column("Date", sortable: :checked_out_at) do |order|
-          pretty_format(order.checked_out_at)
+        # column("State") { |cart| status_tag(cart.state) }
+        column("Date", sortable: :updated_at) do |cart|
+          pretty_format(cart.updated_at)
         end
-        column("Total") { |order| number_to_currency order.amount }
+        column("Total") { |cart| number_to_currency cart.amount }
       end
     end
 
     panel "Address Book" do
-      table_for(user.addresses) do
-        column("Fullname") do |a|
-          a.user.full_name
+      table_for(user.carts) do
+        column("Address") do |cart|
+          if cart.address
+            div cart.address.first_line
+            div cart.address.second_line
+            div cart.address.city
+            div cart.address.postcode
+          end
         end
-        column("Address") do |a|
-          div a.first_line
-          div a.second_line
-          div a.city
-          div a.postcode
-        end
-        column :city
-        column :postcode
+        column :city do |cart| cart.address.city if cart.address end
+        column :postcode do |cart| cart.address.postcode if cart.address end
       end
     end
     active_admin_comments

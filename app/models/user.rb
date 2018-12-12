@@ -18,7 +18,7 @@ class User < ApplicationRecord
   # user has many carts, all false active, with cart items
 
   def orders
-    self.carts.where(active: false).map(&:cart_items)
+    self.carts.where(active: false)
   end
 
   def self.find_for_facebook_oauth(auth)
