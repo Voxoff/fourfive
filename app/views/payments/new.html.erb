@@ -58,7 +58,11 @@
               <td class="align-center"><%= image_tag item.product.photo_url, height: "30px" %></td>
               <td class="align-center"><%= item.product.name %></td>
               <td class="align-right"><%= item.product.price %></td>
-              <td class="align-right"><%= item.quantity %></td>
+              <td class="align-right">
+                <i class="fas fa-plus"></i>
+                <%= item.quantity %>
+                <i class="fas fa-minus"></i>
+              </td>
               <td class="align-right"><%= item.line_cost %></td>
               <td class="delete"><%= link_to "", "#", class: "fas fa-times-circle"%></td>
             </tr>
@@ -84,6 +88,13 @@
           <%= link_to "checkout", "#", class: "simple-btn"%>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-5 col-sm-6">
+      <div class="qualifier">If you are not satisfied with your purchase you may return it for a refund within one year of purchase. Please use the following links to read our <%= link_to "privacy policy", privacy_policy_path %> and <%= link_to "terms and conditions", "#" %>.</div>
     </div>
   </div>
 </div>
