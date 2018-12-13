@@ -1,33 +1,22 @@
-// .product-card{
-//   width: 300px;
-//   border-radius: 25px;
-//   box-shadow: 2px 2px 2px black;
-//   padding: 40px;
-//   height: 100%;
-
-//   .top {
-//     height: 60%;
-//   }
-//   .bottom{
-//     background-color: #303030;
-//     height: 40%;
-//     .bottom-bar{
-//       display: flex;
-//       justify-content: center;
-//     }
-//   }
-
-// }
-
 .grey{
   color: $light-grey;
 }
 
+.yellow-box{
+  background-color: $yellow;
+  height: inherit;
+  width: 50px;
+}
+
+.checkout-box{
+  border-left: 1px solid $charcoal;
+  flex-grow: 1;
+}
+
 .summary{
   border: 1px solid grey;
-  border-radius: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .flex-column{

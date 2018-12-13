@@ -37,61 +37,32 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <h3>Order Details</h3>
-      <div class="cart-form">
-        <%= simple_form_for :checkout, url: checkout_cart_payments_path do |f| %>
-          <%= f.input :first_name, required: true %>
-          <%= f.input :last_name, required: true %>
-          <%= f.input :first_line,  label: "First line", required: true %>
-          <%= f.input :second_line, required: false, label: "Second line" %>
-          <%= f.input :city, required: true, label: "City" %>
-          <%= f.input :postcode, required: true, label: "Postcode" %>
-          <%#= f.input :phone_number, required: true, label: "Phone number" %>
-          <%= f.input :email, required: true, label: "Email", required: true %>
-          <%= f.input :coupon, required: false, label: "Coupon" %>
-
+    <div class="col-sm-offset-2 col-sm-8">
+     <h3>your <span class="bold">fourfive</span> basket</h3>
+      <div>
+        HEADER
       </div>
-    </div>
-    <div class="col-sm-8">
       <div class="summary">
-        <div class="flex-column names">
-          <h4>Product Name</h4>
-          <% @cart_items.each do |cart_item| %>
-            <p>
-              <%= cart_item.product.name %>
-            </p>
-          <% end %>
-        </div>
-        <div class="flex-column price">
-          <h4>Price per unit</h4>
-          <% @cart_items.each do |cart_item| %>
-            <p>
-              <%= cart_item.product.price %>
-            </p>
-          <% end %>
-        </div>
-        <div class="flex-column quantity">
-          <h4>Quantity</h4>
-          <% @cart_items.each do |cart_item| %>
-            <p>
-              <%= cart_item.quantity %>
-            </p>
-          <% end %>
-        </div>
-        <div class="flex-column total">
-          <h4>Total Cost</h4>
-          <% @cart_items.each do |cart_item| %>
-            <p>
-              <%= cart_item.product.price %>
-            </p>
-          <% end %>
-        </div>
+
+        <% @cart_items.each do |item| %>
+            <div class="yellow-box">
+            </div>
+            <div class="checkout-box ajflex">
+              <%= item.product.name %>
+            </div>
+            <div class="checkout-box ajflex">
+              <%= item.product.price %>
+            </div>
+            <div class="checkout-box ajflex">
+              <%= item.quantity %>
+            </div>
+            <div class="checkout-box ajflex">
+              <%= item.line_cost %>
+            </div>
+        <% end %>
       </div>
       <div class="purchase">
-        <%= f.submit "Purchase", class: "btn btn-lg btn-danger" %>
-        <% end %>
-        <%#= link_to "Purchase", checkout_cart_payments_path, class: "btn btn-lg btn-danger"%>
+        <%= link_to "Purchase", confirm_cart_payments_path, class: "btn btn-lg btn-primary"%>
       </div>
     </div>
   </div>

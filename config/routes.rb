@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create] do
       collection do
         post 'checkout'
+        get 'confirm'
         get 'success'
       end
     end

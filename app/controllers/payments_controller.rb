@@ -2,6 +2,10 @@ class PaymentsController < ApplicationController
   include CartControllable
   before_action :get_cart
 
+  def confirm
+
+  end
+
   def checkout
     @amount = @cart.amount
     @cart_items = @cart.cart_items

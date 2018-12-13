@@ -57,6 +57,16 @@ a:hover, a:focus{
   display: flex
 }
 
+.column{
+  flex-direction: column;
+}
+
+.ajflex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .lighter{
   font-weight: lighter;
   p{
