@@ -9,6 +9,7 @@ ActiveAdmin.register Cart do
   scope :orders, default: true
 
   action_item :print, method: :get do
+    # raise
     if params[:id].present?
       cart = Cart.find(params[:id])
       link_to 'Print Invoice', print_admin_cart_path(cart)
@@ -20,9 +21,19 @@ ActiveAdmin.register Cart do
   #   link_to "Export to CSV", export_admin_cart_path(cart), method: :get, format: "csv"
   # end
 
-  member_action :print, method: :get do
-    pdf = InvoicePdf.new
-    send_data pdf.render
+  member_action :print do
+    # raise
+    amount = resource.amount
+    address = resource.address
+    cart_items = resource.cart_items
+    date = resource.updated_at
+    if amount && address && cart_items && date
+      pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date)
+      send_data pdf.render
+    else
+      flash[:notice] = "Error"
+          redirect_to admin_carts_path
+    end
   end
 
   index do

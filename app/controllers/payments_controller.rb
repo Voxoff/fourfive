@@ -45,7 +45,6 @@ class PaymentsController < ApplicationController
       @cart = @cart.checkout
     end
     redirect_to root_path
-
   end
 
   private
@@ -55,7 +54,7 @@ class PaymentsController < ApplicationController
   end
 
   def address_params
-    params.require(:checkout).permit(:first_line, :second_line, :postcode, :city)
+    params.require(:checkout).permit(:first_line, :second_line, :postcode, :city, :first_name, :last_name)
   end
 
   def coupons

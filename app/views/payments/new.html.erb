@@ -41,6 +41,8 @@
       <h3>Order Details</h3>
       <div class="cart-form">
         <%= simple_form_for :checkout, url: checkout_cart_payments_path do |f| %>
+          <%= f.input :first_name, required: true %>
+          <%= f.input :last_name, required: true %>
           <%= f.input :first_line,  label: "First line", required: true %>
           <%= f.input :second_line, required: false, label: "Second line" %>
           <%= f.input :city, required: true, label: "City" %>

@@ -1,6 +1,34 @@
 class InvoicePdf < Prawn::Document
-  def initialize
+  def initialize(attributes)
     super
+    @address = attributes[:address]
+    @amount = attributes[:amount]
+    @date = attributes[:date]
+    @cart_items = attributes[:cart_items]
+    invoice_data
+    create
+  end
+
+  def invoice_data
+    @invoice_services_data = [["Item", "Description", "Unit Cost", "Quantity", "Line Total"]]
+    @cart_items.each do |item|
+      @invoice_services_data << ["#{item.product.name}",
+        "#{item.product.subtitle}",
+        "#{item.product.price}",
+        "#{item.quantity} ",
+        "#{item.line_cost} "]
+    end
+    @invoice_terms_data = [["Terms"], ["Payable upon receipt"]]
+    @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive"]]
+    @invoice_services_totals_data = [
+      ["Total", "£#{@amount}"],
+      ["Amount Paid", "£#{@amount}"],
+      ["Amount Due", "£0.00 GBP"]
+    ]
+    @invoice_header_data = [ ["Invoice #", "001"], ["Invoice Date", "December 10, 2018"], ["Amount Due", "£0.00 GBP"]]
+  end
+
+  def create
     logopath = 'logo.png'
     initial_y = cursor
     initialmove_y = 5
@@ -26,6 +54,9 @@ class InvoicePdf < Prawn::Document
     last_measured_y = cursor
     move_cursor_to bounds.height
 
+    # logopath =  "#{Rails.root}/app/assets/images/small_logo.png"
+    # image open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543757174/eb8bk1ntavsaotcdmui0.png"), :vposition => :top
+
     # image logopath, :width => 215, :position => :right
 
     move_cursor_to last_measured_y
@@ -36,21 +67,15 @@ class InvoicePdf < Prawn::Document
 
     text_box " ", :at => [address_x,  cursor]
     move_down lineheight_y
-    text_box "Client Contact Name", :at => [address_x,  cursor]
+    text_box @address.full_name, :at => [address_x,  cursor]
     move_down lineheight_y
     text_box "4321 Some Street Suite", :at => [address_x,  cursor]
     move_down lineheight_y
-    text_box "London, N10AF", :at => [address_x,  cursor]
+    text_box @address.city_and_postcode, :at => [address_x,  cursor]
 
     move_cursor_to last_measured_y
 
-    invoice_header_data = [
-      ["Invoice #", "001"],
-      ["Invoice Date", "December 10, 2018"],
-      ["Amount Due", "£3,200.00 GBP"]
-    ]
-
-    table(invoice_header_data, :position => invoice_header_x, :width => 215) do
+    table(@invoice_header_data, :position => invoice_header_x, :width => 215) do
       style(row(0..1).columns(0..1), :padding => [1, 5, 1, 5], :borders => [])
       style(row(2), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
       style(column(1), :align => :right)
@@ -60,13 +85,7 @@ class InvoicePdf < Prawn::Document
 
     move_down 45
 
-    invoice_services_data = [
-      ["Item", "Description", "Unit Cost", "Quantity", "Line Total"],
-      ["Service Name", "Service Description", "320.00", "10", "£3,200.00"],
-      [" ", " ", " ", " ", " "]
-    ]
-
-    table(invoice_services_data, :width => bounds.width) do
+    table(@invoice_services_data, :width => bounds.width) do
       style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
       style(row(0), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
       style(row(0).columns(0..-1), :borders => [:top, :bottom])
@@ -80,13 +99,7 @@ class InvoicePdf < Prawn::Document
 
     move_down 1
 
-    invoice_services_totals_data = [
-      ["Total", "£3,200.00"],
-      ["Amount Paid", "-0.00"],
-      ["Amount Due", "£3,200.00 GBP"]
-    ]
-
-    table(invoice_services_totals_data, :position => invoice_header_x, :width => 215) do
+    table(@invoice_services_totals_data, :position => invoice_header_x, :width => 215) do
       style(row(0..1).columns(0..1), :padding => [1, 5, 1, 5], :borders => [])
       style(row(0), :font_style => :bold)
       style(row(2), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
@@ -97,36 +110,16 @@ class InvoicePdf < Prawn::Document
 
     move_down 25
 
-    invoice_terms_data = [
-      ["Terms"],
-      ["Payable upon receipt"]
-    ]
-
-    table(invoice_terms_data, :width => 275) do
+    table(@invoice_terms_data, :width => 275) do
       style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
       style(row(0).columns(0), :font_style => :bold)
     end
 
     move_down 15
 
-    invoice_notes_data = [
-      ["Notes"],
-      ["Thank you for doing business with fourfive"]
-    ]
-
-    table(invoice_notes_data, :width => 275) do
+    table(@invoice_notes_data, :width => 275) do
       style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
       style(row(0).columns(0), :font_style => :bold)
     end
   end
 end
-
-
-# require 'rubygems'
-# require 'prawn'
-
-# Prawn::Document.generate("invoice.self") do |pdf|
-
-
-
-# end

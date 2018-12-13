@@ -46,28 +46,36 @@
 }
 
 .graphics{
-    background-color: $yellow;
-    #for-the-active{
-      text-align: center;
-      font-weight: bolder;
-      margin-bottom: 18px;
-      margin-top: -30px;
-    }
+  background-color: $yellow;
+  #for-the-active{
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 18px;
+    margin-top: -30px;
+  }
 
-    .graphic-icons{
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: -15px;
-      padding-top: 10px;
-      p{
-        max-width: 200px;
-      }
-      .how-it-works-text{
-        text-align: center;
-        margin-top: 20px;
-      }
+  .graphic-icons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -15px;
+    padding-top: 10px;
+    p{
+      max-width: 200px;
     }
+    .how-it-works-text{
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
 }
+
+.our-story{
+  color: pink;
+  text-align: center;
+  margin: 40px auto;
+  margin-bottom: 10%;
+}
+
 // Mobile
 @media(max-width:750px){
   .product-info{
@@ -187,9 +195,7 @@ select {
 .accordion-toggle {cursor: pointer;}
 .accordion-content {display: none;}
 .accordion-content.default {display: block;}
-#2more-info {
-    display: none;
-}
+
 
 // Override bootstrap just for the homepage, but maybe everything??
 .product-info{

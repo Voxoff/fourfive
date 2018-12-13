@@ -31,7 +31,6 @@ gem 'jquery-rails'
 gem 'active_skin'
 
 gem 'dotenv-rails'
-gem 'invoice_printer'
 gem 'prawn'
 gem 'prawn-table'
 

@@ -16,6 +16,18 @@ class Address < ApplicationRecord
   end
 
   def full_address
-    "#{self.first_line}, #{self.second_line}, #{self.city}, #{self.postcode} "
+    if self.second_line
+      "#{self.first_line}, #{self.second_line}, #{self.city}, #{self.postcode} "
+    else
+      "#{self.first_line}, #{self.city}, #{self.postcode} "
+    end
+  end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}" if self.first_name && self.last_name
+  end
+
+  def city_and_postcode
+    "#{self.city}, #{self.postcode}"
   end
 end
