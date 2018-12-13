@@ -77,16 +77,12 @@
       </table>
       <div class="cart-actions">
         <div class="cart-actions-left">
-
+          <%= link_to "continue shopping", "#", class: "simple-btn"%>
         </div>
         <div class="cart-actions-right">
-          <%= button_to "UPDATE BASKET" "#", class: "flex add-to-cart no-button yellow-hover"%>
-          <%= button_to "CHECKOUT", "#", class: "flex add-to-cart no-button yellow-hover"%>
+          <%= link_to "update basket", "#", class: "simple-btn"%>
+          <%= link_to "checkout", "#", class: "simple-btn"%>
         </div>
-      </div>
-
-      <div class="purchase">
-        <%= link_to "Purchase", confirm_cart_payments_path, class: "btn btn-lg btn-primary"%>
       </div>
     </div>
   </div>

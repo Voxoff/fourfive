@@ -73,9 +73,22 @@ tfoot td {
 .delete {
   color: $yellow;
   text-align: center;
-  border-left: none;
 }
 
-.no-border {
-  border-right: none;
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px -16px;
+}
+
+.cart-actions-left {
+  display: flex;
+}
+
+.cart-actions-right {
+  display: flex;
+}
+
+table {
+  margin: 0 !important;
 }
