@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_121514) do
+ActiveRecord::Schema.define(version: 2018_12_14_191949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_121514) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "third_line"
     t.index ["cart_id"], name: "index_addresses_on_cart_id"
   end
 
@@ -61,18 +62,8 @@ ActiveRecord::Schema.define(version: 2018_12_13_121514) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "coupon"
     t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
-  create_table "coupons", force: :cascade do |t|
-    t.float "amount", default: 0.0
-    t.integer "limit", default: 0
-    t.date "expiration"
-    t.string "code"
-    t.boolean "percentage", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "used", default: 0, null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|

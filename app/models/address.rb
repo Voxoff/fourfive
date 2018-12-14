@@ -16,18 +16,14 @@ class Address < ApplicationRecord
   end
 
   def full_address
-    if self.second_line
-      "#{self.first_line}, #{self.second_line}, #{self.city}, #{self.postcode} "
-    else
-      "#{self.first_line}, #{self.city}, #{self.postcode} "
-    end
+    [self.first_line, self.second_line, self.third_lineself.city, self.postcode].compact.join(", ")
   end
 
   def full_name
-    "#{self.first_name} #{self.last_name}" if self.first_name && self.last_name
+    [self.first_name, self.last_name].compact.join(" ")
   end
 
   def city_and_postcode
-    "#{self.city}, #{self.postcode}"
+    [self.city, self.postcode].compact.join(" ")
   end
 end

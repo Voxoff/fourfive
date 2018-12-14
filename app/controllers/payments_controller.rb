@@ -7,31 +7,21 @@ class PaymentsController < ApplicationController
   end
 
   def checkout
-
     @amount = @cart.amount
     @cart_items = @cart.cart_items
     user = current_or_guest_user
-    coupon = checkout_params[:coupon]
-    if @cart_items.empty?
-      flash[:notice] = "You need to put items in your cart in order to buy them!"
-      return redirect_to root_path
-    elsif user.cart != @cart
+    verify_coupon(checkout_params[:coupon])
+    check_empty_cart()
+    if user.cart != @cart
       flash[:notice] = "Error!"
       return redirect_to root_path
-    end
-    if coupon.present? && coupons.include?(coupon)
-      flash[:notice] = "Coupon successfully applied."
-      @amount = @amount.to_f * 0.9
-    elsif coupon.present? && !coupons.include?(coupon)
-      flash[:notice] = "That coupon code did not work"
-      return redirect_to new_cart_payment_path
     end
     @address = @cart.build_address(address_params)
     flash[:notice] = "Address was invalid" unless @address.save
     if user.guest? && checkout_params[:email]
       guest_user.email = checkout_params[:email]
     end
-    @checkoutId = zion
+    @checkoutId = zion()
   end
 
   def new
@@ -59,11 +49,31 @@ class PaymentsController < ApplicationController
   end
 
   def address_params
-    params.require(:checkout).permit(:first_line, :second_line, :postcode, :city, :first_name, :last_name)
+    params.require(:checkout).permit(:first_line, :second_line, :third_line, :postcode, :city, :first_name, :last_name)
+  end
+
+  def check_empty_cart
+    if @cart_items.empty?
+      flash[:notice] = "You need to put items in your cart in order to buy them!"
+      return redirect_to root_path
+    end
   end
 
   def coupons
     ["DOMDAY", "COUPON"]
+  end
+
+  def verify_coupon(coupon)
+    if coupon.present?
+      if coupons.include?(coupon)
+        flash[:notice] = "Coupon successfully applied."
+        @amount = @amount.to_f * 0.9
+      elsif !coupons.include?(coupon)
+        flash[:notice] = "That coupon code did not work"
+        return redirect_to new_cart_payment_path
+      end
+    end
+    true
   end
 
   def success_params

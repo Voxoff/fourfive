@@ -21,4 +21,19 @@ class Cart < ApplicationRecord
     user_id = self.user_id
     self.class.create!(user_id: user_id)
   end
+
+  def coupons
+    ["DOMDAY", "COUPON"]
+  end
+
+  # def verify_coupon?(coupon, amount)
+  #     if coupons.include?(coupon)
+  #       amount = amount.to_f * 0.9
+  #     elsif !coupons.include?(coupon)
+  #       flash[:notice] = "That coupon code did not work"
+  #       return redirect_to new_cart_payment_path
+  #     end
+  #   end
+  #   amount
+  # end
 end
