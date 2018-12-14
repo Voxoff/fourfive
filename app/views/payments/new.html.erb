@@ -59,9 +59,13 @@
               <td class="align-center"><%= item.product.name %></td>
               <td class="align-right"><%= item.product.price %></td>
               <td class="align-right">
-                <i class="fas fa-plus"></i>
+                <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
                 <%= item.quantity %>
-                <i class="fas fa-minus"></i>
+                <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
+                  <i class="fas fa-minus"></i>
+                <% end %>
               </td>
               <td class="align-right"><%= item.line_cost %></td>
               <td class="delete"><%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%></td>
