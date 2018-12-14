@@ -49,7 +49,18 @@ input:-webkit-autofill {
 }
 
 .cart-form{
+  margin-bottom: 24px;
   label{
     color: black;
+  }
+  .section-break {
+    margin-bottom: 32px;
+  }
+
+  #country-select {
+    margin-bottom: 16px;
+  }
+  #shipping-btn {
+    margin-top: 8px;
   }
 }
