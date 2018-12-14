@@ -60,8 +60,9 @@ input:-webkit-autofill {
   #country-select {
     margin-bottom: 16px;
   }
-  #shipping-btn {
-    margin-top: 8px;
+  .shipping-buttons {
+    justify-content: space-between;
+    margin-top: 24px;
   }
   .shipping-options{
     background-color: rgba(255,230,0, 0.3);
@@ -89,6 +90,16 @@ input:-webkit-autofill {
     }
     p{
       margin: 0;
+    }
+  }
+}
+
+@media (max-width: 767px){
+  .shipping-buttons {
+    flex-direction: column-reverse;
+    align-items: center;
+    .simple-btn {
+      margin-bottom: 8px;
     }
   }
 }
