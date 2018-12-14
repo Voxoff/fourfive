@@ -64,7 +64,7 @@
                 <i class="fas fa-minus"></i>
               </td>
               <td class="align-right"><%= item.line_cost %></td>
-              <td class="delete"><%= link_to "", "#", class: "fas fa-times-circle"%></td>
+              <td class="delete"><%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%></td>
             </tr>
           <% end %>
         </tbody>
