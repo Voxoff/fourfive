@@ -12,6 +12,10 @@ class Cart < ApplicationRecord
     self.cart_items.map{|i| i.product.price * i.quantity}.reduce(:+)
   end
 
+  def quantity
+    self.cart_items.map{|i| i.quantity}.reduce(:+)
+  end
+
   def checkout
     self.update(active: false)
     user_id = self.user_id

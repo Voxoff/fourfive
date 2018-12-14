@@ -1,0 +1,12 @@
+.simple-btn {
+  border: 1px solid black;
+  padding: 10px 29px;
+  font-weight: bold;
+  color: black;
+  font-size: 15px;
+}
+
+.simple-btn:hover {
+  border-color: $yellow;
+  color: black;
+}
