@@ -62,13 +62,7 @@
                 <%= product.subtitle %>
               </p>
             </span>
-            <div class="button-container bigger yellow-border-hover">
-              <div class="master-quantity">
-                <%= link_to product_path(product), class: "flex add-to-cart no-button" do %>
-                  <p id="buy-now" class="yellow-hover">shop now</p>
-                <% end %>
-              </div>
-            </div>
+            <%= link_to "Shop now", product_path(product), class: "simple-btn"%>
           </div>
         </div>
       </div>
