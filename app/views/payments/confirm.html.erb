@@ -57,10 +57,31 @@
           <%= f.input :coupon, required: false, label: "Coupon" %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-4">
+          <h4>Shipping Options</h4>
+            <div class="shipping-options">
+              <div class="top-left">
+                <i class="fas fa-truck"></i>
+              </div>
+              <div class="contents">
+                <p class="space-beneath"><strong>FREE SHIPPING ON ORDERS OVER 25.00 GBP</strong></p>
+                <% if @cart.amount.to_i > 25 %>
+                  <p><strong>You qualify for free shipping!</strong></p>
+                <% else %>
+                  <p>Just add <strong><%= number_with_precision(25.00 - @cart.amount.to_i, precision: 2) %> GBP</strong> to your cart to qualify</p>
+                <% end %>
+              </div>
+            </div>
+          <%=  %>
+        </div>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-4">
+          <h4>Terms and Conditions</h4>
+        </div>
+      </div>
       <div class="ajflex">
           <%= f.submit "Purchase", class: "simple-btn", id: "shipping-btn" %>
       </div>
     <% end %>
   </div>
-
 </div>

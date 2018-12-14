@@ -63,4 +63,32 @@ input:-webkit-autofill {
   #shipping-btn {
     margin-top: 8px;
   }
+  .shipping-options{
+    background-color: rgba(255,230,0, 0.3);
+    margin-top: 32px;
+    position: relative;
+    .contents {
+      padding: 24px 32px;
+      .space-beneath {
+        margin-bottom: 16px;
+      }
+    }
+    .top-left {
+      position: absolute;
+      margin: 0;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background-color: white;
+      border: 3px solid $yellow;
+      top: -25px;
+      left: -25px;
+    }
+    p{
+      margin: 0;
+    }
+  }
 }
