@@ -29,14 +29,14 @@ gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'jquery-rails'
 gem 'active_skin'
+gem 'postmark-rails'
 
-gem 'dotenv-rails'
 gem 'prawn'
 gem 'prawn-table'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem "letter_opener"
+  # gem "letter_opener"
   gem "better_errors"
   gem "binding_of_caller"
 end
@@ -45,6 +45,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
   gem "selenium-webdriver"
   gem 'capybara'
   gem 'listen', '~> 3.0.5'
