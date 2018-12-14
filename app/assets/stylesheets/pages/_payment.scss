@@ -75,27 +75,64 @@ tfoot td {
   text-align: center;
 }
 
-.cart-actions {
-  display: flex;
-  justify-content: space-between;
-  margin: 32px -16px;
-}
-
-.cart-actions-left {
-  display: flex;
-}
-
-.cart-actions-right {
-  display: flex;
-}
-
-table {
-  margin: 0 !important;
-}
-
 .qualifier {
-  margin-bottom: 32px;
+  margin: 16px 0;
   border: 1px dotted black;
   padding: 16px;
   font-size: 12px;
+}
+
+.cart-button-margin {
+  margin: 4px 8px;
+}
+
+.cart-actions {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 -16px;
+  }
+
+  .cart-actions-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-actions-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+@media (min-width: 768px) {
+  .cart-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cart-actions-left {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cart-actions-right {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+  }
+
+  .cart-button-margin {
+  margin: 0 16px 16px;
+  }
+}
+
+@media (max-width: 767px){
+  table {
+    margin: 24px 0;
+  }
+  h3 {
+    margin-top: -24px;
+  }
 }
