@@ -35,35 +35,66 @@
     <% end %>
 </div>
 
+<!-- Styled form -->
 <div class="container">
   <div class="row">
-    <div class="col-sm-offset-2 col-sm-8">
-     <h3>your <span class="bold">fourfive</span> basket</h3>
-      <div>
-        HEADER
+    <div class="col-sm-offset-1 col-sm-10">
+      <h3 class="basket-header">your <span class="bold">fourfive</span> basket</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |item| %>
+            <tr>
+              <td class="yellow-box"></td>
+              <td class="align-center"><%= image_tag item.product.photo_url, height: "30px" %></td>
+              <td class="align-center"><%= item.product.name %></td>
+              <td class="align-right"><%= item.product.price %></td>
+              <td class="align-right">
+                <i class="fas fa-plus"></i>
+                <%= item.quantity %>
+                <i class="fas fa-minus"></i>
+              </td>
+              <td class="align-right"><%= item.line_cost %></td>
+              <td class="delete"><%= link_to "", "#", class: "fas fa-times-circle"%></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="ft-border-bold">Total</td>
+            <td class="ft-border-bold"><%= @cart.quantity %></td>
+            <td class="ft-border-bold"><%= @cart.amount %></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="cart-actions">
+        <div class="cart-actions-left">
+          <%= link_to "continue shopping", "#", class: "simple-btn cart-button-margin"%>
+        </div>
+        <div class="cart-actions-right">
+          <%= link_to "update basket", "#", class: "simple-btn cart-button-margin"%>
+          <%= link_to "checkout", "#", class: "simple-btn cart-button-margin"%>
+        </div>
       </div>
-      <div class="summary">
-
-        <% @cart_items.each do |item| %>
-            <div class="yellow-box">
-            </div>
-            <div class="checkout-box ajflex">
-              <%= item.product.name %>
-            </div>
-            <div class="checkout-box ajflex">
-              <%= item.product.price %>
-            </div>
-            <div class="checkout-box ajflex">
-              <%= item.quantity %>
-            </div>
-            <div class="checkout-box ajflex">
-              <%= item.line_cost %>
-            </div>
-        <% end %>
-      </div>
-      <div class="purchase">
-        <%= link_to "Purchase", confirm_cart_payments_path, class: "btn btn-lg btn-primary"%>
-      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-5 col-sm-6">
+      <div class="qualifier">If you are not satisfied with your purchase you may return it for a refund within one year of purchase. Please use the following links to read our <%= link_to "privacy policy", privacy_policy_path %> and <%= link_to "terms and conditions", "#" %>.</div>
     </div>
   </div>
 </div>
