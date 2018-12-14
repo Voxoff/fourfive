@@ -6,18 +6,21 @@ bullet gem for n + 1
 
 zion upgrade
 emails
-invoices
 xero
 
+SIDEKIQ
 
 NEED
-the social media links
 
 Images
-
+new image for front
 
 FRONT
-
+responsive banner
+tweak cards products
+check font awesome
+check our story
+change admin logo
 product show
 checkout
 address
@@ -62,9 +65,7 @@ sign up button on login page
 
 
 ON YOU
-•	Take grey background off ‘shop now’ buttons ??
 •	When you hover over image or title – the illustration becomes photograph of person (need a testimonial section with just names writing in)
-	•	Let’s create a button at the bottom of the ‘your stories’ section ‘tell us your experience’ – links to a new page where they can fill in details (name, title, activity/ sport of choice, your story)
 
   •	James to make icons for bottom bar and write copy.
 
@@ -207,3 +208,11 @@ All of our products are sold as food supplements and not intended to diagnose, c
 
 	•	Henry from Zion pay should have a list of requirements that the banks will ask for such as displaying the Visa and Mastercard logo.
 
+
+EASY THINGS FOR SAM ONCE STYLE DONE
+
+look at friendly_id gem. can we do it with underscore or -? for url
+image stretch?
+footer text
+bullet gem for n + 1
+Emails?
