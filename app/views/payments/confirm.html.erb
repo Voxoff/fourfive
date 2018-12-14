@@ -79,8 +79,13 @@
           <h4>Terms and Conditions</h4>
         </div>
       </div>
-      <div class="ajflex">
-          <%= f.submit "Purchase", class: "simple-btn", id: "shipping-btn" %>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+          <div class="flex shipping-buttons">
+              <%= link_to "Back to cart", :back, class: "simple-btn" %>
+              <%= f.submit "Purchase", class: "simple-btn", id: "shipping-btn" %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
