@@ -9,15 +9,17 @@ emails
 xero
 SIDEKIQ
 
-
 NEED
-the social media links
 
 Images
-
+new image for front
 
 FRONT
-
+responsive banner
+tweak cards products
+check font awesome
+check our story
+change admin logo
 product show
 checkout
 address

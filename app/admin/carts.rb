@@ -5,6 +5,14 @@ ActiveAdmin.register Cart do
     end
   end
 
+  def display_name
+    "orders"
+  end
+  index :title => "Orders"
+
+
+
+
   scope :all
   scope :orders, default: true
 
@@ -103,3 +111,4 @@ ActiveAdmin.register Cart do
     end
   end
 end
+
