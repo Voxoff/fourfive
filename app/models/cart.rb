@@ -3,6 +3,7 @@ class Cart < ApplicationRecord
   belongs_to :user, required: false
   has_many :cart_items, dependent: :destroy
   has_one :address
+  validates :status, inclusion: { in: %w(active inactive pending) }
 
   scope :orders, -> { where(active: false)}
   scope :has_user, -> { where(user: !nil ) }
@@ -22,9 +23,9 @@ class Cart < ApplicationRecord
     self.class.create!(user_id: user_id)
   end
 
-  def coupons
-    ["DOMDAY", "COUPON"]
-  end
+  # def coupons
+  #   ["DOMDAY", "COUPON"]
+  # end
 
   # def verify_coupon?(coupon, amount)
   #     if coupons.include?(coupon)

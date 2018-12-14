@@ -1,28 +1,9 @@
 ActiveAdmin.register Cart do
-  controller do
-    def csv_filename
-      'Order Details.csv'
-    end
-  end
-
-  def display_name
-    "orders"
-  end
-  index :title => "Orders"
-
-
 
 
   scope :all
   scope :orders, default: true
 
-  action_item :print, method: :get do
-    # raise
-    if params[:id].present?
-      cart = Cart.find(params[:id])
-      link_to 'Print Invoice', print_admin_cart_path(cart)
-    end
-  end
 
   # member_action :export do
   #   cart = Cart.find(params[:id])
@@ -30,7 +11,6 @@ ActiveAdmin.register Cart do
   # end
 
   member_action :print do
-    # raise
     amount = resource.amount
     address = resource.address
     cart_items = resource.cart_items
@@ -40,7 +20,7 @@ ActiveAdmin.register Cart do
       send_data pdf.render
     else
       flash[:notice] = "Error"
-          redirect_to admin_carts_path
+      redirect_to admin_carts_path
     end
   end
 

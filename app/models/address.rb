@@ -16,14 +16,20 @@ class Address < ApplicationRecord
   end
 
   def full_address
-    [self.first_line, self.second_line, self.third_lineself.city, self.postcode].compact.join(", ")
+    nice_print([self.first_line, self.second_line, self.third_line, self.city, self.postcode])
   end
 
   def full_name
-    [self.first_name, self.last_name].compact.join(" ")
+    nice_print([self.first_name, self.last_name])
   end
 
   def city_and_postcode
-    [self.city, self.postcode].compact.join(" ")
+    nice_print([self.city, self.postcode])
+  end
+
+  private
+
+  def nice_print(input)
+    input.select{|i| i.present? }.join(", ")
   end
 end
