@@ -25,7 +25,7 @@ ActiveAdmin.register User do
         column("Date", sortable: :updated_at) do |cart|
           pretty_format(cart.updated_at)
         end
-        column("Total") { |cart| number_to_currency cart.amount }
+        column("Total") { |cart| number_to_currency(cart.amount, unit: "£") }
       end
     end
 

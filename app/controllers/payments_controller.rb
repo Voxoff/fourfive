@@ -7,6 +7,7 @@ class PaymentsController < ApplicationController
   end
 
   def checkout
+
     @amount = @cart.amount
     @cart_items = @cart.cart_items
     user = current_or_guest_user
