@@ -64,7 +64,7 @@
             </span>
             <div class="button-container bigger yellow-border-hover">
               <div class="master-quantity">
-                <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: product.id}, class: "flex add-to-cart no-button" do %>
+                <%= link_to product_path(product), class: "flex add-to-cart no-button" do %>
                   <p id="buy-now" class="yellow-hover">shop now</p>
                 <% end %>
               </div>
@@ -116,7 +116,6 @@
 
   <div class="our-story">
     <h2 style="margin-bottom: -4%; font-weight: bolder; position: absolute; right: 50%; transform: translateX(50%)">Our story</h2>
-
   </div>
   <h5 class="lighter" style="text-align: center;">how fourfive cbd began</h5>
   <div class="flex"  style="justify-content: center">
