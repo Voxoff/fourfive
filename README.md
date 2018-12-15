@@ -1,6 +1,4 @@
 BACK
-<!-- review doens't need a user -->
-
 <!-- the cartoon out story needs to be put in cludinary -->
 
 zion upgrade WAITING
@@ -11,13 +9,8 @@ THATS BEEN ADDED TO YOUR CART
 
 SIDEKIQ LEAVE
 
-NEED
-
-Images
-new image for front
-
 FRONT
-responsive banner
+responsive banner ]- new image for front
 tweak cards products
 product show
 checkout
@@ -35,11 +28,6 @@ Product page - balm
 
 
 
-
-
-ON YOU
-•	When you hover over image or title – the illustration becomes photograph of person (need a testimonial section with just names writing in)
-
   •	James to make icons for bottom bar and write copy.
 
 
@@ -54,7 +42,6 @@ WEBSITE AMENDS
 MAIN PAGE
 
 	•	Make ‘Our products’ centralised on all devices and make grey line stretch a bit longer across the page.
-	•	Add this subhead under ‘Our products’ – ‘choose from our range of specialist cbd products’
 	•	Take the grey background off the ‘shop now’ buttons
 	•	James to make icons for bottom yellow bar and write copy for it.
 

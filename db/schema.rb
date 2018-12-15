@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
     t.text "help", default: [], array: true
     t.text "ingredients", default: [], array: true
     t.text "how_to_use"
+    t.string "size"
   end
 
   create_table "reviews", force: :cascade do |t|
