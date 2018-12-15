@@ -5,7 +5,6 @@ zion upgrade WAITING
 emails WAITING
 xero
 
-THATS BEEN ADDED TO YOUR CART
 
 SIDEKIQ LEAVE
 
@@ -13,14 +12,11 @@ FRONT
 responsive banner ]- new image for front
 tweak cards products
 product show
-checkout
-address
+images
 
 PRODUCT DESC
 
 
-
-Product page - balm
 
 
 
@@ -70,16 +66,6 @@ PRODUCT PAGE – OILS
 
 	•	Choose either the pipette or the spray to apply.  [2 choice selection for customer]
 
-
-How do I use it:
-
-We recommend starting with 3 drops of the lower strength oil twice a day. To take simply drop the cdb oil under your tongue using the pipette or the spray. This achieves the best possible absorption rates and bioavailability.
-
-You can then increase the dosage as required on a weekly basis, to a maximum of 6 drops twice a day, until the desired results are achieved.
-
-If you find that you’re nearing the end of the bottle and you’re already taking 6 drops twice a day but it isn’t hitting the spot, we would recommend upgrading to our regular or higher strength cbd oil.
-	•	Then we need to figure out how we switch between strength, flavours and applicator when you select your purchase. Could these be drop down menus similar in look to the ‘learn more’ page
-
 Price of oils products:
 
 Natural tincture 
@@ -91,13 +77,6 @@ Orange Tincture 
 1000mg - £64.99
 2000mg - £119.99
 
-
-PRODUCT PAGE - CAPSULES
-
-
-
-
-Price of capsules product: £34.99
 
 
 MANDATORY TEXT ON THE WEBSITE
