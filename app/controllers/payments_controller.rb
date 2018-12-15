@@ -47,7 +47,6 @@ class PaymentsController < ApplicationController
 
   def pundit_placeholder
     #this shoudl really be done via pundit
-    raise
     if current_or_guest_user != @cart.user || params[:cart_id].to_i != @cart.id
       flash[:notice] = "You do not have access to this cart"
       return redirect_to root_path
