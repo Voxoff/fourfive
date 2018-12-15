@@ -49,14 +49,27 @@
           <p><%= para %></p>
         <% end %>
       <h3>What is it good for?</h3>
-      <% @product.help.each do |help| %>
-        <p><%= help %></p>
-      <% end %>
-
+      <div class="flex">
+        <div class="column">
+          <% @help.each_with_index do |help, i| %>
+            <p><%= help %></p>
+            <% if i == @help_count %>
+              </div><div class="column">
+            <% end %>
+          <% end %>
+        </div>
+      </div>
       <h3>What’s in it?</h3>
-        <% @product.ingredients.each do |ingredients| %>
-          <p><%= ingredients %></p>
-        <% end %>
+      <div class="flex">
+        <div class="column">
+          <% @ingr.each_with_index do |ingr, i| %>
+            <p><%= ingr %></p>
+            <% if i == @ingr_count %>
+              </div><div class="column">
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="column flex">
       <div class="sub-column">

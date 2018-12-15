@@ -10,11 +10,11 @@ puts 'Creating products...'
 
 balm_help = ["Aches", "Sprains", "Tendon inflammation", "Muscle inflammation", "Localised pain (including knees, hands, shoulders & elbows)", "Psoriasis ", "Acne", "Eczema", "Grazes", "Minor burns"]
 balm_how_to = "Swallow with food. We recommend starting by taking one capsule once or twice a day. you can then increase your dose over time. Generally, we have seen customers take an average of two to four capsules of cbd per day. Please do not go over the 200mg food supplement daily limit (forty capsules)"
-balm_ingr = ["Vegetable capsule", "Hemp extract", "Coconut oil", "Not recommended if you suffer from nut allergies"]
+balm_ingr = ["Vegetable capsule", "Hemp extract", "Coconut oil", "May contain traces of nuts"]
 
 oil_help = ["Stress relief", "Anti-inflammatory", "Sleep patterns", "Relieving of anxiety", "Easing mild depression", "Calming nerves"]
 oil_how_to = "Apply on to the targeted area of your skin and rub until fully absorbed. For external use only."
-oil_ingr = ["Hemp extract", "Coconut oil", "Not recommended if you suffer from nut allergies"]
+oil_ingr = ["Hemp extract", "Coconut oil", "May contain traces of nuts"]
 
 
 capsule_help = ["Arthritis", "Muscle stiffness", "Management of Fibromyalgia", "Inflammatory disorders"]

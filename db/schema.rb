@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
     t.string "coupon"
-    t.string "status", default: "active"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
