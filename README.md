@@ -47,8 +47,6 @@ MAIN PAGE
 	•	Guy can we fix the illustrations of the boys - at the moment they load horizontally squashed
 
 
-
-
 PRODUCT PAGE - BALM
 
 Price of balm products:

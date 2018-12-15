@@ -18,6 +18,29 @@
           <p>Size: 300mg / 0.11 oz</p>
         </div>
       </div>
+      <div class="selections">
+        <div class="selection">
+          <select name="post[author_id]">
+              <% @tinctures.each do |tincture| %>
+                  <option value="<%= tincture %>"><%= tincture %></option>
+              <% end %>
+          </select>
+        </div>
+        <div class="selection">
+          <select name="post[author_id]">
+              <% @tinctures.each do |tincture| %>
+                  <option value="<%= tincture %>"><%= tincture %></option>
+              <% end %>
+          </select>
+        </div>
+        <div class="selection">
+          <select name="post[author_id]">
+            <% @tinctures.each do |tincture| %>
+              <option value="<%= tincture %>"><%= tincture %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
       <div class="all-btn-container show">
         <div class="button-container">
           <div class="master-quantity">
