@@ -219,3 +219,9 @@ select {
   width: 100%;
   height: auto
 }
+
+@media(min-width: 992px){
+  .homepage-cartoon {
+    width: 65%;
+  }
+}
