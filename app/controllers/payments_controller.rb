@@ -3,10 +3,11 @@ class PaymentsController < ApplicationController
   before_action :find_cart
 
   def confirm
-
+    pundit_placeholder()
   end
 
   def checkout
+    pundit_placeholder()
     @amount = @cart.amount
     @cart_items = @cart.cart_items
     user = current_or_guest_user
@@ -25,6 +26,8 @@ class PaymentsController < ApplicationController
   end
 
   def new
+
+    pundit_placeholder()
     @cart_items = @cart.cart_items
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"
@@ -40,6 +43,14 @@ class PaymentsController < ApplicationController
       @cart = @cart.checkout
     end
     redirect_to root_path
+  end
+
+  def pundit_placeholder
+    #this shoudl really be done via pundit
+    if current_or_guest_user != @cart.user || params[:cart_id] != @cart.id
+      flash[:notice] = "You do not have access to this cart"
+      return redirect_to root_path
+    end
   end
 
   private

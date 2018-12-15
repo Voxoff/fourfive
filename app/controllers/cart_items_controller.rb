@@ -1,18 +1,23 @@
 class CartItemsController < ApplicationController
   def create
     @cart = Cart.find(cart_params[:cart_id])
+    pundit_placeholder()
     @cart_item = @cart.cart_items.find {|i| i.product.id == cart_params[:product_id].to_i}
     if @cart_item
       @cart_item.quantity = @cart_item.quantity + params[:quantity].to_i
     else
       @cart_item = CartItem.new(cart_params)
     end
-    if @cart_item.save
-      flash[:notice] = "That's been added to your cart!"
-    else
-      flash[:notice] = "There was an error. Sorry!"
-    end
+    flash[:notice] =  @cart_item.save ? "That's been added to your cart!" : "There was an error. Sorry!"
     redirect_back(fallback_location: cart_path(@cart.id))
+  end
+
+  def pundit_placeholder
+    # this shoudl really be done via pundit
+    if current_or_guest_user != @cart.user
+      flash[:notice] = "You do not have access to this cart"
+      return redirect_to root_path
+    end
   end
 
   private
