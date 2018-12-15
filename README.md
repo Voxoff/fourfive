@@ -4,7 +4,7 @@ BACK
 bullet gem for n + 1
 <!-- the cartoon out story needs to be put in cludinary -->
 
-zion upgrade
+zion upgrade WAITING
 emails
 xero
 
@@ -18,13 +18,9 @@ new image for front
 FRONT
 responsive banner
 tweak cards products
-check font awesome
-check our story
-change admin logo
 product show
 checkout
 address
-Main page
 
 PRODUCT DESC
 
@@ -49,16 +45,7 @@ minor burns
 	•	Then we need to figure out how we switch between strength and flavours?
 
 
-<!-- hover on product iamges -->
-
 accrodion for reviews
-
-<!-- dropdown oils balms capsules -->
-
-
-mobile responsiveness
-
-sign up button on login page
 
 
 
@@ -209,7 +196,7 @@ All of our products are sold as food supplements and not intended to diagnose, c
 	•	Henry from Zion pay should have a list of requirements that the banks will ask for such as displaying the Visa and Mastercard logo.
 
 
-EASY THINGS FOR SAM ONCE STYLE DONE
+sTHINGS FOR SAM ONCE STYLE DONE
 
 look at friendly_id gem. can we do it with underscore or -? for url
 image stretch?

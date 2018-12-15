@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   include CartControllable
-  before_action :get_cart
+  before_action :find_cart
   def home
     @disable_stripe = @disable_top_margin = @alert_no_margin  = true
     @user = current_or_guest_user

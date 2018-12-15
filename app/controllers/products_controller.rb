@@ -1,18 +1,9 @@
 class ProductsController < ApplicationController
-    include CartControllable
-    before_action :get_cart
-
-  def index
-    @products = Product.all
-    @cart_item = CartItem.new
-  end
+  include CartControllable
+  before_action :find_or_create_cart
 
   def show
     @product = Product.friendly.find(params[:id])
     @cart_item = CartItem.new
-  end
-
-  def create
-    raise
   end
 end

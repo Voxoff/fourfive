@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   include CartControllable
-  before_action :get_cart
+  before_action :find_cart
 
   def confirm
 
