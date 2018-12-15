@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
+  before_action :find_cart, only: [:create]
+
   def create
-    @cart = Cart.find(cart_params[:cart_id])
     pundit_placeholder()
     @cart_item = @cart.cart_items.find {|i| i.product.id == cart_params[:product_id].to_i}
     if @cart_item
@@ -20,7 +21,18 @@ class CartItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart = @cart_item.cart
+    CartItem.destroy(@cart_item.id)
+    return redirect_to new_cart_payment_path(@cart)
+  end
+
   private
+
+  def find_cart
+    @cart = Cart.find(cart_params[:cart_id])
+  end
 
   def cart_items_params
     params.require(:cart_item).permit(:strength, :product)
