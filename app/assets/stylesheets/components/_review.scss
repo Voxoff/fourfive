@@ -21,6 +21,7 @@
       }
       .review-text {
         padding-left: 32px;
+        margin-right: 10px;
         p {
           margin: 0;
           font-weight: lighter;
@@ -48,6 +49,10 @@
       }
     }
     .review-card:hover {
+      h4{
+        transition: 0.1s;
+        color: $yellow;
+      }
       border-bottom: 1px solid $yellow;
       a {
         color: $yellow;
