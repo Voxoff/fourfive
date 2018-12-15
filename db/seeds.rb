@@ -5,11 +5,31 @@ Product.destroy_all
 User.destroy_all
 puts 'Creating products...'
 
-p = Product.create!(name: 'cbd oils', subtitle: "Flavored oils for quick absorption", price: 1, description: "For when life gives you lemons. This zesty lemon tincture has a refreshing twist that we are sure you will enjoy.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd capsules', price: 3, subtitle: "Easy-to-take capsules for slower release", description: "A very popular flavour our mint tincture is cool and invigorating without being overpowering. ", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd balms', price: 2, subtitle: "Organic balms for damaged skin", description: "Because your skin it the largest working organ, we’ve created a soothing, safe and protective application for it. Made with organic ingredients, our hand-blended and hard-working balm is kind to all skin types.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-# Product.create!(price: 1, description: "Our Pure tincture is a flavourless oil. Pure oil can be taken on its own or used in cooking, smoothies and protein shakes allowing you to get the benefits of cbd in your daily diet.", name: 'Pure', photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-# Product.create!(price: 3, description: "A very popular flavour our mint tincture is cool and invigorating without being overpowering.", name: 'Mint', photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
+
+
+
+balm_help = ["Aches", "Sprains", "Tendon inflammation", "Muscle inflammation", "Localised pain (including knees, hands, shoulders & elbows)", "Psoriasis ", "Acne", "Eczema", "Grazes", "Minor burns"]
+balm_how_to = "Swallow with food. We recommend starting by taking one capsule once or twice a day. you can then increase your dose over time. Generally, we have seen customers take an average of two to four capsules of cbd per day. Please do not go over the 200mg food supplement daily limit (forty capsules)"
+balm_ingr = ["Vegetable capsule", "Hemp extract", "Coconut oil", "Not recommended if you suffer from nut allergies"]
+
+oil_help = ["Stress relief", "Anti-inflammatory", "Sleep patterns", "Relieving of anxiety", "Easing mild depression", "Calming nerves"]
+oil_how_to = "Apply on to the targeted area of your skin and rub until fully absorbed. For external use only."
+oil_ingr = ["Hemp extract", "Coconut oil", "Not recommended if you suffer from nut allergies"]
+
+
+capsule_help = ["Arthritis", "Muscle stiffness", "Management of Fibromyalgia", "Inflammatory disorders"]
+capsule_how_to = "We recommend starting with 3 drops of the lower strength oil twice a day. To take simply drop the cdb oil under your tongue using the pipette or the spray. This achieves the best possible absorption rates and bioavailability. \n You can then increase the dosage as required on a weekly basis, to a maximum of 6 drops twice a day, until the desired results are achieved. \n If you find that you’re nearing the end of the bottle and you’re already taking 6 drops twice a day but it isn’t hitting the spot, we would recommend upgrading to our regular or higher strength cbd oil."
+capsule_ingr = ["Coconut oil", "Hemp extract", "Vegetable capsule"]
+capsule_desc = "Our cbd capsules contain full-spectrum, co2 extracted hemp infused in coconut oil and capped in vegan capsules. They are easy-to-use and slow-to-release, great for when you only need a small amount of cbd product over a longer period of time."
+
+
+
+
+
+
+p = Product.create!(name: 'cbd oils', price: 29.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
+Product.create!(name: 'cbd capsules', price: 3, help: balm_help, how_to_use: capsule_how_to, ingredients: capsule_ingr, subtitle: "Easy-to-take capsules for slower release", description: capsule_desc, photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
+Product.create!(name: 'cbd balms', price: 29.99, help: capsule_help, how_to_use: balm_how_to, ingredients: balm_ingr, subtitle: "Organic balms for damaged skin", description: "Because your skin it the largest working organ, we’ve created a soothing, safe and protective application for it. Made with organic ingredients, our hand-blended and hard-working balm is kind to all skin types.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
 
 
 user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
