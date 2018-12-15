@@ -1,14 +1,16 @@
 BACK
 <!-- review doens't need a user -->
 
-bullet gem for n + 1
+bullet gem for n + 1 SAM
 <!-- the cartoon out story needs to be put in cludinary -->
 
 zion upgrade WAITING
-emails
+emails WAITING
 xero
 
-SIDEKIQ
+THATS BEEN ADDED TO YOUR CART
+
+SIDEKIQ LEAVE
 
 NEED
 
@@ -203,3 +205,8 @@ image stretch?
 footer text
 bullet gem for n + 1
 Emails?
+
+
+THINGS TO REFACTOR
+Pundit
+Cartitem nested routes

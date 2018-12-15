@@ -67,11 +67,11 @@
                 <i class="fas fa-truck"></i>
               </div>
               <div class="contents">
-                <p class="space-beneath"><strong>FREE SHIPPING ON ORDERS OVER 25.00 GBP</strong></p>
+                <p class="space-beneath"><strong>FREE SHIPPING ON ORDERS OVER 50.00 GBP</strong></p>
                 <% if @cart.amount.to_i > 25 %>
                   <p><strong>You qualify for free shipping!</strong></p>
                 <% else %>
-                  <p>Just add <strong>£<%= number_with_precision(25.00 - @cart.amount.to_i, precision: 2) %> more</strong> to your cart to qualify</p>
+                  <p>Just add <strong>£<%= number_with_precision(@discount, precision: 2) %> more</strong> to your cart to qualify</p>
                 <% end %>
               </div>
             </div>

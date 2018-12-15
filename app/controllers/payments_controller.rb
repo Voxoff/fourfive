@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
   before_action :find_cart
 
   def confirm
+    @discount = 50.00 - @cart.amount.to_i
     pundit_placeholder()
   end
 
@@ -26,9 +27,8 @@ class PaymentsController < ApplicationController
   end
 
   def new
-
     pundit_placeholder()
-    @cart_items = @cart.cart_items
+    @cart_items = @cart.cart_items.includes(:product)
     if @cart_items.empty?
       flash[:notice] = "You need to put items in your cart in order to buy them!"
       return redirect_to root_path

@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
     pundit_placeholder()
     @cart_item = @cart.cart_items.find {|i| i.product.id == cart_params[:product_id].to_i}
     if @cart_item
-      @cart_item.quantity = @cart_item.quantity + params[:quantity].to_i
+      @cart_item.quantity += params[:quantity].to_i
     else
       @cart_item = CartItem.new(cart_params)
     end
