@@ -17,75 +17,41 @@
           <p>Size: 300mg / 0.11 oz</p>
         </div>
       </div>
-
-
-
-<div class="selections">
-  <div class="selection">
-    <div class="field">
-      <div><%= @tinctures.first %></div>
-      <i class="fas fa-caret-down"></i>
-    </div>
-    <div class="drop-down" style="display: none;">
-      <% @tinctures.each do |tincture| %>
-        <div class="drop-down-item"><%= tincture %></div>
-      <% end %>
-    </div>
-  </div>
-  <div class="selection">
-    <div class="field">
-      <div><%= @strengths.first %></div>
-      <i class="fas fa-caret-down"></i>
-    </div>
-    <div class="drop-down" style="display: none;">
-      <% @strengths.each do |strength| %>
-        <div class="drop-down-item"><%= strength %></div>
-      <% end %>
-    </div>
-  </div>
-  <div class="selection">
-    <div class="field">
-      <div><%= @types.first %></div>
-      <i class="fas fa-caret-down"></i>
-    </div>
-    <div class="drop-down" style="display: none;">
-      <% @types.each do |type| %>
-        <div class="drop-down-item"><%= type %></div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
-
-<!--       <div class="selections">
+      <div class="selections">
         <div class="selection">
-          <span class="fancyArrow"></span>
-          <select name="product[tincture]">
-              <% @tinctures.each do |tincture| %>
-                  <option value="<%= tincture %>"><%= tincture %></option>
-              <% end %>
-          </select>
-          <div class="selection">
-            <select name="product[strength]">
-                <% @strengths.each do |strength| %>
-                    <option value="<%= strength %>"><%= strength %></option>
-                <% end %>
-            </select>
+          <div class="field">
+            <div><%= @tinctures.first %></div>
+            <i class="fas fa-caret-down"></i>
           </div>
-          <div class="selection">
-            <select name="product[type]">
-              <% @types.each do |type| %>
-                <option value="<%= type %>"><%= type %></option>
-              <% end %>
-            </select>
+          <div class="drop-down" style="display: none;">
+            <% @tinctures.each do |tincture| %>
+              <div class="drop-down-item"><%= tincture %></div>
+            <% end %>
           </div>
         </div>
-      </div> -->
-
-
-
-
+        <div class="selection">
+          <div class="field">
+            <div><%= @strengths.first %></div>
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="drop-down" style="display: none;">
+            <% @strengths.each do |strength| %>
+              <div class="drop-down-item"><%= strength %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="selection">
+          <div class="field">
+            <div><%= @types.first %></div>
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="drop-down" style="display: none;">
+            <% @types.each do |type| %>
+              <div class="drop-down-item"><%= type %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="all-btn-container show">
         <div class="button-container">
           <div class="master-quantity">
@@ -107,7 +73,69 @@
       </div>
     </div>
   </div>
-  <div class="icon-banner lighter">
+
+
+
+
+  <div class="row">
+    <div class="more-info">
+      <div class="col-xs-12 col-sm-6">
+        <h3>What is it?</h3>
+        <p>A cosmetic balm product for skin care.</p>
+        <h3>How do I use it?</h3>
+        <% @product.how_to_use.split("\n").each do |para| %>
+          <p><%= para %></p>
+        <% end %>
+        <h3>What is it good for?</h3>
+        <% @help.each_with_index do |help, i| %>
+          <% unless i == 0 %>
+            <i class="fas fa-circle"></i>
+          <% end %>
+          <span class="text-lighter"><%= help %></span>
+        <% end %>
+        <h3>What’s in it?</h3>
+        <% @ingr.each_with_index do |ingr, i| %>
+          <% unless i == 0 %>
+            <i class="fas fa-circle"></i>
+          <% end %>
+          <span class="text-lighter"><%= ingr %></span>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-offset-1 col-sm-5">
+        <div class="image-margin">
+          <div class="icon-card">
+            <%= image_tag "icons/natural.png", size: '90' %>
+            <p>Natural</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/co2.png", size: '90' %>
+            <p>Extracted by CO<sub>2</sub></p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/no-chemicals-yellow.png", size: '90' %>
+            <p>Herbicide Free</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/lab.png", size: '90' %>
+            <p>Lab Tested</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/vegetarian.png", size: '90' %>
+            <p>Natural</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/vegan.png", size: '90' %>
+            <p>Natural</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!--   <div class="icon-banner lighter">
     <div class="column" style="padding-right: 100px;">
       <h3 style="margin-top: 10px;">What is it?</h3>
       <p>A cosmetic balm product for skin care.</p>
@@ -169,7 +197,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+
+
+
 </div>
 
 <% if false %>
