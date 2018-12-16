@@ -53,6 +53,10 @@ class PaymentsController < ApplicationController
     params.require(:checkout).permit(:first_line, :second_line, :third_line, :postcode, :city, :first_name, :last_name)
   end
 
+  def success_params
+    params.permit(:id, :resourcePath)
+  end
+
   def check_empty_cart
     return unless @cart_items.empty?
 
@@ -75,10 +79,6 @@ class PaymentsController < ApplicationController
       end
     end
     true
-  end
-
-  def success_params
-    params.permit(:id, :resourcePath)
   end
 
   def zion
@@ -108,7 +108,7 @@ class PaymentsController < ApplicationController
     elsif code.match?(/^(800\.400\.5|100\.400\.500)/)
       flash[:notice] = "Waiting for confirmation/external risk. Denied for now."
     else
-      flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly"
+      flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly."
     end
   end
 
