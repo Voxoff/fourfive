@@ -22,25 +22,119 @@ capsule_how_to = "We recommend starting with 3 drops of the lower strength oil t
 capsule_ingr = ["Coconut oil", "Hemp extract", "Vegetable capsule"]
 capsule_desc = "Our cbd capsules contain full-spectrum, co2 extracted hemp infused in coconut oil and capped in vegan capsules. They are easy-to-use and slow-to-release, great for when you only need a small amount of cbd product over a longer period of time."
 
+#Photos cloudinary
+
+balm_300 = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992617/ccsl3c44jbf7rxfjirhr.jpg"
+balm_800 = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992640/khtunfbpau6bjjzwxgf6.jpg"
+capsule = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992665/dec1hxtk9pxpj9tpjm7i.jpg"
+natural_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992689/dmnmdrxjzunmhjrt1xio.jpg"
+natural_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992753/wmitmcbmups8xcylimlj.jpg"
+natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992764/ykuh6iiuaehxqkqtfiqb.jpg"
+
+orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992804/mejkv6uikqhnq2eu0l2d.jpg"
+orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992791/qobwn7sblybncdty1eox.jpg"
+orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992778/ph6rqpze8dv6552itwhf.jpg"
 
 
 
+Product.create!(name: 'cbd capsules',
+               price: 3,
+               help: balm_help,
+               how_to_use: capsule_how_to,
+               ingredients: capsule_ingr,
+               subtitle: "Easy-to-take capsules for slower release",
+               description: capsule_desc,
+               photo: open(capsule))
+
+Product.create!(name: 'cbd balms',
+                size: "small",
+               price: 29.99,
+               help: capsule_help,
+               how_to_use: balm_how_to,
+               ingredients: balm_ingr,
+               subtitle: "Organic balms for damaged skin",
+               description: "Because your skin it the largest working organ,
+               we’ve created a soothing,
+               safe and protective application for it. Made with organic ingredients,
+               our hand-blended and hard-working balm is kind to all skin types.",
+               photo: open(balm_300))
+
+Product.create!(name: 'cbd balms',
+               size: "large",
+               price: 59.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(balm_800))
+
+p = Product.create!(name: 'cbd oils',
+               size: "500mg",
+               tincture: "natural",
+               price: 29.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(natural_lower))
 
 
-p = Product.create!(name: 'cbd oils', size: "500mg", tincture: "natural", price: 29.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd capsules', price: 3, help: balm_help, how_to_use: capsule_how_to, ingredients: capsule_ingr, subtitle: "Easy-to-take capsules for slower release", description: capsule_desc, photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd balms',  size: "small", price: 29.99, help: capsule_help, how_to_use: balm_how_to, ingredients: balm_ingr, subtitle: "Organic balms for damaged skin", description: "Because your skin it the largest working organ, we’ve created a soothing, safe and protective application for it. Made with organic ingredients, our hand-blended and hard-working balm is kind to all skin types.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
+Product.create!(name: 'cbd oils',
+               size: "1000mg",
+               tincture: "natural",
+               price: 59.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(natural_medium))
 
-#For alternate versions
-Product.create!(name: 'cbd balms', size: "large", price: 59.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
+Product.create!(name: 'cbd oils',
+               size: "2000mg",
+               tincture: "natural",
+               price: 29.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(natural_higher))
 
+Product.create!(name: 'cbd oils',
+               size: "500mg",
+               tincture: "orange",
+               price: 114.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(orange_lower))
 
-# Product.create!(name: 'cbd oils', size: "500mg", tincture: "natural", price: 29.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd oils', size: "1000mg", tincture: "natural", price: 59.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd oils', size: "2000mg", tincture: "natural", price: 29.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd oils', size: "500mg", tincture: "orange", price: 114.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd oils', size: "1000mg", tincture: "orange", price: 64.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
-Product.create!(name: 'cbd oils', size: "2000mg", tincture: "orange", price: 119.99, help: oil_help, how_to_use: oil_how_to, ingredients: oil_ingr, subtitle: "Flavored oils for quick absorption", description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543755363/pqje5y6qblpza9f4cxdn.jpg"))
+Product.create!(name: 'cbd oils',
+               size: "1000mg",
+               tincture: "orange",
+               price: 64.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(orange_medium))
+
+Product.create!(name: 'cbd oils',
+               size: "2000mg",
+               tincture: "orange",
+               price: 119.99,
+               help: oil_help,
+               how_to_use: oil_how_to,
+               ingredients: oil_ingr,
+               subtitle: "Flavored oils for quick absorption",
+               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               photo: open(orange_higher))
 
 
 
@@ -66,7 +160,6 @@ Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Chris Di
 #     ProductStrength.create!(product: product, strength: strength)
 #   end
 # end
-Product.find(1).update(name: 'cbd oils', subtitle: "Flavored oils for quick absorption")
-Product.find(2).update(name: 'cbd balms', subtitle: "Organic balms for damaged skin")
-Product.find(3).update(name: 'cbd capsules', subtitle: "Easy-to-take capsules for slower release")
+
+
 puts 'Finished!'
