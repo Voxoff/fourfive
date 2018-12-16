@@ -4,6 +4,6 @@ class CartItem < ApplicationRecord
   validates :quantity, presence: true
   # belongs_to :strength
   def line_cost
-    self.quantity * self.product.price
+    quantity * product.price
   end
 end

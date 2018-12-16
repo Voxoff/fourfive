@@ -11,15 +11,15 @@ class Cart < ApplicationRecord
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
 
   def amount
-    self.cart_items.includes(:product).map |i| i.product.price * i.quantity }.reduce(:+)
+    cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
   end
 
   def quantity
-    self.cart_items.map(&:quantity).reduce(:+)
+    cart_items.map(&:quantity).reduce(:+)
   end
 
   def checkout
-    self.update(active: false)
+    update(active: false)
     user_id = self.user_id
     self.class.create!(user_id: user_id)
   end

@@ -6,30 +6,30 @@ class Address < ApplicationRecord
   validates :city, presence: true
 
   def get_address
-    [self.first_line, self.second_line, self.postcode, self.city]
+    [first_line, second_line, postcode, city]
   end
 
   def duplicate?(user)
     user_addrs = user.addresses.map(&:get_address)
-    user_addrs << self.get_address
+    user_addrs << get_address
     user_addrs.count != user_addrs.uniq.count
   end
 
   def full_address
-    nice_print([self.first_line, self.second_line, self.third_line, self.city, self.postcode])
+    nice_print([first_line, second_line, third_line, city, postcode])
   end
 
   def full_name
-    nice_print([self.first_name, self.last_name])
+    nice_print([first_name, last_name])
   end
 
   def city_and_postcode
-    nice_print([self.city, self.postcode])
+    nice_print([city, postcode])
   end
 
   private
 
   def nice_print(input)
-    input.select{|i| i.present? }.join(", ")
+    input.select(&:present?).join(", ")
   end
 end
