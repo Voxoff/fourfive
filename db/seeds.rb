@@ -11,11 +11,13 @@ puts 'Creating products...'
 balm_help = ["Aches", "Sprains", "Tendon inflammation", "Muscle inflammation", "Localised pain (including knees, hands, shoulders & elbows)", "Psoriasis ", "Acne", "Eczema", "Grazes", "Minor burns"]
 balm_how_to = "Swallow with food. We recommend starting by taking one capsule once or twice a day. you can then increase your dose over time. Generally, we have seen customers take an average of two to four capsules of cbd per day. Please do not go over the 200mg food supplement daily limit (forty capsules)"
 balm_ingr = ["Vegetable capsule", "Hemp extract", "Coconut oil", "May contain traces of nuts"]
+balm_desc = "Because your skin it the largest working organ, we’ve created a soothing, safe and protective application for it. Made with organic ingredients, our hand-blended and hard-working balm is kind to all skin types."
+
 
 oil_help = ["Stress relief", "Anti-inflammatory", "Sleep patterns", "Relieving of anxiety", "Easing mild depression", "Calming nerves"]
 oil_how_to = "Apply on to the targeted area of your skin and rub until fully absorbed. For external use only."
 oil_ingr = ["Hemp extract", "Coconut oil", "May contain traces of nuts"]
-
+oil_desc = "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops."
 
 capsule_help = ["Arthritis", "Muscle stiffness", "Management of Fibromyalgia", "Inflammatory disorders"]
 capsule_how_to = "We recommend starting with 3 drops of the lower strength oil twice a day. To take simply drop the cdb oil under your tongue using the pipette or the spray. This achieves the best possible absorption rates and bioavailability. \n You can then increase the dosage as required on a weekly basis, to a maximum of 6 drops twice a day, until the desired results are achieved. \n If you find that you’re nearing the end of the bottle and you’re already taking 6 drops twice a day but it isn’t hitting the spot, we would recommend upgrading to our regular or higher strength cbd oil."
@@ -53,10 +55,7 @@ Product.create!(name: 'cbd balms',
                how_to_use: balm_how_to,
                ingredients: balm_ingr,
                subtitle: "Organic balms for damaged skin",
-               description: "Because your skin it the largest working organ,
-               we’ve created a soothing,
-               safe and protective application for it. Made with organic ingredients,
-               our hand-blended and hard-working balm is kind to all skin types.",
+               description: balm_desc,
                photo: open(balm_300))
 
 Product.create!(name: 'cbd balms',
@@ -66,7 +65,7 @@ Product.create!(name: 'cbd balms',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: balm_desc,
                photo: open(balm_800))
 
 p = Product.create!(name: 'cbd oils',
@@ -77,7 +76,7 @@ p = Product.create!(name: 'cbd oils',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: oil_desc,
                photo: open(natural_lower))
 
 
@@ -89,7 +88,7 @@ Product.create!(name: 'cbd oils',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: oil_desc,
                photo: open(natural_medium))
 
 Product.create!(name: 'cbd oils',
@@ -100,7 +99,7 @@ Product.create!(name: 'cbd oils',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: oil_desc,
                photo: open(natural_higher))
 
 Product.create!(name: 'cbd oils',
@@ -111,7 +110,7 @@ Product.create!(name: 'cbd oils',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: oil_desc,
                photo: open(orange_lower))
 
 Product.create!(name: 'cbd oils',
@@ -122,7 +121,7 @@ Product.create!(name: 'cbd oils',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: oil_desc,
                photo: open(orange_medium))
 
 Product.create!(name: 'cbd oils',
@@ -133,7 +132,7 @@ Product.create!(name: 'cbd oils',
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
-               description: "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops.",
+               description: oil_desc,
                photo: open(orange_higher))
 
 
