@@ -37,22 +37,8 @@ WEBSITE AMENDS
 
 MAIN PAGE
 
-	•	Make ‘Our products’ centralised on all devices and make grey line stretch a bit longer across the page.
 	•	Take the grey background off the ‘shop now’ buttons
 	•	James to make icons for bottom yellow bar and write copy for it.
-
-
-“OUR STORY’ PAGE
-
-	•	Guy can we fix the illustrations of the boys - at the moment they load horizontally squashed
-
-
-PRODUCT PAGE - BALM
-
-Price of balm products:
-
-Small balm - £29.99
-Large Balm - £59.99
 
 
 PRODUCT PAGE – OILS
@@ -63,18 +49,6 @@ PRODUCT PAGE – OILS
 	•	Choose a flavour. [2 choice selection for customer – natural or orange]
 
 	•	Choose either the pipette or the spray to apply.  [2 choice selection for customer]
-
-Price of oils products:
-
-Natural tincture 
-500mg - £29.99
-1000mg - £59.99
-2000mg - £114.99
-Orange Tincture 
-500mg - £34.99
-1000mg - £64.99
-2000mg - £119.99
-
 
 
 MANDATORY TEXT ON THE WEBSITE
