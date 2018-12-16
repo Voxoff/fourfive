@@ -15,7 +15,7 @@ product show
 images
 
 PRODUCT DESC
-
+mobile view flexbox and button
 
 
 
