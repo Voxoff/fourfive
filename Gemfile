@@ -37,7 +37,7 @@ gem 'postmark-rails'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
-# gem 'pundit'
+gem 'xeroizer'
 
 gem 'prawn'
 gem 'country_select'
