@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @product = Product.friendly.find(params[:id])
     @strengths = %w( 500mg 1000mg 2000mg) # @strengths = Product.all.collect(&:size).uniq.compact
     @tinctures = %w( orange natural)  # @tinctures = Product.all.collect(&:tincture).uniq.compact
-    @type = %w( Pipette Spray)
+    @types = %w( Pipette Spray)
 
     @help = @product.help
     @help_count = (@help.count / 2 - 1)

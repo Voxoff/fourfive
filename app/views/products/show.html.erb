@@ -1,4 +1,3 @@
-
 <div class="container" style="margin-bottom: 70px;">
   <div class="row">
     <div class="col-sm-12 col-md-5">
@@ -20,27 +19,34 @@
       </div>
       <div class="selections">
         <div class="selection">
-          <select name="post[author_id]">
-              <% @tinctures.each do |tincture| %>
-                  <option value="<%= tincture %>"><%= tincture %></option>
-              <% end %>
-          </select>
-        </div>
-        <div class="selection">
-          <select name="post[author_id]">
-              <% @tinctures.each do |tincture| %>
-                  <option value="<%= tincture %>"><%= tincture %></option>
-              <% end %>
-          </select>
-        </div>
-        <div class="selection">
-          <select name="post[author_id]">
-            <% @tinctures.each do |tincture| %>
-              <option value="<%= tincture %>"><%= tincture %></option>
-            <% end %>
-          </select>
+          <% comment do %>
+            <span class="fancyArrow"></span>
+            <select name="product[tincture]">
+                <% @tinctures.each do |tincture| %>
+                    <option value="<%= tincture %>"><%= tincture %></option>
+                <% end %>
+            </select>
+            <div class="selection">
+              <select name="product[strength]">
+                  <% @strengths.each do |strength| %>
+                      <option value="<%= strength %>"><%= strength %></option>
+                  <% end %>
+              </select>
+            </div>
+            <div class="selection">
+              <select name="product[type]">
+                <% @types.each do |type| %>
+                  <option value="<%= type %>"><%= type %></option>
+                <% end %>
+              </select>
+            </div>
+          <% comment end %>
         </div>
       </div>
+
+
+
+
       <div class="all-btn-container show">
         <div class="button-container">
           <div class="master-quantity">

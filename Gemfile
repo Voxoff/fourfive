@@ -9,6 +9,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
+gem 'jquery-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -30,7 +31,7 @@ gem 'carrierwave', '~> 1.2'
 
 gem 'omniauth-facebook'
 gem 'friendly_id'
-gem 'jquery-rails'
+
 gem 'postmark-rails'
 
 gem 'sidekiq'
