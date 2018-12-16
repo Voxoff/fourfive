@@ -6,7 +6,7 @@
 <% end %>
 
 
-  <script src=<%="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=#{@checkoutId}"%> ></script>
+  <script src=<%="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=#{@checkout_id}"%> ></script>
 
   <form action=<%= "#{success_cart_payments_url(@cart)}" %> class="paymentWidgets" data-brands="VISA VISADEBIT MASTER MASTERDEBIT"></form>
 <div class="space"></div>
