@@ -9,6 +9,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
+gem 'jquery-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -23,27 +24,31 @@ gem 'money-rails'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'active_skin'
+
 gem 'cloudinary', '1.10.1.pre.rc'
 gem 'carrierwave', '~> 1.2'
+
 gem 'omniauth-facebook'
 gem 'friendly_id'
-gem 'jquery-rails'
-gem 'active_skin'
+
 gem 'postmark-rails'
 
-gem 'prawn'
-gem 'prawn-table'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
+# gem 'pundit'
+
+gem 'prawn'
 gem 'country_select'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   # gem "letter_opener"
-  gem "better_errors"
-  gem "binding_of_caller"
 end
 
 group :development, :test do
+gem 'bullet'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'

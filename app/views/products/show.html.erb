@@ -1,8 +1,7 @@
-
 <div class="container" style="margin-bottom: 70px;">
   <div class="row">
     <div class="col-sm-12 col-md-5">
-      <%= cl_image_tag(@product.photo_url, class: "image-responsive", style: "max-width: 90%") %>
+      <%= cl_image_tag(@product.photo_url, class: "image-responsive", style: "max-width: 60%; margin-left: 25%;") %>
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-12 col-md-5">
@@ -18,6 +17,36 @@
           <p>Size: 300mg / 0.11 oz</p>
         </div>
       </div>
+      <div class="selections">
+        <div class="selection">
+          <% comment do %>
+            <span class="fancyArrow"></span>
+            <select name="product[tincture]">
+                <% @tinctures.each do |tincture| %>
+                    <option value="<%= tincture %>"><%= tincture %></option>
+                <% end %>
+            </select>
+            <div class="selection">
+              <select name="product[strength]">
+                  <% @strengths.each do |strength| %>
+                      <option value="<%= strength %>"><%= strength %></option>
+                  <% end %>
+              </select>
+            </div>
+            <div class="selection">
+              <select name="product[type]">
+                <% @types.each do |type| %>
+                  <option value="<%= type %>"><%= type %></option>
+                <% end %>
+              </select>
+            </div>
+          <% comment end %>
+        </div>
+      </div>
+
+
+
+
       <div class="all-btn-container show">
         <div class="button-container">
           <div class="master-quantity">
@@ -32,7 +61,7 @@
               <p id="pad-right">Buy now</p>
               <div class="vertical-line"></div>
               <p id="pound">£</p>
-              <p id="price"><%= @product.price.to_i %></p>
+              <p id="price"><%= @price %></p>
             <% end %>
           </div>
         </div>
@@ -44,16 +73,32 @@
       <h3 style="margin-top: 10px;">What is it?</h3>
       <p>A cosmetic balm product for skin care.</p>
 
-      <h3>How to use:</h3>
-      <p>Apply on to the targeted area of your skin and rub until transparent.  For external use only.</p>
-
-      <h3>Ingredients:</h3>
-      <p>Coconut Oil</p>
-      <p>Shea Butter</p>
-      <p>Theobroma Cacao</p>
-      <p>Grape Seed Oil</p>
-      <p>Rosemary</p>
-      <p>Cannabis Sativa L.</p>
+      <h3>How do I use it?</h3>
+        <% @product.how_to_use.split("\n").each do |para| %>
+          <p><%= para %></p>
+        <% end %>
+      <h3>What is it good for?</h3>
+      <div class="flex">
+        <div class="column">
+          <% @help.each_with_index do |help, i| %>
+            <p><%= help %></p>
+            <% if i == @help_count %>
+              </div><div class="column">
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <h3>What’s in it?</h3>
+      <div class="flex">
+        <div class="column">
+          <% @ingr.each_with_index do |ingr, i| %>
+            <p><%= ingr %></p>
+            <% if i == @ingr_count %>
+              </div><div class="column">
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="column flex">
       <div class="sub-column">
@@ -63,10 +108,10 @@
         </div>
         <div class="icon-card">
           <%= image_tag "icons/co2.png", size: '90' %>
-          <p>Co2</p>
+          <p>Extracted by Co2</p>
         </div>
         <div class="icon-card">
-          <%= image_tag "icons/no-chemicals.png", size: '90' %>
+          <%= image_tag "icons/no-chemicals-yellow.png", size: '90' %>
           <p>Herbicide Free</p>
         </div>
       </div>

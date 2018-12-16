@@ -1,5 +1,9 @@
 ActiveAdmin.register Cart do
-
+  controller do
+    def scoped_collection
+      super.includes :user, :address
+    end
+  end
 
   scope :all
   scope :orders, default: true
@@ -39,14 +43,13 @@ ActiveAdmin.register Cart do
       # item "Guest", admin_user_path if user.nil?
     end
     column :cart_items do |cart|
-      cart.cart_items.map {|item| "#{item.product.name} x #{item.quantity}"}
+      cart.cart_items.includes(:product).map {|item| "#{item.product.name} x #{item.quantity}"}
     end
     column "Orders", :active do |cart| !cart.active? end
     column :address do |cart|
-      # raise
-      if cart.user
-        cart.user.addresses.order('id DESC').limit(1).first.full_address
-      elsif cart.address
+      # if cart.user
+        # cart.user.addresses.order('id DESC').limit(1).first.full_address
+      if cart.address
         cart.address.full_address
       else
         "No address has been added. (Payment not made)."

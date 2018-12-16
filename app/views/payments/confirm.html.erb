@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10">
-      <h1>Shipping Details</h1>
+      <h2>Shipping Details</h2>
     </div>
   </div>
   <div class="cart-form">
@@ -38,23 +38,25 @@
           <%= f.input :postcode, required: true, label: "Postcode" %>
         </div>
       </div>
+      <% if false %>
       <div class="row section-break">
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
           <%= f.label :country %>
-          <%= f.country_select :country, priority_countries = [], options = {}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
+          <%= f.country_select :country, priority_countries = [], options = {:prompt => true}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
         </div>
       </div>
+      <% end %>
       <div class="row section-break">
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
           <%= f.input :email, required: true, label: "Email", required: true %>
         </div>
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
-          <%= f.input :phone_number, required: true, label: "Phone number" %>
+          <%= f.input :phone_number, required: true, label: "Phone number (Optional)" %>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
-          <%= f.input :coupon, required: false, label: "Coupon" %>
+          <%= f.input :coupon, required: false, label: "Coupon (Optional)" %>
         </div>
       </div>
       <div class="row">
@@ -65,11 +67,11 @@
                 <i class="fas fa-truck"></i>
               </div>
               <div class="contents">
-                <p class="space-beneath"><strong>FREE SHIPPING ON ORDERS OVER 25.00 GBP</strong></p>
+                <p class="space-beneath"><strong>FREE SHIPPING ON ORDERS OVER 50.00 GBP</strong></p>
                 <% if @cart.amount.to_i > 25 %>
                   <p><strong>You qualify for free shipping!</strong></p>
                 <% else %>
-                  <p>Just add <strong><%= number_with_precision(25.00 - @cart.amount.to_i, precision: 2) %> GBP</strong> to your cart to qualify</p>
+                  <p>Just add <strong>£<%= number_with_precision(@discount, precision: 2) %> more</strong> to your cart to qualify</p>
                 <% end %>
               </div>
             </div>
@@ -87,6 +89,13 @@
           </div>
         </div>
       </div>
+      <div class="space"></div>
     <% end %>
   </div>
 </div>
+
+<style>
+  label{
+    font-size: 15px;
+  }
+</style>

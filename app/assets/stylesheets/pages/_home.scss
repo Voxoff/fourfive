@@ -15,6 +15,9 @@
   margin-top: 50px;
   margin-bottom: 50px;
   text-align: center;
+  h5 {
+    font-weight: lighter;
+  }
   h3{
     font-size: 20px;
     font-weight: bolder;
@@ -71,8 +74,17 @@
 
 .our-story{
   text-align: center;
-  margin: 40px auto;
-  margin-bottom: 10%;
+  h2 {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  h5 {
+    margin-top: 0;
+    font-weight: lighter;
+  }
+  .simple-btn {
+    margin-top: 16px;
+  }
 }
 
 // Mobile
@@ -200,5 +212,16 @@ select {
 .product-info{
   a{
     color: $charcoal;
+  }
+}
+
+.homepage-cartoon {
+  width: 100%;
+  height: auto
+}
+
+@media(min-width: 992px){
+  .homepage-cartoon {
+    width: 65%;
   }
 }

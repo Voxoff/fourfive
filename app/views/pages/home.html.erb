@@ -62,7 +62,7 @@
                 <%= product.subtitle %>
               </p>
             </span>
-            <%= link_to "Shop now", product_path(product), class: "simple-btn"%>
+            <%= link_to "shop now", product_path(product), class: "simple-btn"%>
           </div>
         </div>
       </div>
@@ -76,52 +76,46 @@
     <h5>we asked our community to share their cbd experience</h5>
   </div>
 
-  <div class="review-section">
-    <% @reviews.each_with_index do |review, i| %>
-      <div class="card-and-line">
-        <div class="review-card">
-          <%= cl_image_tag review.photo, class: "review-image-gap" if review.photo.present? %>
-          <div class="review-text">
-            <span class="yellow-hover">
-              <h4><%= review.content %></h4>
-              <p style="font-size: 15px"><%= review.name %></p>
-            </span>
-            <p id="position"><%= review.position %></p>
-            <% if i == 0  %>
-              <div id="accordion">
-                <span class="yellow-hover">
-                  <p id="more-info-toggle" class="accordion-toggle more-info-toggle-class lighter">More info...</p>
-                </span>
-                <div id="more-info" class="accordion-content default more-info-toggle-class lighter" style="font-size:12px; font-style:italic; display:none;">
-                  Cras malesuada ultrices augue molestie risus. Cras.
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <div class="review-section">
+        <div class="review-column">
+          <% @reviews.each_with_index do |review, i| %>
+            <div class="review-card">
+              <div class="review-content">
+                <div class="review-image">
+                  <%= cl_image_tag review.photo, class: "review-image" if review.photo.present? %>
+                </div>
+                <div class="review-text">
+                  <h4><%= review.content %></h4>
+                  <p><%= review.name %></p>
+                  <p><%= review.position %></p>
+                  <div class="link-box">
+                    <a data-toggle="collapse" data-target="#collapseExample<%= i %>" role="button" aria-expanded="false" aria-controls="collapseExample<%= i %>">
+                      More info...
+                    </a>
+                  </div>
                 </div>
               </div>
-            <% end %>
-          </div>
+              <div class="collapse" id="collapseExample<%= i %>">
+                <div class="review-more-info">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <% if i == 2 %>
-          <div class="thin-grey-line wider" style="margin-top: 50px;"></div>
-        <% else %>
-          <div class="thin-grey-line yellow-background-hover"></div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="our-story">
-    <h2 style="margin-bottom: -4%; font-weight: bolder; position: absolute; right: 50%; transform: translateX(50%)">Our story</h2>
-  </div>
-  <h5 class="lighter" style="text-align: center;">how fourfive cbd began</h5>
-  <div class="flex"  style="justify-content: center">
-    <div class="button-container bigger yellow-border-hover">
-      <div class="master-quantity">
-        <%= button_to education_path, class: "flex add-to-cart no-button" do %>
-          <p id="buy-now" class="yellow-hover">Find out more</p>
-        <% end %>
       </div>
     </div>
   </div>
-  <%= image_tag "cartoon.jpg", height: 500, class: "center-block" %>
+  <div class="our-story">
+    <h2>Our Story</h2>
+    <h5>how <strong>fourfive</strong> cbd began</h5>
+    <%= button_to "Find out more", education_path, class: "simple-btn" %>
+  </div>
+  <div class="ajflex">
+    <%= image_tag "cartoon.jpg", height: 500, class: "homepage-cartoon" %>
+  </div>
   <div class="stripes" style="height: 45px;">
     <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
     <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; top: 25px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
