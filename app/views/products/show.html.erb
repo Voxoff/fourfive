@@ -17,32 +17,71 @@
           <p>Size: 300mg / 0.11 oz</p>
         </div>
       </div>
-      <div class="selections">
+
+
+
+<div class="selections">
+  <div class="selection">
+    <div class="field">
+      <div><%= @tinctures.first %></div>
+      <i class="fas fa-caret-down"></i>
+    </div>
+    <div class="drop-down" style="display: none;">
+      <% @tinctures.each do |tincture| %>
+        <div class="drop-down-item"><%= tincture %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="selection">
+    <div class="field">
+      <div><%= @strengths.first %></div>
+      <i class="fas fa-caret-down"></i>
+    </div>
+    <div class="drop-down" style="display: none;">
+      <% @strengths.each do |strength| %>
+        <div class="drop-down-item"><%= strength %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="selection">
+    <div class="field">
+      <div><%= @types.first %></div>
+      <i class="fas fa-caret-down"></i>
+    </div>
+    <div class="drop-down" style="display: none;">
+      <% @types.each do |type| %>
+        <div class="drop-down-item"><%= type %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<!--       <div class="selections">
         <div class="selection">
-          <% comment do %>
-            <span class="fancyArrow"></span>
-            <select name="product[tincture]">
-                <% @tinctures.each do |tincture| %>
-                    <option value="<%= tincture %>"><%= tincture %></option>
+          <span class="fancyArrow"></span>
+          <select name="product[tincture]">
+              <% @tinctures.each do |tincture| %>
+                  <option value="<%= tincture %>"><%= tincture %></option>
+              <% end %>
+          </select>
+          <div class="selection">
+            <select name="product[strength]">
+                <% @strengths.each do |strength| %>
+                    <option value="<%= strength %>"><%= strength %></option>
                 <% end %>
             </select>
-            <div class="selection">
-              <select name="product[strength]">
-                  <% @strengths.each do |strength| %>
-                      <option value="<%= strength %>"><%= strength %></option>
-                  <% end %>
-              </select>
-            </div>
-            <div class="selection">
-              <select name="product[type]">
-                <% @types.each do |type| %>
-                  <option value="<%= type %>"><%= type %></option>
-                <% end %>
-              </select>
-            </div>
-          <% comment end %>
+          </div>
+          <div class="selection">
+            <select name="product[type]">
+              <% @types.each do |type| %>
+                <option value="<%= type %>"><%= type %></option>
+              <% end %>
+            </select>
+          </div>
         </div>
-      </div>
+      </div> -->
 
 
 
@@ -148,7 +187,9 @@
 
 <% end %>
 
-
+<% content_for :after_js do %>
+  <%= javascript_pack_tag('drop_down') %>
+<% end %>
 
 
 <script>
