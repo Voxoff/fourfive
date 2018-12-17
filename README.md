@@ -5,7 +5,6 @@ zion upgrade WAITING
 emails WAITING
 xero
 
-
 SIDEKIQ LEAVE
 
 FRONT
@@ -18,9 +17,6 @@ PRODUCT DESC
 mobile view flexbox and button
 
 
-
-
-	•	Then we need to figure out how we switch between strength and flavours?
 
 
 
