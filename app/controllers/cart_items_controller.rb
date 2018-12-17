@@ -3,11 +3,13 @@ class CartItemsController < ApplicationController
 
   def create
     pundit_placeholder
-    @cart_item = @cart.cart_items.find { |i| i.product.id == cart_params[:product_id].to_i }
+    @product = Product.find_by(product_params)
+    @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
       @cart_item.quantity += params[:quantity].to_i
     else
       @cart_item = CartItem.new(cart_params)
+      @cart_item.product = @product
     end
     flash[:notice] = @cart_item.save ? "That's been added to your cart!" : "There was an error. Sorry!"
     redirect_back(fallback_location: cart_path(@cart.id))
@@ -38,7 +40,11 @@ class CartItemsController < ApplicationController
     params.require(:cart_item).permit(:strength, :product)
   end
 
+  def product_params
+    params.permit(:size, :dosage, :tincture)
+  end
+
   def cart_params
-    params.permit(:cart_id, :product_id, :quantity)
+    params.permit(:cart_id, :quantity)
   end
 end

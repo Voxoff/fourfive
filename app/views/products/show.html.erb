@@ -17,41 +17,57 @@
           <p>Size: 300mg / 0.11 oz</p>
         </div>
       </div>
-      <div class="selections">
-        <div class="selection">
-          <div class="field">
-            <div><%= @tinctures.first %></div>
-            <i class="fas fa-caret-down"></i>
-          </div>
-          <div class="drop-down" style="display: none;">
-            <% @tinctures.each do |tincture| %>
-              <div class="drop-down-item"><%= tincture %></div>
-            <% end %>
-          </div>
-        </div>
-        <div class="selection">
-          <div class="field">
-            <div><%= @strengths.first %></div>
-            <i class="fas fa-caret-down"></i>
-          </div>
-          <div class="drop-down" style="display: none;">
-            <% @strengths.each do |strength| %>
-              <div class="drop-down-item"><%= strength %></div>
-            <% end %>
+      <% if @product.balm? %>
+        <div class="selections">
+          <div class="selection">
+            <div class="field">
+              <div><%= @sizes.first %></div>
+              <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="drop-down" style="display: none;">
+              <% @sizes.each do |size| %>
+                <div class="drop-down-item" id="size"><%= size %></div>
+              <% end %>
+            </div>
           </div>
         </div>
-        <div class="selection">
-          <div class="field">
-            <div><%= @types.first %></div>
-            <i class="fas fa-caret-down"></i>
+      <% elsif @product.oil? %>
+        <div class="selections">
+          <div class="selection">
+            <div class="field">
+              <div><%= @tinctures.first %></div>
+              <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="drop-down" style="display: none;">
+              <% @tinctures.each do |tincture| %>
+                <div class="drop-down-item" id="tincture"><%= tincture %></div>
+              <% end %>
+            </div>
           </div>
-          <div class="drop-down" style="display: none;">
-            <% @types.each do |type| %>
-              <div class="drop-down-item"><%= type %></div>
-            <% end %>
+          <div class="selection">
+            <div class="field">
+              <div><%= @sizes.first %></div>
+              <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="drop-down" style="display: none;">
+              <% @sizes.each do |size| %>
+                <div class="drop-down-item" id="size"><%= size %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="selection">
+            <div class="field">
+              <div><%= @dosages.first %></div>
+              <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="drop-down" style="display: none;">
+              <% @dosages.each do |dosage| %>
+                <div class="drop-down-item" id="dosage"><%= dosage %></div>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
       <div class="all-btn-container show">
         <div class="button-container">
           <div class="master-quantity">
@@ -62,11 +78,27 @@
         </div>
         <div class="button-container bigger yellow-border-hover">
           <div class="master-quantity">
-            <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: @product.id}, class: "flex  add-to-cart no-button" do %>
-              <p id="pad-right">Buy now</p>
-              <div class="vertical-line"></div>
-              <p id="pound">£</p>
-              <p id="price"><%= @price %></p>
+            <% if @product.oil? %>
+             <%= button_to cart_items_path, params: { quantity: 1, cart_id: @cart.id, size: @sizes.first, dosage: @dosages.first, tincture: @tinctures.first, product_id: @product.id}, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
+                <p id="pad-right">Buy now</p>
+                <div class="vertical-line"></div>
+                <p id="pound">£</p>
+                <p id="price"><%= @price %></p>
+              <% end %>
+            <% elsif @product.balm? %>
+             <%= button_to cart_items_path, params: { quantity: 1, cart_id: @cart.id, size: @sizes.first, product_id: @product.id}, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
+                <p id="pad-right">Buy now</p>
+                <div class="vertical-line"></div>
+                <p id="pound">£</p>
+                <p id="price"><%= @price %></p>
+              <% end %>
+            <% else %>
+              <%= button_to cart_items_path, params: { quantity: 1, cart_id: @cart.id, product_id: @product.id}, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
+                <p id="pad-right">Buy now</p>
+                <div class="vertical-line"></div>
+                <p id="pound">£</p>
+                <p id="price"><%= @price %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -212,7 +244,7 @@
       </div>
       <div class="product-info">
         <span><p>Strength</p></span>
-          <%= f.input :strength, collection: 1..5, selected: 1, label: false%>
+          <%= f.input :size, collection: 1..5, selected: 1, label: false%>
       </div>
       <div class="product-submit">
           <%= f.submit "Buy now", class: "btn btn-primary" %>

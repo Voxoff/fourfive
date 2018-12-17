@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.friendly.find(params[:id])
-    @strengths = %w[500mg 1000mg 2000mg] # @strengths = Product.all.collect(&:size).uniq.compact
+    @sizes = %w[500mg 1000mg 2000mg] # @strengths = Product.all.collect(&:size).uniq.compact
     @tinctures = %w[orange natural] # @tinctures = Product.all.collect(&:tincture).uniq.compact
-    @types = %w[Pipette Spray]
+    @dosages = %w[pipette spray]
 
     @help = @product.help
     @help_count = (@help.count / 2 - 1)
