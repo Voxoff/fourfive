@@ -21,13 +21,14 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
     let select =  document.querySelector(`[name=${item.id}]`)
     select.value = item.innerHTML
     console.log(select.value)
+    let quantity = document.getElementById('quantity').innerHTML
     let price = document.getElementById('price')
     if (document.getElementById('product-name').innerHTML == "cbd balms"){
       if(select.value == "small"){
-        price.innerHTML = 29.99
+        price.innerHTML = 29.99 * quantity
       }
       else if(select.value == "large"){
-        price.innerHTML = 59.99
+        price.innerHTML = 59.99 * quantity
       }
     }
     if (document.getElementById('product-name').innerHTML == "cbd oils"){
@@ -35,6 +36,7 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
       strength = document.getElementById('size')
       string = tincture + " " + strength
       value = hash[string]
+      price.innerHTML = value * quantity;
     }
   })
 })
