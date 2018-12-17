@@ -6,14 +6,12 @@ document.querySelectorAll(".field").forEach((field) => {
   })
 })
 hash = {
-  'natural 500mg': 29.99
-  'natural 1000mg': 59.99
-  'natural 2000mg': 114.99
-  'orange 500mg': 34.99
-  'orange 1000mg': 64.99
+  'natural 500mg': 29.99,
+  'natural 1000mg': 59.99,
+  'natural 2000mg': 114.99,
+  'orange 500mg': 34.99,
+  'orange 1000mg': 64.99,
   'orange 2000mg': 119.99
-
-
 }
 // clicking on option changes box's value and collapses dropdown
 document.querySelectorAll(".drop-down-item").forEach((item) => {
