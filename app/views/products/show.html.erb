@@ -21,7 +21,7 @@
         <div class="selections">
           <div class="selection">
             <div class="field">
-              <div><%= @sizes.first %></div>
+              <div id="bella"><%= @sizes.first %></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
@@ -259,30 +259,36 @@
 
 <script>
 // a script to update quantity bought.
-  const price = Number.parseFloat("<%= @product.price.to_f %>")
   const lessButton = document.querySelector('#less')
   const buyButton = document.querySelector('.button_to')
   let quantityParam = buyButton.getElementsByTagName("input")[3]
 
   lessButton.addEventListener("click", (e) => {
-    console.log("click")
-    let quantity = document.querySelector('#quantity')
+    hash = { "small": 29.99, "large": 59.99 }
+    let select = document.getElementById('bella').innerHTML
+    let real_price = hash[select]
+    console.log(real_price)
+    let quantity = document.getElementById('quantity')
     let number = Number.parseFloat(quantity.innerText)
     if (number > 1){
       quantity.innerHTML = number - 1
       quantityParam.value = number - 1
       const amount = document.querySelector('#price')
-      amount.innerHTML = Math.round((price * (number - 1)) * 100) / 100
+      amount.innerHTML = real_price * quantity.innerHTML
     }
   })
 
   const moreButton = document.querySelector('#more')
   moreButton.addEventListener("click", (e) => {
-    let quantity = document.querySelector('#quantity')
+    hash = { "small": 29.99, "large": 59.99 }
+    let select =  document.getElementById('bella').innerHTML
+    let real_price = hash[select]
+    console.log(real_price)
+    let quantity = document.getElementById('quantity')
     let number = Number.parseFloat(quantity.innerText)
     quantity.innerHTML = number + 1
     quantityParam.value = number + 1
     let amount = document.querySelector('#price')
-    amount.innerHTML = Math.round(price * quantity.innerHTML * 100) / 100
+    amount.innerHTML = real_price * quantity.innerHTML
   })
 </script>
