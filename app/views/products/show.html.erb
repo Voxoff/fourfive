@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-12 col-md-5">
-      <h2 class="border-bottom" style="font-size: 20px; padding-bottom: 10px;"><%= @product.name %></h2>
+      <h2 class="border-bottom" id="product-name" style="font-size: 20px; padding-bottom: 10px;"><%= @product.name %></h2>
       <div class="product-info">
         <div class="text lighter" style="margin-bottom:50px; font-size: 15px; margin-right:13%; text-align:justify">
           <p>
@@ -83,21 +83,21 @@
                 <p id="pad-right">Buy now</p>
                 <div class="vertical-line"></div>
                 <p id="pound">£</p>
-                <p id="price"><%= @price %></p>
+                <p id="price"><%= humanized_money @price %></p>
               <% end %>
             <% elsif @product.balm? %>
              <%= button_to cart_items_path, params: { quantity: 1, cart_id: @cart.id, size: @sizes.first, product_id: @product.id}, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
                 <p id="pad-right">Buy now</p>
                 <div class="vertical-line"></div>
                 <p id="pound">£</p>
-                <p id="price"><%= @price %></p>
+                <p id="price"><%= humanized_money @price %></p>
               <% end %>
             <% else %>
               <%= button_to cart_items_path, params: { quantity: 1, cart_id: @cart.id, product_id: @product.id}, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
                 <p id="pad-right">Buy now</p>
                 <div class="vertical-line"></div>
                 <p id="pound">£</p>
-                <p id="price"><%= @price %></p>
+                <p id="price"><%= humanized_money @price %></p>
               <% end %>
             <% end %>
           </div>
@@ -259,7 +259,7 @@
 
 <script>
 // a script to update quantity bought.
-  const price = Number.parseInt("<%= @product.price.to_i %>")
+  const price = Number.parseFloat("<%= @product.price.to_f %>")
   const lessButton = document.querySelector('#less')
   const buyButton = document.querySelector('.button_to')
   let quantityParam = buyButton.getElementsByTagName("input")[3]
@@ -267,24 +267,22 @@
   lessButton.addEventListener("click", (e) => {
     console.log("click")
     let quantity = document.querySelector('#quantity')
-    let number = Number.parseInt(quantity.innerText)
+    let number = Number.parseFloat(quantity.innerText)
     if (number > 1){
       quantity.innerHTML = number - 1
       quantityParam.value = number - 1
+      const amount = document.querySelector('#price')
+      amount.innerHTML = Math.round((price * (number - 1)) * 100) / 100
     }
-    const amount = document.querySelector('#price')
-    amount.innerHTML = price * (number - 1)
-
   })
 
   const moreButton = document.querySelector('#more')
   moreButton.addEventListener("click", (e) => {
-    console.log("click")
     let quantity = document.querySelector('#quantity')
-    let number = Number.parseInt(quantity.innerText)
+    let number = Number.parseFloat(quantity.innerText)
     quantity.innerHTML = number + 1
     quantityParam.value = number + 1
     let amount = document.querySelector('#price')
-    amount.innerHTML = price * quantity.innerHTML
+    amount.innerHTML = Math.round(price * quantity.innerHTML * 100) / 100
   })
 </script>
