@@ -65,7 +65,7 @@ class PaymentsController < ApplicationController
   end
 
   def coupons
-    ["DOMDAY", "COUPON"]
+    ["#{ENV['COUPON']}"]
   end
 
   def verify_coupon(coupon)
