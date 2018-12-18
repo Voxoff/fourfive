@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     else
       @sizes = %w[500mg 1000mg 2000mg] # @strengths = Product.all.collect(&:size).uniq.compact
     end
-    @tinctures = %w[orange natural] # @tinctures = Product.all.collect(&:tincture).uniq.compact
+    @tinctures = %w[natural orange] # @tinctures = Product.all.collect(&:tincture).uniq.compact
     @dosages = %w[pipette spray]
 
     @help = @product.help

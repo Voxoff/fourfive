@@ -21,12 +21,12 @@
         <div class="selections">
           <div class="selection">
             <div class="field">
-              <div id="bella"><%= @sizes.first %></div>
+              <div id="size"><%= @sizes.first %></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @sizes.each do |size| %>
-                <div class="drop-down-item" id="size"><%= size %></div>
+                <div class="drop-down-item"><%= size %></div>
               <% end %>
             </div>
           </div>
@@ -35,34 +35,34 @@
         <div class="selections">
           <div class="selection">
             <div class="field">
-              <div><%= @tinctures.first %></div>
+              <div id="tincture"><%= @tinctures.first %></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @tinctures.each do |tincture| %>
-                <div class="drop-down-item" id="tincture"><%= tincture %></div>
+                <div class="drop-down-item"><%= tincture %></div>
               <% end %>
             </div>
           </div>
           <div class="selection">
             <div class="field">
-              <div><%= @sizes.first %></div>
+              <div id="size"><%= @sizes.first %></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @sizes.each do |size| %>
-                <div class="drop-down-item" id="size"><%= size %></div>
+                <div class="drop-down-item"><%= size %></div>
               <% end %>
             </div>
           </div>
           <div class="selection">
             <div class="field">
-              <div><%= @dosages.first %></div>
+              <div id="dosage"><%= @dosages.first %></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @dosages.each do |dosage| %>
-                <div class="drop-down-item" id="dosage"><%= dosage %></div>
+                <div class="drop-down-item"> <%= dosage %></div>
               <% end %>
             </div>
           </div>
@@ -105,9 +105,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <div class="row">
     <div class="more-info">
@@ -164,93 +161,7 @@
     </div>
   </div>
 
-
-
-
-<!--   <div class="icon-banner lighter">
-    <div class="column" style="padding-right: 100px;">
-      <h3 style="margin-top: 10px;">What is it?</h3>
-      <p>A cosmetic balm product for skin care.</p>
-
-      <h3>How do I use it?</h3>
-        <% @product.how_to_use.split("\n").each do |para| %>
-          <p><%= para %></p>
-        <% end %>
-      <h3>What is it good for?</h3>
-      <div class="flex">
-        <div class="column">
-          <% @help.each_with_index do |help, i| %>
-            <p><%= help %></p>
-            <% if i == @help_count %>
-              </div><div class="column">
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <h3>What’s in it?</h3>
-      <div class="flex">
-        <div class="column">
-          <% @ingr.each_with_index do |ingr, i| %>
-            <p><%= ingr %></p>
-            <% if i == @ingr_count %>
-              </div><div class="column">
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="column flex">
-      <div class="sub-column">
-        <div class="icon-card">
-          <%= image_tag "icons/natural.png", size: '90' %>
-          <p>Natural</p>
-        </div>
-        <div class="icon-card">
-          <%= image_tag "icons/co2.png", size: '90' %>
-          <p>Extracted by CO<sub>2</sub></p>
-        </div>
-        <div class="icon-card">
-          <%= image_tag "icons/no-chemicals-yellow.png", size: '90' %>
-          <p>Herbicide Free</p>
-        </div>
-      </div>
-      <div class="sub-column">
-        <div class="icon-card">
-          <%= image_tag "icons/lab.png", size: '90' %>
-          <p>Lab Tested</p>
-        </div>
-        <div class="icon-card">
-          <%= image_tag "icons/vegetarian.png", size: '90' %>
-          <p>Natural</p>
-        </div>
-        <div class="icon-card">
-          <%= image_tag "icons/vegan.png", size: '90' %>
-          <p>Natural</p>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
-
-
-
 </div>
-
-<% if false %>
-          <%= simple_form_for(@cart_item, {wrapper: :vertical_col}) do |f| %>
-          <%= f.input :quantity, collection: 1..9, selected: 1, label: false, class: "form-dropdown"%>
-          <%= f.hidden_field :product_id, value: @product.id %>
-      </div>
-      <div class="product-info">
-        <span><p>Strength</p></span>
-          <%= f.input :size, collection: 1..5, selected: 1, label: false%>
-      </div>
-      <div class="product-submit">
-          <%= f.submit "Buy now", class: "btn btn-primary" %>
-        <% end %>
-
-<% end %>
 
 <% content_for :after_js do %>
   <%= javascript_pack_tag('drop_down') %>
@@ -264,12 +175,26 @@
   let quantityParam = buyButton.getElementsByTagName("input")[3]
 
   lessButton.addEventListener("click", (e) => {
-    hash = { "small": 29.99, "large": 59.99 }
-    let select = document.getElementById('bella').innerHTML
-    let real_price = hash[select]
-    console.log(real_price)
+    if (document.getElementById('product-name').innerHTML == "cbd balms"){
+      hash = { "small": 29.99, "large": 59.99 }
+      let select = document.getElementById('size').innerHTML
+      real_price = hash[select]
+    } else if (document.getElementById('product-name').innerHTML == "cbd oils"){
+      hash = {
+        'natural 500mg': 29.99,
+        'natural 1000mg': 59.99,
+        'natural 2000mg': 114.99,
+        'orange 500mg': 34.99,
+        'orange 1000mg': 64.99,
+        'orange 2000mg': 119.99
+      }
+      let tincture = document.getElementById('tincture').innerHTML
+      let strength = document.getElementById('size').innerHTML
+      let string = tincture + " " + strength
+      real_price = hash[string]
+    }
     let quantity = document.getElementById('quantity')
-    let number = Number.parseFloat(quantity.innerText)
+    let number = Number.parseInt(quantity.innerText)
     if (number > 1){
       quantity.innerHTML = number - 1
       quantityParam.value = number - 1
@@ -280,12 +205,27 @@
 
   const moreButton = document.querySelector('#more')
   moreButton.addEventListener("click", (e) => {
+
+    if (document.getElementById('product-name').innerHTML == "cbd balms"){
     hash = { "small": 29.99, "large": 59.99 }
     let select =  document.getElementById('bella').innerHTML
-    let real_price = hash[select]
-    console.log(real_price)
+    real_price = hash[select]
+    } else if (document.getElementById('product-name').innerHTML == "cbd oils"){
+      hash = {
+        'natural 500mg': 29.99,
+        'natural 1000mg': 59.99,
+        'natural 2000mg': 114.99,
+        'orange 500mg': 34.99,
+        'orange 1000mg': 64.99,
+        'orange 2000mg': 119.99
+      }
+      let  tincture = document.getElementById('tincture').innerHTML
+      let strength = document.getElementById('size').innerHTML
+      let string = tincture + " " + strength
+      real_price = hash[string]
+    }
     let quantity = document.getElementById('quantity')
-    let number = Number.parseFloat(quantity.innerText)
+    let number = Number.parseInt(quantity.innerText)
     quantity.innerHTML = number + 1
     quantityParam.value = number + 1
     let amount = document.querySelector('#price')
