@@ -57,7 +57,7 @@
               <td class="yellow-box"></td>
               <td class="align-center"><%= image_tag item.product.photo_url, height: "30px" %></td>
               <td class="align-center"><%= item.product.name %></td>
-              <td class="align-right"><%= item.product.price %></td>
+              <td class="align-right"><%= item.product.price if item.product.name == "cbd capsules" %></td>
               <td class="align-right">
                 <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
                   <i class="fas fa-plus"></i>
