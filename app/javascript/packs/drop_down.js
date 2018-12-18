@@ -21,13 +21,13 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
     let quantity = document.getElementById('quantity').innerHTML
     let price = document.getElementById('price')
     if (document.getElementById('product-name').innerHTML == "cbd balms"){
-      let select = document.querySelector(`[name=${item.id}]`)
-      select.value = item.innerHTML
-      console.log(select.value)
-      if(select.value == "small"){
+      strength = document.getElementById("size").innerHTML;
+      strength = item.innerHTML
+      console.log(strength)
+      if(strength == "small"){
         price.innerHTML = 29.99 * quantity
       }
-      else if(select.value == "large"){
+      else if(strength == "large"){
         price.innerHTML = 59.99 * quantity
       }
     }
