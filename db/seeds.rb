@@ -37,7 +37,7 @@ orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992804/me
 orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992791/qobwn7sblybncdty1eox.jpg"
 orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992778/ph6rqpze8dv6552itwhf.jpg"
 
-
+review =
 
 Product.create!(name: 'cbd capsules',
                price: 39.99,
@@ -225,9 +225,9 @@ puts 'Creating Reviews...'
 
 photo = open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543757174/eb8bk1ntavsaotcdmui0.png")
 
-Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Tom", position: "PE Teacher", content: "Help with sleep pattern ")
-Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "Concussion")
-Review.create!(photo: photo, product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "Recovery from knee ligament injury")
+Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169336/vto4twgf2cmc9dpizgfh.jpg"), product_id: p.id, user_id: user.id, name: "Nadia Forde", position: "Model & Actress", content: "My workout routine", desc: "Staying fit and healthy is a key part of my job. With limited time now I'm a mother, I use fourfive cbd to recover quicker after workouts and help me get all-important rest when I need it. Also, a beauty hack for the all-natural balm; I mix  it with my daily moisturiser and its saving my tired skin, reducing puffiness and inflammation.")
+Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169312/odv3lpansifs7zkyr7ht.jpg"), product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "My recovery from concussion", desc: "After suffering a pretty severe concussion I found it hard to relax and help my brain recover. I used fourfive cbd and it helped me to really feel at ease and rest my anxiety.")
+Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169241/iziklekkwsjt92xs5kax.jpg"), product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "My recovery from knee ligament injury", desc: "fourfive cbd really helped me recover and manage pain from my recent knee ligament injury. I especially noticed the great sleep I was getting whilst taking it.")
 
 # Strength.create(strength: 100)
 # Strength.create(strength: 500)

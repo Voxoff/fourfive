@@ -7,7 +7,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :photo
       t.string :name
-
+      t.text :desc
       t.timestamps
     end
 
