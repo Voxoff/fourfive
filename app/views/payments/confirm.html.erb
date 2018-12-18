@@ -79,13 +79,15 @@
         </div>
         <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-4">
           <h4>Terms and Conditions</h4>
-
+          <%# <form action=""> %>
+            <p>I agree: </p><input type="checkbox" required id="terms"><br>
+          <%# </form> %>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-offset-1 col-xs-10">
           <div class="flex shipping-buttons">
-              <%= link_to "Back to cart", :back, class: "simple-btn disabled" %>
+              <%= link_to "Back to cart", :back, class: "simple-btn" %>
               <%= f.submit "Purchase", class: "simple-btn", id: "shipping-btn" %>
           </div>
         </div>
@@ -102,4 +104,11 @@
 </style>
 
 <script>
+  // document.addEventListener('click', (e) => {
+  //   let checked = document.getElementById('terms').checked
+  //   if (checked == true){
+  //     document.getElementById('shipping-btn').classList.remove('disabled')
+  //   }
+  // })
+
 </script>
