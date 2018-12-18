@@ -40,7 +40,7 @@ orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992778/p
 
 
 Product.create!(name: 'cbd capsules',
-               price: 34.99,
+               price: 39.99,
                help: balm_help,
                how_to_use: capsule_how_to,
                ingredients: capsule_ingr,
