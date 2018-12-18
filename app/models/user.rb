@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates_confirmation_of :password
 
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
 
   scope :not_guests, -> { where(guest: false) }
   # scope :orders, -> { where(active: true)}
