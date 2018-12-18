@@ -55,7 +55,6 @@
           <% @cart_items.each do |item| %>
             <tr>
               <td class="yellow-box"></td>
-              <td class="align-center"><%= image_tag item.product.photo_url, height: "30px" %></td>
               <td class="align-center"><%= item.product.name %></td>
               <% if item.product.name == "cbd oils" %>
                 <td class="align-right">29.99 - 119.99</td>
