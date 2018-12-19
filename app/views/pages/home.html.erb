@@ -5,7 +5,7 @@
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <%# <li data-target="#carousel-example-generic" data-slide-to="2"></li> %>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -20,11 +20,13 @@
       <div class="carousel-caption">
       </div>
     </div>
+    <% comment do %>
     <div class="item">
       <%= image_tag "carousel-stripe.jpg"%>
       <div class="carousel-caption">
       </div>
     </div>
+    <% comment end %>
   </div>
 
   <!-- Controls -->
@@ -41,7 +43,7 @@
 <div class="container">
   <div class="border-bottom">
     <h3 style="font-weight: bolder; text-align: center;">Our products</h3>
-    <h5 class="lighter" style="text-align: center;">choose from our range of specialist cbd products</h5>
+    <h5 class="lighter" style="text-align: center;">Choose from our range of specialist oils, balms and capsules.</h5>
   </div>
 
 <div class="row shorter-row">
@@ -73,7 +75,7 @@
 
   <div class="info-line">
     <h3>Your stories</h3>
-    <h5>we asked our community to share their cbd experience</h5>
+    <h5>We asked you to share your fourfive cbd experiences.</h5>
   </div>
 
   <div class="row">
@@ -110,8 +112,7 @@
   </div>
   <div class="our-story" style="margin-bottom: 15px;">
     <h2>Our Story</h2>
-    <h5>how <strong>fourfive</strong> cbd began</h5>
-    <%= link_to "Find out more", about_path, class: "simple-btn", style: "margin-top: 10px;" %>
+    <h5>Our cbd experience.</h5>
   </div>
   <div class="ajflex">
     <%= image_tag "cartoon.jpg", height: 500, class: "homepage-cartoon" %>
@@ -127,7 +128,8 @@
     <p>Now we want to spread the word about the benefits of cbd, and as founders of fourfive, create the best products to help you rest, recover and rise.
  </p>
     <p id="founder">George Kruis & Dom Day</p>
-    <div class="fat-yellow-stripe"></div>
+    <div class="fat-yellow-stripe" style="margin-bottom: 25px"></div>
+    <%= link_to "Find out more", about_path, class: "simple-btn", style: "margin-top: 10px;" %>
   </div>
 </div>
 

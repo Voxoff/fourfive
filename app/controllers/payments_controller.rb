@@ -2,10 +2,6 @@ class PaymentsController < ApplicationController
   include CartControllable
   before_action :find_cart
 
-  def confirm
-    @discount = 50.00 - @cart.amount.to_i
-    pundit_placeholder
-  end
 
   def checkout
     pundit_placeholder
@@ -21,9 +17,8 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    @discount = 50.00 - @cart.amount.to_i
     pundit_placeholder
-    @cart_items = @cart.cart_items.includes(:product)
-    check_empty_cart
   end
 
   def success

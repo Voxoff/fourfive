@@ -1,109 +1,93 @@
 <div class="container">
-<% if false %>
-  <div class="cart-card">
-    <div class="left">
-      <i class="fa fa-shopping-cart fa-5x"></i>
-      <div class="vertical-line" style="border-left: thick solid #ff0000;">
-        <div class="cart-contents">
-          <% @cart_items.each do |cart_item| %>
-            <div class="cart-item-card">
-              <%= cart_item.product.name %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <h2>Shipping Details</h2>
     </div>
   </div>
-
-  <div id="pay">
-    <div class="flex">
-      <% @cart_items.each do |cart_item| %>
-      <div class="product-card">
-        <div class="top">
-          <%= image_tag "floyd.jpeg"%>
+  <div class="cart-form">
+    <%= simple_form_for :checkout, url: checkout_cart_payments_path do |f| %>
+      <div class="row section-break">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :first_name, required: true %>
         </div>
-        <div class="bottom">
-          <div class="bottom-bar">
-            <%= cart_item.product.name %>
-            <%= cart_item.product.price %>
-          </div>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :last_name, required: true %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :first_line,  label: "Address", placeholder: "First line", required: true %>
+        </div>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :second_line, required: false, label: "(Optional)", placeholder: "Second line" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :third_line, required: false, label: "(Optional)", placeholder: "Third line" %>
+        </div>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :city, required: true, label: "City" %>
+        </div>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :postcode, required: true, label: "Postcode" %>
+        </div>
+      </div>
+      <% if false %>
+      <div class="row section-break">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.label :country %>
+          <%= f.country_select :country, priority_countries = [], options = {:prompt => true}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
         </div>
       </div>
       <% end %>
-    </div>
-  </div>
-    <% end %>
-</div>
-
-<!-- Styled form -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-offset-1 col-sm-10">
-      <h3 class="basket-header">your <span class="bold">fourfive</span> basket</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @cart_items.each do |item| %>
-            <tr>
-              <td class="yellow-box"></td>
-              <td class="align-center"><%= item.product.name %></td>
-              <% if item.product.name == "cbd oils" %>
-                <td class="align-right">29.99 - 119.99</td>
-              <% elsif item.product.name == "cbd balms" %>
-                <td class="align-right">29.99 - 59.99</td>
-              <% else %>
-                <td class="align-right"><%= item.product.price if item.product.name == "cbd capsules" %></td>
-              <% end %>
-              <td class="align-right">
-                <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
-                  <i class="fas fa-plus"></i>
-                <% end %>
-                <%= item.quantity %>
-                <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
-                  <i class="fas fa-minus"></i>
-                <% end %>
-              </td>
-              <td class="align-right"><%= item.line_cost %></td>
-              <td class="delete"><%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%></td>
-            </tr>
-          <% end %>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="ft-border-bold">Total</td>
-            <td class="ft-border-bold"><%= @cart.quantity %></td>
-            <td class="ft-border-bold"><%= @cart.amount %></td>
-          </tr>
-        </tfoot>
-      </table>
-      <div class="cart-actions">
-        <div class="cart-actions-left">
-          <%= link_to "continue shopping", :back, class: "simple-btn cart-button-margin"%>
+      <div class="row section-break">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :email, required: true, label: "Email" %>
         </div>
-        <div class="cart-actions-right">
-          <%= link_to "update basket", request.original_url, class: "simple-btn cart-button-margin"%>
-          <%= link_to "checkout", confirm_cart_payments_path, class: "simple-btn cart-button-margin"%>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :phone_number, required: true, label: "Phone number (Optional)" %>
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :coupon, required: false, label: "Coupon (Optional)" %>
+        </div>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+            <div class="flex">
+              <p>I agree:</p><input type="checkbox" required id="terms" style="margin-left: 10px;"><br>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+          <div class="flex shipping-buttons">
+              <%= link_to "Back to cart", :back, class: "simple-btn" %>
+              <%= f.submit "Purchase", class: "simple-btn", id: "shipping-btn" %>
+          </div>
+        </div>
+      </div>
+      <div class="space"></div>
+    <% end %>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-5 col-sm-6">
-      <div class="qualifier">If you are not satisfied with your purchase you may return it for a refund within one year of purchase. Please use the following links to read our <%= link_to "privacy policy", privacy_policy_path %> and <%= link_to "terms and conditions", "#" %>.</div>
-    </div>
-  </div>
-</div>
+
+<style>
+  label{
+    font-size: 15px;
+  }
+</style>
+
+<script>
+  // document.addEventListener('click', (e) => {
+  //   let checked = document.getElementById('terms').checked
+  //   if (checked == true){
+  //     document.getElementById('shipping-btn').classList.remove('disabled')
+  //   }
+  // })
+
+</script>

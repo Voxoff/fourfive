@@ -32,7 +32,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'friendly_id'
 
-gem 'postmark-rails'
+# gem 'postmark-rails'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
