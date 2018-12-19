@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get 'education', to: 'pages#education'
   get 'privacy_policy', to: 'pages#privacy_policy'
 
-  resources :products, only: [:show, :index]
-  resources :cart_items, only: [:show, :create, :index, :destroy]
+  resources :products, only: [:show]
+  resources :cart_items, only: [:show, :create, :destroy]
   resources :carts, only: [:show] do
-    resources :payments, only: [:new, :create] do
+    resources :payments, only: [:new] do
       collection do
         post 'checkout'
         get 'success'
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     end
   end
   # resources :reviews, only: :index
-  require "sidekiq/web"
-  authenticate :user, lambda { |u| u.admin } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
+  # require "sidekiq/web"
+  # authenticate :user, lambda { |u| u.admin } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 end

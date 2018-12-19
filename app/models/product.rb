@@ -3,9 +3,6 @@ class Product < ApplicationRecord
   monetize :price_cents
 
   has_many :reviews
-  has_many :product_strengths, dependent: :destroy
-  has_many :strengths, through: :product_strengths
-
 
   validates :name, :price, presence: true
   validates :size, inclusion: { in: %w[small large 500mg 1000mg 2000mg] }, allow_nil: true

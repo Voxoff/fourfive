@@ -1,17 +1,15 @@
 <div class="container" style="margin-bottom: 70px;">
   <div class="row">
     <div class="col-sm-12 col-md-5">
-      <%= cl_image_tag(@product.photo_url, class: "image-responsive", style: "max-width: 60%; margin-left: 25%;") %>
+      <%= cl_image_tag(@product.photo_url, class: "image-responsive", id: "product-photo", style: "max-width: 60%; margin-left: 25%;") %>
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-12 col-md-5">
       <h2 class="border-bottom" id="product-name" style="font-size: 20px; padding-bottom: 10px;"><%= @product.name %></h2>
       <div class="product-info">
         <div class="text lighter" style="margin-bottom:50px; font-size: 15px; margin-right:13%; text-align:justify">
+          <p><%= @product.description %></p>
           <p>
-            <%= @product.description %>
-            </p>
-            <p>
             Containing Coconut Oil, Shea Butter, Theobroma Cacao, Grape Seed Oil, Rosemary and Cannabis Sativa L.
           </p>
           <p>Size: 300mg / 0.11 oz</p>
@@ -167,68 +165,4 @@
   <%= javascript_pack_tag('drop_down') %>
 <% end %>
 
-
-<script>
-// a script to update quantity bought.
-  const lessButton = document.querySelector('#less')
-  const buyButton = document.querySelector('.button_to')
-  let quantityParam = buyButton.getElementsByTagName("input")[3]
-
-  lessButton.addEventListener("click", (e) => {
-    if (document.getElementById('product-name').innerHTML == "cbd balms"){
-      hash = { "small": 29.99, "large": 59.99 }
-      let select = document.getElementById('size').innerHTML
-      real_price = hash[select]
-    } else if (document.getElementById('product-name').innerHTML == "cbd oils"){
-      hash = {
-        'natural 500mg': 29.99,
-        'natural 1000mg': 59.99,
-        'natural 2000mg': 114.99,
-        'orange 500mg': 34.99,
-        'orange 1000mg': 64.99,
-        'orange 2000mg': 119.99
-      }
-      let tincture = document.getElementById('tincture').innerHTML
-      let strength = document.getElementById('size').innerHTML
-      let string = tincture + " " + strength
-      real_price = hash[string]
-    }
-    let quantity = document.getElementById('quantity')
-    let number = Number.parseInt(quantity.innerText)
-    if (number > 1){
-      quantity.innerHTML = number - 1
-      quantityParam.value = number - 1
-      const amount = document.querySelector('#price')
-      amount.innerHTML = real_price * quantity.innerHTML
-    }
-  })
-
-  const moreButton = document.querySelector('#more')
-  moreButton.addEventListener("click", (e) => {
-
-    if (document.getElementById('product-name').innerHTML == "cbd balms"){
-    hash = { "small": 29.99, "large": 59.99 }
-    let select =  document.getElementById('size').innerHTML
-    real_price = hash[select]
-    } else if (document.getElementById('product-name').innerHTML == "cbd oils"){
-      hash = {
-        'natural 500mg': 29.99,
-        'natural 1000mg': 59.99,
-        'natural 2000mg': 114.99,
-        'orange 500mg': 34.99,
-        'orange 1000mg': 64.99,
-        'orange 2000mg': 119.99
-      }
-      let  tincture = document.getElementById('tincture').innerHTML
-      let strength = document.getElementById('size').innerHTML
-      let string = tincture + " " + strength
-      real_price = hash[string]
-    }
-    let quantity = document.getElementById('quantity')
-    let number = Number.parseInt(quantity.innerText)
-    quantity.innerHTML = number + 1
-    quantityParam.value = number + 1
-    let amount = document.querySelector('#price')
-    amount.innerHTML = real_price * quantity.innerHTML
-  })
-</script>
+<%= javascript_pack_tag('product_show') %>

@@ -5,41 +5,33 @@ document.querySelectorAll(".field").forEach((field) => {
     $(drop).slideToggle()
   })
 })
-hash = {
-  'natural 500mg': 29.99,
-  'natural 1000mg': 59.99,
-  'natural 2000mg': 114.99,
-  'orange 500mg': 34.99,
-  'orange 1000mg': 64.99,
-  'orange 2000mg': 119.99
-}
+
+const balmHash = { "small": 29.99, "large": 59.99 };
+const oilHash = {
+  "natural 500mg": 29.99,
+  "natural 1000mg": 59.99,
+  "natural 2000mg": 114.99,
+  "orange 500mg": 34.99,
+  "orange 1000mg": 64.99,
+  "orange 2000mg": 119.99
+};
+
 // clicking on option changes box's value and collapses dropdown
 document.querySelectorAll(".drop-down-item").forEach((item) => {
   item.addEventListener("click", (event) => {
     item.parentElement.previousElementSibling.firstElementChild.innerHTML = item.innerHTML
     $(item.parentElement).slideToggle()
-    let quantity = document.getElementById('quantity').innerHTML
-    let price = document.getElementById('price')
-    if (document.getElementById('product-name').innerHTML == "cbd balms"){
-      strength = document.getElementById("size").innerHTML;
-      strength = item.innerHTML
-      console.log(strength)
-      if(strength == "small"){
-        price.innerHTML = 29.99 * quantity
-      }
-      else if(strength == "large"){
-        price.innerHTML = 59.99 * quantity
-      }
+    const quantity = document.getElementById('quantity').innerHTML
+    const price = document.getElementById('price')
+    if (window.location.pathname.includes("balms")){
+      let key = document.getElementById("size").innerHTML;
+      key = item.innerHTML
+      price.innerHTML = balmHash[key] * quantity
     }
-    if (document.getElementById('product-name').innerHTML == "cbd oils"){
-      tincture = document.getElementById('tincture').innerHTML
-      strength = document.getElementById('size').innerHTML
-      string = tincture + " " + strength
-      real_price = hash[string]
-      console.log(string)
-      console.log(tincture);
-      console.log(real_price)
-      price.innerHTML = real_price * quantity;
+    else if (window.location.pathname.includes("oils")){
+      const tincture = document.getElementById('tincture').innerHTML
+      const strength = document.getElementById('size').innerHTML
+      price.innerHTML = oilHash[tincture + " " + strength] * quantity;
     }
   })
 })

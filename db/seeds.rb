@@ -5,9 +5,6 @@ Product.destroy_all
 User.destroy_all
 puts 'Creating products...'
 
-
-
-
 balm_help = ["Aches", "Sprains", "Tendon inflammation", "Muscle inflammation", "Localised pain (including knees, hands, shoulders & elbows)", "Psoriasis ", "Acne", "Eczema", "Grazes", "Minor burns"]
 balm_how_to = "Swallow with food. We recommend starting by taking one capsule once or twice a day. you can then increase your dose over time. Generally, we have seen customers take an average of two to four capsules of cbd per day. Please do not go over the 200mg food supplement daily limit (forty capsules)"
 balm_ingr = ["Vegetable capsule", "Hemp extract", "Coconut oil", "May contain traces of nuts"]
@@ -42,7 +39,7 @@ cartoon_photo = "http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543757174/eb
 balm_group_photo = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545222897/syednxs9q1f1xdv8lfqn.jpg"
 oil_group_photo = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545222966/th9jem5lvuuhxjgsfwya.jpg"
 
-Product.create!(name: 'cbd capsules',
+Product.create!(name: 'cbd_capsules',
                price: 39.99,
                help: balm_help,
                how_to_use: capsule_how_to,
@@ -51,7 +48,7 @@ Product.create!(name: 'cbd capsules',
                description: capsule_desc,
                photo: open(capsule))
 
-Product.create!(name: 'cbd balms',
+Product.create!(name: 'cbd_balms',
                 size: "small",
                price: 29.99,
                help: capsule_help,
@@ -61,7 +58,7 @@ Product.create!(name: 'cbd balms',
                description: balm_desc,
                photo: open(balm_300))
 
-Product.create!(name: 'cbd balms',
+Product.create!(name: 'cbd_balms',
                size: "large",
                price: 59.99,
                help: oil_help,
@@ -71,7 +68,7 @@ Product.create!(name: 'cbd balms',
                description: balm_desc,
                photo: open(balm_800))
 
-p = Product.create!(name: 'cbd oils',
+p = Product.create!(name: 'cbd_oils',
                size: "500mg",
                tincture: "natural",
                price: 29.99,
@@ -84,7 +81,7 @@ p = Product.create!(name: 'cbd oils',
                dosage: "spray")
 
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "1000mg",
                tincture: "natural",
                price: 59.99,
@@ -96,7 +93,7 @@ Product.create!(name: 'cbd oils',
                photo: open(natural_medium),
                dosage: "spray")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "2000mg",
                tincture: "natural",
                price: 29.99,
@@ -108,7 +105,7 @@ Product.create!(name: 'cbd oils',
                photo: open(natural_higher),
                dosage: "spray")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "500mg",
                tincture: "orange",
                price: 114.99,
@@ -120,7 +117,7 @@ Product.create!(name: 'cbd oils',
                photo: open(orange_lower),
                dosage: "spray")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "1000mg",
                tincture: "orange",
                price: 64.99,
@@ -132,7 +129,7 @@ Product.create!(name: 'cbd oils',
                photo: open(orange_medium),
                dosage: "spray")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "2000mg",
                tincture: "orange",
                price: 119.99,
@@ -144,7 +141,7 @@ Product.create!(name: 'cbd oils',
                photo: open(orange_higher),
                dosage: "spray")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "500mg",
                tincture: "natural",
                price: 29.99,
@@ -157,7 +154,7 @@ Product.create!(name: 'cbd oils',
                dosage: "pipette")
 
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "1000mg",
                tincture: "natural",
                price: 59.99,
@@ -169,7 +166,7 @@ Product.create!(name: 'cbd oils',
                photo: open(natural_medium),
                dosage: "pipette")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "2000mg",
                tincture: "natural",
                price: 29.99,
@@ -181,7 +178,7 @@ Product.create!(name: 'cbd oils',
                photo: open(natural_higher),
                dosage: "pipette")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "500mg",
                tincture: "orange",
                price: 114.99,
@@ -193,7 +190,7 @@ Product.create!(name: 'cbd oils',
                photo: open(orange_lower),
                dosage: "pipette")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "1000mg",
                tincture: "orange",
                price: 64.99,
@@ -205,7 +202,7 @@ Product.create!(name: 'cbd oils',
                photo: open(orange_medium),
                dosage: "pipette")
 
-Product.create!(name: 'cbd oils',
+Product.create!(name: 'cbd_oils',
                size: "2000mg",
                tincture: "orange",
                price: 119.99,
@@ -216,11 +213,6 @@ Product.create!(name: 'cbd oils',
                description: oil_desc,
                photo: open(orange_higher),
                dosage: "pipette")
-
-
-
-
-
 
 
 user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
@@ -231,15 +223,6 @@ Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1
 Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169312/odv3lpansifs7zkyr7ht.jpg"), product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "My recovery from concussion", desc: "After suffering a pretty severe concussion I found it hard to relax and help my brain recover. I used fourfive cbd and it helped me to really feel at ease and rest my anxiety.")
 Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169241/iziklekkwsjt92xs5kax.jpg"), product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "My recovery from knee ligament injury", desc: "fourfive cbd really helped me recover and manage pain from my recent knee ligament injury. I especially noticed the great sleep I was getting whilst taking it.")
 
-# Strength.create(strength: 100)
-# Strength.create(strength: 500)
-# Strength.create(strength: 1000)
-
-# Product.all.each do |product|
-#   Strength.all.each do |strength|
-#     ProductStrength.create!(product: product, strength: strength)
-#   end
-# end
 
 
 puts 'Finished!'
