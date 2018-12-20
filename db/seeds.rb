@@ -1,6 +1,5 @@
 puts 'Cleaning database...'
 Review.destroy_all
-Strength.destroy_all
 Product.destroy_all
 User.destroy_all
 puts 'Creating products...'
@@ -49,7 +48,7 @@ Product.create!(name: 'cbd_capsules',
                photo: open(capsule))
 
 Product.create!(name: 'cbd_balms',
-                size: "small",
+                size: "Small",
                price: 29.99,
                help: capsule_help,
                how_to_use: balm_how_to,
@@ -59,7 +58,7 @@ Product.create!(name: 'cbd_balms',
                photo: open(balm_300))
 
 Product.create!(name: 'cbd_balms',
-               size: "large",
+               size: "Large",
                price: 59.99,
                help: oil_help,
                how_to_use: oil_how_to,
@@ -70,151 +69,127 @@ Product.create!(name: 'cbd_balms',
 
 p = Product.create!(name: 'cbd_oils',
                size: "500mg",
-               tincture: "natural",
+               tincture: "Natural",
                price: 29.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(natural_lower),
-               dosage: "spray")
-
+               photo: open(natural_lower))
 
 Product.create!(name: 'cbd_oils',
                size: "1000mg",
-               tincture: "natural",
+               tincture: "Natural",
                price: 59.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(natural_medium),
-               dosage: "spray")
-
+               photo: open(natural_medium))
 Product.create!(name: 'cbd_oils',
                size: "2000mg",
-               tincture: "natural",
+               tincture: "Natural",
                price: 29.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(natural_higher),
-               dosage: "spray")
-
+               photo: open(natural_higher))
 Product.create!(name: 'cbd_oils',
                size: "500mg",
-               tincture: "orange",
+               tincture: "Orange",
                price: 114.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(orange_lower),
-               dosage: "spray")
-
+               photo: open(orange_lower))
 Product.create!(name: 'cbd_oils',
                size: "1000mg",
-               tincture: "orange",
+               tincture: "Orange",
                price: 64.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(orange_medium),
-               dosage: "spray")
-
+               photo: open(orange_medium))
 Product.create!(name: 'cbd_oils',
                size: "2000mg",
-               tincture: "orange",
+               tincture: "Orange",
                price: 119.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(orange_higher),
-               dosage: "spray")
-
+               photo: open(orange_higher))
 Product.create!(name: 'cbd_oils',
                size: "500mg",
-               tincture: "natural",
+               tincture: "Natural",
                price: 29.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(natural_lower),
-               dosage: "pipette")
-
+               photo: open(natural_lower))
 
 Product.create!(name: 'cbd_oils',
                size: "1000mg",
-               tincture: "natural",
+               tincture: "Natural",
                price: 59.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(natural_medium),
-               dosage: "pipette")
-
+               photo: open(natural_medium))
 Product.create!(name: 'cbd_oils',
                size: "2000mg",
-               tincture: "natural",
+               tincture: "Natural",
                price: 29.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(natural_higher),
-               dosage: "pipette")
-
+               photo: open(natural_higher))
 Product.create!(name: 'cbd_oils',
                size: "500mg",
-               tincture: "orange",
+               tincture: "Orange",
                price: 114.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(orange_lower),
-               dosage: "pipette")
-
+               photo: open(orange_lower))
 Product.create!(name: 'cbd_oils',
                size: "1000mg",
-               tincture: "orange",
+               tincture: "Orange",
                price: 64.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(orange_medium),
-               dosage: "pipette")
-
+               photo: open(orange_medium))
 Product.create!(name: 'cbd_oils',
                size: "2000mg",
-               tincture: "orange",
+               tincture: "Orange",
                price: 119.99,
                help: oil_help,
                how_to_use: oil_how_to,
                ingredients: oil_ingr,
                subtitle: "Flavored oils for quick absorption",
                description: oil_desc,
-               photo: open(orange_higher),
-               dosage: "pipette")
-
-
+               photo: open(orange_higher))
+puts "Creating user"
 user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
 puts 'Creating Reviews...'
 

@@ -50,13 +50,11 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id"
     t.bigint "product_id"
-    t.bigint "strength_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["product_id"], name: "index_cart_items_on_product_id"
-    t.index ["strength_id"], name: "index_cart_items_on_strength_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -80,28 +78,6 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string "state"
-    t.string "product_sku"
-    t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "GBP", null: false
-    t.string "payment"
-    t.string "jsonb"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "product_strengths", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "strength_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_strengths_on_product_id"
-    t.index ["strength_id"], name: "index_product_strengths_on_strength_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "sku"
     t.string "name"
@@ -118,7 +94,6 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
     t.text "how_to_use"
     t.string "size"
     t.string "tincture"
-    t.string "dosage"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -133,12 +108,6 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "strengths", force: :cascade do |t|
-    t.integer "strength"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -166,11 +135,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
   add_foreign_key "addresses", "carts"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
-  add_foreign_key "cart_items", "strengths"
   add_foreign_key "carts", "users"
-  add_foreign_key "orders", "users"
-  add_foreign_key "product_strengths", "products"
-  add_foreign_key "product_strengths", "strengths"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end

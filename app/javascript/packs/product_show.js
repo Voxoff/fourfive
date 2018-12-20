@@ -9,12 +9,12 @@ const quantityParam = document
 
 let balmHash = { small: 29.99, large: 59.99 };
 let oilHash = {
-  'natural 500mg': 29.99,
-  'natural 1000mg': 59.99,
-  'natural 2000mg': 114.99,
-  'orange 500mg': 34.99,
-  'orange 1000mg': 64.99,
-  'orange 2000mg': 119.99
+  'Natural 500mg': 29.99,
+  'Natural 1000mg': 59.99,
+  'Natural 2000mg': 114.99,
+  'Orange 500mg': 34.99,
+  'Orange 1000mg': 64.99,
+  'Orange 2000mg': 119.99
 }
 
 buttons.forEach((button) => {

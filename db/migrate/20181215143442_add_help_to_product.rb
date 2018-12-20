@@ -5,6 +5,5 @@ class AddHelpToProduct < ActiveRecord::Migration[5.2]
     add_column :products, :how_to_use, :text
     add_column :products, :size, :string
     add_column :products, :tincture, :string
-    add_column :products, :dosage, :string
   end
 end

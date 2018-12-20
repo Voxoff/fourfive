@@ -41,7 +41,7 @@ class CartItemsController < ApplicationController
   end
 
   def product_params
-    params.permit(:size, :dosage, :tincture)
+    params.permit(:size, :tincture)
   end
 
   def cart_params

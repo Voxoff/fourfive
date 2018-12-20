@@ -58,7 +58,7 @@
           <div class="product-info">
             <span class="yellow-hover">
               <%= link_to product_path(product), class: "yellow-hover" do %>
-                <h2><%= product.name.downcase %></h2>
+                <h2><%= product.readable_name %></h2>
               <% end %>
               <p class="lighter" style="font-size: 10px; margin-top: 0px;">
                 <%= product.subtitle %>
