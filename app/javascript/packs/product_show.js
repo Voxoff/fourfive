@@ -26,21 +26,20 @@ buttons.forEach((button) => {
       realPrice = balmHash[select];
     } else if (window.location.pathname.includes("oils")) {
       hash = oilHash;
-      let tincture = document.getElementById("tincture").innerHTML;
-      let strength = document.getElementById("size").innerHTML;
+      let tincture = document.getElementById("tincture").innerText.trim();
+      let strength = document.getElementById("size").innerText.trim();
       realPrice = hash[tincture + " " + strength];
     } else if (window.location.pathname.includes("capsules")) {
       realPrice = 39.99
     }
-
     let number = Number.parseInt(document.getElementById('quantity').innerText)
     if (number >= 1 && button.id == "less") {
-      quantity.innerHTML = number - 1
-      quantityParam.value = number - 1
+      quantity.innerHTML = number - 1;
+      quantityParam.value = number - 1;
     }
     else if (button.id == "more"){
-      quantity.innerHTML = number + 1
-      quantityParam.value = number + 1
+      quantity.innerHTML = number + 1;
+      quantityParam.value = number + 1;
     }
     let roundPrice = realPrice * quantity.innerHTML;
     document.querySelector("#price").innerHTML = Math.round(100 * roundPrice) / 100;
