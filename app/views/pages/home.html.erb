@@ -11,7 +11,11 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
+    <% if mobile_device? %>
+      <%= image_tag "mobile_carouse.jpg" %>
+    <%  else %>
       <%= image_tag "carousel_three.jpg"%>
+    <% end %>
       <div class="carousel-caption">
       </div>
     </div>
