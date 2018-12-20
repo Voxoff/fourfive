@@ -10,6 +10,8 @@ class Product < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  belongs_to :product_group
+
   extend FriendlyId
   friendly_id :name
 
@@ -23,5 +25,15 @@ class Product < ApplicationRecord
 
   def readable_name
     name.gsub("_", " ")
+  end
+
+  def specific_name
+    if oil?
+      "#{tincture} #{size} oil"
+    elsif balm?
+      "#{size} balm" if balm?
+    else
+      "Capsules"
+    end
   end
 end

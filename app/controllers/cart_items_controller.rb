@@ -3,10 +3,11 @@ class CartItemsController < ApplicationController
 
   def create
     pundit_placeholder
-    @product = Product.find_by(product_params)
+    @product = Product.find(product_id_params[:product_id])
+    @product = Product.find_by(product_params) unless @product
     @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
-      @cart_item.quantity += params[:quantity].to_i
+      @cart_item.quantity += cart_params[:quantity].to_i
     else
       @cart_item = CartItem.new(cart_params)
       @cart_item.product = @product
@@ -44,7 +45,11 @@ class CartItemsController < ApplicationController
     params.permit(:size, :tincture)
   end
 
+  def product_id_params
+    params.permit(:product_id)
+  end
+
   def cart_params
-    params.permit(:cart_id, :quantity)
+    params.permit(:cart_id, :quantity, :product_id)
   end
 end

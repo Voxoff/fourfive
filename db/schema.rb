@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_15_143442) do
+ActiveRecord::Schema.define(version: 2018_12_20_122718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "product_groups", force: :cascade do |t|
+    t.text "help", default: [], array: true
+    t.text "ingredients", default: [], array: true
+    t.text "how_to_use"
+    t.text "description"
+    t.string "subtitle"
+    t.string "photo"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "sku"
     t.string "name"
@@ -94,6 +106,8 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
     t.text "how_to_use"
     t.string "size"
     t.string "tincture"
+    t.bigint "product_group_id"
+    t.index ["product_group_id"], name: "index_products_on_product_group_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -136,6 +150,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_143442) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "products", "product_groups"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end

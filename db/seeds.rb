@@ -37,158 +37,52 @@ cartoon_photo = "http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543757174/eb
 
 balm_group_photo = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545222897/syednxs9q1f1xdv8lfqn.jpg"
 oil_group_photo = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545222966/th9jem5lvuuhxjgsfwya.jpg"
+capsules_photo = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310996/g9l7hk0dbiii7fkjcq9r.jpg"
+natural_lower =  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310487/fca5phhhi05oy3rbilqe.jpg"
+natural_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310517/ykz2clyc02odmzfazffc.jpg"
+natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310539/s4o3j4g8u38yw5ydp9dl.jpg"
 
-Product.create!(name: 'cbd_capsules',
-               price: 39.99,
-               help: balm_help,
-               how_to_use: capsule_how_to,
-               ingredients: capsule_ingr,
-               subtitle: "Easy-to-take capsules for slower release",
-               description: capsule_desc,
-               photo: open(capsule))
+orange_lower =  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310603/wsz1iktl65jfnzf0usno.jpg"
+orange_medium =  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310585/unumz5jvzglclwxw2rik.jpg"
+orange_higher =  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310560/ynbhmsk6vqsnefuagu1u.jpg"
 
-Product.create!(name: 'cbd_balms',
-                size: "Small",
-               price: 29.99,
-               help: capsule_help,
-               how_to_use: balm_how_to,
-               ingredients: balm_ingr,
-               subtitle: "Organic balms for damaged skin",
-               description: balm_desc,
-               photo: open(balm_300))
+oil_inter = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310755/ny59enepz05qvp94tt9f.jpg"
+balm_inter = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310778/sl30jmqwyb9mij3bcbcd.jpg"
+capsules_inter = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310803/veuj8rtogmvgswpoadxu.jpg"
 
-Product.create!(name: 'cbd_balms',
-               size: "Large",
-               price: 59.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: balm_desc,
-               photo: open(balm_800))
+capsules = ProductGroup.create(name: 'cbd_capsules', help: capsule_help,
+how_to_use: capsule_how_to,
+ingredients: capsule_ingr,
+subtitle: "Easy-to-take capsules for slower release",
+description: capsule_desc,
+photo: open(capsules_photo))
 
-p = Product.create!(name: 'cbd_oils',
-               size: "500mg",
-               tincture: "Natural",
-               price: 29.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(natural_lower))
+balms = ProductGroup.create(name: 'cbd_balms', help: balm_help,
+how_to_use: balm_how_to,
+ingredients: balm_ingr,
+subtitle: "Organic balms for damaged skin",
+description: balm_desc,
+photo: open(balm_group_photo))
 
-Product.create!(name: 'cbd_oils',
-               size: "1000mg",
-               tincture: "Natural",
-               price: 59.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(natural_medium))
-Product.create!(name: 'cbd_oils',
-               size: "2000mg",
-               tincture: "Natural",
-               price: 29.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(natural_higher))
-Product.create!(name: 'cbd_oils',
-               size: "500mg",
-               tincture: "Orange",
-               price: 114.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(orange_lower))
-Product.create!(name: 'cbd_oils',
-               size: "1000mg",
-               tincture: "Orange",
-               price: 64.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(orange_medium))
-Product.create!(name: 'cbd_oils',
-               size: "2000mg",
-               tincture: "Orange",
-               price: 119.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(orange_higher))
-Product.create!(name: 'cbd_oils',
-               size: "500mg",
-               tincture: "Natural",
-               price: 29.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(natural_lower))
+oils = ProductGroup.create(name: 'cbd_oils', help: oil_help,
+how_to_use: oil_how_to,
+ingredients: oil_ingr,
+subtitle: "Flavored oils for quick absorption",
+description: oil_desc,
+photo: open(oil_group_photo))
 
-Product.create!(name: 'cbd_oils',
-               size: "1000mg",
-               tincture: "Natural",
-               price: 59.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(natural_medium))
-Product.create!(name: 'cbd_oils',
-               size: "2000mg",
-               tincture: "Natural",
-               price: 29.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(natural_higher))
-Product.create!(name: 'cbd_oils',
-               size: "500mg",
-               tincture: "Orange",
-               price: 114.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(orange_lower))
-Product.create!(name: 'cbd_oils',
-               size: "1000mg",
-               tincture: "Orange",
-               price: 64.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(orange_medium))
-Product.create!(name: 'cbd_oils',
-               size: "2000mg",
-               tincture: "Orange",
-               price: 119.99,
-               help: oil_help,
-               how_to_use: oil_how_to,
-               ingredients: oil_ingr,
-               subtitle: "Flavored oils for quick absorption",
-               description: oil_desc,
-               photo: open(orange_higher))
+
+Product.create!(product_group: capsules, name: 'cbd_capsules', price: 39.99, photo: open(capsule))
+Product.create!(product_group: balms, name: 'cbd_balms', size: "Small", price: 29.99, photo: open(balm_300))
+Product.create!(product_group: balms, name: 'cbd_balms', size: "Large", price: 59.99, photo: open(balm_800))
+p = Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Natural", price: 29.99, photo: open(natural_lower))
+
+Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Natural", price: 59.99, photo: open(natural_medium))
+Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Natural", price: 29.99, photo: open(natural_higher))
+Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Orange", price: 114.99, photo: open(orange_lower))
+Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Orange", price: 64.99, photo: open(orange_medium))
+Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Orange", price: 119.99, photo: open(orange_higher))
+
 puts "Creating user"
 user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
 puts 'Creating Reviews...'

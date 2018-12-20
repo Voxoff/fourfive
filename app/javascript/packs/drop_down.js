@@ -5,27 +5,21 @@ document.querySelectorAll(".field").forEach((field) => {
     $(drop).slideToggle()
   })
 })
-natural_lower =
-  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992689/dmnmdrxjzunmhjrt1xio.jpg";
-natural_medium =
-  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992753/wmitmcbmups8xcylimlj.jpg";
-natural_higher =
-  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992764/ykuh6iiuaehxqkqtfiqb.jpg";
+natural_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310487/fca5phhhi05oy3rbilqe.jpg"
+natural_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310517/ykz2clyc02odmzfazffc.jpg"
+natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310539/s4o3j4g8u38yw5ydp9dl.jpg"
 
-orange_lower =
-  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992804/mejkv6uikqhnq2eu0l2d.jpg";
-orange_medium =
-  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992791/qobwn7sblybncdty1eox.jpg";
-orange_higher =
-  "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992778/ph6rqpze8dv6552itwhf.jpg";
-const balmHash = { "Small": 29.99, "Large": 59.99 };
+orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310603/wsz1iktl65jfnzf0usno.jpg"
+orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310585/unumz5jvzglclwxw2rik.jpg"
+orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310560/ynbhmsk6vqsnefuagu1u.jpg"
+const balmHash = { "Small": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992617/ccsl3c44jbf7rxfjirhr.jpg", price: 29.99 }, "Large": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992640/khtunfbpau6bjjzwxgf6.jpg", price: 59.99} };
 const oilHash = {
-  "Natural 500mg": {src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992689/dmnmdrxjzunmhjrt1xio.jpg", price: 29.99 },
-  "Natural 1000mg": {src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992753/wmitmcbmups8xcylimlj.jpg", price: 59.99},
-  "Natural 2000mg": {src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992764/ykuh6iiuaehxqkqtfiqb.jpg", price: 114.99 },
-  "Orange 500mg": {src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992804/mejkv6uikqhnq2eu0l2d.jpg", price: 34.99 },
-  "Orange 1000mg": {src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992791/qobwn7sblybncdty1eox.jpg", price: 64.99 },
-  "Orange 2000mg": {src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992778/ph6rqpze8dv6552itwhf.jpg", price: 119.99 }
+  "Natural 500mg": {src: natural_lower, price: 29.99 },
+  "Natural 1000mg": {src: natural_medium, price: 59.99},
+  "Natural 2000mg": {src: natural_higher, price: 114.99 },
+  "Orange 500mg": {src: orange_lower, price: 34.99 },
+  "Orange 1000mg": {src: orange_medium, price: 64.99 },
+  "Orange 2000mg": {src: orange_higher, price: 119.99 }
 };
 
 
@@ -40,12 +34,14 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
       let key = document.getElementById("size").innerHTML;
       key = item.innerHTML
       price.innerHTML = balmHash[key]["price"] * quantity
+      document.getElementById('product-photo').src = balmHash[key]["src"]
     }
     else if (window.location.pathname.includes("oils")){
       const tincture = document.getElementById('tincture').innerHTML
       const strength = document.getElementById('size').innerHTML
       const key = tincture + " " + strength
       price.innerHTML = oilHash[key]["price"] * quantity;
+      document.getElementById('product-photo').classList.add('transparent')
       document.getElementById('product-photo').src = oilHash[key]["src"]
       document.getElementById('product-name').innerText = key
     }

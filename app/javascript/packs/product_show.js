@@ -7,7 +7,7 @@ const quantityParam = document
   .querySelector(".button_to")
   .getElementsByTagName("input")[3];
 
-let balmHash = { small: 29.99, large: 59.99 };
+let balmHash = { "Small": 29.99, "Large": 59.99 };
 let oilHash = {
   'Natural 500mg': 29.99,
   'Natural 1000mg': 59.99,

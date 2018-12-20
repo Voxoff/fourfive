@@ -4,17 +4,18 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.friendly.find(params[:id])
+    @group = @product.product_group
     if @product.balm?
-      @sizes = %w[Small Large]
+      @sizes = ["Small balm", "Large balm"]
     else
       @sizes = %w[500mg 1000mg 2000mg] # @strengths = Product.all.collect(&:size).uniq.compact
     end
     @tinctures = %w[Natural Orange] # @tinctures = Product.all.collect(&:tincture).uniq.compact
     @specific_product = "#{@product.tincture} #{@product.size}" if @product.oil?
-    @specific_product = "#{@product.size} balm" if @product.balm?
-    @help = @product.help
+    @specific_product = "#{@product.size} balm (30ml / 300mg)" if @product.balm?
+    @help = @group.help
     @help_count = (@help.count / 2 - 1)
-    @ingr = @product.ingredients
+    @ingr = @group.ingredients
     @ingr_count = (@ingr.count / 2 - 1)
     @price = @product.price
     @cart_item = CartItem.new
