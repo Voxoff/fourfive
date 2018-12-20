@@ -23,6 +23,11 @@ class Product < ApplicationRecord
     name == "cbd_balms"
   end
 
+  def capsules?
+    name == "cbd_capsules"
+  end
+
+
   def readable_name
     name.gsub("_", " ")
   end

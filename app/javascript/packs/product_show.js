@@ -29,6 +29,8 @@ buttons.forEach((button) => {
       let tincture = document.getElementById("tincture").innerHTML;
       let strength = document.getElementById("size").innerHTML;
       realPrice = hash[tincture + " " + strength];
+    } else if (window.location.pathname.includes("capsules")) {
+      realPrice = 39.99
     }
 
     let number = Number.parseInt(document.getElementById('quantity').innerText)

@@ -10,10 +10,12 @@
     <div class="col-sm-12 col-md-5">
       <h2 class="border-bottom" id="product-name" style="font-size: 25px; margin-top: 0px; padding-bottom: 10px;"><%= @product.readable_name %></h2>
       <div class="product-info">
-        <div class="text lighter" style="margin-bottom:25px; font-size: 15px; margin-right:13%; text-align:justify">
+        <div class="text lighter" style="margin-bottom:25px; font-size: 15px; margin-right:20%">
           <p><%= @product.product_group.description %></p>
           <% if @product.oil? %>
-          <p>Size: 30ml</p>
+            <p>Size: 30ml</p>
+          <% elsif @product.capsules? %>
+            <p>Contains 100 capsules.</p>
           <% end %>
         </div>
       </div>

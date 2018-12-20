@@ -12,3 +12,7 @@
   border-color: $yellow;
   color: $yellow;
 }
+
+.no-hover:hover{
+  border-color: black !important;
+}

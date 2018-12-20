@@ -1,6 +1,6 @@
 
   <%#= image_tag "placeholderbanner.jpg", class: "img-responsive" %>
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="8000">
   <!-- Indicators -->
   <ol class="carousel-indicators" style="bottom: 5px;">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -11,7 +11,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-    <% if mobile_device? %>
+    <% if false %>
       <%= image_tag "mobile_carouse.jpg" %>
     <%  else %>
       <%= image_tag "carousel_three.jpg"%>
@@ -127,31 +127,31 @@
     <p>Now we want to spread the word about the benefits of cbd, and as founders of fourfive, create the best products to help you rest, recover and rise.
  </p>
     <p id="founder">George Kruis & Dom Day</p>
-    <div class="fat-yellow-stripe" style="margin-bottom: 25px"></div>
-    <%= link_to "Find out more", about_path, class: "simple-btn", style: "margin-top: 10px;" %>
+    <div class="fat-yellow-stripe" style="margin-bottom: 45px"></div>
+    <%= link_to "Find out more", about_path, class: "simple-btn", style: "margin-top: 25px;" %>
   </div>
 </div>
 
 <div class="graphics" id="graphics">
-  <h4 id="for-the-active">A cbd brand for an active lifestyle</h4>
+  <h4 id="for-the-active">The cbd brand helping you maintain an active lifestyle</h4>
     <div class="container">
     <div class="graphic-icons">
       <div class="card-graphics">
         <i class="fas fa-star fa-lg"></i>
         <div class="how-it-works-text">
-          <p>cbd is legal and has been since 2016</p>
+          <p>Products to help you rest, recover and rise. </p>
         </div>
       </div>
       <div class="card-graphics">
         <i class="fa fa-heart fa-lg"></i>
         <div class="how-it-works-text">
-          <p>Widespread beneficial medicinal effects</p>
+          <p>We stay in constant communcation to give you what you want</p>
         </div>
       </div>
       <div class="card-graphics">
         <i class="fa fa-truck"></i>
         <div class="how-it-works-text">
-          <p>Free delivery on all products</p>
+          <p>Free UK delivery on all products</p>
         </div>
       </div>
     </div>

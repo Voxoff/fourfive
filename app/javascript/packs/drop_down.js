@@ -12,7 +12,18 @@ natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310539/
 orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310603/wsz1iktl65jfnzf0usno.jpg"
 orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310585/unumz5jvzglclwxw2rik.jpg"
 orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310560/ynbhmsk6vqsnefuagu1u.jpg"
-const balmHash = { "Small balm": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992617/ccsl3c44jbf7rxfjirhr.jpg", price: 29.99 }, "Large balm": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992640/khtunfbpau6bjjzwxgf6.jpg", price: 59.99} };
+const balmHash = {
+  "Small balm": {
+    src:
+      "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545330419/zdilgiei86tpd8u0wkbc.jpg",
+    price: 29.99
+  },
+  "Large balm": {
+    src:
+      "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545330449/go6ereapuoyjqepenvk6.jpg",
+    price: 59.99
+  }
+};
 const oilHash = {
  'Natural Lower (500mg)': {src: natural_lower, price: 29.99 },
   'Natural Medium (1000mg)': {src: natural_medium, price: 59.99},
@@ -34,7 +45,12 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
       let key = document.getElementById("size").innerText.trim()
       key = item.innerText.trim()
       price.innerHTML = balmHash[key]["price"] * quantity
-      document.getElementById('product-name').innerText = key
+      if (key == "small"){
+        size = " (30ml / 300mg)"
+      } else {
+        size = " (100ml / 800mg)"
+      }
+      document.getElementById('product-name').innerText = key + size
       document.getElementById('product-photo').src = balmHash[key]["src"]
     }
     else if (window.location.pathname.includes("oils")){
@@ -44,7 +60,7 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
       price.innerHTML = oilHash[key]["price"] * quantity;
       document.getElementById('product-photo').classList.add('transparent')
       document.getElementById('product-photo').src = oilHash[key]["src"]
-      document.getElementById('product-name').innerText = key
+      document.getElementById('product-name').innerText = key+ " (30ml)"
     }
   })
 })
