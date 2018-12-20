@@ -29,9 +29,9 @@ class Product < ApplicationRecord
 
   def specific_name
     if oil?
-    "#{tincture} #{size} oil"
+      "#{tincture} #{size} oil"
     elsif balm?
-    "#{size}" if balm?
+      "#{size} balm" if balm?
     else
       "Capsules"
     end

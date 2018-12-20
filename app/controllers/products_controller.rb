@@ -6,13 +6,13 @@ class ProductsController < ApplicationController
     @product = Product.friendly.find(params[:id])
     @group = @product.product_group
     if @product.balm?
-      @sizes = %w[Small Large]
+      @sizes = ["Small balm", "Large balm"]
     else
       @sizes = %w[500mg 1000mg 2000mg] # @strengths = Product.all.collect(&:size).uniq.compact
     end
     @tinctures = %w[Natural Orange] # @tinctures = Product.all.collect(&:tincture).uniq.compact
     @specific_product = "#{@product.tincture} #{@product.size}" if @product.oil?
-    @specific_product = "#{@product.size} balm" if @product.balm?
+    @specific_product = "#{@product.size} balm (30ml / 300mg)" if @product.balm?
     @help = @group.help
     @help_count = (@help.count / 2 - 1)
     @ingr = @group.ingredients
