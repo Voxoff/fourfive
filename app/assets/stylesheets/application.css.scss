@@ -87,3 +87,12 @@ h3{
 p{
   font-size: 15px;
 }
+
+
+#product-photo{
+  transition: opacity 1s ease-in-out;
+}
+
+.transparent{
+  opacity: 0;
+}

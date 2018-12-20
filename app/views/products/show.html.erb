@@ -100,7 +100,7 @@
         <h3>What is it?</h3>
         <p>A cosmetic balm product for skin care.</p>
         <h3>How do I use it?</h3>
-        <% @product.how_to_use.split("\n").each do |para| %>
+        <% @product.product_group.how_to_use.split("\n").each do |para| %>
           <p><%= para %></p>
         <% end %>
         <h3>What is it good for?</h3>

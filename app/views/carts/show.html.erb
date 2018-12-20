@@ -9,23 +9,17 @@
             <th></th>
             <th></th>
             <th>Product</th>
+            <th>Quantity</th>
             <th>Price</th>
-            <th>Qty</th>
             <th>Total</th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |item| %>
             <tr>
-              <td class="yellow-box"></td>
-              <td class="align-center"><%= item.product.name %></td>
-              <% if item.product.name == "cbd oils" %>
-                <td class="align-right">29.99 - 119.99</td>
-              <% elsif item.product.name == "cbd balms" %>
-                <td class="align-right">29.99 - 59.99</td>
-              <% else %>
-                <td class="align-right"><%= item.product.price if item.product.name == "cbd capsules" %></td>
-              <% end %>
+              <td class="yellow-box"><%= image_tag "icon.png" %></td>
+              <td class="align-center"><%= item.product.product_group.readable_name %></td>
+              <td class="align-right"><%= item.product.specific_name %></td>
               <td class="align-right">
                 <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
                   <i class="fas fa-plus"></i>

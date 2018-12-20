@@ -47,24 +47,24 @@
   </div>
 
 <div class="row shorter-row">
-    <% @products.each do |product| %>
+    <% @product_groups.each do |product| %>
       <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="product-card">
           <div class="image-background">
-            <%= link_to product_path(product) do %>
+            <%= link_to product_path(product.products.first) do %>
               <%= image_tag product.photo_url, width: "264px", height: "400px" if product.photo_url %>
             <% end %>
           </div>
           <div class="product-info">
             <span class="yellow-hover">
-              <%= link_to product_path(product), class: "yellow-hover" do %>
+              <%= link_to product_path(product.products.first), class: "yellow-hover" do %>
                 <h2><%= product.readable_name %></h2>
               <% end %>
               <p class="lighter" style="font-size: 10px; margin-top: 0px;">
                 <%= product.subtitle %>
               </p>
             </span>
-            <%= link_to "shop now", product_path(product), class: "simple-btn"%>
+            <%= link_to "shop now", product_path(product.products.first), class: "simple-btn"%>
           </div>
         </div>
       </div>
