@@ -7,7 +7,7 @@ const quantityParam = document
   .querySelector(".button_to")
   .getElementsByTagName("input")[3];
 
-let balmHash = { "Small": 29.99, "Large": 59.99 };
+let balmHash = { "Small balm": 29.99, "Large balm": 59.99 };
 let oilHash = {
   'Natural Lower (500mg)': 29.99,
   'Natural Medium (1000mg)': 59.99,
@@ -22,7 +22,7 @@ buttons.forEach((button) => {
     // different product ranges and number of dropdowns
     let realPrice
     if (window.location.pathname.includes("balms")) {
-      let select = document.getElementById("size").innerHTML;
+      let select = document.getElementById("size").innerText.trim();
       realPrice = balmHash[select];
     } else if (window.location.pathname.includes("oils")) {
       hash = oilHash;
