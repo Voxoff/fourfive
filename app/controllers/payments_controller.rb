@@ -82,11 +82,12 @@ class PaymentsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path)
+    binding.pry
     req.set_form_data({
       'authentication.userId' => "#{ENV['ZION_USER_ID']}",
-      'authentication.password' => "#{ENV['ZION_TEST']}",
+      'authentication.password' => "#{ENV['ZION_TEST_PWD']}",
       'authentication.entityId' => "#{ENV['ZION_ENTITY_ID']}",
-      'amount' => "#{@amount}",
+      'amount' => "#{@amount.to_f}",
       'currency' => 'GBP',
       'paymentType' => 'DB'
     })
