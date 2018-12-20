@@ -7,18 +7,17 @@ puts 'Creating products...'
 balm_help = ["Aches", "Sprains", "Tendon inflammation", "Muscle inflammation", "Localised pain (including knees, hands, shoulders & elbows)", "Psoriasis ", "Acne", "Eczema", "Grazes", "Minor burns"]
 balm_how_to = "Swallow with food. We recommend starting by taking one capsule once or twice a day. you can then increase your dose over time. Generally, we have seen customers take an average of two to four capsules of cbd per day. Please do not go over the 200mg food supplement daily limit (forty capsules)"
 balm_ingr = ["Vegetable capsule", "Hemp extract", "Coconut oil", "May contain traces of nuts"]
-balm_desc = "Because your skin it the largest working organ, we’ve created a soothing, safe and protective application for it. Made with organic ingredients, our hand-blended and hard-working balm is kind to all skin types."
-
+balm_desc = "Because your skin is the largest working organ, we’ve created a soothing, safe and protective application for it. Hemp extract has been shown to help a wide range of health conditions including all types of dermatological, muscle and skincare. Made with organic ingredients, our hand-blended and hard-working balm contains active agents that are kind to all skin types."
 
 oil_help = ["Stress relief", "Anti-inflammatory", "Sleep patterns", "Relieving of anxiety", "Easing mild depression", "Calming nerves"]
 oil_how_to = "Apply on to the targeted area of your skin and rub until fully absorbed. For external use only."
 oil_ingr = ["Hemp extract", "Coconut oil", "May contain traces of nuts"]
-oil_desc = "Quick-absorbing and easy-to-use cbd oils. Made with 100% natural and organic ingredients. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each of our bottles contain roughly 120 drops."
+oil_desc = "Quick-absorbing cbd oils made with 100% natural ingredients and designed to help you support and maintain an active lifestyle. Our process of CO2 extraction means the highest available nutritional value is packed in to every drop of fourfive cbd oil. Each 30ml bottle contains around 120 drops and is supplied with a pipette and a handy spray applicator."
 
 capsule_help = ["Arthritis", "Muscle stiffness", "Management of Fibromyalgia", "Inflammatory disorders"]
-capsule_how_to = "We recommend starting with 3 drops of the lower strength oil twice a day. To take simply drop the cdb oil under your tongue using the pipette or the spray. This achieves the best possible absorption rates and bioavailability. \n You can then increase the dosage as required on a weekly basis, to a maximum of 6 drops twice a day, until the desired results are achieved. \n If you find that you’re nearing the end of the bottle and you’re already taking 6 drops twice a day but it isn’t hitting the spot, we would recommend upgrading to our regular or higher strength cbd oil."
+capsule_how_to = "We recommend starting with 3 drops of the lower strength oil twice a day. To take simply drop the cbd oil under your tongue using the pipette or the spray. This achieves the best possible absorption rates and bioavailability. \n You can then increase the dosage as required on a weekly basis, to a maximum of 6 drops twice a day, until the desired results are achieved. \n If you find that you’re nearing the end of the bottle and you’re already taking 6 drops twice a day but it isn’t hitting the spot, we would recommend upgrading to our regular or higher strength cbd oil."
 capsule_ingr = ["Coconut oil", "Hemp extract", "Vegetable capsule"]
-capsule_desc = "Our cbd capsules contain full-spectrum, co2 extracted hemp infused in coconut oil and capped in vegan capsules. They are easy-to-use and slow-to-release, great for when you only need a small amount of cbd product over a longer period of time."
+capsule_desc = "Our cbd capsules contain the same high-quality, full-spectrum, co2 extracted hemp infused in coconut oil and capped in vegan capsules. They are easy-to-use and slow-to-absorb, great for when you only need a small amount of cbd product over a longer period of time. Designed to help you support and maintain an active lifestyle. "
 
 #Photos cloudinary
 

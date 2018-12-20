@@ -36,4 +36,16 @@ class Product < ApplicationRecord
       "Capsules"
     end
   end
+
+  def image_name
+    if oil?
+      change = {"500mg": "Lower", "1000mg": "Medium", "2000mg": "Higher"}
+      "#{change[size.to_sym]} strength, #{tincture} flavour"
+    elsif balm?
+      "#{size} balm"
+    else
+      "Capsules"
+    end
+
+  end
 end

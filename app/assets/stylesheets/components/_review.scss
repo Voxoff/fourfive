@@ -53,9 +53,10 @@
       }
     }
     .review-card:hover {
-      h4{
-        transition: 0.1s;
+      h4, h5  {
+        transition: 0.2s;
         color: $yellow;
+        cursor: pointer;
       }
       border-bottom: 1px solid $yellow;
       a {

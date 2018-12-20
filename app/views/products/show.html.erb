@@ -2,30 +2,32 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-sm-12 col-md-5">
+      <div>
       <%= cl_image_tag(@product.photo_url, class: "image-responsive", id: "product-photo", style: "max-width: 75%") %>
-      <h5 style="font-weight: lighter; margin-left: 14%;" id="product-name"><%= @specific_product %></h5>
+      <h5 style="font-weight: lighter; text-align: center; margin-right: 25%;" id="product-name"><%= @specific_product %></h5>
+      </div>
     </div>
     <div class="col-sm-12 col-md-5">
       <h2 class="border-bottom" id="product-name" style="font-size: 25px; margin-top: 0px; padding-bottom: 10px;"><%= @product.readable_name %></h2>
       <div class="product-info">
-        <div class="text lighter" style="margin-bottom:50px; font-size: 15px; margin-right:13%; text-align:justify">
+        <div class="text lighter" style="margin-bottom:25px; font-size: 15px; margin-right:13%; text-align:justify">
           <p><%= @product.product_group.description %></p>
-          <p>
-            Coconut Oil, Shea Butter, Theobroma Cacao, Grape Seed Oil, Rosemary and Cannabis Sativa L.
-          </p>
-          <p>Size: 300mg / 0.11 oz</p>
+          <% if @product.oil? %>
+          <p>Size: 30ml</p>
+          <% end %>
         </div>
       </div>
       <% if @product.balm? %>
         <div class="selections">
           <div class="selection">
+          <p style="font-weight:lighter">Select your size</p>
             <div class="field">
-              <div id="size"><%= @sizes.first %></div>
+              <div id="size" class="ajflex"><p><%= @sizes.first %></p></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @sizes.each do |size| %>
-                <div class="drop-down-item"><%= size %></div>
+                <div class="drop-down-item"><p><%= size %></p></div>
               <% end %>
             </div>
           </div>
@@ -33,24 +35,26 @@
       <% elsif @product.oil? %>
         <div class="selections">
           <div class="selection">
+            <p style="font-weight:lighter">Select your flavour</p>
             <div class="field">
-              <div id="tincture"><%= @tinctures.first %></div>
+              <div id="tincture" class="ajflex"><p><%= @tinctures.first %></p></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @tinctures.each do |tincture| %>
-                <div class="drop-down-item"><%= tincture %></div>
+                <div class="drop-down-item"><p><%= tincture %></p></div>
               <% end %>
             </div>
           </div>
           <div class="selection">
+          <p style="font-weight:lighter">Select your strength</p>
             <div class="field">
-              <div id="size"><%= @sizes.first %></div>
+              <div id="size" class="ajflex"><p><%= @sizes.first %></p></div>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="drop-down" style="display: none;">
               <% @sizes.each do |size| %>
-                <div class="drop-down-item"><%= size %></div>
+                <div class="drop-down-item"><p><%= size %></p></div>
               <% end %>
             </div>
           </div>
@@ -100,7 +104,7 @@
     <div class="col-md-1"></div>
       <div class="col-xs-12 col-sm-5">
         <h3 style="margin-top: 0px;">What is it?</h3>
-        <p>A cosmetic balm product for skin care.</p>
+        <p><%= @product.product_group.subtitle %></p>
         <h3>How to use it?</h3>
         <% @product.product_group.how_to_use.split("\n").each do |para| %>
           <p><%= para %></p>

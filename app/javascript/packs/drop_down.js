@@ -12,14 +12,14 @@ natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310539/
 orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310603/wsz1iktl65jfnzf0usno.jpg"
 orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310585/unumz5jvzglclwxw2rik.jpg"
 orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310560/ynbhmsk6vqsnefuagu1u.jpg"
-const balmHash = { "Small": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992617/ccsl3c44jbf7rxfjirhr.jpg", price: 29.99 }, "Large": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992640/khtunfbpau6bjjzwxgf6.jpg", price: 59.99} };
+const balmHash = { "Small balm": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992617/ccsl3c44jbf7rxfjirhr.jpg", price: 29.99 }, "Large balm": { src: "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1544992640/khtunfbpau6bjjzwxgf6.jpg", price: 59.99} };
 const oilHash = {
-  "Natural 500mg": {src: natural_lower, price: 29.99 },
-  "Natural 1000mg": {src: natural_medium, price: 59.99},
-  "Natural 2000mg": {src: natural_higher, price: 114.99 },
-  "Orange 500mg": {src: orange_lower, price: 34.99 },
-  "Orange 1000mg": {src: orange_medium, price: 64.99 },
-  "Orange 2000mg": {src: orange_higher, price: 119.99 }
+ 'Natural Lower (500mg)': {src: natural_lower, price: 29.99 },
+  'Natural Medium (1000mg)': {src: natural_medium, price: 59.99},
+  'Natural Higher (2000mg)': {src: natural_higher, price: 114.99 },
+  'Orange Lower (500mg)': {src: orange_lower, price: 34.99 },
+ 'Orange Medium (1000mg)': {src: orange_medium, price: 64.99 },
+ 'Orange Higher (2000mg)': {src: orange_higher, price: 119.99 }
 };
 
 
@@ -31,14 +31,15 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
     const quantity = document.getElementById('quantity').innerHTML
     const price = document.getElementById('price')
     if (window.location.pathname.includes("balms")){
-      let key = document.getElementById("size").innerHTML;
-      key = item.innerHTML
+      let key = document.getElementById("size").innerText.trim()
+      key = item.innerText.trim()
       price.innerHTML = balmHash[key]["price"] * quantity
+      document.getElementById('product-name').innerText = key
       document.getElementById('product-photo').src = balmHash[key]["src"]
     }
     else if (window.location.pathname.includes("oils")){
-      const tincture = document.getElementById('tincture').innerHTML
-      const strength = document.getElementById('size').innerHTML
+      const tincture = document.getElementById('tincture').innerText.trim()
+      const strength = document.getElementById('size').innerText.trim()
       const key = tincture + " " + strength
       price.innerHTML = oilHash[key]["price"] * quantity;
       document.getElementById('product-photo').classList.add('transparent')
