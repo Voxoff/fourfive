@@ -18,18 +18,19 @@
         <tbody>
           <% @cart_items.each do |item| %>
             <tr>
-              <td class="yellow-box"><%= image_tag "icon.png" %></td>
+              <td class="yellow-box"><%= image_tag "checkout.png", size: "30" %></td>
               <td class="align-center"><%= item.product.product_group.readable_name %></td>
               <td class="align-right"><%= item.product.specific_name %></td>
               <td class="align-right"><%= item.product.price %></td>
               <td class="align-right">
                 <div class="cart-flex">
+                <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
+                  <i class="fas fa-minus"></i>
+                <% end %>
+
+                  <%= item.quantity %>
                   <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
                     <i class="fas fa-plus"></i>
-                  <% end %>
-                  <%= item.quantity %>
-                  <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
-                    <i class="fas fa-minus"></i>
                   <% end %>
 
                 </div>
@@ -57,8 +58,7 @@
           <%= link_to "continue shopping", :back, class: "simple-btn cart-button-margin"%>
         </div>
         <div class="cart-actions-right">
-          <%= link_to "update basket", request.original_url, class: "simple-btn cart-button-margin"%>
-          <%= link_to "checkout", new_cart_payment_path(@cart), class: "simple-btn cart-button-margin" %>
+          <%= link_to "checkout", new_cart_payment_path(@cart), style: "color: white; background-color: rgb(40,40,40)", class: "simple-btn cart-button-margin" %>
         </div>
       </div>
     </div>
