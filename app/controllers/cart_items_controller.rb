@@ -28,7 +28,7 @@ class CartItemsController < ApplicationController
     cart = cart_item.cart
     cart_item.destroy
     flash[:notice] = "That's been removed from your cart."
-    return redirect_to new_cart_payment_path(cart)
+    return redirect_to cart_path(cart)
   end
 
   private
