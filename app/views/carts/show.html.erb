@@ -7,8 +7,7 @@
       <% @cart_items.each do |item| %>
         <div class="cart-item">
           <div class="cart-item-details">
-            <h1><%= item.product.product_group.readable_name %></h1>
-            <h2><%= item.product.specific_name %></h2>
+            <h1><%= item.product.specific_name %></h1>
             <p>Unit price: £<%= item.product.price %></p>
           </div>
           <div class="cart-item-quantity">
