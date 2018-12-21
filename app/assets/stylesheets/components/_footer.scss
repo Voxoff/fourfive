@@ -24,25 +24,44 @@
   }
 }
 
-  .links{
-    display: flex;
-    color: black;
-    list-style: none;
-    justify-content: center;
-    padding-left: 0;
-    font-size: 12px;
-    > div{
-      padding: 7px;
-    }
-    a{
+.links{
+  display: flex;
+  color: black;
+  list-style: none;
+  justify-content: center;
+  padding-left: 0;
+  li{
+    padding: 8px;
+  }
+  a{
+    text-decoration: none;
+    color:black;
+    &:hover{
       text-decoration: none;
-      color:black;
-      &:hover{
-        text-decoration: none;
-        color: #FFE000;
-      }
+      color: #FFE000;
     }
   }
+}
+
+  // .links{
+  //   display: flex;
+  //   color: black;
+  //   list-style: none;
+  //   justify-content: center;
+  //   padding-left: 0;
+  //   font-size: 12px;
+  //   > div{
+  //     padding: 7px;
+  //   }
+  //   a{
+  //     text-decoration: none;
+  //     color:black;
+  //     &:hover{
+  //       text-decoration: none;
+  //       color: #FFE000;
+  //     }
+  //   }
+  // }
 .copyright {
   color: $charcoal;
   display: flex;
