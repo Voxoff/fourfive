@@ -91,7 +91,12 @@ class PaymentsController < ApplicationController
       'authentication.entityId' => "#{ENV['ZION_ENTITY_ID']}",
       'amount' => "#{@amount.to_f}",
       'currency' => 'GBP',
-      'paymentType' => 'DB'
+      'paymentType' => 'DB',
+      'billing.street1' => "#{@cart.address.first_line}",
+      'billing.street2' => "#{@cart.address.second_line}",
+      'billing.city' => "#{@cart.address.city}",
+      'billing.postcode' => "#{@cart.address.postcode}",
+      'billing.country' => "GB"
     })
     res = http.request(req)
     @result = JSON.parse(res.body)
