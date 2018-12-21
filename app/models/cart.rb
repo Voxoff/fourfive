@@ -27,4 +27,8 @@ class Cart < ApplicationRecord
   def basket
     cart_items.includes(:product).map {|item| "#{item.product.specific_name} x #{item.quantity}"}
   end
+
+  def checkout_time
+    updated_at.strftime('%A, %b %d')
+  end
 end

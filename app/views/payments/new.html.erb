@@ -6,35 +6,28 @@
   </div>
   <div class="cart-form">
     <%= simple_form_for :checkout, url: checkout_cart_payments_path do |f| %>
-        <div class="row">
-          <div class="col-xs-offset-1 col-xs-10 col-sm-4">
-            <%= f.input :email, required: true, label: "Email" %>
-            <%= f.input :title, collection:  ["Mr", "Mrs", "Ms", "Miss"], prompt: "Please select" %>
-            <%= f.input :first_name, required: true %>
-            <%= f.input :last_name, required: true %>
-            <%= f.input :phone_number, required: true, label: "Phone number (Optional)" %>
-          </div>
-          <div class="col-xs-offset-1 col-xs-10 col-sm-4">
-            <%= f.input :first_line,  label: "Address", placeholder: "First line", required: true %>
-            <%= f.input :second_line, required: false, label: "(Optional)", placeholder: "Second line" %>
-            <%= f.input :third_line, required: false, label: "(Optional)", placeholder: "Third line" %>
-            <%= f.input :city, required: true, label: "City" %>
-            <%= f.label :country %>
-            <%= f.country_select :country, priority_countries = [], options = {:prompt => true}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
-            <%= f.input :postcode, required: true, label: "Postcode" %>
-          </div>
-        </div>
       <div class="row">
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
+          <%= f.input :email, required: true, label: "Email" %>
+          <%= f.input :title, collection:  ["Mr", "Mrs", "Ms", "Miss"], prompt: "Please select" %>
+          <%= f.input :first_name, required: true %>
+          <%= f.input :last_name, required: true %>
+          <%= f.input :phone_number, required: true, label: "Phone number (Optional)" %>
           <%= f.input :coupon, required: false, label: "Coupon (Optional)" %>
         </div>
-      </div>
-      <div class="row">
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
-            <div class="terms">
-              <p><strong>Terms and conditions</strong></p>
-              <span>I agree:</span><input type="checkbox" required id="terms" style="margin-left: 10px;"><br>
-            </div>
+          <%= f.input :first_line,  label: "Address", placeholder: "First line", required: true %>
+          <%= f.input :second_line, required: false, label: "(Optional)", placeholder: "Second line" %>
+          <%= f.input :third_line, required: false, label: "(Optional)", placeholder: "Third line" %>
+          <%= f.input :city, required: true, label: "City" %>
+          <%#= f.label :country %>
+          <%#= f.country_select :country, priority_countries = [], options = {:prompt => true}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
+          <%= f.input :postcode, required: true, label: "Postcode" %>
+
+          <div class="terms">
+            <p><strong>Terms and conditions</strong></p>
+            <span>I agree:</span><input type="checkbox" required id="terms" style="margin-left: 10px;"><br>
+          </div>
         </div>
       </div>
       <div class="row">
