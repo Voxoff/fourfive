@@ -99,98 +99,20 @@
   margin-bottom: 7px;
 }
 
+.shopping-bag{
+  position:relative;
+}
 
+#basket-count{
+  position: absolute;
+  bottom: 3px;
+  font-size: 15px;
+  left: 28px;
+}
 
-// .navbar-hd {
-//   transition: all 0.3s ease;
-//   height: 70px;
-//   padding: 0px 20vw;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: absolute;
-//   width: 100%;
-// }
-
-// #mobile-navbar{
-//   margin-top: 0;
-//   left: 5vw;
-// }
-
-// #mobile-navbar{
-//   .navbar-hd-item{
-//     right: 10%;
-//     position: absolute;
-//     top: 30px;
-//   }
-// }
-
-// .navbar-hd-brand img {
-//   height: 50px;
-// }
-
-// .navbar-hd .avatar {
-//   height: 35px;
-//   width: 35px;
-//   border-radius: 50%;
-// }
-
-// .navbar-hd-right {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   width: 75%;
-// }
-
-// .navbar-hd-item {
-//   cursor: pointer;
-//   padding: 0 20px;
-// }
-
-// .navbar-hd-link {
-//   color: $light-grey;
-//   padding-right: 10px;
-
-//   font-size: 18px;
-//   &:hover {
-//     color: $charcoal;
-//     text-decoration: none;
-//   }
-// }
-
-// .navbar-hd-dropdown-menu {
-//   margin-top: 15px;
-//   box-shadow: 1px 1px 4px $grey;
-//   border-color: $grey;
-// }
-// .navbar-hd-dropdown-menu li > a {
-//   transition: color 0.3s ease;
-//   font-weight: lighter !important;
-//   color: #999999 !important;
-//   font-size: 15px !important;
-//   line-height: 22px !important;
-//   padding: 10px 20px;
-// }
-// .navbar-hd-dropdown-menu li > a:hover {
-//   background: transparent !important;
-//   color: black !important;
-// }
-// .navbar-hd-dropdown-menu:before {
-//   content: ' ';
-//   height: 10px;
-//   width: 10px;
-//   position: absolute;
-//   right: 10px;
-//   top: -6px;
-//   background-color: white;
-//   transform: rotate(45deg);
-//   border-left: 1px solid #E6E6E6;
-//   border-top: 1px solid #E6E6E6;
-// }
-
-
-// .logo{
-//   position:absolute;
-//   top:20px;
-//   left: 20px;
-// }
+#basket-count-double-digit{
+  position: absolute;
+  bottom: 5px;
+  font-size: 11px;
+  left: 26px;
+}

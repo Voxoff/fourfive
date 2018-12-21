@@ -31,4 +31,8 @@ class Cart < ApplicationRecord
   def checkout_time
     updated_at.strftime('%A, %b %d')
   end
+
+  def count
+    cart_items.sum(&:quantity)
+  end
 end
