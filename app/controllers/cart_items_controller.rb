@@ -3,8 +3,12 @@ class CartItemsController < ApplicationController
 
   def create
     pundit_placeholder
-    @product = Product.find(product_id_params[:product_id])
-    @product = Product.find_by(product_params) unless @product
+    # @product = Product.find(product_id_params[:product_id])
+    if product_params[:size].present?
+    @product = Product.find_by(product_params)
+    else
+      @product = Product.find_by(name: "cbd_capsules")
+    end
     @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
       @cart_item.quantity += cart_params[:quantity].to_i

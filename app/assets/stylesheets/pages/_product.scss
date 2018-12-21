@@ -36,3 +36,28 @@
     margin-left: -16px;
   }
 }
+
+.selection p{
+  margin-bottom: 0px;
+}
+
+#product-photo{
+  transition: opacity 1s ease-in-out;
+  max-width: 75%;
+}
+
+.product-info.text p{
+margin-right:20%;
+}
+
+@media(max-width: 400px){
+  #product-photo{
+    max-width: 100%;
+  }
+  #product-name{
+    margin-right: 0%;
+  }
+  .product-info.text p{
+    margin-right: 0%;
+  }
+}

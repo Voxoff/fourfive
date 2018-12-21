@@ -12,8 +12,8 @@ class InvoicePdf < Prawn::Document
   def invoice_data
     @invoice_services_data = [["Item", "Description", "Unit Cost", "Quantity", "Line Total"]]
     @cart_items.each do |item|
-      @invoice_services_data << ["#{item.product.name}",
-        "#{item.product.subtitle}",
+      @invoice_services_data << ["#{item.product.readable_name}",
+        "#{item.product.specific_name}",
         "#{item.product.price}",
         "#{item.quantity} ",
         "#{item.line_cost} "]
@@ -25,7 +25,8 @@ class InvoicePdf < Prawn::Document
       ["Amount Paid", "£#{@amount}"],
       ["Amount Due", "£0.00 GBP"]
     ]
-    @invoice_header_data = [ ["Invoice #", "001"], ["Invoice Date", "December 10, 2018"], ["Amount Due", "£0.00 GBP"]]
+    date = Date.today.strftime('%A, %b %d')
+    @invoice_header_data = [ ["Invoice #", "001"], ["Invoice Date", date], ["Amount Due", "£0.00 GBP"]]
   end
 
   def create
@@ -44,11 +45,15 @@ class InvoicePdf < Prawn::Document
     font_size font_size
 
     #start with EON Media Group
-    text_box "fourfive", :at => [address_x,  cursor]
+    text_box "fourfive,", :at => [address_x,  cursor]
     move_down lineheight_y
-    text_box "1234 Prudent Passage", :at => [address_x,  cursor]
+    text_box "Flow Nutrition Ltd,", :at => [address_x,  cursor]
     move_down lineheight_y
-    text_box "London, N10AF", :at => [address_x,  cursor]
+    text_box "2 Victoria Square,", :at => [address_x,  cursor]
+    move_down lineheight_y
+    text_box "Victoria Street,", :at => [address_x,  cursor]
+    move_down lineheight_y
+    text_box "St. Albans, UK, N10AF", :at => [address_x,  cursor]
     move_down lineheight_y
 
     last_measured_y = cursor

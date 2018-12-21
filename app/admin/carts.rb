@@ -42,13 +42,14 @@ ActiveAdmin.register Cart do
       end
       # item "Guest", admin_user_path if user.nil?
     end
-    column :cart_items do |cart|
-      cart.cart_items.includes(:product).map {|item| "#{item.product.name} x #{item.quantity}"}
+    column :name do |cart|
+      cart.address.full_name
     end
-    column "Orders", :active do |cart| !cart.active? end
+    column :cart_items do |cart|
+      cart.basket
+    end
+    column "Order?", :active do |cart| !cart.active? end
     column :address do |cart|
-      # if cart.user
-        # cart.user.addresses.order('id DESC').limit(1).first.full_address
       if cart.address
         cart.address.full_address
       else

@@ -40,6 +40,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'xeroizer'
 
 gem 'prawn'
+gem 'prawn-table'
 gem 'country_select'
 
 group :development do

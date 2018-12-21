@@ -19,10 +19,11 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Recent Orders" do
-          table_for Cart.orders.has_user.limit(10) do
-            column("Customer") { |order| link_to(order.user.email, admin_user_path(order.user)) }
-            column("Total") { |order| number_to_currency(order.amount, unit: "£") }
-            column("Created at") { |order| order.created_at }
+          table_for Cart.orders.limit(10) do
+            column("Customer") { |cart| link_to(cart.user.email, admin_user_path(cart.user)) }
+            column("Total") { |cart| number_to_currency(cart.amount, unit: "£") }
+            column("Created at") { |cart| cart.created_at }
+            column("Basket") {|cart| cart.basket}
           end
         end
       end

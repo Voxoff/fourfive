@@ -23,4 +23,8 @@ class Cart < ApplicationRecord
     user_id = self.user_id
     self.class.create!(user_id: user_id)
   end
+
+  def basket
+    cart_items.includes(:product).map {|item| "#{item.product.specific_name} x #{item.quantity}"}
+  end
 end
