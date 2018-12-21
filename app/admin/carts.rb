@@ -43,7 +43,7 @@ ActiveAdmin.register Cart do
       # item "Guest", admin_user_path if user.nil?
     end
     column :name do |cart|
-      cart.address.full_name
+      cart.address&.full_name
     end
     column :cart_items do |cart|
       cart.basket
