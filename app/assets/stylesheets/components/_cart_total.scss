@@ -1,0 +1,19 @@
+.cart-total {
+  display: flex;
+  padding: 24px 32px;
+  border-top: 1px solid rgb(240,240,240);
+  .double-space {
+    flex-grow: 2;
+    text-align: right;
+  }
+  .single-space {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+@media(max-width: 500px) {
+  .cart-item {
+    padding: 24px 0;
+  }
+}

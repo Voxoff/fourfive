@@ -3,7 +3,40 @@
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
       <h3 class="basket-header">Your <span class="bold">fourfive</span> basket</h3>
-      <table class="table">
+
+      <% @cart_items.each do |item| %>
+        <div class="cart-item">
+          <div class="cart-item-details">
+            <h1><%= item.product.product_group.readable_name %></h1>
+            <h2><%= item.product.specific_name %></h2>
+            <p>Unit price: £<%= item.product.price %></p>
+          </div>
+          <div class="cart-item-quantity">
+            <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
+              -
+            <% end %>
+            <div class="quantity-margin"><%= item.quantity %></div>
+            <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
+              +
+            <% end %>
+          </div>
+          <div class="cart-item-price">
+            £<%= item.line_cost %>
+          </div>
+          <div class="delete">
+            <%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="cart-total">
+        <div class="double-space">Total:</div>
+        <div class="single-space"><%= @cart.quantity %></div>
+        <div class="single-space"><%= @cart.amount %></div>
+        <div class="single-space"></div>
+      </div>
+
+      <!-- <table class="table">
         <thead>
           <tr>
             <th></th>
@@ -50,7 +83,9 @@
             <td class="ft-border-bold"><%= @cart.amount %></td>
           </tr>
         </tfoot>
-      </table>
+      </table> -->
+
+
       <div class="cart-actions">
         <div class="cart-actions-left">
           <%= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
