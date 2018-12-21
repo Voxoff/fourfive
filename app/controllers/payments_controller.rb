@@ -87,7 +87,7 @@ class PaymentsController < ApplicationController
 
     req.set_form_data({
       'authentication.userId' => "#{ENV['ZION_USER_ID']}",
-      'authentication.password' => "#{ENV['ZION_TEST_PWD']}",
+      'authentication.password' => "#{ENV['ZION_PWD']}",
       'authentication.entityId' => "#{ENV['ZION_ENTITY_ID']}",
       'amount' => "#{@amount.to_f}",
       'currency' => 'GBP',
@@ -113,7 +113,7 @@ class PaymentsController < ApplicationController
   def zion_info
     ['net/https', 'uri', 'json'].each(&method(:require))
     path = ("?authentication.userId=#{ENV['ZION_USER_ID']}" +
-    "&authentication.password=#{ENV['ZION_TEST_PWD']}" +
+    "&authentication.password=#{ENV['ZION_PWD']}" +
     "&authentication.entityId=#{ENV['ZION_ENTITY_ID']}")
     uri = URI.parse("https://test.oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
     http = Net::HTTP.new(uri.host, uri.port)
