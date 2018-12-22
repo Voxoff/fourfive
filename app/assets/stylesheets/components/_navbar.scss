@@ -101,18 +101,19 @@
 
 .shopping-bag{
   position:relative;
+  #basket-count{
+    font-size: 12px;
+    position: absolute;
+    background-color: $yellow;
+    top: -8px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
 }
 
-#basket-count{
-  position: absolute;
-  bottom: 3px;
-  font-size: 15px;
-  left: 28px;
-}
-
-#basket-count-double-digit{
-  position: absolute;
-  bottom: 5px;
-  font-size: 11px;
-  left: 26px;
-}
