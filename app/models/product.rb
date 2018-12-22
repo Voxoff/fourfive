@@ -51,6 +51,9 @@ class Product < ApplicationRecord
     else
       "Capsules"
     end
+  end
 
+  def how_to_use_text
+    product_group.how_to_use.split("\n").each {|i| yield(i) if block_given? }
   end
 end
