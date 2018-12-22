@@ -4,6 +4,6 @@ class ProductGroup < ApplicationRecord
   has_many :products, dependent: :destroy
 
   def readable_name
-    name.gsub("_", " ")
+    name.tr("_", " ")
   end
 end

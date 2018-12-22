@@ -1,9 +1,7 @@
 class Cart < ApplicationRecord
-  # validates :active, uniqueness: { scope: user_id }, if: :active?
   belongs_to :user, required: false
   has_many :cart_items, dependent: :destroy
   has_one :address, dependent: :destroy
-  # validates :status, inclusion: { in: %w(active inactive pending) } #not used anywhere yet
 
   scope :orders, -> { where(active: false) }
   scope :has_user, -> { where(user: !nil) }
