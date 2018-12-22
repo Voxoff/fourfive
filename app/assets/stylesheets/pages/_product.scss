@@ -49,9 +49,17 @@ margin-right:20%;
     max-width: 100%;
   }
   #product-name{
-    margin-right: 0%;
+    margin-right: 0px !important;
+    text-align: center;
   }
-  .product-info.text p{
-    margin-right: 0%;
+  .product-info{
+    .text p{
+      margin-right: 0px;
+      margin-bottom: 0px;
+      text-align: justify;
+    }
   }
+
+
 }
+

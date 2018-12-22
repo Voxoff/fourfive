@@ -34,7 +34,6 @@ const oilHash = {
 // clicking on option changes box's value and collapses dropdown
 document.querySelectorAll(".drop-down-item").forEach((item) => {
   item.addEventListener("click", (event) => {
-    // debugger
     item.parentElement.previousElementSibling.firstElementChild.innerHTML = item.innerHTML
     $(item.parentElement).slideToggle()
     const quantity = document.getElementById('quantity').innerHTML

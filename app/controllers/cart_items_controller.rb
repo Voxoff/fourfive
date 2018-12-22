@@ -3,15 +3,14 @@ class CartItemsController < ApplicationController
 
   def create
     pundit_placeholder
-    # @product = Product.find(product_id_params[:product_id])
-    if product_params[:size].present?
-    @product = Product.find_by(product_params)
+    if params[:size].present?
+      @product = params[:tincture].present? ? Product.find_by(p_params) : Product.find_by(s_params)
     else
       @product = Product.find_by(name: "cbd_capsules")
     end
     @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
-      @cart_item.quantity += cart_params[:quantity].to_i
+      @cart_item.quantity += params[:quantity].to_i
     else
       @cart_item = CartItem.new(cart_params)
       @cart_item.product = @product
@@ -28,15 +27,11 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    cart_item = CartItem.find(update_params[:id])
-    change = update_params[:quantity].to_i
+    cart_item = CartItem.find(params[:id])
+    change = params[:quantity].to_i
     if @cart.cart_item_ids.include?(cart_item.id)
       quantity = cart_item.quantity + change
-      if quantity == 0
-        cart_item.destroy
-      else
-        cart_item.update(quantity: quantity)
-      end
+      quantity == 0 ? cart_item.destroy : cart_item.update(quantity: quantity)
       flash[:notice] = change.positive? ? "That's been added to your cart." : "That's been removed from your cart."
     end
     redirect_to cart_path(@cart)
@@ -53,19 +48,15 @@ class CartItemsController < ApplicationController
   private
 
   def find_cart
-    @cart = Cart.find(cart_params[:cart_id])
+    @cart = Cart.find(params[:cart_id])
   end
 
-  def cart_items_params
-    params.require(:cart_item).permit(:strength, :product)
-  end
-
-  def product_params
+  def p_params
     params.permit(:size, :tincture)
   end
 
-  def update_params
-    params.permit(:product_id, :cart_id, :id, :quantity)
+  def s_params
+    params.permit(:size)
   end
 
   def cart_params

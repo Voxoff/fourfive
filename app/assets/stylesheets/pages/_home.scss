@@ -74,6 +74,12 @@
 }
 
 // Mobile
+.product-info{
+  a{
+    color: $charcoal;
+  }
+}
+
 @media(max-width:750px){
   .product-info{
     margin-bottom: 70px !important;
@@ -149,11 +155,7 @@ select {
 .accordion-content.default {display: block;}
 
 // Override bootstrap just for the homepage, but maybe everything??
-.product-info{
-  a{
-    color: $charcoal;
-  }
-}
+
 
 .homepage-cartoon {
   width: 100%;
