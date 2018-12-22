@@ -11,8 +11,11 @@
   .title{
     flex-basis: 80%;
     text-align: center;
+    margin-bottom: 0px;
     h1{
       font-weight: bolder;
+      margin-top:10px;
+      font-size: 36px;
     }
     a{
       color: inherit;
@@ -21,14 +24,6 @@
       color: inherit;
       text-decoration: none;
     }
-  }
-}
-
-@media(max-width: 700px){
-  .title h1{
-    margin-bottom: 25px;
-    margin-left:10px;
-    font-size: 38px;
   }
 }
 
@@ -113,3 +108,10 @@
   font-size: 11px;
   left: 26px;
 }
+
+@media(max-width: 386px){
+  .title>a h1{
+    font-size: 32px !important;
+  }
+}
+

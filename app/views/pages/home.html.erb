@@ -1,5 +1,4 @@
 
-  <%#= image_tag "placeholderbanner.jpg", class: "img-responsive" %>
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="8000">
   <!-- Indicators -->
   <ol class="carousel-indicators" style="bottom: 5px;">
@@ -43,14 +42,14 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<%# CAROUSEL %>
+
 <div class="container">
   <div class="border-bottom" style="border: none !important">
     <h3 style="font-weight: bolder; text-align: center;">Our products</h3>
     <h5 class="lighter" style="text-align: center;">Choose from our range of specialist oils, balms and capsules.</h5>
   </div>
 
-<div class="row shorter-row">
+  <div class="row shorter-row">
     <% @product_groups.each do |group| %>
       <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="product-card">
