@@ -3,7 +3,45 @@
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
       <h3 class="basket-header">Your <span class="bold">fourfive</span> basket</h3>
-      <table class="table">
+
+      <% @cart_items.each_with_index do |item, i| %>
+        <% if i == @cart_items.length - 1  %>
+          <div class="cart-item last-cart-item">
+        <% else %>
+          <div class="cart-item">
+        <% end %>
+          <div class="cart-item-details">
+            <h1><%= item.product.specific_name %></h1>
+            <p>Unit price: £<%= item.product.price %></p>
+            <% if i == @cart_items.length - 1 %>
+              <div class="total-label"><strong>Total:</strong></div>
+            <% end %>
+          </div>
+          <div class="cart-item-quantity">
+            <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
+              -
+            <% end %>
+            <div class="quantity-margin"><%= item.quantity %></div>
+            <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
+              +
+            <% end %>
+            <% if i == @cart_items.length - 1 %>
+              <div class="total-quantity"><%= @cart.quantity %></div>
+            <% end %>
+          </div>
+          <div class="cart-item-price">
+            £<%= item.line_cost %>
+            <% if i == @cart_items.length - 1 %>
+              <div class="total-price">£<%= @cart.amount %></div>
+            <% end %>
+          </div>
+          <div class="delete">
+            <%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- <table class="table">
         <thead>
           <tr>
             <th></th>
@@ -50,7 +88,9 @@
             <td class="ft-border-bold"><%= @cart.amount %></td>
           </tr>
         </tfoot>
-      </table>
+      </table> -->
+
+
       <div class="cart-actions">
         <div class="cart-actions-left">
           <%= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
