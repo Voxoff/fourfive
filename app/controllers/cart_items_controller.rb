@@ -1,8 +1,10 @@
 class CartItemsController < ApplicationController
   before_action :find_cart, only: [:create, :update]
+  include PunditControllable
+  before_action :pundit_placeholder, only: :create
+
 
   def create
-    pundit_placeholder
     if params[:size].present?
       @product = params[:tincture].present? ? Product.find_by(p_params) : Product.find_by(s_params)
     else
@@ -17,13 +19,6 @@ class CartItemsController < ApplicationController
     end
     flash[:notice] = @cart_item.save ? "That's been added to your cart!" : "There was an error. Sorry!"
     redirect_back(fallback_location: cart_path(@cart.id))
-  end
-
-  def pundit_placeholder
-    return unless current_or_guest_user != @cart.user
-
-    flash[:notice] = "You do not have access to this cart"
-    return redirect_to root_path
   end
 
   def update

@@ -3,14 +3,13 @@ class Product < ApplicationRecord
   monetize :price_cents
 
   has_many :reviews
+  belongs_to :product_group
 
   validates :name, :price, presence: true
   validates :size, inclusion: { in: %w[Small Large 500mg 1000mg 2000mg] }, allow_nil: true
   validates :tincture, inclusion: { in: %w[Natural Orange] }, allow_nil: true
 
   mount_uploader :photo, PhotoUploader
-
-  belongs_to :product_group
 
   extend FriendlyId
   friendly_id :name
@@ -29,7 +28,7 @@ class Product < ApplicationRecord
 
 
   def readable_name
-    name.gsub("_", " ")
+    name.tr("_", " ")
   end
 
   def specific_name
@@ -44,10 +43,10 @@ class Product < ApplicationRecord
 
   def image_name
     if oil?
-      change = {"500mg": "Lower", "1000mg": "Medium", "2000mg": "Higher"}
+      change = { "500mg": "Lower", "1000mg": "Medium", "2000mg": "Higher"}
       "#{change[size.to_sym]} strength, #{tincture} flavour"
     elsif balm?
-      "#{size} balm"
+      "#{size} balm (30ml / 300mg)"
     else
       "Capsules"
     end

@@ -75,9 +75,30 @@
       </div>
       <div class="col-xs-12 col-sm-5">
         <div class="image-margin">
-          <% @icon_array.each do |tag, txt| %>
-            <%= render "icon", tag: tag, text: txt %>
-          <% end %>
+          <div class="icon-card">
+            <%= image_tag "icons/natural.png", size: '70' %>
+            <p>100% Natural</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/co2.png", size: '70' %>
+            <p>Extracted by CO<sub>2</sub></p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/no-chemicals.png", size: '70' %>
+            <p>Herbicide & Pesticide Free</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/lab.png", size: '70' %>
+            <p>Lab Tested</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/vegetarian.png", size: '70' %>
+            <p>Vegetarian friendly</p>
+          </div>
+          <div class="icon-card">
+            <%= image_tag "icons/vegan.png", size: '70' %>
+            <p>Vegan friendly</p>
+          </div>
         </div>
       </div>
       <div class="col-sm-1"></div>

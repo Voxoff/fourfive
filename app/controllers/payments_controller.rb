@@ -1,10 +1,11 @@
 class PaymentsController < ApplicationController
   include CartControllable
-  before_action :find_cart
+  include PunditControllable
 
+  before_action :find_cart
+  before_action :pundit_placeholder, only: %i[checkout new]
 
   def checkout
-    pundit_placeholder
     @amount = @cart.amount
     @cart_items = @cart.cart_items
     user = current_or_guest_user
@@ -17,8 +18,6 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    @discount = 50.00 - @cart.amount.to_i
-    pundit_placeholder
   end
 
   def success
@@ -31,13 +30,6 @@ class PaymentsController < ApplicationController
       @cart = @cart.checkout
     end
     redirect_to root_path
-  end
-
-  def pundit_placeholder
-    return unless current_or_guest_user != @cart.user || params[:cart_id].to_i != @cart.id
-
-    flash[:notice] = "You do not have access to this cart"
-    return redirect_to root_path
   end
 
   private
@@ -62,7 +54,7 @@ class PaymentsController < ApplicationController
   end
 
   def coupons
-    ["#{ENV['COUPON']}"]
+    [ENV['COUPON'].to_s]
   end
 
   def verify_coupon(coupon)
@@ -75,7 +67,6 @@ class PaymentsController < ApplicationController
         return redirect_to new_cart_payment_path
       end
     end
-    true
   end
 
   def zion
@@ -85,19 +76,19 @@ class PaymentsController < ApplicationController
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path)
 
-    req.set_form_data({
-      'authentication.userId' => "#{ENV['ZION_USER_ID']}",
-      'authentication.password' => "#{ENV['ZION_PWD']}",
-      'authentication.entityId' => "#{ENV['ZION_ENTITY_ID']}",
-      'amount' => "#{@amount.to_f}",
+    req.set_form_data(
+      'authentication.userId' => ENV['ZION_USER_ID'].to_s,
+      'authentication.password' => ENV['ZION_PWD'].to_s,
+      'authentication.entityId' => ENV['ZION_ENTITY_ID'].to_s,
+      'amount' => @amount.to_f.to_s,
       'currency' => 'GBP',
       'paymentType' => 'DB',
-      'billing.street1' => "#{@cart.address.first_line}",
-      'billing.street2' => "#{@cart.address.second_line}",
-      'billing.city' => "#{@cart.address.city}",
-      'billing.postcode' => "#{@cart.address.postcode}",
+      'billing.street1' => @cart.address.first_line.to_s,
+      'billing.street2' => @cart.address.second_line.to_s,
+      'billing.city' => @cart.address.city.to_s,
+      'billing.postcode' => @cart.address.postcode.to_s,
       'billing.country' => "GB"
-    })
+    )
     res = http.request(req)
     @result = JSON.parse(res.body)
     @checkout_id = @result["id"]
