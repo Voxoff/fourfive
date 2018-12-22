@@ -1,66 +1,44 @@
-.product-form-group {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 10px;
+.selections {
+  max-width: 200px;
+  margin-bottom: 24px;
+  .selection {
+    .field {
+      margin-top: 8px;
+      border: 1px solid black;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 2;
+      position: relative;
+      cursor: pointer;
+      i {
+        font-size: 24px;
+      }
+    }
+    .drop-down {
+      z-index: 1;
+      position: relative;
+      .drop-down-item {
+        padding: 8px 16px;
+        border: 1px solid rgb(200,200,200);
+        color: rgba(0,0,0,0.5);
+        margin-top: -1px;
+        z-index:1;
+        cursor: pointer;
+        position: relative;
+      }
+      .drop-down-item:hover {
+        color: $yellow;
+        z-index: 2;
+        border-color: #3c3c3c;
+        position: relative;
+        background-color: #3c3c3c;
+      }
+    }
+  }
 }
 
-.product-form-group select {
-  background-color: $light-grey;
-  border: 1px solid #C4C4C4 !important;
-  min-width: 145px;
-  font-size: inherit;
-  padding: .5em;
-  padding-right: 2.5em;
-  border: 0;
-  margin: 0;
-  border-radius: 3px;
-  text-overflow: '';
-  -webkit-appearance: button; /* hide default arrows */
-  -moz-appearance: none;
-   appearance: none;
+.collapsed-drop-down {
+  height: 0px;
+  padding: 0px !important;
 }
-
-.product-form-group::before,
-.product-form-group::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.product-form-group::after { /*  Custom dropdown arrow */
-  content: "\25BC";
-  height: 1em;
-  font-size: .625em;
-  line-height: 1;
-  right: 1.2em;
-  top: 50%;
-  margin-top: -.5em;
-}
-
-.product-form-group::before { /*  Custom dropdown arrow cover */
-  width: 2em;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 0 3px 3px 0;
-}
-
-.product-form-group select[disabled] {
-  color: rgba(0,0,0,.3);
-}
-
-.product-form-group select[disabled]::after {
-  color: rgba(0,0,0,.1);
-}
-
-.product-form-group::before {
-  background-color: rgba(0,0,0,.15);
-}
-
-.product-form-group::after {
-  color: rgba(0,0,0,.4);
-}
-
-
-

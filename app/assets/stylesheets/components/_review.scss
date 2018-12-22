@@ -34,7 +34,6 @@
         }
         h5{
           font-size: 18px;
-          // font-weight: lighter;
         }
         .link-box {
           margin: 8px 0;
@@ -59,91 +58,6 @@
         cursor: pointer;
       }
       border-bottom: 1px solid $yellow;
-      a {
-        // color: $yellow;
-      }
     }
   }
 }
-
-
-
-// .review-card{
-//   display: flex;
-//   justify-content: center;
-//   // finetune
-//   margin-left: -20px;
-//   .review-image-gap{
-//     margin-right: 30px;
-//     height: 85px;
-
-//   }
-//   .review-text{
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     // keeps cards in line
-//     min-width: 312px;
-//     h4{
-//       font-size: 18px;
-//       font-weight: bold;
-//       margin-bottom: 3px;
-//     }
-//     p{
-//       font-size: 15px;
-//       margin-bottom: 3px;
-//     }
-//     #position{
-//       font-weight: lighter
-//       // THIN
-//     }
-//   }
-// }
-// // Media queries
-// @media(min-width: 1000px){
-//   .review-card .review-image-gap{
-//     margin-right: 70px;
-//   }
-// }
-
-// // @media(max-width: 992px){
-// //   .review-card .review-text {
-// //     min-width: 250px
-// //   }
-// // }
-
-// // @media(max-width: 992px){
-// //   .review-card .review-text {
-// //     min-width: 250px
-// //   }
-// // }
-
-// @media(max-width: 650px){
-//   .review-card .review-text{
-//     max-width: 200px;
-//     min-width: 0px;
-//   }
-// }
-
-// @media(max-width: 700px){
-//   .review-card{
-//     .review-text{
-//       // min-width: 200px;
-//     }
-
-//     .review-image-gap{
-//       height: 85px;
-//     }
-//     .review-text{
-//       h4{
-//         font-size: 18px;
-//         font-weight: bolder;
-//       }
-//       #position{
-//         font-style: italic;
-//       }
-//     }
-//   }
-// }
-
-

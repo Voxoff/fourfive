@@ -15,7 +15,10 @@
 
 	p{
 		text-align: justify;
-	}
+  }
+  .team-titles h4{
+    font-size:18px;
+  }
 }
 
 .right-team{
@@ -27,6 +30,7 @@
 }
 
 #fourfive-div{
+  padding: 0px 5%;
 	.fourfive-text{
 		column-count: 2;
 		column-gap: 134px;
@@ -44,21 +48,28 @@
 	.section{
 		flex-direction: column;
 		align-items: center;
-	}
+  }
+
+  #domsection{
+    flex-direction: column-reverse;
+  }
 
 	.right-team{
-		padding: 15px;
+		padding: 5%;
 	}
 
 	.left-team{
-		padding: 15px;
+		padding: 5%;
 	}
 
 	.team-titles{
-		display: flex;
+    display: flex;
+    h2{
+      padding: 0px;
+    }
     h4{
       padding-left: 40px;
-      padding-top: 16px;
+      padding-top: 12px;
     }
   }
 
