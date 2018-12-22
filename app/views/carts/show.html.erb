@@ -3,54 +3,55 @@
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
       <h3 class="basket-header">Your <span class="bold">fourfive</span> basket</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Product</th>
-            <th>Product type</th>
-            <th>Unit price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Remove</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="table">
+        <div class="thead">
+          <div class="tr">
+            <div class="th"></div>
+            <div class="th">Quantity</div>
+            <div class="th">Total</div>
+          </div>
+        </div>
+        <div class="tbody">
           <% @cart_items.each do |item| %>
-            <tr>
-              <td class="yellow-box"><%= image_tag "checkout.png", size: "30" %></td>
-              <td class="align-center"><%= item.product.product_group.readable_name %></td>
-              <td class="align-right"><%= item.product.specific_name %></td>
-              <td class="align-right"><%= item.product.price %></td>
-              <td class="align-right">
-                <div class="cart-flex">
-                <%= button_to cart_item_path(item), method: :patch, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
-                  <i class="fas fa-minus"></i>
-                <% end %>
-
-                  <%= item.quantity %>
-                  <%= button_to cart_item_path(item), method: :patch, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
-                    <i class="fas fa-plus"></i>
-                  <% end %>
-
+            <div class="tr">
+              <div class="td">
+                <div class="cart-item-details">
+                  <h1><%= item.product.specific_name %></h1>
+                  <p>£<%= item.product.price %></p>
                 </div>
-              </td>
-              <td class="align-right"><%= item.line_cost %></td>
-              <td class="delete"><%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%></td>
-            </tr>
+              </div>
+              <div class="td">
+                <div class="cart-item-quantity">
+                  <%= button_to cart_item_path(item), method: :patch, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
+                    <span>-</span>
+                  <% end %>
+                  <span><%= item.quantity %></span>
+                  <%= button_to cart_item_path(item), method: :patch, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
+                    <span>+</span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="td">
+                <div class="cart-item-cost">
+                  £<%= item.line_cost %>
+                </div>
+              </div>
+              <div class="td">
+                <div class="delete">
+                  <%= link_to "", cart_item_path(item), method: :delete, class: "fas fa-times-circle"%>
+                </div>
+              </div>
+            </div>
           <% end %>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="ft-border-bold">Total</td>
-            <td class="ft-border-bold"><%= @cart.quantity %></td>
-            <td class="ft-border-bold"><%= @cart.amount %></td>
-          </tr>
-        </tfoot>
-      </table>
+        </div>
+        <div class="tfoot">
+          <div class="tr">
+            <div class="td foot-label">Total:</div>
+            <div class="td foot-quantity"><%= @cart.quantity %></div>
+            <div class="td foot-amount">£<%= @cart.amount %></div>
+          </div>
+        </div>
+      </div>
       <div class="cart-actions">
         <div class="cart-actions-left">
           <%= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
