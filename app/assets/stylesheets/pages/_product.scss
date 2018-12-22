@@ -4,11 +4,6 @@
   margin: 10px 0px;
 }
 
-.product-submit{
-  display:flex;
-  justify-content: center;
-}
-
 .desc{
   width: 100%;
   p{
@@ -42,7 +37,6 @@
 }
 
 #product-photo{
-  transition: opacity 1s ease-in-out;
   max-width: 75%;
 }
 

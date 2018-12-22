@@ -20,6 +20,22 @@ body{
   font-family: $helvetica;
 }
 
+h2{
+  font-size: 20px;
+}
+
+h3{
+  font-size: 18px;
+}
+
+p{
+  font-size: 15px;
+}
+
+.bold{
+  font-weight: bolder;
+}
+
 #devise-css{
   padding-top:10px;
   margin-bottom: 25px;
@@ -44,34 +60,9 @@ a:hover, a:focus{
     cursor: pointer;
   }
 }
-// REVIEW TEXT HOVERS
-.margin-bottom-80{
-  margin-bottom: 80px;
-}
-
-
-.bold{
-  font-weight: bolder;
-}
 
 .flex{
   display: flex
-}
-
-.cart-flex {
-  display: flex;
-  justify-content: space-around;
-  button {
-    border: none;
-    background-color: transparent;
-    font-size: 12px;
-  }
-  button:hover {
-    color: $yellow;
-  }
-  button:active {
-    color: rgb(245,220,0)
-  }
 }
 
 .column{
@@ -90,18 +81,4 @@ a:hover, a:focus{
     font-weight: lighter;
   }
 }
-
-
-h2{
-  font-size: 20px;
-}
-
-h3{
-  font-size: 18px;
-}
-
-p{
-  font-size: 15px;
-}
-
 

@@ -116,3 +116,19 @@ tfoot td {
     margin-top: -24px;
   }
 }
+
+.cart-flex {
+  display: flex;
+  justify-content: space-around;
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 12px;
+  }
+  button:hover {
+    color: $yellow;
+  }
+  button:active {
+    color: rgb(245,220,0)
+  }
+}
