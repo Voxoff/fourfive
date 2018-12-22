@@ -86,7 +86,7 @@
       <div class="review-section">
         <div class="review-column">
           <% @reviews.each_with_index do |review, i| %>
-            <div class="review-card">
+            <div class="review-card" id=<%= "cancel-border" if i == 2 %>>
               <div class="review-content">
                 <div class="review-image">
                   <%= cl_image_tag review.photo, class: "review-image" if review.photo.present? %>
@@ -108,6 +108,9 @@
       </div>
     </div>
   </div>
+
+  <div class="thin-grey-line wider"></div>
+
   <div class="our-story" style="margin-bottom: 15px;">
     <h2>Our Story</h2>
     <h5>Our cbd experience.</h5>
