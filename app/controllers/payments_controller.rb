@@ -26,6 +26,8 @@ class PaymentsController < ApplicationController
     code = payments["result"]["code"]
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
+      email_hash = {amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time}
+      PaymentMailer.order(email_hash).deliver_now
       @cart = @cart.checkout
     end
     redirect_to root_path
@@ -85,11 +87,16 @@ class PaymentsController < ApplicationController
 
     req.set_form_data({
       'authentication.userId' => "#{ENV['ZION_USER_ID']}",
-      'authentication.password' => "#{ENV['ZION_TEST_PWD']}",
+      'authentication.password' => "#{ENV['ZION_PWD']}",
       'authentication.entityId' => "#{ENV['ZION_ENTITY_ID']}",
       'amount' => "#{@amount.to_f}",
       'currency' => 'GBP',
-      'paymentType' => 'DB'
+      'paymentType' => 'DB',
+      'billing.street1' => "#{@cart.address.first_line}",
+      'billing.street2' => "#{@cart.address.second_line}",
+      'billing.city' => "#{@cart.address.city}",
+      'billing.postcode' => "#{@cart.address.postcode}",
+      'billing.country' => "GB"
     })
     res = http.request(req)
     @result = JSON.parse(res.body)
@@ -111,7 +118,7 @@ class PaymentsController < ApplicationController
   def zion_info
     ['net/https', 'uri', 'json'].each(&method(:require))
     path = ("?authentication.userId=#{ENV['ZION_USER_ID']}" +
-    "&authentication.password=#{ENV['ZION_TEST_PWD']}" +
+    "&authentication.password=#{ENV['ZION_PWD']}" +
     "&authentication.entityId=#{ENV['ZION_ENTITY_ID']}")
     uri = URI.parse("https://test.oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
     http = Net::HTTP.new(uri.host, uri.port)

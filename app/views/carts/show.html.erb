@@ -62,12 +62,12 @@
               <td class="align-right"><%= item.product.price %></td>
               <td class="align-right">
                 <div class="cart-flex">
-                <%= button_to cart_items_path, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
+                <%= button_to cart_item_path(item), method: :patch, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
                   <i class="fas fa-minus"></i>
                 <% end %>
 
                   <%= item.quantity %>
-                  <%= button_to cart_items_path, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
+                  <%= button_to cart_item_path(item), method: :patch, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
                     <i class="fas fa-plus"></i>
                   <% end %>
 
@@ -105,7 +105,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10 col-sm-offset-5 col-sm-6">
-      <div class="qualifier">If you are not satisfied with your purchase you may return it for a refund within one year of purchase. Please use the following links to read our <%= link_to "privacy policy", privacy_policy_path %> and <%= link_to "terms and conditions", "#" %>.</div>
+      <div class="qualifier">If you are not satisfied with your purchase you may return it for a refund within 30 days of purchase. Please use the following links to read our <%= link_to "privacy policy", privacy_policy_path %> and <%= link_to "terms and conditions", privacy_policy_path %>.</div>
     </div>
   </div>
 </div>
