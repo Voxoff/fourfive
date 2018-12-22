@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   after_action :flashme
 
   def flashme
-    flash[:notice] = "We will be going live very soon. If you have any questions, please get in touch at contact@fourfivecbd.co.uk. Merry Christmas! "
+    flash[:notice] = "We will be live for the new year. If you have any questions, do get in touch at contact@fourfivecbd.co.uk. Merry Christmas! "
   end
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
