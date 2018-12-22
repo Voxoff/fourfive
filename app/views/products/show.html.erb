@@ -41,16 +41,10 @@
           <div class="master-quantity">
             <% if @product.oil? %>
               <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: "500mg", tincture: @tinctures.first, product_id: @product.id %>
-
             <% elsif @product.balm? %>
               <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: "Small", tincture: nil, product_id: @product.id %>
             <% else %>
-              <%= button_to cart_items_path, params: { quantity: 1, cart_id: @cart.id, product_id: @product.id}, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
-                <p id="pad-right">Buy now</p>
-                <div class="vertical-line"></div>
-                <p id="pound">£</p>
-                <p id="price"><%= humanized_money @price %></p>
-              <% end %>
+            <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: nil, tincture: nil, product_id: @product.id %>
             <% end %>
           </div>
         </div>
