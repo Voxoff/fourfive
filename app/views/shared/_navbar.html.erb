@@ -48,7 +48,9 @@
     <% else %>
       <%= image_tag "shopping-bag.png", size: "24x30" %>
     <% end %>
-    <div id=<%= @cart.count < 10 ? "basket-count" : "basket-count-double-digit"%> ><%= @cart.count %></div>
+    <% if @cart %>
+      <div id=<%= @cart.count < 10 ? "basket-count" : "basket-count-double-digit"%> ><%= @cart.count %></div>
+    <% end %>
   </div>
 </div>
 <div class="stripe-gap <%= @disable_top_margin ? "margin-bottom-7" : "margin-bottom-80"  %>">
