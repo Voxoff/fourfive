@@ -1,53 +1,58 @@
 <div class="container" style="margin-bottom: 70px;">
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-sm-12 col-md-5">
+    <div class="col-sm-offset-1 col-sm-10 col-md-5 col-xs-12">
       <div>
         <%= cl_image_tag(@product.photo_url, class: "image-responsive", id: "product-photo") %>
-        <h5 style="font-weight: lighter; text-align: center; margin-right: 25%;" id="product-name"><%= @specific_product %></h5>
+        <h5 id="product-name"><%= @specific_product %></h5>
       </div>
     </div>
-    <div class="col-sm-12 col-md-5">
+    <div class="col-sm-offset-1 col-sm-10 col-md-5 col-xs-12">
       <h2 class="border-bottom" id="product-name" style="font-size: 25px; margin-top: 0px; padding-bottom: 10px;"><%= @product.readable_name %></h2>
-      <div class="product-info">
-        <div class="text lighter" style="margin-bottom:25px; font-size: 15px">
-          <p><%= @product.product_group.description %></p>
-          <% if @product.oil? %>
-            <p>Size: 30ml</p>
-          <% elsif @product.capsules? %>
-            <p>Contains 100 capsules.</p>
+      <div class="mobile-stack">
+        <span>
+          <div class="product-info">
+            <div class="text lighter" style="margin-bottom:25px; font-size: 15px">
+              <p><%= @product.product_group.description %></p>
+              <% if @product.oil? %>
+                <p>Size: 30ml</p>
+              <% elsif @product.capsules? %>
+                <p>Contains 100 capsules.</p>
+              <% end %>
+            </div>
+          </div>
+        </span>
+        <span>
+          <% if @product.balm? %>
+            <div class="selections">
+              <%= render "shared/selection", selections: @sizes, string: "size" %>
+            </div>
+          <% elsif @product.oil? %>
+            <div class="selections">
+              <%= render "shared/selection", selections: @tinctures, string: "tincture" %>
+              <%= render "shared/selection", selections: @sizes, string: "size" %>
+            </div>
           <% end %>
-        </div>
-      </div>
-      <% if @product.balm? %>
-        <div class="selections">
-          <%= render "shared/selection", selections: @sizes, string: "size" %>
-        </div>
-      <% elsif @product.oil? %>
-        <div class="selections">
-          <%= render "shared/selection", selections: @tinctures, string: "tincture" %>
-          <%= render "shared/selection", selections: @sizes, string: "size" %>
-        </div>
-      <% end %>
-      <div class="all-btn-container show">
-        <div class="button-container">
-          <div class="master-quantity">
-            <button class="cart-button no-button" id="less">-</button>
-            <p id="quantity">1</p>
-            <button class="cart-button no-button" id="more">+</button>
+          <div class="all-btn-container show">
+            <div class="button-container">
+              <div class="master-quantity">
+                <button class="cart-button no-button" id="less">-</button>
+                <p id="quantity">1</p>
+                <button class="cart-button no-button" id="more">+</button>
+              </div>
+            </div>
+            <div class="button-container bigger yellow-border-hover">
+              <div class="master-quantity">
+                <% if @product.oil? %>
+                  <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: "500mg", tincture: @tinctures.first, product_id: @product.id %>
+                <% elsif @product.balm? %>
+                  <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: "Small", tincture: nil, product_id: @product.id %>
+                <% else %>
+                <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: nil, tincture: nil, product_id: @product.id %>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="button-container bigger yellow-border-hover">
-          <div class="master-quantity">
-            <% if @product.oil? %>
-              <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: "500mg", tincture: @tinctures.first, product_id: @product.id %>
-            <% elsif @product.balm? %>
-              <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: "Small", tincture: nil, product_id: @product.id %>
-            <% else %>
-            <%= render "shared/button", price: @price, q: 1, cart_id: @cart.id, size: nil, tincture: nil, product_id: @product.id %>
-            <% end %>
-          </div>
-        </div>
+        </span>
       </div>
     </div>
     <div class="col-md-1"></div>
@@ -55,8 +60,7 @@
 
   <div class="row">
     <div class="more-info">
-    <div class="col-md-1"></div>
-      <div class="col-xs-12 col-sm-5">
+      <div class="col-sm-offset-1 col-xs-12 col-sm-5">
         <h3 style="margin-top: 0px;">What is it?</h3>
         <p><%= @product.product_group.subtitle %></p>
         <h3>How to use it?</h3>
