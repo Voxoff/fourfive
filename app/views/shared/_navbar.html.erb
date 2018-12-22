@@ -42,14 +42,12 @@
   </div>
   <div class="shopping-bag">
     <% if @cart %>
-      <%= link_to cart_path(@cart), class: "navbar-item navbar-link" do %>
+      <%= link_to cart_path(@cart) do %>
         <%= image_tag "shopping-bag.png", size: "24x30"  %>
       <% end %>
+      <div id="basket-count"><%= @cart.count %></div>
     <% else %>
       <%= image_tag "shopping-bag.png", size: "24x30" %>
-    <% end %>
-    <% if @cart %>
-      <div id=<%= @cart.count < 10 ? "basket-count" : "basket-count-double-digit"%> ><%= @cart.count %></div>
     <% end %>
   </div>
 </div>
