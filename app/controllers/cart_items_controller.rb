@@ -40,7 +40,7 @@ class CartItemsController < ApplicationController
   def find_product
     if params[:size].present? && params[:tincture].present?
       @product = Product.find_by(p_params)
-    elsif arams[:size].present?
+    elsif params[:size].present?
       @product = Product.find_by(s_params)
     else
       @product = Product.find_by(name: "cbd_capsules")
