@@ -52,7 +52,7 @@ class Product < ApplicationRecord
     end
   end
 
-  def how_to_use_text
+  def how_to_use_text(&block)
     product_group.how_to_use.split("\n").each {|i| yield(i) if block_given? }
   end
 end
