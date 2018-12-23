@@ -4,11 +4,7 @@ class CartItemsController < ApplicationController
   before_action :pundit_placeholder, only: :create
 
   def create
-    if params[:size].present?
-      @product = params[:tincture].present? ? Product.find_by(p_params) : Product.find_by(s_params)
-    else
-      @product = Product.find_by(name: "cbd_capsules")
-    end
+    @product = find_product
     @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
       @cart_item.quantity += params[:quantity].to_i
@@ -40,6 +36,17 @@ class CartItemsController < ApplicationController
   end
 
   private
+
+  def find_product
+    if params[:size].present? && params[:tincture].present?
+      @product = Product.find_by(p_params)
+    elsif arams[:size].present?
+      @product = Product.find_by(s_params)
+    else
+      @product = Product.find_by(name: "cbd_capsules")
+    end
+    @product
+  end
 
   def find_cart
     @cart = Cart.find(params[:cart_id])
