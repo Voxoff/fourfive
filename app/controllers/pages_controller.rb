@@ -17,10 +17,4 @@ class PagesController < ApplicationController
 
   def privacy_policy
   end
-
-  private
-
-  def checkout_params
-    params.permit(:resource_path)
-  end
 end

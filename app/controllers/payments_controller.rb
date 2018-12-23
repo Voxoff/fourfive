@@ -42,10 +42,6 @@ class PaymentsController < ApplicationController
     params.require(:checkout).permit(:first_line, :second_line, :third_line, :postcode, :city, :first_name, :last_name)
   end
 
-  def success_params
-    params.permit(:id, :resourcePath)
-  end
-
   def check_empty_cart
     return unless @cart_items.empty?
 
