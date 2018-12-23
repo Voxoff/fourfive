@@ -5,11 +5,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.friendly.find(params[:id])
     @group = @product.product_group
-    if @product.balm?
-      @sizes = ["Small balm", "Large balm"]
-    else
-      @sizes = ["Lower (500mg)","Medium (1000mg)","Higher (2000mg)"] # @strengths = Product.all.collect(&:size).uniq.compact
-    end
+    @sizes = @product.balm? ? ["Small balm", "Large balm"] : ["Lower (500mg)", "Medium (1000mg)", "Higher (2000mg)"]
     @tinctures = %w[Natural Orange] # @tinctures = Product.all.collect(&:tincture).uniq.compact
     @specific_product = @product.image_name
     @ingr = @group.ingredients

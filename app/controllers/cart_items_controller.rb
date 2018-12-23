@@ -1,8 +1,7 @@
 class CartItemsController < ApplicationController
-  before_action :find_cart, only: [:create, :update]
+  before_action :find_cart, only: %i[create update]
   include PunditControllable
   before_action :pundit_placeholder, only: :create
-
 
   def create
     if params[:size].present?
@@ -26,7 +25,7 @@ class CartItemsController < ApplicationController
     change = params[:quantity].to_i
     if @cart.cart_item_ids.include?(cart_item.id)
       quantity = cart_item.quantity + change
-      quantity == 0 ? cart_item.destroy : cart_item.update(quantity: quantity)
+      quantity.zero? ? cart_item.destroy : cart_item.update(quantity: quantity)
       flash[:notice] = change.positive? ? "That's been added to your cart." : "That's been removed from your cart."
     end
     redirect_to cart_path(@cart)
