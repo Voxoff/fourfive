@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include CartControllable
-  before_action :find_or_create_cart
+  before_action :find_cart
 
   def show
     @product = Product.friendly.find(params[:id])

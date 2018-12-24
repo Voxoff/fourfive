@@ -1,5 +1,7 @@
 class CartItemsController < ApplicationController
-  before_action :find_cart, only: %i[create update]
+  include CartControllable
+  before_action :find_or_create_cart, only: :create
+  before_action :find_cart, only: :update
   include PunditControllable
   before_action :pundit_placeholder, only: :create
 
@@ -11,6 +13,7 @@ class CartItemsController < ApplicationController
     else
       @cart_item = CartItem.new(cart_params)
       @cart_item.product = @product
+      @cart_item.cart = @cart
     end
     flash[:notice] = @cart_item.save ? "That's been added to your cart!" : "There was an error. Sorry!"
     redirect_back(fallback_location: cart_path(@cart.id))
@@ -19,7 +22,7 @@ class CartItemsController < ApplicationController
   def update
     cart_item = CartItem.find(params[:id])
     change = params[:quantity].to_i
-    if @cart.cart_item_ids.include?(cart_item.id)
+    if cart_item.cart == @cart
       quantity = cart_item.quantity + change
       quantity.zero? ? cart_item.destroy : cart_item.update(quantity: quantity)
       flash[:notice] = change.positive? ? "That's been added to your cart." : "That's been removed from your cart."
@@ -46,10 +49,6 @@ class CartItemsController < ApplicationController
       @product = Product.find_by(name: "cbd_capsules")
     end
     @product
-  end
-
-  def find_cart
-    @cart = Cart.find(params[:cart_id])
   end
 
   def p_params

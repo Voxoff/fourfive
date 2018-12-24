@@ -75,9 +75,11 @@ const lessButton = document.querySelector('#less')
 const moreButton = document.querySelector("#more");
 const buttons = [lessButton, moreButton];
 
-const quantityParam = document
+const inputs = document
   .querySelector(".button_to")
-  .getElementsByTagName("input")[3];
+  .getElementsByTagName("input");
+
+const quantityParam = [...inputs].filter(i => i.name == "quantity")[0];
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
