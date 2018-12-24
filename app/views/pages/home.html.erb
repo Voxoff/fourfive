@@ -59,14 +59,12 @@
             <% end %>
           </div>
           <div class="product-info">
-            <span class="yellow-hover">
               <%= link_to product_path(group.products.first), class: "yellow-hover" do %>
                 <h2><%= group.readable_name %></h2>
               <% end %>
               <p class="lighter" style="font-size: 10px; margin-top: 0px;">
                 <%= group.subtitle %>
               </p>
-            </span>
             <%= link_to "shop now", product_path(group.products.first), class: "simple-btn"%>
           </div>
         </div>
