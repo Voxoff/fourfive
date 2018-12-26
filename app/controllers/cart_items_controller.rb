@@ -23,8 +23,9 @@ class CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     change = params[:quantity].to_i
     if cart_item.cart == @cart
-      quantity = cart_item.quantity + change
-      quantity.zero? ? cart_item.destroy : cart_item.update(quantity: quantity)
+      cart_item.update_or_destroy(change)
+      # quantity = cart_item.quantity + change
+      # quantity.zero? ? cart_item.destroy : cart_item.update(quantity: quantity)
       flash[:notice] = change.positive? ? "That's been added to your cart." : "That's been removed from your cart."
     end
     redirect_to cart_path(@cart)
@@ -42,22 +43,22 @@ class CartItemsController < ApplicationController
 
   def find_product
     if params[:size].present? && params[:tincture].present?
-      @product = Product.find_by(p_params)
+      @product = Product.find_by(p_params(:size, :tincture))
     elsif params[:size].present?
-      @product = Product.find_by(s_params)
+      @product = Product.find_by(p_params(:size))
     else
       @product = Product.find_by(name: "cbd_capsules")
     end
     @product
   end
 
-  def p_params
-    params.permit(:size, :tincture)
+  def p_params(*args)
+    params.permit(*args)
   end
 
-  def s_params
-    params.permit(:size)
-  end
+  # def s_params
+    # params.permit(:size)
+  # end
 
   def cart_params
     params.permit(:cart_id, :quantity, :product_id)
