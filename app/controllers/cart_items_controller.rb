@@ -24,8 +24,6 @@ class CartItemsController < ApplicationController
     change = params[:quantity].to_i
     if cart_item.cart == @cart
       cart_item.update_or_destroy(change)
-      # quantity = cart_item.quantity + change
-      # quantity.zero? ? cart_item.destroy : cart_item.update(quantity: quantity)
       flash[:notice] = change.positive? ? "That's been added to your cart." : "That's been removed from your cart."
     end
     redirect_to cart_path(@cart)
@@ -55,10 +53,6 @@ class CartItemsController < ApplicationController
   def p_params(*args)
     params.permit(*args)
   end
-
-  # def s_params
-    # params.permit(:size)
-  # end
 
   def cart_params
     params.permit(:cart_id, :quantity, :product_id)
