@@ -20,5 +20,4 @@ class CartItemPolicy < ApplicationPolicy
   def destroy?
     true
   end
-
 end

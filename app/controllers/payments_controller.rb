@@ -15,9 +15,11 @@ class PaymentsController < ApplicationController
     flash[:notice] = "Address was invalid" unless @address.save
     guest_user.email = checkout_params[:email] if user.guest? && checkout_params[:email]
     @checkout_id = zion
+    authorize @cart
   end
 
   def new
+    authorize @cart
   end
 
   def success

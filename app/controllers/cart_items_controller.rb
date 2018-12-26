@@ -16,6 +16,7 @@ class CartItemsController < ApplicationController
       @cart_item.cart = @cart
     end
     flash[:notice] = @cart_item.save ? "That's been added to your cart!" : "There was an error. Sorry!"
+    authorize @cart_item
     redirect_back(fallback_location: cart_path(@cart.id))
   end
 
@@ -26,6 +27,7 @@ class CartItemsController < ApplicationController
       cart_item.update_or_destroy(change)
       flash[:notice] = change.positive? ? "That's been added to your cart." : "That's been removed from your cart."
     end
+    authorize @cart_item
     redirect_to cart_path(@cart)
   end
 

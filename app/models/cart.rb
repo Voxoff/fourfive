@@ -33,4 +33,8 @@ class Cart < ApplicationRecord
   def count
     cart_items.sum(&:quantity)
   end
+
+  def authorize_cart
+    authorize @cart
+  end
 end

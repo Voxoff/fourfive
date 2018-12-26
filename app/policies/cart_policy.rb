@@ -6,6 +6,18 @@ class CartPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def checkout?
+    true
+  end
+
+  def success?
+    true
   end
 end

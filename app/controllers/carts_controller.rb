@@ -9,6 +9,7 @@ class CartsController < ApplicationController
     pundit_placeholder
     @cart_items = @cart.cart_items.includes(:product).sort_by{ |i| i.product.name }
     check_empty_cart
+    authorize @cart
   end
 
   def check_empty_cart
