@@ -11,5 +11,6 @@ class ProductsController < ApplicationController
     @ingr = @group.ingredients
     @price = @product.price
     @cart_item = CartItem.new
+    authorize @product
   end
 end

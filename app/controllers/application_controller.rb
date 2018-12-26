@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
       guest_user
     end
   end
-  # include Pundit
+  include Pundit
 
   # # Pundit: white-list approach.
-  # after_action :verify_authorized, except: :index, unless: :skip_pundit?
-  # after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # def user_not_authorized
@@ -44,9 +44,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # def skip_pundit?
-  #   devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
-  # end
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
 
   # called (once) when the user logs in, hand off from guest_user to current_user.
   def logging_in

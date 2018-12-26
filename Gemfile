@@ -10,18 +10,16 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 gem 'jquery-rails'
-
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.3'
-gem 'font-awesome-sass', '~> 5.5.0'
 gem 'sass-rails'
-
-gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
-gem 'money-rails'
+gem 'bootstrap-sass', '~> 3.3'
+gem 'simple_form'
+gem 'font-awesome-sass', '~> 5.5.0'
 gem 'devise'
+
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'active_skin'
@@ -30,6 +28,9 @@ gem 'cloudinary', '1.10.1.pre.rc'
 gem 'carrierwave', '~> 1.2'
 
 gem 'omniauth-facebook'
+
+gem 'money-rails'
+
 gem 'friendly_id'
 
 # gem 'postmark-rails'
@@ -37,10 +38,13 @@ gem 'friendly_id'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
+gem 'pundit'
+
 gem 'xeroizer'
 
 gem 'prawn'
 gem 'prawn-table'
+
 gem 'country_select'
 
 group :development do
@@ -49,7 +53,7 @@ group :development do
 end
 
 group :development, :test do
-gem 'bullet'
+  gem 'bullet'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
