@@ -7,11 +7,7 @@ ToDO:
 Salutation centering
 Hovering
 Product show dropdown oils
-review line yellow
-how they are ordered
-link in top right
 pundit
-font
 [DEPRECATION] You are using the default localization behaviour that will change in the next major release. Find out more - https://github.com/RubyMoney/money#deprecation
 
 

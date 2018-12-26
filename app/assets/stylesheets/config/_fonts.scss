@@ -13,13 +13,81 @@
 //        font-url('FontFile.ttf') format('truetype')
 // }
 
+@font-face {
+    font-family: 'Helvetica';
+    src: font-url('Helvetica-BoldOblique.eot');
+    src: local('Helvetica Bold Oblique'), local('Helvetica-BoldOblique'),
+        font-url('Helvetica-BoldOblique.eot?#iefix') format('embedded-opentype'),
+        font-url('Helvetica-BoldOblique.woff2') format('woff2'),
+        font-url('Helvetica-BoldOblique.woff') format('woff'),
+        font-url('Helvetica-BoldOblique.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
 
-// @font-face {
-// 	font-family: 'helvetica';
-// 	src: font-url('helvetica/helvetica.ttf') format('truetype');
-// }
-// $helvetica: "helvetica";
+@font-face {
+    font-family: 'Helvetica';
+    src: font-url('Helvetica-Oblique.eot');
+    src: local('Helvetica Oblique'), local('Helvetica-Oblique'),
+        font-url('Helvetica-Oblique.eot?#iefix') format('embedded-opentype'),
+        font-url('Helvetica-Oblique.woff2') format('woff2'),
+        font-url('Helvetica-Oblique.woff') format('woff'),
+        font-url('Helvetica-Oblique.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
 
-// $body-font: $helvetica;
-// $headers-font: $helvetica;
+@font-face {
+    font-family: 'Helvetica';
+    src: font-url('Helvetica.eot');
+    src: local('Helvetica'),
+        font-url('Helvetica.eot?#iefix') format('embedded-opentype'),
+        font-url('Helvetica.woff2') format('woff2'),
+        font-url('Helvetica.woff') format('woff'),
+        font-url('Helvetica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: font-url('Helvetica-Bold.eot');
+    src: local('Helvetica Bold'), local('Helvetica-Bold'),
+        font-url('Helvetica-Bold.eot?#iefix') format('embedded-opentype'),
+        font-url('Helvetica-Bold.woff2') format('woff2'),
+        font-url('Helvetica-Bold.woff') format('woff'),
+        font-url('Helvetica-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: font-url('Helvetica-LightOblique.eot');
+    src: local('Helvetica Light Oblique'), local('Helvetica-LightOblique'),
+        font-url('Helvetica-LightOblique.eot?#iefix') format('embedded-opentype'),
+        font-url('Helvetica-LightOblique.woff2') format('woff2'),
+        font-url('Helvetica-LightOblique.woff') format('woff'),
+        font-url('Helvetica-LightOblique.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: font-url('Helvetica-Light.eot');
+    src: local('Helvetica Light'), local('Helvetica-Light'),
+        font-url('Helvetica-Light.eot?#iefix') format('embedded-opentype'),
+        font-url('Helvetica-Light.woff2') format('woff2'),
+        font-url('Helvetica-Light.woff') format('woff'),
+        font-url('Helvetica-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+$helvetica: "helvetica";
+
+$body-font: $helvetica;
+$headers-font: $helvetica;
 
