@@ -11,4 +11,12 @@ The money rails gem has a PR to sort this https://github.com/RubyMoney/money-rai
 
 4. checkemptycart controllable. or a better way to do flashes in models.
 
-5.
+5. zion
+
+6. Nested includes bullet
+
+7. xero
+
+8. photo of both boys on our story
+
+9.
