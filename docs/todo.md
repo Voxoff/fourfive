@@ -1,22 +1,29 @@
-1.
-[DEPRECATION] You are using the default localization behaviour that will change in the next major release. Find out more - https://github.com/RubyMoney/money#deprecation
+TO DO NOW
 
-The money rails gem has a PR to sort this https://github.com/RubyMoney/money-rails/pull/558
+§ zion
 
-2. Pundit
+TO DO IN GENERAL
+###############
+§ Pundit
 
-3. Hovering images
+§ Hovering images
 
-3. Salutation centering
+§ Salutation centering
 
-4. checkemptycart controllable. or a better way to do flashes in models.
+§ Nested includes bullet
 
-5. zion
+§ xero
 
-6. Nested includes bullet
+§ photo of both boys on our story
 
-7. xero
+TO BE AWARE OF
+###############
 
-8. photo of both boys on our story
+§ checkemptycart controllable. or a better way to do flashes in models.
 
-9.
+§ includes for all admin pages
+
+§[DEPRECATION] You are using the default localization behaviour that will change in the next major release. Find out more - https://github.com/RubyMoney/money#deprecation
+the money rails gem has a PR to sort this https://github.com/RubyMoney/money-rails/pull/558
+
+terms two pages

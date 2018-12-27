@@ -7,7 +7,7 @@ class CartsController < ApplicationController
 
   def show
     pundit_placeholder
-    @cart_items = @cart.cart_items.includes(:product).sort_by{ |i| i.product.name }
+    @cart_items = @cart.cart_items.includes(product: :product_group).sort_by{ |i| i.product.name }
     check_empty_cart
   end
 
