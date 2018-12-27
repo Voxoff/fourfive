@@ -8,3 +8,7 @@ The money rails gem has a PR to sort this https://github.com/RubyMoney/money-rai
 3. Hovering images
 
 3. Salutation centering
+
+4. checkemptycart controllable. or a better way to do flashes in models.
+
+5.
