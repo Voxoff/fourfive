@@ -3,6 +3,8 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_one :address, dependent: :destroy
 
+  validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
+
   scope :orders, -> { where(active: false) }
   scope :has_user, -> { where(user: !nil) }
   scope :last24, -> { where('updated_at >= :last24', last24: 1.day.ago) }
@@ -17,7 +19,8 @@ class Cart < ApplicationRecord
   end
 
   def checkout
-    update(active: false)
+    order_id = Cart.maximum(:order_id).to_i + 1
+    update(active: false, order_id: order_id)
     user_id = self.user_id
     self.class.create!(user_id: user_id)
   end
@@ -33,4 +36,5 @@ class Cart < ApplicationRecord
   def count
     cart_items.sum(&:quantity)
   end
+
 end

@@ -9,7 +9,6 @@ ActiveAdmin.register Cart do
   scope :all
   scope :orders, default: true
 
-
   # member_action :export do
   #   cart = Cart.find(params[:id])
   #   link_to "Export to CSV", export_admin_cart_path(cart), method: :get, format: "csv"
@@ -20,8 +19,9 @@ ActiveAdmin.register Cart do
     address = resource.address
     cart_items = resource.cart_items
     date = resource.updated_at
+    order_id = resource.order_id
     if amount && address && cart_items && date
-      pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date)
+      pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date, order_id: order_id)
       send_data pdf.render
     else
       flash[:notice] = "Error"
@@ -70,11 +70,11 @@ ActiveAdmin.register Cart do
       row :created_at
       row :updated_at
       row :amount do |cart| number_to_currency(cart.amount, unit: "£") end
-      row "Items" do |cart|
-        cart.cart_items.map {|item| "#{item.product.name} x #{item.quantity}"}
+      row "All items" do |cart|
+        cart.cart_items.map {|item| "#{item.product.specific_name} x #{item.quantity}"}
       end
       cart.cart_items.each do |item|
-        row("#{item.product.name}") {item.quantity}
+        row("#{item.product.specific_name}") {item.quantity}
       end
     end
     active_admin_comments

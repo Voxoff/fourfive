@@ -10,6 +10,8 @@ TO DO IN GENERAL
 
 § photo of both boys on our story
 
+§favicon
+
 TO BE AWARE OF
 ##############
 
