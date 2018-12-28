@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'education', to: 'pages#education'
   get 'privacy_policy', to: 'pages#privacy_policy'
+  get 'terms_and_conditions', to: 'pages#terms_and_conditions'
 
   resources :products, only: [:show]
   resources :cart_items, only: [:show, :create, :destroy, :update]
