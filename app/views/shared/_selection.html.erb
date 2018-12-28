@@ -1,5 +1,5 @@
 <div class="selection">
-  <p style="font-weight:lighter">Select your flavour</p>
+  <p style="font-weight:lighter">Select your <%= string == "tincture" ? "flavour" : "strength" %></p>
   <div class="field">
     <div id=<%= string %> class="ajflex"><p><%= selections.first %></p></div>
     <i class="fas fa-caret-down"></i>
