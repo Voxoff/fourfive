@@ -11,9 +11,6 @@ class Product < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  extend FriendlyId
-  friendly_id :name
-
   def oil?
     name == "cbd_oils"
   end

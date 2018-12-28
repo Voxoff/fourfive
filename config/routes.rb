@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'pages#privacy_policy'
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
 
-  resources :products, only: [:show]
+  resources :products, only: [:show], param: :name
   resources :cart_items, only: [:show, :create, :destroy, :update]
   resources :carts, only: [:show] do
     resources :payments, only: [:new] do

@@ -30,7 +30,6 @@ gem 'cloudinary', '1.10.1.pre.rc'
 gem 'carrierwave', '~> 1.2'
 
 gem 'omniauth-facebook'
-gem 'friendly_id'
 
 # gem 'postmark-rails'
 
