@@ -68,6 +68,7 @@
 
 .bigger{
   width: 155px !important;
+  margin-top: 1px;
 }
 
 .button-container{
@@ -76,10 +77,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  // &:hover{
-  //   border: 1px $yellow solid;
-  // }
-
 
   .master-quantity{
     display: flex;
