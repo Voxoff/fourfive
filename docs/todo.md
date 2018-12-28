@@ -47,8 +47,6 @@ PRIME CBD reserves the right to select and modify acceptable payment methods.
 PRIME CBD reserves the right to refuse or cancel any order or service at our discretion.
 The customer agrees to ensure that all account information is up to date and relevant. PRIME CBD is not responsible for delays or additional costs caused by inaccurate information.
 In the event that the Customer’s order or service is cancelled, limited or halted, PRIME CBD will endeavor within reasonable limits to contact the Customer to explain the situation.
-When you click / Terms and conditions or Privacy Policy at the base of the page it gies to the same link
-All of the above bullet points will be solved by going back to copying their privacy and terms and conditions. They have given us the green light on it. I think having a plain and boring privacy policy page and another plain terms and conditions page and then keeping the FAQs section for mainstream bits.  George  - I will send in a separate email.
 
 
 Other bits:
@@ -67,3 +65,8 @@ happy with as is for now? anyone any thoughts? I like how simple it looks
 
 Id suggest change the colour of the BUY IT NOW button to Yellow or similar to prompt a customer to add to their cart
 I quite like the idea of our yellow colour filling the box with black writing in the BUY NOW bit to make it stand out. The BUY NOW bit I am talking about is the one attached in the screen shot. thoughts? tell me to shut up if that wouldn't look good. Tyler / Guy
+
+
+Other parameters for zion transaction
+#####################################
+

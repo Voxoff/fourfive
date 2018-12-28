@@ -90,18 +90,6 @@ class PaymentsController < ApplicationController
     @checkout_id = @result["id"]
   end
 
-  def code_check(code)
-    if code.match?(/^(000\.000\.|000\.100\.1|000\.[36])/) || code.match?(/^(000\.400\.0[^3]|000\.400\.100)/)
-      flash[:notice] = "Thank you. Your payment has been processed."
-    elsif code.match?(/^(000\.200)/)
-      flash[:notice] = "Pending. Please wait for email confirmation."
-    elsif code.match?(/^(800\.400\.5|100\.400\.500)/)
-      flash[:notice] = "Waiting for confirmation/external risk. Denied for now."
-    else
-      flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly."
-    end
-  end
-
   def zion_info
     ['net/https', 'uri', 'json'].each(&method(:require))
     path = ("?authentication.userId=#{ENV['ZION_USER_ID']}" +
@@ -114,4 +102,17 @@ class PaymentsController < ApplicationController
     puts JSON.parse(res.body)
     return JSON.parse(res.body)
   end
+
+  def code_check(code)
+    if code.match?(/^(000\.000\.|000\.100\.1|000\.[36])/) || code.match?(/^(000\.400\.0[^3]|000\.400\.100)/)
+      flash[:notice] = "Thank you. Your payment has been processed."
+    elsif code.match?(/^(000\.200)/)
+      flash[:notice] = "Pending. Please wait for email confirmation."
+    elsif code.match?(/^(800\.400\.5|100\.400\.500)/)
+      flash[:notice] = "Waiting for confirmation/external risk. Denied for now."
+    else
+      flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly."
+    end
+  end
+
 end
