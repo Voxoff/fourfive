@@ -28,6 +28,8 @@ the money rails gem has a PR to sort this https://github.com/RubyMoney/money-rai
 
 terms two pages
 
+§loading everything on checkout page
+
 GEORGE
 ##############
 
@@ -70,3 +72,26 @@ I quite like the idea of our yellow colour filling the box with black writing in
 Other parameters for zion transaction
 #####################################
 
+authentication.userId=
+authentication.password=
+authentication.entityId=
+amount=0.01
+currency=GB
+paymentBrand=MASTER
+paymentType=DB
+card.holder=Jane Jones
+card.number=000000000000000000
+card.expiryMonth=
+card.expiryYear=
+card.cvv=
+customer.givenName=Jane
+customer.surname=Jones
+customer.ip=
+customer.phone=
+customer.email=test@test.com
+billing.city=
+billing.country=GB
+billing.postcode=
+billing.state=test
+billing.street1=1 test st
+billing.street2=test

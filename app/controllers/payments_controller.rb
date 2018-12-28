@@ -9,8 +9,9 @@ class PaymentsController < ApplicationController
     @amount = @cart.amount
     @cart_items = @cart.cart_items
     user = current_or_guest_user
-    verify_coupon(checkout_params[:coupon])
     check_empty_cart
+    verify_coupon(checkout_params[:coupon])
+    @ip = request.remote_ip
     @address = @cart.build_address(address_params)
     flash[:notice] = "Address was invalid" unless @address.save
     guest_user.email = checkout_params[:email] if user.guest? && checkout_params[:email]
@@ -39,7 +40,7 @@ class PaymentsController < ApplicationController
   end
 
   def address_params
-    params.require(:checkout).permit(:first_line, :second_line, :third_line, :postcode, :city, :first_name, :last_name)
+    params.require(:checkout).permit(:first_line, :second_line, :third_line, :phone_number, :postcode, :city, :first_name, :last_name)
   end
 
   def check_empty_cart
@@ -78,12 +79,17 @@ class PaymentsController < ApplicationController
       'authentication.entityId' => ENV['ZION_ENTITY_ID'].to_s,
       'amount' => @amount.to_f.to_s,
       'currency' => 'GBP',
-      'paymentType' => 'DB'
-      # 'billing.street1' => @cart.address.first_line.to_s,
-      # 'billing.street2' => @cart.address.second_line.to_s,
-      # 'billing.city' => @cart.address.city.to_s,
-      # 'billing.postcode' => @cart.address.postcode.to_s,
-      # 'billing.country' => "GB"
+      'paymentType' => 'DB',
+      'customer.givenName'=> @cart.address.first_name.to_s,
+      'customer.surname'=> @cart.address.last_name.to_s,
+      'customer.ip'=> @ip,
+      'customer.phone'=> @cart.address.phone_number.to_s,
+      'customer.email'=> params["checkout"]["email"],
+      'billing.street1' => @cart.address.first_line.to_s,
+      'billing.street2' => @cart.address.second_line.to_s,
+      'billing.city' => @cart.address.city.to_s,
+      'billing.postcode' => @cart.address.postcode.to_s,
+      'billing.country' => "GB"
     )
     res = http.request(req)
     @result = JSON.parse(res.body)
