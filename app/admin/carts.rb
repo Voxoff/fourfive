@@ -1,4 +1,5 @@
 ActiveAdmin.register Cart do
+  #too broad
   controller do
     def scoped_collection
       super.includes :user, :address

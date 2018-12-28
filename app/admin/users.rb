@@ -30,7 +30,7 @@ ActiveAdmin.register User do
     end
 
     panel "Address Book" do
-      table_for(user.carts) do
+      table_for(user.carts.includes(:address)) do
         column("Address") do |cart|
           if cart.address
             div cart.address.first_line
