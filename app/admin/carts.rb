@@ -51,7 +51,10 @@ ActiveAdmin.register Cart do
     column :cart_items do |cart|
       cart.basket
     end
-    column "Order?", :active do |cart| !cart.active? end
+    # column "Order?", :active do |cart| !cart.active? end
+    column "Date of order", :updated_at do |cart|
+      cart.updated_at.strftime("%a, %e %b %H:%M")
+    end
     column :address do |cart|
       if cart.address
         cart.address.full_address
