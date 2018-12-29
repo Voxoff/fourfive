@@ -10,11 +10,9 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-    <% if false %>
-      <%= image_tag "mobile_carousel.jpg" %>
-    <%  else %>
-      <%= image_tag "carousel_three.jpg"%>
-    <% end %>
+      <%= image_tag "carousel_three.jpg", class: "hidden-xs" %>
+      <%#= image_tag "carousel_three.jpg", class: "hidden-xs" %>
+      <%#= image_tag 'carousel-mobile.jpg', class: "visible-xs-block"  %>
       <div class="carousel-caption">
       </div>
     </div>
