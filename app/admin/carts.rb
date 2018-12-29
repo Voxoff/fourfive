@@ -1,10 +1,12 @@
 ActiveAdmin.register Cart do
-  #too broad
+  # too broad
   controller do
     def scoped_collection
       super.includes :user, :address
     end
   end
+
+  config.sort_order = "updated_at_desc"
 
   scope :all
   scope :orders, default: true
