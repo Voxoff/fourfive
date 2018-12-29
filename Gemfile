@@ -35,8 +35,8 @@ gem 'omniauth-facebook'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
-
 gem 'xeroizer'
+gem 'newrelic_rpm'
 
 gem 'prawn'
 gem 'prawn-table'
