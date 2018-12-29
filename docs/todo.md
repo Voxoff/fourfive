@@ -12,6 +12,8 @@ TO DO IN GENERAL
 
 §favicon
 
+email to guy
+
 TO BE AWARE OF
 ##############
 
