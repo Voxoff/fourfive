@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # after_action :flashme
+  after_action :flashme
 
-  # def flashme
-  #   flash[:notice] = "We will be live for the new year. If you have any questions, do get in touch at contact@fourfivecbd.co.uk. Merry Christmas! "
-  # end
+  def flashme
+    flash[:notice] = "We will be live for the new year. If you have any questions, do get in touch at contact@fourfivecbd.co.uk. Merry Christmas! "
+  end
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     if current_user
