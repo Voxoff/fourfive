@@ -12,7 +12,7 @@ TO DO IN GENERAL
 
 §favicon
 
-email to guy
+email to guy or george or where
 
 TO BE AWARE OF
 ##############
@@ -21,10 +21,6 @@ TO BE AWARE OF
 
 §[DEPRECATION] You are using the default localization behaviour that will change in the next major release. Find out more - https://github.com/RubyMoney/money#deprecation
 the money rails gem has a PR to sort this https://github.com/RubyMoney/money-rails/pull/558
-
-terms two pages
-
-§loading everything on checkout page
 
 GEORGE
 ##############

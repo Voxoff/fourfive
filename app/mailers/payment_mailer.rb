@@ -12,6 +12,7 @@ class PaymentMailer < ApplicationMailer
   private
 
   def add_pdf(email_hash)
+    Prawn::Font::AFM.hide_m17n_warning = true
     pdf = InvoicePdf.new(amount:  email_hash[:amount],
                          address: email_hash[:address],
                          cart_items: email_hash[:cart_items],

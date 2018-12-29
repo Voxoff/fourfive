@@ -82,8 +82,8 @@ Product.create!(product_group: balms, name: 'cbd_balms', size: "Large", price: 5
 p = Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Natural", price: 29.99, photo: open(natural_lower))
 
 Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Natural", price: 59.99, photo: open(natural_medium))
-Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Natural", price: 29.99, photo: open(natural_higher))
-Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Orange", price: 114.99, photo: open(orange_lower))
+Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Natural", price: 114.99, photo: open(natural_higher))
+Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Orange", price: 34.99, photo: open(orange_lower))
 Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Orange", price: 64.99, photo: open(orange_medium))
 Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Orange", price: 119.99, photo: open(orange_higher))
 

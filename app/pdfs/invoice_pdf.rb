@@ -71,13 +71,21 @@ class InvoicePdf < Prawn::Document
     move_down 65
     last_measured_y = cursor
 
-    text_box " ", :at => [address_x,  cursor]
+    text_box " ", :at => [address_x, cursor]
     move_down lineheight_y
-    text_box @address.full_name, :at => [address_x,  cursor]
+    text_box @address.full_name, :at => [address_x, cursor]
     move_down lineheight_y
-    text_box "4321 Some Street Suite", :at => [address_x,  cursor]
+    text_box @address.first_line, :at => [address_x, cursor]
     move_down lineheight_y
-    text_box @address.city_and_postcode, :at => [address_x,  cursor]
+    if @address.second_line
+      text_box @address.second_line, :at => [address_x, cursor]
+      move_down lineheight_y
+    end
+    if @address.third_line
+      text_box @address.third_line, :at => [address_x, cursor]
+      move_down lineheight_y
+    end
+    text_box @address.city_and_postcode, :at => [address_x, cursor]
 
     move_cursor_to last_measured_y
 
