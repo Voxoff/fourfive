@@ -27,7 +27,7 @@ class InvoicePdf < Prawn::Document
       ["Amount Due", "£0.00 GBP"]
     ]
     date = Date.today.strftime('%A, %b %d')
-    @invoice_header_data = [ ["Invoice #", @order_id.to_s], ["Invoice Date", date], ["Amount Due", "£0.00 GBP"]]
+    @invoice_header_data = [ ["Receipt #", @order_id.to_s], ["Receipt Date", date], ["Amount Due", "£0.00 GBP"]]
   end
 
   def create
