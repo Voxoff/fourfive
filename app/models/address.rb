@@ -21,7 +21,7 @@ class Address < ApplicationRecord
   end
 
   def full_name
-    nice_print([first_name, last_name])
+    nice_print([salutation, first_name, last_name])
   end
 
   def city_and_postcode

@@ -29,7 +29,7 @@ class PaymentsController < ApplicationController
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
       PaymentMailer.order(email_hash).deliver_now
-      PaymentMailer.success(@cart.address.email).deliver_now
+      PaymentMailer.success(@cart.address.email, email_hash).deliver_now
       @cart = @cart.checkout
     end
     redirect_to root_path

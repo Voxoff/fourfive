@@ -62,6 +62,9 @@ ActiveAdmin.register Cart do
         "No address has been added. (Payment not made)."
       end
     end
+    column :email do |cart|
+      cart.address&.email
+    end
     actions name: "Actions"
     column {|cart| link_to 'Print Invoice', print_admin_cart_path(cart) }
     # column {|cart| link_to 'Export CSV', export_admin_cart_path(cart), format: "csv"}

@@ -1,6 +1,7 @@
 class PaymentMailer < ApplicationMailer
 
-  def success(email)
+  def success(email, email_hash)
+    add_pdf(email_hash)
     mail(to: email, subject: "Receipt") if email
   end
 
@@ -14,7 +15,7 @@ class PaymentMailer < ApplicationMailer
 
   def add_pdf(email_hash)
     Prawn::Font::AFM.hide_m17n_warning = true
-    pdf = InvoicePdf.new(amount:  email_hash[:amount],
+    pdf = InvoicePdf.new(amount: email_hash[:amount],
                          address: email_hash[:address],
                          cart_items: email_hash[:cart_items],
                          date: email_hash[:date],

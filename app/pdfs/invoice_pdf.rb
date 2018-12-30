@@ -19,7 +19,6 @@ class InvoicePdf < Prawn::Document
         "#{item.quantity} ",
         "#{item.line_cost} "]
     end
-    @invoice_terms_data = [["Terms"], ["Payable upon receipt"]]
     @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive"]]
     @invoice_services_totals_data = [
       ["Total", "£#{@amount}"],
@@ -123,13 +122,6 @@ class InvoicePdf < Prawn::Document
     end
 
     move_down 25
-
-    table(@invoice_terms_data, :width => 275) do
-      style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
-      style(row(0).columns(0), :font_style => :bold)
-    end
-
-    move_down 15
 
     table(@invoice_notes_data, :width => 275) do
       style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
