@@ -42,7 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Last 24 hour Revenue" do
           div do
-            amount = Cart.orders.has_user.map(&:amount).compact.reduce(:+)
+            amount = Cart.orders.map(&:amount).compact.reduce(:+)
             number_to_currency(amount, unit: "£")
           end
         end
