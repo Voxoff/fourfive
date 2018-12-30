@@ -45,6 +45,9 @@ ActiveAdmin.register_page "Dashboard" do
             amount = Cart.orders.map(&:amount).compact.reduce(:+)
             number_to_currency(amount, unit: "£")
           end
+          # div do
+          #   Cart.includes(:address).orders.limit(10).each{|i| i.cart_items.product}
+          # end
         end
       end
     end

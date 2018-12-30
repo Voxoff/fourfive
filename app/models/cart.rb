@@ -37,4 +37,5 @@ class Cart < ApplicationRecord
     cart_items.sum(&:quantity)
   end
 
+  #for a number of carts i want to get the total number of each product
 end
