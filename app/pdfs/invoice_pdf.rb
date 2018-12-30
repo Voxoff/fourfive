@@ -19,7 +19,7 @@ class InvoicePdf < Prawn::Document
         "#{item.quantity} ",
         "#{item.line_cost} "]
     end
-    @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive"]]
+    @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive,"], ["George & Dom"]]
     @invoice_services_totals_data = [
       ["Total", "£#{@amount}"],
       ["Amount Paid", "£#{@amount}"],
@@ -75,15 +75,15 @@ class InvoicePdf < Prawn::Document
     text_box @address.full_name_with_salutation, :at => [address_x, cursor]
     move_down lineheight_y
     text_box @address.first_line, :at => [address_x, cursor]
-    move_down lineheight_y
-    if @address.second_line
+    if @address.second_line.present?
+      move_down lineheight_y
       text_box @address.second_line, :at => [address_x, cursor]
-      move_down lineheight_y
     end
-    if @address.third_line
+    if @address.third_line.present?
+      move_down lineheight_y
       text_box @address.third_line, :at => [address_x, cursor]
-      move_down lineheight_y
     end
+    move_down lineheight_y
     text_box @address.city_and_postcode, :at => [address_x, cursor]
 
     move_cursor_to last_measured_y
@@ -124,7 +124,7 @@ class InvoicePdf < Prawn::Document
     move_down 25
 
     table(@invoice_notes_data, :width => 275) do
-      style(row(0..-1).columns(0..-1), :padding => [1, 0, 1, 0], :borders => [])
+      style(row(0..-1).columns(0..-1), :padding => [10, 0, 10, 0], :borders => [])
       style(row(0).columns(0), :font_style => :bold)
     end
   end
