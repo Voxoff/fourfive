@@ -21,20 +21,20 @@ class Address < ApplicationRecord
   end
 
   def full_name
-    nice_print([salutation, first_name, last_name])
+    "#{first_name} #{last_name}"
   end
 
   def city_and_postcode
     nice_print([city, postcode])
   end
 
+  def full_name_with_salutation
+    salutation.present? ? "#{salutation}. #{full_name}" : full_name.to_s
+  end
+
   private
 
   def nice_print(input)
     input.select(&:present?).join(", ")
-  end
-
-  def line_print(input)
-    input.split(", ")
   end
 end

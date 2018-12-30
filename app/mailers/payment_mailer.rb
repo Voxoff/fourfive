@@ -8,7 +8,7 @@ class PaymentMailer < ApplicationMailer
   def order(email_hash)
     add_pdf(email_hash)
     @address = email_hash[:address]
-    mail(to: "contact@fourfivecbd.co.uk", subject: "Order")
+    mail(to: "orders@fourfivecbd.co.uk", subject: "Order")
   end
 
   private

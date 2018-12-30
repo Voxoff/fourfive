@@ -72,7 +72,7 @@ class InvoicePdf < Prawn::Document
 
     text_box " ", :at => [address_x, cursor]
     move_down lineheight_y
-    text_box @address.full_name, :at => [address_x, cursor]
+    text_box @address.full_name_with_salutation, :at => [address_x, cursor]
     move_down lineheight_y
     text_box @address.first_line, :at => [address_x, cursor]
     move_down lineheight_y
