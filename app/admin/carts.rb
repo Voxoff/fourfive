@@ -81,6 +81,7 @@ ActiveAdmin.register Cart do
       row "All items" do |cart|
         cart.cart_items.map {|item| "#{item.product.specific_name} x #{item.quantity}"}
       end
+      row :address do |cart| cart.address.full_address end
       cart.cart_items.each do |item|
         row("#{item.product.specific_name}") {item.quantity}
       end
