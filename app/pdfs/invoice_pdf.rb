@@ -30,7 +30,7 @@ class InvoicePdf < Prawn::Document
   end
 
   def create
-    logopath = 'logo.png'
+    # logopath = 'logo.png'
     initial_y = cursor
     initialmove_y = 5
     address_x = 35
@@ -57,12 +57,9 @@ class InvoicePdf < Prawn::Document
     move_down lineheight_y
 
     last_measured_y = cursor
-    move_cursor_to bounds.height
+    move_cursor_to bounds.height + 12
 
-    # logopath =  "#{Rails.root}/app/assets/images/small_logo.png"
-    # image open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1543757174/eb8bk1ntavsaotcdmui0.png"), :vposition => :top
-
-    # image logopath, :width => 215, :position => :right
+    image open("http://res.cloudinary.com/dq2kcu9ey/image/asset/logo-abe391415fa40d83ff8e3aea6fe6945a.png"), :width => 120, :position => :right
 
     move_cursor_to last_measured_y
 
