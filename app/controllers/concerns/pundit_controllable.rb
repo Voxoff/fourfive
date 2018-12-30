@@ -1,7 +1,7 @@
 module PunditControllable
   extend ActiveSupport::Concern
   def pundit_placeholder
-    if params[:id] && params[:controller] == "carts" && params[:id].to_i != @cart.id
+    if params[:id] && params[:controller] == "carts" && params[:id].to_i != @cart&.id
       flashit
       return redirect_to root_path
     elsif current_or_guest_user != @cart.user

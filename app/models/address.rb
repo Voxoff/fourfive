@@ -33,4 +33,8 @@ class Address < ApplicationRecord
   def nice_print(input)
     input.select(&:present?).join(", ")
   end
+
+  def line_print(input)
+    input.split(", ")
+  end
 end
