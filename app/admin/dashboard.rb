@@ -18,8 +18,8 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Recent Orders" do
-          table_for Cart.includes(:address).orders.limit(10).reverse do
+        panel "Last 10 Orders" do
+          table_for Cart.includes(:address).orders.last(10).reverse do
             # column("Customer") { |cart| link_to(cart.user.email, admin_user_path(cart.user)) }
             column("Customer name") { |cart| link_to(cart.address&.full_name, admin_cart_path(cart)) }
             column("Total") { |cart| number_to_currency(cart.amount, unit: "£") }
