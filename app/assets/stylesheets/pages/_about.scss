@@ -77,3 +77,13 @@
 		column-count: 1 !important;
 	}
 }
+
+#top-section{
+  margin-bottom: -65px;
+}
+
+@media(max-width: 800px){
+  #top-section{
+    margin-bottom: 0px;
+  }
+}
