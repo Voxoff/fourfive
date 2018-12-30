@@ -6,7 +6,7 @@ class UserMailerTest < ActionMailer::TestCase
     mail = UserMailer.welcome(user)
     assert_equal "Welcome to fourfivecbd", mail.subject
     assert_equal [user.email], mail.to
-    assert_equal ["contact@fourfivecbd.com"], mail.from
+    assert_equal ["contact@fourfivecbd.co.uk"], mail.from
     assert_match "Welcome to fourfive cbd", mail.body.encoded
   end
 
