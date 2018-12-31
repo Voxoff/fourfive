@@ -24,9 +24,13 @@ ActiveAdmin.register Cart do
     order_id = resource.order_id
     if amount && address && cart_items && date
       pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date, order_id: order_id)
-      send_data pdf.render
+      if order_id
+        send_data pdf.render, filename: "receipt_#{order_id}.pdf"
+      else
+        send_data pdf.render, filename: "receipt.pdf"
+      end
     else
-      flash[:notice] = "Error"
+      flash[:notice] = "Can't render invoice without address, amount, cart items and date"
       redirect_to admin_carts_path
     end
   end
