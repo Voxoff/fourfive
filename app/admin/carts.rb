@@ -7,6 +7,7 @@ ActiveAdmin.register Cart do
   end
 
   config.sort_order = "updated_at_desc"
+  config.per_page = [30, 100]
 
   scope :all
   scope :orders, default: true
