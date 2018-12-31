@@ -15,7 +15,6 @@ class PaymentsController < ApplicationController
     @address = @cart.build_address(address_params)
     flash[:notice] = "Address was invalid" unless @address.save
     guest_user.email = params[:email] if user.guest? && params[:email]
-    @test = true
     @checkout_id = zion
   end
 

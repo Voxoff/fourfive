@@ -9,6 +9,6 @@
 <% else %>
   <script src=<%="https://oppwa.com/v1/paymentWidgets.js?checkoutId=#{@checkout_id}"%> ></script>
 <% end %>
-
   <form action=<%= "#{success_cart_payments_url(@cart)}" %> class="paymentWidgets" data-brands="VISA VISADEBIT MASTER MASTERDEBIT"></form>
 <div class="space"></div>
+<p style="text-align:center">Something not working? Please email tech@fourfivecbd.co.uk</p>
