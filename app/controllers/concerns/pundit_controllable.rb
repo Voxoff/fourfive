@@ -4,7 +4,7 @@ module PunditControllable
     if params[:id] && params[:controller] == "carts" && params[:id].to_i != @cart&.id
       flashit
       return redirect_to root_path
-    elsif current_or_guest_user != @cart.user
+    elsif current_or_guest_user != @cart&.user
       flashit
       return redirect_to root_path
     elsif params[:cart_id] && params[:cart_id].to_i != @cart.id
