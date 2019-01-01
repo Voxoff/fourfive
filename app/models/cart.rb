@@ -38,5 +38,6 @@ class Cart < ApplicationRecord
     cart_items.sum(&:quantity)
   end
 
-  #for a number of carts i want to get the total number of each product
+  # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
+  #But for guests there is just a hanging cart.
 end

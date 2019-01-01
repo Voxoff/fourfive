@@ -23,7 +23,7 @@ ActiveAdmin.register_page "Dashboard" do
             # column("Customer") { |cart| link_to(cart.user.email, admin_user_path(cart.user)) }
             column("Customer name") { |cart| link_to(cart.address&.full_name, admin_cart_path(cart)) }
             column("Total") { |cart| number_to_currency(cart.amount, unit: "£") }
-            column("Created at") {|c| c.updated_at.strftime("%A, %b %d") }
+            column("Created at") {|c| c.updated_at.strftime("%A, %b %d %H:%M") }
             column("Basket", &:basket)
           end
         end
@@ -40,7 +40,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Last 24 hour Revenue" do
+        panel "Total Revenue" do
           div do
             amount = Cart.orders.map(&:amount).compact.reduce(:+)
             number_to_currency(amount, unit: "£")
