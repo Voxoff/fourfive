@@ -33,7 +33,7 @@ class PaymentsController < ApplicationController
                            cart_items: email_hash[:cart_items],
                            date: email_hash[:date],
                            order_id: email_hash[:order_id]
-                            )
+                           )
       PaymentMailer.order(pdf).deliver_now
       PaymentMailer.success(@cart.address.email, pdf).deliver_now
       @cart = @cart.checkout
