@@ -10,6 +10,7 @@ class Cart < ApplicationRecord
   scope :last24, -> { where('updated_at >= :last24', last24: 1.day.ago) }
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
   scope :fulfilled, -> { where(fulfillment: true) }
+  scope :unfulfilled, -> { where(fulfillment: false, active: false)}
 
   def amount
     cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
@@ -36,6 +37,10 @@ class Cart < ApplicationRecord
 
   def count
     cart_items.sum(&:quantity)
+  end
+
+  def fulfill!
+    update(fulfillment: true)
   end
 
   # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.

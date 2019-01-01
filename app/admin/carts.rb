@@ -10,7 +10,8 @@ ActiveAdmin.register Cart do
   config.per_page = [30, 100]
 
   scope :all
-  scope :orders, default: true
+  scope :orders
+  scope :unfulfilled, default: true
   scope :fulfilled
 
   # member_action :export do
@@ -35,6 +36,13 @@ ActiveAdmin.register Cart do
       flash[:notice] = "Can't render invoice without address, amount, cart items and date"
       redirect_to admin_carts_path
     end
+  end
+
+  batch_action :fulfill do |ids|
+    batch_action_collection.find(ids).each do |cart|
+      cart.fulfill!
+    end
+    redirect_to collection_path, alert: "The carts have been marked as fulfilled."
   end
 
   index do
