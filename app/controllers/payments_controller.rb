@@ -27,8 +27,15 @@ class PaymentsController < ApplicationController
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
-      PaymentMailer.order(email_hash).deliver_now
-      PaymentMailer.success(@cart.address.email, email_hash).deliver_now
+      Prawn::Font::AFM.hide_m17n_warning = true
+      pdf = InvoicePdf.new(amount: email_hash[:amount],
+                           address: email_hash[:address],
+                           cart_items: email_hash[:cart_items],
+                           date: email_hash[:date],
+                           order_id: email_hash[:order_id]
+                            )
+      PaymentMailer.order(pdf).deliver_now
+      PaymentMailer.success(@cart.address.email, pdf).deliver_now
       @cart = @cart.checkout
     end
     redirect_to root_path

@@ -11,6 +11,7 @@ ActiveAdmin.register Cart do
 
   scope :all
   scope :orders, default: true
+  scope :fulfilled
 
   # member_action :export do
   #   cart = Cart.find(params[:id])
