@@ -32,7 +32,7 @@ class Cart < ApplicationRecord
   end
 
   def checkout_time
-    updated_at.strftime('%A, %b %d')
+    checked_out_at ? checked_out_at.strftime('%A, %b %d') : updated_at.strftime('%A, %b %d')
   end
 
   def count

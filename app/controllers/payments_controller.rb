@@ -13,7 +13,10 @@ class PaymentsController < ApplicationController
     verify_coupon(params[:coupon])
     @ip = request.remote_ip
     @address = @cart.build_address(address_params)
-    flash[:notice] = "Address was invalid" unless @address.save
+    unless @address.save
+      flash[:notice] = "Address was invalid"
+      redirect_to new_cart_payment_path(@cart)
+    end
     guest_user.email = params[:email] if user.guest? && params[:email]
     @checkout_id = zion
   end
@@ -28,12 +31,7 @@ class PaymentsController < ApplicationController
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
       Prawn::Font::AFM.hide_m17n_warning = true
-      pdf = InvoicePdf.new(amount: email_hash[:amount],
-                           address: email_hash[:address],
-                           cart_items: email_hash[:cart_items],
-                           date: email_hash[:date],
-                           order_id: email_hash[:order_id]
-                           )
+      pdf = InvoicePdf.new(email_hash)
       PaymentMailer.order(pdf).deliver_now
       PaymentMailer.success(@cart.address.email, pdf).deliver_now
       @cart = @cart.checkout
