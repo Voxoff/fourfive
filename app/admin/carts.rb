@@ -67,7 +67,7 @@ ActiveAdmin.register Cart do
     end
     # column "Order?", :active do |cart| !cart.active? end
     column "Date of order", :updated_at do |cart|
-      cart.updated_at.strftime("%a, %e %b %H:%M")
+      cart.checked_out_at ? cart.checked_out_at.strftime("%a, %e %b %H:%M") : cart.updated_at.strftime("%a, %e %b %H:%M")
     end
     column :address do |cart|
       if cart.address

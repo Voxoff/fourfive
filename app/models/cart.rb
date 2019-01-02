@@ -22,7 +22,7 @@ class Cart < ApplicationRecord
 
   def checkout
     order_id = Cart.maximum(:order_id).to_i + 1
-    update(active: false, order_id: order_id)
+    update(active: false, order_id: order_id, checked_out_at: Time.now)
     user_id = self.user_id
     self.class.create!(user_id: user_id)
   end
