@@ -81,6 +81,12 @@ ActiveRecord::Schema.define(version: 2019_01_02_094454) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_groups", force: :cascade do |t|
     t.text "help", default: [], array: true
     t.text "ingredients", default: [], array: true
