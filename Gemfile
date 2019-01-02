@@ -32,11 +32,12 @@ gem 'carrierwave', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'scout_apm'
 # gem 'postmark-rails'
+gem 'newrelic_rpm'
+gem 'sentry-raven'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'xeroizer'
-gem 'newrelic_rpm'
 
 gem 'prawn'
 gem 'prawn-table'
