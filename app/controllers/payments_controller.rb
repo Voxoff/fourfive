@@ -32,7 +32,6 @@ class PaymentsController < ApplicationController
       email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
       Prawn::Font::AFM.hide_m17n_warning = true
       pdf = InvoicePdf.new(email_hash)
-      PaymentMailer.order(pdf).deliver_now
       PaymentMailer.success(@cart.address.email, pdf).deliver_now
       @cart = @cart.checkout
     end
