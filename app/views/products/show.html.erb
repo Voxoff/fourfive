@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-md-5 col-xs-12">
       <div>
-        <%= cl_image_tag(@product.photo_url, class: "image-responsive", id: "product-photo") %>
+        <%= cl_image_tag @product.photo, height: 600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "image-responsive", id: "product-photo" %>
         <h5 id="product-name"><%= @specific_product %></h5>
       </div>
     </div>
@@ -101,7 +101,7 @@
             <p>3<sup>rd</sup> Party Lab Tested</p>
           </div>
           <div class="icon-card">
-            <%= cl_image_tag "images/icons/co2.png", size: '70' %>
+            <%= image_tag "images/icons/co2.png", size: '70' %>
             <p>Vegetarian friendly</p>
           </div>
           <div class="icon-card">
