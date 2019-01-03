@@ -54,7 +54,7 @@
         <div class="product-card">
           <div class="image-background">
             <%= link_to product_path(group.products.first.name) do %>
-              <%= cl_image_tag group.photo_url, width: "264px", height: "400px" if group.photo_url %>
+              <%= cl_image_tag group.photo, height: 400, crop: :scale, quality: "auto:best", :fetch_format=>:auto if group.photo_url %>
             <% end %>
           </div>
           <div class="product-info">
