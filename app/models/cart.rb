@@ -44,5 +44,5 @@ class Cart < ApplicationRecord
   end
 
   # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
-  #But for guests there is just a hanging cart.
+  # But for guests there is just a hanging cart.
 end
