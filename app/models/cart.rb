@@ -28,7 +28,7 @@ class Cart < ApplicationRecord
   end
 
   def basket
-    cart_items.includes(:product).map {|item| "#{item.product.specific_name} x #{item.quantity}"}
+    cart_items.map {|item| "#{item.product.specific_name} x #{item.quantity}"}
   end
 
   def checkout_time

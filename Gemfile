@@ -49,7 +49,7 @@ group :development do
 end
 
 group :development, :test do
-gem 'bullet'
+  gem 'bullet'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'

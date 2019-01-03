@@ -19,7 +19,7 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Last 10 Orders" do
-          table_for Cart.includes(:address).orders.last(10).reverse do
+          table_for Cart.includes(:address, cart_items: :product).orders.last(10).reverse do
             # column("Customer") { |cart| link_to(cart.user.email, admin_user_path(cart.user)) }
             column("Customer name") { |cart| link_to(cart.address&.full_name, admin_cart_path(cart)) }
             column("Total") { |cart| number_to_currency(cart.amount, unit: "£") }
@@ -42,7 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Total Revenue" do
           div do
-            amount = Cart.orders.map(&:amount).compact.reduce(:+)
+            amount = Cart.includes(cart_items: :product).orders.map(&:amount).compact.reduce(:+)
             number_to_currency(amount, unit: "£")
           end
           # div do
