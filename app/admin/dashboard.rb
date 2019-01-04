@@ -42,8 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Total Revenue" do
           div do
-            amount = Cart.includes(cart_items: :product).orders.map(&:amount).compact.reduce(:+)
-            number_to_currency(amount, unit: "£")
+            number_to_currency(Cart.revenue, unit: "£")
           end
           # div do
           #   Cart.includes(:address).orders.limit(10).each{|i| i.cart_items.product}
