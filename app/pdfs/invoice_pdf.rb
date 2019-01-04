@@ -53,7 +53,7 @@ class InvoicePdf < Prawn::Document
     move_down lineheight_y
     text_box "Victoria Street,", :at => [address_x,  cursor]
     move_down lineheight_y
-    text_box "St. Albans, UK, N10AF", :at => [address_x,  cursor]
+    text_box "St. Albans, UK, AL1 3TF", :at => [address_x,  cursor]
     move_down lineheight_y
 
     last_measured_y = cursor
@@ -82,6 +82,10 @@ class InvoicePdf < Prawn::Document
     end
     move_down lineheight_y
     text_box @address.city_and_postcode, :at => [address_x, cursor]
+    if @address.phone_number.present?
+      move_down lineheight_y
+      text_box @address.phone_number, :at => [address_x, cursor]
+    end
 
     move_cursor_to last_measured_y
 
