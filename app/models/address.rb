@@ -1,9 +1,10 @@
 class Address < ApplicationRecord
   belongs_to :cart
   validates :postcode, presence: true, format: { with: /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/}
+  # validates :activated_at, :presence, if: Proc.new { |a| a.is_activated? }
   validates :first_line, :city, presence: true
-  # validates :phone_number, numericality: { integer: true }
-  # validates :city, presence: true
+  # validates :phone_number, presence: true, format: { with: /^\+?(?:\d\s?){10,12}$/}
+  validates :city, presence: true
   validates :salutation, inclusion: { in: %w[Mr Mrs Ms Miss] }, allow_nil: true
 
   def get_address

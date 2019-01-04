@@ -43,6 +43,9 @@ class Cart < ApplicationRecord
     update(fulfillment: true)
   end
 
+  def self.revenue
+    orders.includes(cart_items: :product).map(&:cart_items).flatten.map { |i| i.product.price * i.quantity }.reduce(:+)
+  end
   # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
   # But for guests there is just a hanging cart.
 end
