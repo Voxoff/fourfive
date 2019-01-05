@@ -6,7 +6,6 @@ class DeleteOldUsersJob < ApplicationJob
     users = User.left_outer_joins(:carts)
                 .where(carts: { user_id: nil })
                 .where("users.updated_at <= ?", Time.now - 7.days)
-
-    user.destroy_all if destroy
+    destroy ? users.destroy_all : users
   end
 end
