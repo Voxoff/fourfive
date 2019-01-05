@@ -4,6 +4,7 @@ ActiveAdmin.register Review do
       super.includes :user, :product
     end
   end
+  menu priority: 4
 
   index do
     selectable_column
