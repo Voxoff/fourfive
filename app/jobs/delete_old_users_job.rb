@@ -6,6 +6,7 @@ class DeleteOldUsersJob < ApplicationJob
     users = User.left_outer_joins(:carts)
                 .where(carts: { user_id: nil })
                 .where("users.updated_at <= ?", Time.now - 6.days).pluck(:id)
+    # puts users
     destroy ? User.delete(users) : users.count
     # beware NO CALLBACK
   end

@@ -1,6 +1,8 @@
 class PaymentMailer < ApplicationMailer
-
-  def success(email, pdf)
+  def success(email, cart_id)
+    @cart = Cart.find(cart_id)
+    email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
+    pdf = InvoicePdf.new(email_hash)
     add_pdf(pdf)
     mail(to: email, subject: "Receipt") if email
   end
