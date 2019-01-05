@@ -57,6 +57,8 @@ class PaymentsController < ApplicationController
 
   def verify_coupon(coupon)
     if coupon.present?
+      require 'coupon'
+      coupons = Coupon.coupons
       if coupons.include?(coupon)
         flash[:notice] = "Coupon successfully applied."
         @amount = @amount.to_f * 0.9
