@@ -51,51 +51,95 @@ oil_inter = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310755/ny59e
 balm_inter = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310778/sl30jmqwyb9mij3bcbcd.jpg"
 capsules_inter = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310803/veuj8rtogmvgswpoadxu.jpg"
 
+case Rails.env
+  when 'development'
+    puts "Creating product groups..."
+    oils = ProductGroup.create(name: 'cbd_oils', help: oil_help,
+    how_to_use: oil_how_to,
+    ingredients: oil_ingr,
+    subtitle: "Flavored oil for quick absorption.",
+    description: oil_desc,
+    photo: open(oil_group_photo))
 
-puts "Creating product groups..."
-oils = ProductGroup.create(name: 'cbd_oils', help: oil_help,
-how_to_use: oil_how_to,
-ingredients: oil_ingr,
-subtitle: "Flavored oil for quick absorption.",
-description: oil_desc,
-photo: open(oil_group_photo))
+    balms = ProductGroup.create(name: 'cbd_balms', help: balm_help,
+    how_to_use: balm_how_to,
+    ingredients: balm_ingr,
+    subtitle: "Organic balm for damaged skin.",
+    description: balm_desc,
+    photo: open(balm_group_photo))
 
-balms = ProductGroup.create(name: 'cbd_balms', help: balm_help,
-how_to_use: balm_how_to,
-ingredients: balm_ingr,
-subtitle: "Organic balm for damaged skin.",
-description: balm_desc,
-photo: open(balm_group_photo))
+    capsules = ProductGroup.create(name: 'cbd_capsules', help: capsule_help,
+    how_to_use: capsule_how_to,
+    ingredients: capsule_ingr,
+    subtitle: "Easy-to-take capsules for slower release.",
+    description: capsule_desc,
+    photo: open(capsules_photo))
 
-capsules = ProductGroup.create(name: 'cbd_capsules', help: capsule_help,
-how_to_use: capsule_how_to,
-ingredients: capsule_ingr,
-subtitle: "Easy-to-take capsules for slower release.",
-description: capsule_desc,
-photo: open(capsules_photo))
+    puts "Creating products..."
 
-puts "creating products..."
+    Product.create!(product_group: capsules, name: 'cbd_capsules', price: 39.99, photo: open(capsule))
+    Product.create!(product_group: balms, name: 'cbd_balms', size: "Small", price: 29.99, photo: open(balm_300))
+    Product.create!(product_group: balms, name: 'cbd_balms', size: "Large", price: 59.99, photo: open(balm_800))
+    p = Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Natural", price: 29.99, photo: open(natural_lower))
 
-Product.create!(product_group: capsules, name: 'cbd_capsules', price: 39.99, photo: open(capsule))
-Product.create!(product_group: balms, name: 'cbd_balms', size: "Small", price: 29.99, photo: open(balm_300))
-Product.create!(product_group: balms, name: 'cbd_balms', size: "Large", price: 59.99, photo: open(balm_800))
-p = Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Natural", price: 29.99, photo: open(natural_lower))
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Natural", price: 59.99, photo: open(natural_medium))
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Natural", price: 114.99, photo: open(natural_higher))
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Orange", price: 34.99, photo: open(orange_lower))
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Orange", price: 64.99, photo: open(orange_medium))
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Orange", price: 119.99, photo: open(orange_higher))
 
-Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Natural", price: 59.99, photo: open(natural_medium))
-Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Natural", price: 114.99, photo: open(natural_higher))
-Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Orange", price: 34.99, photo: open(orange_lower))
-Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Orange", price: 64.99, photo: open(orange_medium))
-Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Orange", price: 119.99, photo: open(orange_higher))
-
-puts "Creating user"
-user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
-puts 'Creating Reviews...'
-
-
-Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169336/vto4twgf2cmc9dpizgfh.jpg"), product_id: p.id, user_id: user.id, name: "Nadia Forde", position: "Model & Actress", content: "My workout routine", desc: "Staying fit and healthy is a key part of my job. With limited time now I'm a mother, I use fourfive cbd to recover quicker after workouts and help me get all-important rest when I need it. Also, a beauty hack for the all-natural balm; I mix  it with my daily moisturiser and its saving my tired skin, reducing puffiness and inflammation.")
-Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169312/odv3lpansifs7zkyr7ht.jpg"), product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "My recovery from concussion", desc: "After suffering a pretty severe concussion I found it hard to relax and help my brain recover. I used fourfive cbd and it helped me to really feel at ease and rest my anxiety.")
-Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169241/iziklekkwsjt92xs5kax.jpg"), product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "My recovery from knee ligament injury", desc: "fourfive cbd really helped me recover and manage pain from my recent knee ligament injury. I especially noticed the great sleep I was getting whilst taking it.")
+    puts "Creating user"
+    user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day", photo: open("http://res.cloudinary.com/dq2kcu9ey/image/upload/v1541431269/lsseq4xw3walhbzdovf3.jpg"))
+    puts 'Creating Reviews...'
 
 
+    Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169336/vto4twgf2cmc9dpizgfh.jpg"), product_id: p.id, user_id: user.id, name: "Nadia Forde", position: "Model & Actress", content: "My workout routine", desc: "Staying fit and healthy is a key part of my job. With limited time now I'm a mother, I use fourfive cbd to recover quicker after workouts and help me get all-important rest when I need it. Also, a beauty hack for the all-natural balm; I mix  it with my daily moisturiser and its saving my tired skin, reducing puffiness and inflammation.")
+    Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169312/odv3lpansifs7zkyr7ht.jpg"), product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "My recovery from concussion", desc: "After suffering a pretty severe concussion I found it hard to relax and help my brain recover. I used fourfive cbd and it helped me to really feel at ease and rest my anxiety.")
+    Review.create!(photo: open("https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545169241/iziklekkwsjt92xs5kax.jpg"), product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "My recovery from knee ligament injury", desc: "fourfive cbd really helped me recover and manage pain from my recent knee ligament injury. I especially noticed the great sleep I was getting whilst taking it.")
 
-puts 'Finished!'
+    puts 'Finished!'
+
+  when 'test'
+    # puts "Creating product groups..."
+    oils = ProductGroup.create(name: 'cbd_oils', help: oil_help,
+    how_to_use: oil_how_to,
+    ingredients: oil_ingr,
+    subtitle: "Flavored oil for quick absorption.",
+    description: oil_desc)
+
+    balms = ProductGroup.create(name: 'cbd_balms', help: balm_help,
+    how_to_use: balm_how_to,
+    ingredients: balm_ingr,
+    subtitle: "Organic balm for damaged skin.",
+    description: balm_desc)
+
+    capsules = ProductGroup.create(name: 'cbd_capsules', help: capsule_help,
+    how_to_use: capsule_how_to,
+    ingredients: capsule_ingr,
+    subtitle: "Easy-to-take capsules for slower release.",
+    description: capsule_desc)
+
+    # puts "Creating products..."
+
+    Product.create!(product_group: capsules, name: 'cbd_capsules', price: 39.99)
+    Product.create!(product_group: balms, name: 'cbd_balms', size: "Small", price: 29.99)
+    Product.create!(product_group: balms, name: 'cbd_balms', size: "Large", price: 59.99)
+    p = Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Natural", price: 29.99)
+
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Natural", price: 59.99 )
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Natural", price: 114.99)
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "500mg", tincture: "Orange", price: 34.99)
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "1000mg", tincture: "Orange", price: 64.99 )
+    Product.create!(product_group: oils, name: 'cbd_oils', size: "2000mg", tincture: "Orange", price: 119.99 )
+
+    # puts "Creating user"
+    user = User.create!(email: "admin@admin.com", admin: true, password: "123123", first_name: "Dominic", last_name: "Day")
+    # puts 'Creating Reviews...'
+
+
+    Review.create!(product_id: p.id, user_id: user.id, name: "Nadia Forde", position: "Model & Actress", content: "My workout routine", desc: "Staying fit and healthy is a key part of my job. With limited time now I'm a mother, I use fourfive cbd to recover quicker after workouts and help me get all-important rest when I need it. Also, a beauty hack for the all-natural balm; I mix  it with my daily moisturiser and its saving my tired skin, reducing puffiness and inflammation.")
+    Review.create!(product_id: p.id, user_id: user.id, name: "Nathan Trowbridge", position: "Semi Pro rugby player", content: "My recovery from concussion", desc: "After suffering a pretty severe concussion I found it hard to relax and help my brain recover. I used fourfive cbd and it helped me to really feel at ease and rest my anxiety.")
+    Review.create!(product_id: p.id, user_id: user.id, name: "Chris Dicomidis", position: "International rugby player", content: "My recovery from knee ligament injury", desc: "fourfive cbd really helped me recover and manage pain from my recent knee ligament injury. I especially noticed the great sleep I was getting whilst taking it.")
+
+    # puts 'Finished!'
+end
