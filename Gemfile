@@ -45,11 +45,13 @@ gem 'country_select'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'bullet'
   # gem "letter_opener"
 end
 
 group :development, :test do
-  gem 'bullet'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
