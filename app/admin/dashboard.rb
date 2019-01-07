@@ -7,6 +7,11 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Stock Sold" do
           render 'admin/stock_table'
         end
+        panel "Useful Links" do
+          div do
+            link_to("All current orders", admin_carts_path)
+          end
+        end
       end
 
       column do
@@ -24,9 +29,10 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Useful Links" do
+        panel "Orders by day" do
           div do
-            link_to("All current orders", admin_carts_path)
+            @metric = Cart.orders.group_by_day(:checked_out_at).count
+            render partial: 'charts/orders', locals: { metric: @metric }
           end
         end
       end
@@ -36,9 +42,6 @@ ActiveAdmin.register_page "Dashboard" do
           div do
             number_to_currency(Cart.revenue, unit: "£")
           end
-          # div do
-          #   Cart.includes(:address).orders.limit(10).each{|i| i.cart_items.product}
-          # end
         end
       end
     end

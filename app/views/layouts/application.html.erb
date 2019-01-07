@@ -40,6 +40,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
@@ -48,8 +50,6 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render 'shared/footer'  %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
     <%= yield(:after_js) %>
   </body>
 </html>

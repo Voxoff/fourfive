@@ -48,6 +48,9 @@ gem 'puma_worker_killer'
 
 # gem 'get_process_mem'
 
+gem 'chartkick'
+gem 'groupdate'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'bullet'
