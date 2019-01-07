@@ -6,6 +6,9 @@ class Address < ApplicationRecord
   # validates :phone_number, presence: true, format: { with: /^\+?(?:\d\s?){10,12}$/}
   validates :city, presence: true
   validates :salutation, inclusion: { in: %w[Mr Mrs Ms Miss] }, allow_nil: true
+  validates :email, presence: true
+
+  # after_validation { postcode.upcase! }
 
   def get_address
     [first_line, second_line, postcode, city]
@@ -22,7 +25,7 @@ class Address < ApplicationRecord
   end
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}".titleize
   end
 
   def city_and_postcode
