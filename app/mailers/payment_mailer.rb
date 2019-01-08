@@ -2,11 +2,11 @@ class PaymentMailer < ApplicationMailer
 
   def success(email, email_hash)
     add_pdf(email_hash)
-    if Rails.env.development?
+    # if Rails.env.development?
       mail(to: "guy@fourfivecbd.co.uk", subject: "Receipt") if email
-    else
-      mail(to: email, subject: "Receipt") if email
-    end
+    # else
+      # mail(to: email, subject: "Receipt") if email
+    # end
   end
 
   def order(pdf)
