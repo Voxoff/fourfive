@@ -7,7 +7,7 @@ class Address < ApplicationRecord
   validates :city, presence: true
   validates :salutation, inclusion: { in: %w[Mr Mrs Ms Miss] }, allow_nil: true
   validates :email, presence: true
-
+  validates :country, inclusion: { in: %w[UK UKNI IRE] }, allow_nil: true
   # after_validation { postcode.upcase! }
 
   def get_address
@@ -21,7 +21,16 @@ class Address < ApplicationRecord
   end
 
   def full_address
-    nice_print([first_line, second_line, third_line, city, postcode])
+    addr = nice_print([first_line, second_line, third_line, city, postcode])
+    add_country(addr)
+  end
+
+  def add_country(addr)
+    country ? nice_print([addr, convert_country]) : addr
+  end
+
+  def convert_country
+    country == "UK" ? "UK" : self.class.countries[country.to_sym]
   end
 
   def full_name
@@ -34,6 +43,10 @@ class Address < ApplicationRecord
 
   def full_name_with_salutation
     salutation.present? ? "#{salutation}. #{full_name}" : full_name.to_s
+  end
+
+  def self.countries
+    { UK: "United Kingdom (Eng, Sco, Wal)", UKNI: "United Kingdom (NI)", IRE: "Ireland" }
   end
 
   private

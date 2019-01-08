@@ -20,8 +20,7 @@
           <%= f.input :second_line, required: false, label: "(Optional)", placeholder: "Second line" %>
           <%= f.input :third_line, required: false, label: "(Optional)", placeholder: "Third line" %>
           <%= f.input :city, required: true, label: "City" %>
-          <%#= f.label :country %>
-          <%#= f.country_select :country, priority_countries = [], options = {:prompt => true}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
+          <%= f.input :country, collection: @countries, selected: @countries.first %>
           <%= f.input :postcode, required: true, label: "Postcode" %>
 
           <div class="terms">

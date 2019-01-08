@@ -22,6 +22,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    @countries = Address.countries.map {|k,v| [v,k]}
   end
 
   def success

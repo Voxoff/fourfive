@@ -41,8 +41,11 @@ gem 'xeroizer'
 
 gem 'prawn'
 gem 'prawn-table'
+<<<<<<< HEAD
 gem 'browser'
 gem 'country_select'
+=======
+>>>>>>> Ireland wants cbd
 
 group :development do
   gem 'web-console', '>= 3.3.0'
