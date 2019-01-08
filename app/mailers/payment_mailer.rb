@@ -7,6 +7,7 @@ class PaymentMailer < ApplicationMailer
     # else
       # mail(to: email, subject: "Receipt") if email
     # end
+
   end
 
   def order(pdf)
