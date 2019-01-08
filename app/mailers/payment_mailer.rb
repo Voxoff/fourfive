@@ -1,8 +1,12 @@
 class PaymentMailer < ApplicationMailer
 
-  def success(email, pdf)
-    add_pdf(pdf)
-    mail(to: email, subject: "Receipt") if email
+  def success(email, email_hash)
+    add_pdf(email_hash)
+    if Rails.env.development?
+      mail(to: "guy@fourfivecbd.co.uk", subject: "Receipt") if email
+    else
+      mail(to: email, subject: "Receipt") if email
+    end
   end
 
   def order(pdf)
@@ -16,12 +20,12 @@ class PaymentMailer < ApplicationMailer
 
   private
 
-  def add_pdf(pdf)
-    t = Tempfile.create do |f|
-      pdf.render_file f
-      f.flush
-      File.read(f)
-    end
-    attachments["receipt.pdf"] = t if t
+  def add_pdf(email_hash)
+    # t = Tempfile.create do |f|
+    #   pdf.render_file f
+    #   f.flush
+    #   File.read(f)
+    # end
+    attachments["receipt.pdf"] = InvoicePdf.new(email_hash).render
   end
 end
