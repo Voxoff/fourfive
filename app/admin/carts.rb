@@ -1,18 +1,27 @@
 ActiveAdmin.register Cart do
   # too broad
+  filter :address_first_name, as: :string
+  filter :address_last_name, as: :string
+  filter :address_postcode, as: :string
+  filter :address_email, as: :string
+  filter :created_at
+
+  scope :all
+  scope :orders
+  scope :unfulfilled, default: true
+  scope :fulfilled
+
+  menu priority: 2
+
   controller do
     def scoped_collection
       super.includes :user, :address
     end
   end
 
-  config.sort_order = "updated_at_desc"
-  config.per_page = [30, 100]
 
-  scope :all
-  scope :orders
-  scope :unfulfilled, default: true
-  scope :fulfilled
+  config.sort_order = "updated_at_desc"
+  config.per_page = [30, 100, 200]
 
   # member_action :export do
   #   cart = Cart.find(params[:id])
@@ -103,12 +112,8 @@ ActiveAdmin.register Cart do
     active_admin_comments
   end
 
-  permit_params :user, :active, :created_at, :updated_at
-    menu priority: 4
+  # permit_params :user, :active, :created_at, :updated_at, :address_email
 
-    filter :username
-    filter :email
-    filter :created_at
 
 
   csv force_quotes: true, column_names: true do

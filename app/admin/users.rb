@@ -3,6 +3,7 @@ ActiveAdmin.register User do
 
   # filter :email
   # filter :full_name
+  menu priority: 4
 
   index do
     selectable_column
