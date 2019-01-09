@@ -70,10 +70,10 @@ class PaymentsController < ApplicationController
 
   def zion
     ['net/https', 'uri', 'json'].each(&method(:require))
-    if Rails.env.development?
+    if Rails.env.development? || ENV['STAGING'].present?
       uri = URI('https://test.oppwa.com/v1/checkouts')
     else
-      uri = URI('https://test.oppwa.com/v1/checkouts')
+      uri = URI('https://oppwa.com/v1/checkouts')
     end
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -107,10 +107,10 @@ class PaymentsController < ApplicationController
     path = ("?authentication.userId=#{ENV['ZION_USER_ID']}" +
     "&authentication.password=#{ENV['ZION_PWD']}" +
     "&authentication.entityId=#{ENV['ZION_ENTITY_ID']}")
-    if Rails.env.development?
+    if Rails.env.development? || ENV['STAGING'].present?
       uri = URI.parse("https://test.oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
     else
-      uri = URI.parse("https://test.oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
+      uri = URI.parse("https://oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
     end
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
