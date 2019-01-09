@@ -29,6 +29,15 @@ ActiveAdmin.register Cart do
   # end
 
   member_action :print do
+    # if resource.receipt && resource.order_id
+    #   # return send_data resource.receipt, filename: "receipt_#{resource.order_id}.pdf"
+    #   # return resource.receipt.url
+    #   data = open(resource.receipt.url).read
+    #   return send_data(data,
+    #     stream: 'true',
+    #     disposition: 'attachment',
+    #     :type => 'application/pdf')
+    # end
     amount = resource.amount
     address = resource.address
     cart_items = resource.cart_items
@@ -37,14 +46,8 @@ ActiveAdmin.register Cart do
     if amount && address && cart_items && date
       pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date, order_id: order_id)
       if order_id
-        # https://stackoverflow.com/questions/9674734/using-prawn-on-heroku
-        # safari is frickin useless
-        # if browser.safari?
-          send_data pdf.render, filename: "receipt_#{order_id}.pdf"
-          GC.start
-        # else
-          # send_data pdf.render
-        # end
+        send_data pdf.render, filename: "receipt_#{order_id}.pdf"
+        GC.start
       else
         send_data pdf.render, filename: "receipt.pdf"
       end
@@ -96,8 +99,11 @@ ActiveAdmin.register Cart do
       cart.address&.email
     end
     actions name: "Actions"
-    column {|cart| link_to 'Print Invoice', print_admin_cart_path(cart) }
-    # column {|cart| link_to 'Export CSV', export_admin_cart_path(cart), format: "csv"}
+    if cart.receipt
+      column {|cart| link_to 'Print Invoice', cart.receipt.url, target:"_blank" }
+    else
+      column {|cart| link_to 'Print Invoice', print_admin_cart_path(cart) }
+    end
   end
 
 
