@@ -8,10 +8,10 @@
     <%= simple_form_for :checkout, url: checkout_cart_payments_path do |f| %>
       <div class="row">
         <div class="col-xs-offset-1 col-xs-10 col-sm-4">
-          <%= f.input :email, required: true, label: "Email" %>
+          <%= f.input :email, type: :email, required: true, label: "Email" %>
           <%= f.input :salutation, collection:  ["Mr", "Mrs", "Ms", "Miss"], prompt: "Please select" %>
-          <%= f.input :first_name, required: true %>
-          <%= f.input :last_name, required: true %>
+          <%= f.input :first_name, pattern: ".{2,}",  required: true %>
+          <%= f.input :last_name, pattern: ".{2,}", required: true %>
           <%= f.input :phone_number, required: true, label: "Phone number" %>
           <%= f.input :coupon, required: false, label: "Coupon (Optional)" %>
         </div>
@@ -20,8 +20,7 @@
           <%= f.input :second_line, required: false, label: "(Optional)", placeholder: "Second line" %>
           <%= f.input :third_line, required: false, label: "(Optional)", placeholder: "Third line" %>
           <%= f.input :city, required: true, label: "City" %>
-          <%#= f.label :country %>
-          <%#= f.country_select :country, priority_countries = [], options = {:prompt => true}, html_options = {label: "country", :class => "form-control", :id => "country-select"} %>
+          <%= f.input :country, collection: @countries, selected: @countries.first %>
           <%= f.input :postcode, required: true, label: "Postcode" %>
 
           <div class="terms">

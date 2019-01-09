@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'pages#privacy_policy'
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
 
+  # someone cached the old path, so i redirect for those error analtics
+  get 'products/cbd oils', to: redirect('/products/cbd_oils')
+
   resources :products, only: [:show], param: :name
   resources :cart_items, only: [:show, :create, :destroy, :update]
   resources :carts, only: [:show] do
     resources :payments, only: [:new] do
       collection do
-        post 'checkout'
+        post 'checkout' #this could just be create
         get 'success'
       end
     end

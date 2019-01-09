@@ -26,7 +26,7 @@ class InvoicePdf < Prawn::Document
       ["Amount Due", "£0.00 GBP"]
     ]
     date = Date.today.strftime('%A, %b %d')
-    @invoice_header_data = [ ["Receipt #", @order_id.to_s], ["Receipt Date", date], ["Amount Due", "£0.00 GBP"]]
+    @invoice_header_data = [ ["Receipt #", @order_id.to_s], ["Receipt Date", date]]
   end
 
   def create
@@ -82,6 +82,10 @@ class InvoicePdf < Prawn::Document
     end
     move_down lineheight_y
     text_box @address.city_and_postcode, :at => [address_x, cursor]
+    if @address.country.present?
+      move_down lineheight_y
+      text_box @address.convert_country, :at => [address_x, cursor]
+    end
     if @address.phone_number.present?
       move_down lineheight_y
       text_box @address.phone_number, :at => [address_x, cursor]
@@ -91,13 +95,13 @@ class InvoicePdf < Prawn::Document
 
     table(@invoice_header_data, :position => invoice_header_x, :width => 215) do
       style(row(0..1).columns(0..1), :padding => [1, 5, 1, 5], :borders => [])
-      style(row(2), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
+      # style(row(2), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
       style(column(1), :align => :right)
-      style(row(2).columns(0), :borders => [:top, :left, :bottom])
-      style(row(2).columns(1), :borders => [:top, :right, :bottom])
+      # style(row(2).columns(0), :borders => [:top, :left, :bottom])
+      # style(row(2).columns(1), :borders => [:top, :right, :bottom])
     end
 
-    move_down 45
+    move_down 75
 
     table(@invoice_services_data, :width => bounds.width) do
       style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')

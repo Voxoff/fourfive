@@ -1,4 +1,0 @@
-example_id                             | status | run_time        |
--------------------------------------- | ------ | --------------- |
-./spec/models/product_spec.rb[1:1:1:1] | passed | 0.07368 seconds |
-./spec/models/product_spec.rb[1:1:2:1] | failed | 0.0044 seconds  |

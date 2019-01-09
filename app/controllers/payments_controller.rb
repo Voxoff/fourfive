@@ -22,6 +22,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    @countries = Address.countries.map {|k,v| [v,k]}
   end
 
   def success
@@ -30,9 +31,7 @@ class PaymentsController < ApplicationController
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       Prawn::Font::AFM.hide_m17n_warning = true
-      # email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
-      # pdf = InvoicePdf.new(email_hash)
-      PaymentMailer.success(@cart.address.email, cart_id).deliver_now
+      PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
       @cart = @cart.checkout
     end
     redirect_to root_path
