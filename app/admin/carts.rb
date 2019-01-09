@@ -64,7 +64,7 @@ ActiveAdmin.register Cart do
     redirect_to collection_path, alert: "The carts have been marked as fulfilled."
   end
 
-  index do
+  index do |cart|
     selectable_column
     id_column
     column :amount, sortable: :amount do |cur|
@@ -99,10 +99,8 @@ ActiveAdmin.register Cart do
       cart.address&.email
     end
     actions name: "Actions"
-    if cart.receipt
-      column {|cart| link_to 'Print Invoice', cart.receipt.url, target:"_blank" }
-    else
-      column {|cart| link_to 'Print Invoice', print_admin_cart_path(cart) }
+    column do |cart|
+      link_to 'Print Invoice', cart.receipt.url || print_admin_cart_path(cart), target:"_blank"
     end
   end
 
