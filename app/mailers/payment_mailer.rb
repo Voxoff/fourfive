@@ -1,6 +1,8 @@
 class PaymentMailer < ApplicationMailer
 
-  def success(email, email_hash)
+  def success(email, cart_id)
+    @cart = Cart.find(cart_id)
+    email_hash = { order_id: @cart.order_id, amount: @cart.amount, address: @cart.address, cart_items: @cart.cart_items, date: @cart.checkout_time }
     add_pdf(email_hash)
     if Rails.env.development?
       mail(to: "guy@fourfivecbd.co.uk", subject: "Receipt") if email

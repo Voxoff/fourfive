@@ -20,9 +20,9 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  # require "sidekiq/web"
-  # authenticate :user, lambda { |u| u.admin } do
-  #   mount Sidekiq::Web => '/sidekiq'
-  # end
+  # resources :reviews, only: :index
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
