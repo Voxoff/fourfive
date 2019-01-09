@@ -31,7 +31,7 @@ class PaymentsController < ApplicationController
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       Prawn::Font::AFM.hide_m17n_warning = true
-      PaymentMailer.success(@cart.address.email, @cart.id).deliver_now
+      PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
       @cart = @cart.checkout
     end
     redirect_to root_path
