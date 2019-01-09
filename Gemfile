@@ -41,6 +41,7 @@ gem 'xeroizer'
 
 gem 'prawn'
 gem 'prawn-table'
+gem 'browser'
 gem 'country_select'
 
 group :development do
