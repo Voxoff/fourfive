@@ -73,7 +73,7 @@ class PaymentsController < ApplicationController
     if Rails.env.development?
       uri = URI('https://test.oppwa.com/v1/checkouts')
     else
-      uri = URI('https://oppwa.com/v1/checkouts')
+      uri = URI('https://test.oppwa.com/v1/checkouts')
     end
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -110,7 +110,7 @@ class PaymentsController < ApplicationController
     if Rails.env.development?
       uri = URI.parse("https://test.oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
     else
-      uri = URI.parse("https://oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
+      uri = URI.parse("https://test.oppwa.com/v1/checkouts/#{params[:id]}/payment" + path)
     end
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
