@@ -39,12 +39,12 @@ ActiveAdmin.register Cart do
       if order_id
         # https://stackoverflow.com/questions/9674734/using-prawn-on-heroku
         # safari is frickin useless
-        if browser.safari?
+        # if browser.safari?
           send_data pdf.render, filename: "receipt_#{order_id}.pdf"
           GC.start
-        else
-          send_data pdf.render
-        end
+        # else
+          # send_data pdf.render
+        # end
       else
         send_data pdf.render, filename: "receipt.pdf"
       end
