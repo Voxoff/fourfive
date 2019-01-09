@@ -41,7 +41,7 @@ class InvoicePdf < Prawn::Document
     move_down initialmove_y
 
     # Add the font style and size
-    # font "Helvetica"
+    font "Helvetica"
     font_size font_size
 
     #start with EON Media Group

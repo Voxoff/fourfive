@@ -38,6 +38,7 @@ ActiveAdmin.register Cart do
       pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date, order_id: order_id)
       if order_id
         send_data pdf.render, filename: "receipt_#{order_id}.pdf"
+        GC.start
       else
         send_data pdf.render, filename: "receipt.pdf"
       end
