@@ -29,7 +29,7 @@ gem 'active_skin'
 gem 'cloudinary', '1.10.1.pre.rc'
 gem 'carrierwave', '~> 1.2'
 
-gem 'omniauth-facebook'
+# gem 'omniauth-facebook'
 gem 'scout_apm'
 # gem 'postmark-rails'
 gem 'newrelic_rpm'
@@ -37,12 +37,10 @@ gem 'sentry-raven'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
-gem 'xeroizer'
+# gem 'xeroizer'
 
 gem 'prawn'
 gem 'prawn-table'
-gem 'browser'
-gem 'country_select'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
