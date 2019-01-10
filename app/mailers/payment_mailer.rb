@@ -25,6 +25,8 @@ class PaymentMailer < ApplicationMailer
   def add_pdf(email_hash)
     # resp = Cloudinary::Uploader.upload(pdf, public_id: "receipts/receipt#{@cart.order_id}")
     # resp["secure_url"]
+    # mem = GetProcessMem.new
+    # puts mem.inspect
     Prawn::Font::AFM.hide_m17n_warning = true
     pdf = InvoicePdf.new(email_hash).render
 
@@ -34,6 +36,9 @@ class PaymentMailer < ApplicationMailer
     @cart.receipt = s
     @cart.save!
     attachments["receipt.pdf"] = pdf
-    GC.start
+    pdf = nil
+    # binding.pry
+    # pdf.delete
+    # puts mem.inspect
   end
 end

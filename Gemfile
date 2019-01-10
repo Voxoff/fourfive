@@ -44,6 +44,8 @@ gem 'prawn-table'
 
 gem 'puma_worker_killer'
 
+# gem 'get_process_mem'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'bullet'

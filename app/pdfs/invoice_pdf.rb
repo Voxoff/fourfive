@@ -1,6 +1,6 @@
 class InvoicePdf < Prawn::Document
   def initialize(attributes)
-    super
+    super(optimize_objects: true, compress: true)
     @address = attributes[:address]
     @amount = attributes[:amount]
     @date = attributes[:date]
