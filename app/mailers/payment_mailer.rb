@@ -25,7 +25,7 @@ class PaymentMailer < ApplicationMailer
   def add_pdf(email_hash)
     # resp = Cloudinary::Uploader.upload(pdf, public_id: "receipts/receipt#{@cart.order_id}")
     # resp["secure_url"]
-
+    Prawn::Font::AFM.hide_m17n_warning = true
     pdf = InvoicePdf.new(email_hash).render
 
     s = StringIO.new(pdf)
