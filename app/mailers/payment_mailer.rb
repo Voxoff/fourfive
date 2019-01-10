@@ -34,5 +34,6 @@ class PaymentMailer < ApplicationMailer
     @cart.receipt = s
     @cart.save!
     attachments["receipt.pdf"] = pdf
+    GC.start
   end
 end
