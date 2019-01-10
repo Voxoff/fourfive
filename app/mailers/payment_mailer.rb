@@ -37,8 +37,8 @@ class PaymentMailer < ApplicationMailer
     @cart.save!
     attachments["receipt.pdf"] = pdf
     pdf = nil
-    # binding.pry
-    # pdf.delete
+    s = nil
+    GC.start
     # puts mem.inspect
   end
 end
