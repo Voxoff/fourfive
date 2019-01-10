@@ -21,7 +21,7 @@
           <%= f.input :third_line, required: false, label: "(Optional)", placeholder: "Third line" %>
           <%= f.input :city, required: true, label: "City" %>
           <%= f.input :country, collection: @countries, selected: @countries.first %>
-          <%= f.input :postcode, required: true, label: "Postcode" %>
+          <%= f.input :postcode, label: "Postcode" %>
 
           <div class="terms">
             <p><strong>Terms and conditions</strong></p>
