@@ -42,6 +42,8 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'prawn'
 gem 'prawn-table'
 
+gem 'puma_worker_killer'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'bullet'
