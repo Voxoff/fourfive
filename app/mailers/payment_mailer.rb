@@ -20,6 +20,16 @@ class PaymentMailer < ApplicationMailer
     end
   end
 
+  def alert_mike(cart_id)
+    @cart = Cart.find(cart_id)
+    @name = @cart.address&.full_name
+    if Rails.env.development?
+      mail(to: "guy@fourfivecbd.co.uk", subject: "Order")
+    else
+      mail(to: "mike@fourfivecbd.co.uk", subject: "Order may not have gone through")
+    end
+  end
+
   private
 
   def add_pdf(email_hash)
