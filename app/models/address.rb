@@ -7,7 +7,7 @@ class Address < ApplicationRecord
   validates :city, presence: true
   validates :salutation, inclusion: { in: %w[Mr Mrs Ms Miss] }, allow_nil: true
   validates :email, presence: true
-  validates :country, inclusion: { in: %w[UK UKNI IRE] }, allow_nil: true
+  validates :country, inclusion: { in: %w[UK UKNI IRE IE] }, allow_nil: true
   # after_validation { postcode.upcase! }
 
   def get_address
