@@ -123,9 +123,9 @@ class PaymentsController < ApplicationController
       flash[:notice] = "Thank you. Your payment has been processed."
       flash[:notice] = "Thank you. Your payment has been processed. An email has been sent to #{@cart.address.email}" if @cart.address.email
     elsif code.match?(/^(000\.200)/)
-      flash[:notice] = "Pending. Please wait for email confirmation."
+      flash[:notice] = "The payment is pending. Please email contact@fourfive.co.uk in case it is rejected. Thank you."
     elsif code.match?(/^(800\.400\.5|100\.400\.500)/)
-      flash[:notice] = "Waiting for confirmation/external risk. Denied for now."
+      flash[:notice] = "Waiting for confirmation/external risk. Denied for now. Please email contact@fourfive.co.uk for further details."
     else
       flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly."
     end
