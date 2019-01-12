@@ -20,7 +20,7 @@ ActiveAdmin.register Cart do
   end
 
 
-  config.sort_order = "updated_at_desc"
+  config.sort_order = "checked_out_at_desc"
   config.per_page = [30, 100, 200]
 
   # member_action :export do
