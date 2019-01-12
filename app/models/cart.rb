@@ -8,6 +8,7 @@ class Cart < ApplicationRecord
   validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
 
   scope :orders, -> { where(active: false) }
+  scope :not_orders, -> { where(active: true)}
   scope :has_user, -> { where(user: !nil) }
   scope :last24, -> { where('updated_at >= :last24', last24: 1.day.ago) }
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
