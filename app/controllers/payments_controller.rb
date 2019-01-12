@@ -30,11 +30,8 @@ class PaymentsController < ApplicationController
     code = payments["result"]["code"]
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
-      @cart = @cart.checkout
       PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
-    elsif code.match?(/^(000\.200)/)
       @cart = @cart.checkout
-      PaymentMailer.alert_mike(@cart.id).deliver_later
     end
     redirect_to root_path
   end
