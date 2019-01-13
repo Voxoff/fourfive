@@ -67,7 +67,7 @@ ActiveAdmin.register Cart do
   index do |cart|
     selectable_column
     id_column
-    column :amount, sortable: :amount do |cur|
+    column :amount do |cur|
       number_to_currency(cur.amount, unit: "£")
     end
     column :user do |cart|
