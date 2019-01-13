@@ -8,5 +8,6 @@ ActiveAdmin.register CartItem do
     end
   end
   menu priority: 4
-  # permit_params :cart, :user, :product
+
+  permit_params :quantity
 end
