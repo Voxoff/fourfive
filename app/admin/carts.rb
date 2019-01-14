@@ -76,7 +76,6 @@ ActiveAdmin.register Cart do
       else
         link_to "#{cart.user.id}", admin_user_path(cart.user)
       end
-      # item "Guest", admin_user_path if user.nil?
     end
     column :name do |cart|
       cart.address&.full_name
@@ -84,7 +83,6 @@ ActiveAdmin.register Cart do
     column :cart_items do |cart|
       cart.basket
     end
-    # column "Order?", :active do |cart| !cart.active? end
     column "Date of order", :updated_at do |cart|
       cart.checked_out_at ? cart.checked_out_at.strftime("%a, %e %b %H:%M") : cart.updated_at.strftime("%a, %e %b %H:%M")
     end
