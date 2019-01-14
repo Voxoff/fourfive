@@ -10,7 +10,6 @@ class PaymentsController < ApplicationController
     @cart_items = @cart.cart_items
     user = current_or_guest_user
     check_empty_cart
-    verify_coupon(params[:coupon])
     @ip = request.remote_ip
     @address = @cart.build_address(address_params)
     unless @address.save
@@ -47,24 +46,6 @@ class PaymentsController < ApplicationController
 
     flash[:notice] = "You need to put items in your cart in order to buy them!"
     return redirect_to root_path
-  end
-
-  def coupons
-    [ENV['COUPON'].to_s]
-  end
-
-  def verify_coupon(coupon)
-    if coupon.present?
-      require 'coupon'
-      coupons = Coupon.coupons
-      if coupons.include?(coupon)
-        flash[:notice] = "Coupon successfully applied."
-        @amount = @amount.to_f * 0.9
-      elsif !coupons.include?(coupon)
-        flash[:notice] = "That coupon code did not work"
-        return redirect_to new_cart_payment_path
-      end
-    end
   end
 
   def zion
