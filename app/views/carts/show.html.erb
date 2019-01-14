@@ -41,6 +41,16 @@
           <% end %>
         </tbody>
         <tfoot>
+          <% if @cart.coupon %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="ft-border-bold">Coupon</td>
+              <td class="ft-border-bold"><%= @cart.coupon.discount.to_s + " %" %></td>
+              <td class="ft-border-bold"><%= @cart.amount %></td>
+            </tr>
+          <% end %>
           <tr>
             <td></td>
             <td></td>
@@ -53,7 +63,11 @@
       </table>
       <div class="cart-actions">
         <div class="cart-actions-left">
-          <%= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
+          <%= simple_form_for @cart, url: coupon_carts_path, method: :post do |f| %>
+            <%= f.input :coupon, input_html: {value: f.object.coupon&.code }, placeholder: "Enter code..."%>
+            <%= f.submit "Add coupon", class: "simple-btn cart-button-margin" %>
+          <% end %>
+          <%#= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
         </div>
         <div class="cart-actions-right">
           <%= link_to "checkout", new_cart_payment_path(@cart), style: "color: white; background-color: rgb(40,40,40)", class: "simple-btn no-hover cart-button-margin" %>

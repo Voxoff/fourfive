@@ -1,3 +1,4 @@
 class Coupon < ApplicationRecord
-  # belongs_to :cart
+  has_many :carts
+  validates :code, :discount, presence: true
 end

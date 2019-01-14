@@ -19,7 +19,6 @@ ActiveAdmin.register Cart do
     end
   end
 
-
   config.sort_order = "updated_at_desc"
   config.per_page = [30, 100, 200]
 
@@ -93,6 +92,13 @@ ActiveAdmin.register Cart do
         cart.address.full_address
       else
         "No address has been added. (Payment not made)."
+      end
+    end
+    column :coupon do |cart|
+      if cart.coupon
+        cart.coupon.code
+      else
+        "No coupon used."
       end
     end
     column :email do |cart|
