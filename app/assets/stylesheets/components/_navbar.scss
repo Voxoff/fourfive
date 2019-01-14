@@ -11,11 +11,10 @@
   .title{
     flex-basis: 80%;
     text-align: center;
-    margin-bottom: 0px;
     h1{
       font-weight: bolder;
-      margin-top:10px;
       font-size: 36px;
+      margin: 0;
     }
     a{
       color: inherit;
@@ -110,8 +109,8 @@
   left: 46px;
 }
 
-@media(max-width: 386px){
+@media(max-width: 480px){
   .title>a h1{
-    font-size: 32px !important;
+    font-size: 24px !important;
   }
 }
