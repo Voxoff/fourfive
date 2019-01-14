@@ -26,17 +26,12 @@
       </div>
     </div>
   </div>
-  <div class="right visible-md-block visible-lg-block">
-    <%= image_tag "visa.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 70, :flags=>"lossy", style: "position:absolute; right: 11%;bottom: 0px;" %>
-    <%= image_tag "mastercard.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 50, :flags=>"lossy", style: "position:absolute; right: 3%; bottom: 12px" %>
-  </div>
-  <div class="right visible-sm-block">
-    <%= image_tag "visa.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 70, :flags=>"lossy", style: "position:absolute; right: 13%;bottom: 0px;" %>
-    <%= image_tag "mastercard.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 50, :flags=>"lossy", style: "position:absolute; right: 3%; bottom: 12px" %>
-  </div>
-  <div class="right visible-xs-block">
-    <%= image_tag "visa.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 70, :flags=>"lossy", style: "position:absolute; left: 30%;bottom: -50px;" %>
-    <%= image_tag "mastercard.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 50, :flags=>"lossy", style: "position:absolute; margin-bottom: 8px;right: 30%; bottom: -50px" %>
+  <div class="logos">
+    <div class="payment-logos">
+      <%= image_tag "visa.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 70, :flags=>"lossy" %>
+      <%= image_tag "mastercard.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 50, :flags=>"lossy" %>
+    </div>
+    <%= image_tag "cta.png", crop: :scale, quality: :auto, :fetch_format=>:auto, height: 50, :flags=>"lossy" %>
   </div>
 </div>
 
