@@ -6,12 +6,18 @@
   .image-background{
     display: inline-block;
     justify-content: center;
+    position: relative;
+    a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+    }
     img{
       height: 295px;
       width: 225px;
-      &:hover{
-        // HOVER
-      }
+      vertical-align: baseline;
     }
   }
   .product-info{
