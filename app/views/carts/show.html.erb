@@ -18,7 +18,7 @@
         <tbody>
           <% @cart_items.each do |item| %>
             <tr>
-              <td class="yellow-box"><%= image_tag "checkout.png", size: "30" %></td>
+              <td class="yellow-box"><%= image_tag "checkout.png", alt: "checkout", size: "30" %></td>
               <td class="align-center"><%= item.product.product_group.readable_name %></td>
               <td class="align-right"><%= item.product.specific_name %></td>
               <td class="align-right"><%= item.product.price %></td>

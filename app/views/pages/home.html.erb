@@ -10,21 +10,21 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= image_tag "carousel-range.jpg", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
-      <%= image_tag "carousel-square-range.jpg", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block"  %>
+      <%= image_tag "carousel-range.jpg",  alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
+      <%= image_tag "carousel-square-range.jpg", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block"  %>
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <%= image_tag "carousel-shipping.jpg", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
-      <%= image_tag 'carousel-square-lifestyle.jpg', width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block"  %>
+      <%= image_tag "carousel-shipping.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
+      <%= image_tag 'carousel-square-lifestyle.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block"  %>
 
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <%= image_tag "carousel-capsule.jpg", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
-      <%= image_tag 'carousel-square-shipping.jpg', width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block" %>
+      <%= image_tag "carousel-capsule.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
+      <%= image_tag 'carousel-square-shipping.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block" %>
 
       <div class="carousel-caption">
       </div>
@@ -54,7 +54,7 @@
         <div class="product-card">
           <div class="image-background">
             <%= link_to product_path(group.products.first.name) do %>
-              <%= cl_image_tag group.photo, height: 400, crop: :scale, quality: "auto:best", :fetch_format=>:auto if group.photo_url %>
+              <%= cl_image_tag group.photo, alt: group.products.first.readable_name, height: 400, crop: :scale, quality: "auto:best", :fetch_format=>:auto if group.photo_url %>
             <% end %>
           </div>
           <div class="product-info">
@@ -86,7 +86,7 @@
             <div class="review-card" id=<%= "cancel-border" if i == 2 %>>
               <div class="review-content">
                 <div class="review-image">
-                  <%= cl_image_tag review.photo, class: "review-image" if review.photo.present? %>
+                  <%= cl_image_tag review.photo, alt: "review", class: "review-image" if review.photo.present? %>
                 </div>
                 <div class="review-text" data-toggle="collapse" data-target="#collapseExample<%= i %>" role="button" aria-expanded="false" aria-controls="collapseExample<%= i %>">
                   <h4><%= review.content %></h4>
@@ -113,7 +113,7 @@
     <h5>A little bit about us.</h5>
   </div>
   <div class="ajflex">
-    <%= image_tag "cartoon.jpg", crop: :scale, quality: "auto:best", :fetch_format=>:auto, height: 500, class: "homepage-cartoon" %>
+    <%= image_tag "cartoon.jpg", alt: "dom-and-george-cartoon", crop: :scale, quality: "auto:best", :fetch_format=>:auto, height: 500, class: "homepage-cartoon" %>
     <%#= image_tag "https://res.cloudinary.com/dq2kcu9ey/image/asset/w_1000,h_666,q_auto,f_auto/cartoon-f28a727ec2be580cc0efb4c10732d77a.jpg", height: 500, class: "homepage-cartoon" %>
   </div>
   <div class="stripes" style="height: 45px;">

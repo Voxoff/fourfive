@@ -121,7 +121,7 @@ class PaymentsController < ApplicationController
   def code_check(code)
     if code.match?(/^(000\.000\.|000\.100\.1|000\.[36])/) || code.match?(/^(000\.400\.0[^3]|000\.400\.100)/)
       flash[:notice] = "Thank you. Your payment has been processed."
-      flash[:notice] = "Thank you. Your payment has been processed. An email has been sent to #{@cart.address.email}" if @cart.address.email
+      flash[:notice] = "Thank you. Your payment has been processed. An email will be sent shortly to #{@cart.address.email}" if @cart.address.email
     elsif code.match?(/^(000\.200)/)
       flash[:notice] = "The payment is pending. Please email contact@fourfive.co.uk in case it is rejected. Thank you."
     elsif code.match?(/^(800\.400\.5|100\.400\.500)/)
