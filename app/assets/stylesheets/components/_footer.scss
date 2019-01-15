@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:70px; //50 for green add 20
+    margin-top:24px; //50 for green add 20
     a {
       color: grey;
       opacity: 0.6;
@@ -79,19 +79,19 @@
 }
 
 .yellow-stripe{
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 50px;
   background-color: $yellow;
 }
 
 .white-stripe{
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 50px;
 }
 
@@ -110,5 +110,6 @@ li a{
   color: rgba(0,0,0,0.6);
   max-width: 600px;
   text-align: center;
+  margin: auto;
   margin-bottom: 16px;
 }
