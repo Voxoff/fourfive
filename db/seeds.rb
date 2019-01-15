@@ -59,21 +59,24 @@ case Rails.env
     ingredients: oil_ingr,
     subtitle: "Flavored oil for quick absorption.",
     description: oil_desc,
-    photo: open(oil_group_photo))
+    photo: open(oil_group_photo),
+    interactive_photo_slug: "oil_interactive.jpg")
 
     balms = ProductGroup.create(name: 'cbd_balms', help: balm_help,
     how_to_use: balm_how_to,
     ingredients: balm_ingr,
     subtitle: "Organic balm for damaged skin.",
     description: balm_desc,
-    photo: open(balm_group_photo))
+    photo: open(balm_group_photo),
+    interactive_photo_slug: "balm_interactive.jpg")
 
     capsules = ProductGroup.create(name: 'cbd_capsules', help: capsule_help,
     how_to_use: capsule_how_to,
     ingredients: capsule_ingr,
     subtitle: "Easy-to-take capsules for slower release.",
     description: capsule_desc,
-    photo: open(capsules_photo))
+    photo: open(capsules_photo),
+    interactive_photo_slug: "capsules_interactive.jpg")
 
     puts "Creating products..."
 
