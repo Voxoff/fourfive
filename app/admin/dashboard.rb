@@ -6,13 +6,23 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Recent Sign ups" do
-          table_for User.not_guests.order("id desc").limit(10).each do |_user|
-            column(:email) { |user| link_to(user.email, admin_user_path(user)) }
-            column(:created_at)
-            # if user.first_name && user.last_name
-            #   column(:name) { |user| link_to(user.full_name, admin_user_path(user)) }
-            # end
+        panel "Stock Sold" do
+          cart_item = CartItem.joins(:cart).merge(Cart.orders)
+          table do
+            thead do
+              tr do
+                 Product.all.map(&:specific_name).each &method(:th)
+              end
+            end
+            tbody do
+              tr do
+                (1..Product.count).to_a.each do |id|
+                  td do
+                    cart_item.joins(:product).merge(Product.where(id: id)).count    
+                  end
+                end
+              end
+            end
           end
         end
       end
