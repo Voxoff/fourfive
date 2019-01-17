@@ -11,14 +11,14 @@
   <div class="product-details">
     <div class="row">
       <div class="col-sm-offset-1 col-sm-10 col-md-5 col-xs-12">
-        <div class="ajflex">
+        <div class="product-photo-align">
           <%= cl_image_tag @product.photo, height: 600, alt: "product", crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "image-responsive", id: "product-photo" %>
         </div>
       </div>
-      <div class="col-sm-offset-1 col-sm-10 col-md-5 col-xs-12">
+      <div class="col-sm-offset-1 col-md-offset-0 col-sm-10 col-md-5 col-xs-12">
         <div class="mobile-stack">
           <span>
-            <div class="product-info">
+            <div class="product-show-info">
               <div class="text lighter" style="margin-bottom:25px; font-size: 15px">
                 <p><%= @product.product_group.description %></p>
                 <% if @product.oil? %>
