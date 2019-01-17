@@ -162,8 +162,33 @@ select {
   height: auto;
 }
 
+.press {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  flex: 1;
+  margin: -16px 0;
+
+  .press-item {
+    flex: 1 1;
+    svg {
+      width: 100%;
+      padding: 0 10%;
+      text {
+        font-weight: lighter;
+      }
+    }
+    img {
+      width: 100%;
+      padding: 0 10%;
+    }
+  }
+}
+
 .contact {
-  padding-top: 40px;
+  border-top: solid 2px #f1f1ee;
+  padding-top: 24px;
   padding-bottom: 16px;
   display: flex;
   justify-content: space-between;
