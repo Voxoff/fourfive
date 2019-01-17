@@ -165,10 +165,10 @@ select {
 .press {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   max-width: 600px;
   flex: 1;
-  margin: -16px 0;
+  margin: 32px 0;
 
   .press-item {
     flex: 1 1;
@@ -189,6 +189,13 @@ select {
       width: 100%;
     }
   }
+}
+
+#bbc-sport {
+  transform: translateY(-10%);
+}
+#the-sunday-times {
+  transform: translateY(-23%);
 }
 
 .contact {
