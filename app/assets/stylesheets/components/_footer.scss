@@ -119,6 +119,11 @@ li a{
   right: 0;
   bottom: 0;
   text-align: center;
+  margin: 8px;
+
+  img {
+    padding: 2px;
+  }
 }
 
 @media(max-width: 900px) {
