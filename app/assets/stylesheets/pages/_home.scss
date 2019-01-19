@@ -154,8 +154,6 @@ select {
 .accordion-content {display: none;}
 .accordion-content.default {display: block;}
 
-// Override bootstrap just for the homepage, but maybe everything??
-
 
 .homepage-cartoon {
   width: 100%;
@@ -168,14 +166,14 @@ select {
   align-items: flex-end;
   max-width: 600px;
   flex: 1;
-  margin: 32px 0;
+  margin: 40px 0;
 
   .press-item {
     flex: 1 1;
     position: relative;
     margin: 0 2%;
     .press-link {
-      position: absolute;
+      // position: absolute;
       width: 100%;
       height: 100%;
     }
@@ -236,4 +234,12 @@ select {
       margin: 16px 0;
     }
   }
+  .press {
+    flex-direction: column;
+    align-items: center;
+  }
+  .press-item {
+    padding: 13px;
+  }
 }
+
