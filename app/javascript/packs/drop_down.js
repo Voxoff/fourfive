@@ -70,8 +70,8 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
       price.innerHTML = oilHash[key]["price"] * quantity;
       document.getElementById('product-photo').classList.add('transparent')
       image_switch(oilHash, product_src, key)
-      document.getElementById('product-name').innerText = key
       let size = strength.split(" ")[0];
+      document.getElementById('product-name').innerText = `${size} strength, ${tincture} flavour`
       hash = {"Lower": "500mg", "Medium": "1000mg", "Higher": "2000mg"}
       document.querySelector("[name=size]").value = hash[size]
       document.querySelector("[name=tincture]").value = tincture
