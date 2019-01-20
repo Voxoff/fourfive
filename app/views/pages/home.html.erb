@@ -10,21 +10,20 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= image_tag "carousel-range.jpg",  alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
-      <%= image_tag "carousel-square-range.jpg", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block"  %>
+      <%= image_tag "carousel-range.jpg",  alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+      <%= image_tag "carousel-square-range.jpg", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block"  %>
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <%= image_tag "carousel-shipping.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
-      <%= image_tag 'carousel-square-lifestyle.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block"  %>
-
+      <%= image_tag "carousel-shipping.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+      <%= image_tag 'carousel-square-lifestyle.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <%= image_tag "carousel-capsule.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "hidden-xs" %>
-      <%= image_tag 'carousel-square-shipping.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", :fetch_format=>:auto, class: "visible-xs-block" %>
+      <%= image_tag "carousel-capsule.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+      <%= image_tag 'carousel-square-shipping.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
 
       <div class="carousel-caption">
       </div>
@@ -55,8 +54,8 @@
           <div class="image-background">
             <%= link_to product_path(group.products.first.name) do %>
             <% end %>
-            <%= cl_image_tag group.photo, alt: group.products.first.readable_name, class: "default-photo", quality: "auto:best", :fetch_format=>:auto if group.photo_url %>
-            <%= image_tag group.interactive_photo_slug, class: "interactive-photo" %>
+            <%= cl_image_tag group.photo, alt: group.products.first.readable_name, class: "default-photo", transformation: { quality: "auto:best",  width: 225, height: 300, crop: :scale, fetch_format: :auto } if group.photo_url %>
+            <%= image_tag group.interactive_photo_slug, alt: "Interactive", width: 225, height: 301, crop: :scale, quality: :auto, fetch_format: :auto, class: "interactive-photo" %>
           </div>
           <div class="product-info">
               <%= link_to product_path(group.products.first.name), class: "yellow-hover" do %>
@@ -114,8 +113,7 @@
     <h5>A little bit about us.</h5>
   </div>
   <div class="ajflex">
-    <%= image_tag "cartoon.jpg", alt: "dom-and-george-cartoon", crop: :scale, quality: "auto:best", :fetch_format=>:auto, height: 500, class: "homepage-cartoon" %>
-    <%#= image_tag "https://res.cloudinary.com/dq2kcu9ey/image/asset/w_1000,h_666,q_auto,f_auto/cartoon-f28a727ec2be580cc0efb4c10732d77a.jpg", height: 500, class: "homepage-cartoon" %>
+    <%= image_tag "cartoon.jpg", alt: "dom-and-george-cartoon", crop: :scale, quality: "auto:best", fetch_format: :auto, height: 500, class: "homepage-cartoon" %>
   </div>
   <div class="stripes" style="height: 45px;">
     <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
@@ -165,17 +163,17 @@
     </div>
     <div class="press-item">
       <%= link_to "https://www.thetimes.co.uk/article/how-hemp-can-help-athletes-not-harm-them-tmvf7tp2h", size: "126x24", class: "press-link", target: "_blank" do %>
-        <%= image_tag "sunday_times_cropped.png",width: 126, crop: :scale, quality: "auto:best", :fetch_format=>:auto,  id: "the-sunday-times" %>
+        <%= image_tag "sunday_times_cropped.png",width: 126, crop: :scale, quality: :auto, fetch_format: :auto,  id: "the-sunday-times" %>
       <% end %>
     </div>
     <div class="press-item">
       <%= link_to "https://www.bbc.co.uk/sport/rugby-union/46625302", size: "126x24",class: "press-link", target: "_blank" do %>
-        <%= image_tag "bbc_sport_cropped.png", width: 126, crop: :scale, quality: "auto:best", :fetch_format=>:auto, id: "bbc-sport" %>
+        <%= image_tag "bbc_sport_cropped.png", width: 126, crop: :scale, quality: :auto, fetch_format: :auto, id: "bbc-sport" %>
       <% end %>
     </div>
     <div class="press-item">
       <%= link_to "https://www.dailymail.co.uk/sport/rugbyunion/article-6499931/THE-GAIN-LINE-Newcastle-desperate-earn-European-glory.html", size: "126x24",class: "press-link", target: "_blank" do %>
-        <%= image_tag "daily_mail_cropped.png", width: 126, crop: :scale, quality: "auto:best", :fetch_format=>:auto, id: "daily-mail" %>
+        <%= image_tag "daily_mail_cropped.png", width: 126, crop: :scale, quality: :auto, fetch_format: :auto, id: "daily-mail" %>
       <% end %>
     </div>
   </div>
