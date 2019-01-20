@@ -4,9 +4,9 @@
 
 
 <div class="container" style="margin-bottom: 70px;">
-  <h2 id="product-name" style="font-size: 25px; margin-top: 0px; padding-bottom: 10px;"><%= @product.readable_name %></h2>
+  <h2 id="product-name" style="font-size: 25px; margin-top: 0px; padding-bottom: 10px;"><%= @specific_product %></h2>
   <div class="ajflex">
-    <h5 class="border-top" id="product-summary"><%= @specific_product %></h5>
+    <h5 class="border-top" id="product-summary"><%= @readable_name %></h5>
   </div>
   <div class="product-details">
     <div class="row">
@@ -51,11 +51,11 @@
               <div class="button-container bigger yellow-border-hover">
                 <div class="master-quantity">
                   <% if @product.oil? %>
-                    <%= render "shared/button", price: @price, q: 1, size: "500mg", tincture: @tinctures.first, product_id: @product.id %>
+                    <%= render "shared/button", price: @price, q: 1, size: "500mg", tincture: @tinctures.first %>
                   <% elsif @product.balm? %>
-                    <%= render "shared/button", price: @price, q: 1, size: "Small", tincture: nil, product_id: @product.id %>
+                    <%= render "shared/button", price: @price, q: 1, size: "Small", tincture: nil %>
                   <% else %>
-                  <%= render "shared/button", price: @price, q: 1, size: nil, tincture: nil, product_id: @product.id %>
+                  <%= render "shared/button", price: @price, q: 1, size: nil, tincture: nil %>
                   <% end %>
                 </div>
               </div>

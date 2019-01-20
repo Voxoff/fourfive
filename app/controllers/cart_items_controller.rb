@@ -7,6 +7,7 @@ class CartItemsController < ApplicationController
 
   def create
     @product = find_product
+    # have they already bought one of this?
     @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
       @cart_item.quantity += params[:quantity].to_i
@@ -55,6 +56,6 @@ class CartItemsController < ApplicationController
   end
 
   def cart_params
-    params.permit(:cart_id, :quantity, :product_id)
+    params.permit(:cart_id, :quantity)
   end
 end

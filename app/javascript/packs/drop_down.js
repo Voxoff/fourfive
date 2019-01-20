@@ -6,16 +6,18 @@ document.querySelectorAll(".field").forEach((field) => {
   })
 })
 // Setting up data
-const natural_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310487/fca5phhhi05oy3rbilqe.jpg"
-const natural_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310517/ykz2clyc02odmzfazffc.jpg"
-const natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310539/s4o3j4g8u38yw5ydp9dl.jpg"
+const natural_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545310487/fca5phhhi05oy3rbilqe.jpg"
+const natural_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545310517/ykz2clyc02odmzfazffc.jpg"
+const natural_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545310539/s4o3j4g8u38yw5ydp9dl.jpg"
 
-const orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310603/wsz1iktl65jfnzf0usno.jpg"
-const orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310585/unumz5jvzglclwxw2rik.jpg"
-const orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545310560/ynbhmsk6vqsnefuagu1u.jpg"
+const orange_lower = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545310603/wsz1iktl65jfnzf0usno.jpg"
+const orange_medium = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545310585/unumz5jvzglclwxw2rik.jpg"
+const orange_higher = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545310560/ynbhmsk6vqsnefuagu1u.jpg"
 
-const small_balm = "https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545330419/zdilgiei86tpd8u0wkbc.jpg";
-const large_balm ="https://res.cloudinary.com/dq2kcu9ey/image/upload/v1545330449/go6ereapuoyjqepenvk6.jpg";
+const small_balm = "https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545330419/zdilgiei86tpd8u0wkbc.jpg";
+const large_balm ="https://res.cloudinary.com/dq2kcu9ey/image/upload/c_scale,f_auto,h_600,q_auto:best/v1545330449/go6ereapuoyjqepenvk6.jpg";
+
+const plain_back = "https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,h_600,q_auto:best/plain_back-7d6e430f8bb53fe3105191dbc874164a.jpg"
 
 const balmHash = {
   "Small balm": { src: small_balm, price: 29.99 },
@@ -31,6 +33,15 @@ const oilHash = {
   'Orange Higher (2000mg)': { src: orange_higher, price: 119.99 }
 };
 
+function get_drop_value(field) {
+  return document.getElementById(field).innerText.trim();
+}
+
+function image_switch(hash, product_src, key) {
+  product_src.src = plain_back
+  setTimeout(() => product_src.src = hash[key]["src"], 150)
+}
+
 // clicking on option changes box's value and collapses dropdown
 document.querySelectorAll(".drop-down-item").forEach((item) => {
   item.addEventListener("click", (event) => {
@@ -38,8 +49,9 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
     $(item.parentElement).slideToggle()
     const quantity = document.getElementById('quantity').innerHTML
     const price = document.getElementById('price')
+    const product_src = document.getElementById("product-photo")
     if (window.location.pathname.includes("balms")){
-      let key = document.getElementById("size").innerText.trim()
+      let key = get_drop_value("size")
       key = item.innerText.trim()
       price.innerHTML = balmHash[key]["price"] * quantity
       if (key == "Small balm"){
@@ -48,24 +60,21 @@ document.querySelectorAll(".drop-down-item").forEach((item) => {
         size = " (100ml / 800mg)"
       }
       document.getElementById('product-name').innerText = key + size
-      document.getElementById('product-photo').src = balmHash[key]["src"]
+      image_switch(balmHash, product_src, key)
       document.querySelector("[name=size]").value = key.split(" ")[0]
-
     }
     else if (window.location.pathname.includes("oils")){
-      const tincture = document.getElementById('tincture').innerText.trim()
-      const strength = document.getElementById('size').innerText.trim()
+      const tincture = get_drop_value("tincture")
+      const strength = get_drop_value("size")
       const key = tincture + " " + strength
       price.innerHTML = oilHash[key]["price"] * quantity;
       document.getElementById('product-photo').classList.add('transparent')
-      document.getElementById('product-photo').src = oilHash[key]["src"]
+      image_switch(oilHash, product_src, key)
       document.getElementById('product-name').innerText = key
       let size = strength.split(" ")[0];
       hash = {"Lower": "500mg", "Medium": "1000mg", "Higher": "2000mg"}
       document.querySelector("[name=size]").value = hash[size]
-      // debugger
       document.querySelector("[name=tincture]").value = tincture
-
     }
   })
 })
