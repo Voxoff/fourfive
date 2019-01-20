@@ -43,11 +43,11 @@
   <div class="shopping-bag">
     <% if @cart %>
       <%= link_to cart_path(@cart), class: "navbar-item navbar-link" do %>
-        <%= image_tag "shopping-bag.png",  alt: "shopping-bag", size: "24x30" %>
+        <%= image_tag "shopping-bag.png", width: 24, height: 30, crop: :scale, quality: "auto:best", :fetch_format=>:auto, alt: "shopping-bag" %>
         <div class="link" id=<%= @cart.count < 10 ? "basket-count" : "basket-count-double-digit"%> ><%= @cart.count %></div>
       <% end %>
     <% else %>
-      <%= image_tag "shopping-bag.png",  alt: "shopping-bag", size: "24x30" %>
+      <%= image_tag "shopping-bag.png", width: 24, height: 30, crop: :scale, quality: "auto:best", :fetch_format=>:auto, alt: "shopping-bag"%>
     <% end %>
   </div>
 </div>
