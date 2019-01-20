@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @disable_stripe = @disable_top_margin = @alert_no_margin = true
     @user = current_or_guest_user
-    @product_groups = ProductGroup.all
+    @product_groups = ProductGroup.all.sort
     @cart_item = CartItem.new
     @reviews = Review.all.take(3)
   end
