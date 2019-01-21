@@ -3,8 +3,7 @@ class Cart < ApplicationRecord
   belongs_to :coupon, required: false
   has_many :cart_items, dependent: :destroy
   has_one :address, dependent: :destroy
-  has_one :coupon
-  # belongs_to :coupon, required: false
+
   mount_uploader :receipt, PhotoUploader
 
   validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
