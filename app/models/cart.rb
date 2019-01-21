@@ -1,9 +1,9 @@
 class Cart < ApplicationRecord
   belongs_to :user, required: false
+  belongs_to :coupon, required: false
   has_many :cart_items, dependent: :destroy
   has_one :address, dependent: :destroy
-  has_one :coupon
-  # belongs_to :coupon, required: false
+
   mount_uploader :receipt, PhotoUploader
 
   validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
@@ -15,8 +15,6 @@ class Cart < ApplicationRecord
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
   scope :fulfilled, -> { where(fulfillment: true) }
   scope :unfulfilled, -> { where(fulfillment: false, active: false)}
-
-
 
   def amount
     amount = cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
