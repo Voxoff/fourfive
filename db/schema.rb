@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_01_11_125152) do
 
   # These are extensions that must be enabled in order to support this database
@@ -76,10 +75,11 @@ ActiveRecord::Schema.define(version: 2019_01_11_125152) do
     t.string "code"
     t.boolean "active"
     t.bigint "cart_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_coupons_on_cart_id"
     t.integer "discount"
+    t.integer "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
