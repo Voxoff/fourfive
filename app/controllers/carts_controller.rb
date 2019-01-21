@@ -17,4 +17,18 @@ class CartsController < ApplicationController
     flash[:notice] = "You need to put items in your cart in order to buy them!"
     return redirect_to root_path
   end
+
+  def coupon
+    @coupon = Coupon.find_by(code: params[:cart][:coupon])
+    if params[:cart][:coupon].empty?
+      flash[:notice] = "Please enter a coupon code."
+      return redirect_to cart_path(@cart)
+    elsif @coupon.nil?
+      flash[:notice] = "There is no coupon with that code."
+      return redirect_to cart_path(@cart)
+    end
+    @cart.update(coupon: @coupon)
+    flash[:notice] = "That coupon has been added."
+    return redirect_to cart_path(@cart)
+  end
 end
