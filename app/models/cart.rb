@@ -20,6 +20,12 @@ class Cart < ApplicationRecord
     where(checked_out_at: weeks.week.ago..(weeks - 1).week.ago)
   end
 
+  def self.month_of(month)
+    month = DateTime.parse(month)
+    range = month..month.next_month
+    where(checked_out_at: range)
+  end
+
   def amount
     cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
   end
