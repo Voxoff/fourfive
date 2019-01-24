@@ -14,7 +14,7 @@ class Cart < ApplicationRecord
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
   scope :fulfilled, -> { where(fulfillment: true) }
   scope :unfulfilled, -> { where(fulfillment: false, active: false)}
-
+  scope :weeks_ago, ->(weeks_ago) { where('checked_out_at >= :weeks_ago', weeks_ago: weeks_ago.day.ago) }
 
 
   def amount

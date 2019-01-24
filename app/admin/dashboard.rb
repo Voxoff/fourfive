@@ -10,12 +10,25 @@ ActiveAdmin.register_page "Dashboard" do
           table do
             thead do
               tr do
+                th do
+                  "Date"
+                end
                 Product.order(:id).map(&:specific_name).each &method(:th)
               end
             end
             tbody do
+              # create a row for each week.
               tr do
-                (1..Product.count).to_a.each do |id|
+                (1..Product.count).to_a.each_with_index do |id, i|
+                  td do "2 weeks ago" end if i == 0
+                  td do
+                    cart_item.joins(:product).merge(Product.where(id: id)).merge(Cart.weeks_ago(2)).count
+                  end
+                end
+              end
+              tr do
+                (1..Product.count).to_a.each_with_index do |id, i|
+                  td do "Total sold" end if i == 0
                   td do
                     cart_item.joins(:product).merge(Product.where(id: id)).count
                   end
