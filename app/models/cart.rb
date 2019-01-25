@@ -26,8 +26,10 @@ class Cart < ApplicationRecord
     where(checked_out_at: range)
   end
 
-  def amount
-    cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
+  # to cope with SQL query efficieny
+  def amount(with_includes = true)
+    tmp = with_includes ? cart_items.includes(:product) : cart_items
+    tmp.map { |i| i.product.price * i.quantity }.reduce(:+)
   end
 
   def quantity
@@ -60,6 +62,4 @@ class Cart < ApplicationRecord
   def self.revenue
     orders.includes(cart_items: :product).map(&:cart_items).flatten.map { |i| i.product.price * i.quantity }.reduce(:+)
   end
-  # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
-  # But for guests there is just a hanging cart.
 end
