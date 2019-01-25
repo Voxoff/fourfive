@@ -134,8 +134,6 @@ ActiveAdmin.register Cart do
 
   # permit_params :user, :active, :created_at, :updated_at, :address_email
 
-
-
   csv force_quotes: true, column_names: true do
     column :address do |cart| cart.address.full_address if cart.address end
     column(:amount) do |cart| number_to_currency(cart.amount, unit: "£") end

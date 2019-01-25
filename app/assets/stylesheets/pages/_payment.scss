@@ -108,15 +108,6 @@ tfoot td {
   }
 }
 
-@media (max-width: 767px){
-  table {
-    margin: 24px 0;
-  }
-  .basket-header {
-    margin-top: -24px;
-  }
-}
-
 .cart-flex {
   display: flex;
   justify-content: space-around;
@@ -130,5 +121,23 @@ tfoot td {
   }
   button:active {
     color: rgb(245,220,0)
+  }
+}
+
+.coupon-box{
+  margin-left: 17px;
+}
+
+@media (max-width: 767px) {
+  table {
+    margin: 24px 0;
+  }
+
+  .basket-header {
+    margin-top: -24px;
+  }
+
+  .coupon-box {
+    margin-left: 8px;
   }
 }

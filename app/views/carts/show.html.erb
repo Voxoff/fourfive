@@ -64,7 +64,7 @@
       <div class="cart-actions">
         <div class="cart-actions-left">
           <%= simple_form_for @cart, url: coupon_carts_path, method: :post do |f| %>
-            <%= f.input :coupon, input_html: {value: f.object.coupon&.code }, required: true, placeholder: "Enter code..."%>
+            <%= f.input :coupon, input_html: { value: @coupon_code, class: "coupon-box" }, label_html: { class: "coupon-box" }, required: true, placeholder: "Enter code..." %>
             <%= f.submit "Add coupon", class: "simple-btn cart-button-margin" %>
           <% end %>
           <%#= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>

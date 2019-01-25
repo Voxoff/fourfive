@@ -17,7 +17,6 @@ class Cart < ApplicationRecord
   scope :unfulfilled, -> { where(fulfillment: false, active: false)}
   # scope :weeks_ago, ->(weeks_ago) { where(checked_out_at: weeks_ago.week.ago..(weeks_ago - 1).week.ago) }
 
-<<<<<<< HEAD
   def self.weeks_ago(weeks)
     where(checked_out_at: weeks.week.ago..(weeks - 1).week.ago)
   end
@@ -28,8 +27,6 @@ class Cart < ApplicationRecord
     where(checked_out_at: range)
   end
 
-=======
->>>>>>> AR
   def amount
     amount = cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
     coupon ? calc_discount(amount) : amount
