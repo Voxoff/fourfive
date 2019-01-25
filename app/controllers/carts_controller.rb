@@ -20,7 +20,7 @@ class CartsController < ApplicationController
   end
 
   def coupon
-    @coupon = Coupon.find_by(code: params[:cart][:coupon])
+    @coupon = Coupon.find_by(code: params[:cart][:coupon]&.upcase)
     if params[:cart][:coupon].empty?
       flash[:notice] = "Please enter a coupon code."
       return redirect_to cart_path(@cart)
