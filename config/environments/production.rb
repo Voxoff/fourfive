@@ -95,12 +95,17 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-  config.lograge.enabled = true
-  config.lograge.custom_options = lambda do |event|
-    exceptions = %w(controller action format id)
-    {
-      params: event.payload[:params].except(*exceptions)
-    }
+
+  if ENV['STAGING'].present?
+    # Normal logging
+  else
+    config.lograge.enabled = true
+    config.lograge.custom_options = lambda do |event|
+      exceptions = %w(controller action format id)
+      {
+        params: event.payload[:params].except(*exceptions)
+      }
+    end
   end
 
   # Do not dump schema after migrations.
