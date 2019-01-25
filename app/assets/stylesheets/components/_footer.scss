@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:24px; //50 for green add 20
+    margin-top:24px;
     a {
       color: grey;
       opacity: 0.6;
@@ -43,25 +43,6 @@
   }
 }
 
-  // .links{
-  //   display: flex;
-  //   color: black;
-  //   list-style: none;
-  //   justify-content: center;
-  //   padding-left: 0;
-  //   font-size: 12px;
-  //   > div{
-  //     padding: 7px;
-  //   }
-  //   a{
-  //     text-decoration: none;
-  //     color:black;
-  //     &:hover{
-  //       text-decoration: none;
-  //       color: #FFE000;
-  //     }
-  //   }
-  // }
 .copyright {
   color: $charcoal;
   display: flex;
@@ -79,7 +60,6 @@
 }
 
 .yellow-stripe{
-  // position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -88,7 +68,6 @@
 }
 
 .white-stripe{
-  // position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
