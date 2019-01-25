@@ -14,6 +14,7 @@ ActiveAdmin.register Coupon do
     column "Money spent on coupons" do |c|
       (c.carts.orders.map(&:amount).reduce(:+) * c.percent) unless c.carts.orders.empty?
     end
+    column :active
     # column "No. of carts (not all checked out)" do |coupon|
     #   coupon.carts.count
     # end
@@ -22,8 +23,8 @@ ActiveAdmin.register Coupon do
   form do |f|
     f.inputs "Member Details" do
       f.input :code
-      f.input :discount
-      f.input :active
+      f.input :discount, label: "Discount,  FORMAT: XX(%)"
+      f.input :active, label: "Active? (I.e. Live?)"
     end
     f.button :Submit
   end
