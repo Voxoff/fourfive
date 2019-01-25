@@ -11,7 +11,7 @@ ActiveAdmin.register Coupon do
     column "No. of orders" do |coupon|
       coupon.carts.orders.count
     end
-    column "Money spent on coupons" do |c|
+    column "Money spent/saved on coupons" do |c|
       (c.carts.orders.map(&:amount).reduce(:+) * c.percent) unless c.carts.orders.empty?
     end
     column :active
