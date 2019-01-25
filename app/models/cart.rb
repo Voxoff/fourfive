@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
   belongs_to :user, required: false
+  belongs_to :coupon, required: false
   has_many :cart_items, dependent: :destroy
   has_one :address, dependent: :destroy
 
@@ -16,6 +17,7 @@ class Cart < ApplicationRecord
   scope :unfulfilled, -> { where(fulfillment: false, active: false)}
   # scope :weeks_ago, ->(weeks_ago) { where(checked_out_at: weeks_ago.week.ago..(weeks_ago - 1).week.ago) }
 
+<<<<<<< HEAD
   def self.weeks_ago(weeks)
     where(checked_out_at: weeks.week.ago..(weeks - 1).week.ago)
   end
@@ -26,8 +28,11 @@ class Cart < ApplicationRecord
     where(checked_out_at: range)
   end
 
+=======
+>>>>>>> AR
   def amount
-    cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
+    amount = cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
+    coupon ? calc_discount(amount) : amount
   end
 
   def quantity
@@ -59,6 +64,10 @@ class Cart < ApplicationRecord
 
   def self.revenue
     orders.includes(cart_items: :product).map(&:cart_items).flatten.map { |i| i.product.price * i.quantity }.reduce(:+)
+  end
+
+  def calc_discount(amount)
+    amount * (1 - (coupon.discount * 0.01))
   end
   # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
   # But for guests there is just a hanging cart.

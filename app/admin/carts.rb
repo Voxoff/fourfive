@@ -20,7 +20,9 @@ ActiveAdmin.register Cart do
   end
 
 
-  config.sort_order = "checked_out_at_desc"
+  # config.sort_order = "checked_out_at_desc"
+  # config.sort_order = "updated_at_desc"
+  config.sort_order = "checked_out_at_asc"
   config.per_page = [30, 100, 200]
 
   # member_action :export do
@@ -93,6 +95,13 @@ ActiveAdmin.register Cart do
         cart.address.full_address
       else
         "No address has been added. (Payment not made)."
+      end
+    end
+    column :coupon do |cart|
+      if cart.coupon
+        cart.coupon.code
+      else
+        "No coupon used."
       end
     end
     column :email do |cart|

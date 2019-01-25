@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :products, only: [:show], param: :name
   resources :cart_items, only: [:show, :create, :destroy, :update]
   resources :carts, only: [:show] do
+    collection do
+      post 'coupon'
+    end
     resources :payments, only: [:new] do
       collection do
         post 'checkout' #this could just be create
