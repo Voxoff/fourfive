@@ -29,8 +29,9 @@ class Cart < ApplicationRecord
 
   # to cope with SQL query efficieny
   def amount(with_includes = true)
-    tmp = with_includes ? cart_items.includes(:product) : cart_items
-    tmp.map { |i| i.product.price * i.quantity }.reduce(:+)
+    active_record_relation = with_includes ? cart_items.includes(:product) : cart_items
+    amount = active_record_relation.map { |i| i.product.price * i.quantity }.reduce(:+)
+    coupon ? calc_discount(amount) : amount
   end
 
   # def amount
@@ -69,9 +70,9 @@ class Cart < ApplicationRecord
     orders.includes(cart_items: :product).map(&:cart_items).flatten.map { |i| i.product.price * i.quantity }.reduce(:+)
   end
 
+  private
+
   def calc_discount(amount)
     amount * (1 - (coupon.discount * 0.01))
   end
-  # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
-  # But for guests there is just a hanging cart.
 end
