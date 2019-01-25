@@ -8,4 +8,12 @@ class Coupon < ApplicationRecord
   def percent
     discount.to_f / 100
   end
+
+  def amount
+    carts.orders.map(&:amount).reduce(:+)&.*(percent) || "£0"
+  end
+
+  def used?
+    carts.orders.empty?
+  end
 end
