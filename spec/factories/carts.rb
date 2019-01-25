@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :cart do
-    coupon { "Team45"}
+    # coupon { "Team45"}
     # cart_item
 
       after(:create) do |cart|

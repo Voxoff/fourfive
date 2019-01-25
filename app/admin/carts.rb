@@ -19,8 +19,7 @@ ActiveAdmin.register Cart do
     end
   end
 
-
-  config.sort_order = "checked_out_at_desc"
+  config.sort_order = "checked_out_at_asc"
   config.per_page = [30, 100, 200]
 
   # member_action :export do
@@ -95,6 +94,13 @@ ActiveAdmin.register Cart do
         "No address has been added. (Payment not made)."
       end
     end
+    column :coupon do |cart|
+      if cart.coupon
+        cart.coupon.code
+      else
+        "No coupon used."
+      end
+    end
     column :email do |cart|
       cart.address&.email
     end
@@ -124,8 +130,6 @@ ActiveAdmin.register Cart do
   end
 
   # permit_params :user, :active, :created_at, :updated_at, :address_email
-
-
 
   csv force_quotes: true, column_names: true do
     column :address do |cart| cart.address.full_address if cart.address end

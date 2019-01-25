@@ -2,6 +2,7 @@
   height: 100%;
   text-decoration: none;
   text-align: center;
+  margin-bottom: 10px;
 
   .image-background{
     display: inline-block;
@@ -58,9 +59,6 @@
   }
 }
 
-
-
-
 .thin-grey-line{
   height: 2px;
   background-color: $light-grey;
@@ -99,67 +97,6 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
-// .review-card{
-
-// }
-
-// .product-card {
-//   height: 100%;
-//   position: relative;
-//   background-color: white;
-//   padding: 5px;
-//   text-decoration: none;
-//   margin-bottom: 40px;
-
-//   // .image-div {
-//   //   width: 100px;
-//   // }
-//   // img {
-//   //   display: block;
-//   //   width: 100%;
-//   //   height: auto;
-//   // }
-
-//   &h4 {
-//     position: absolute;
-//   }
-//   &:hover {
-//     -webkit-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
-//     -moz-box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
-//     box-shadow: 4px 3px 25px 2px rgba(0,0,0,0.6);
-//   }
-//   a {
-//     text-decoration: none;
-//     color:black;
-
-//     &:hover {
-//       text-decoration: none;
-//       color:black;
-//     }
-//   }
-// }
-
-// .bar {
-//   margin-top: 10px;
-//   border-top: 1px solid black;
-
-//   .top-row {
-//     display: flex;
-//     justify-content: space-between;
-//     h4:hover {
-//       text-decoration: none;
-//     }
-//   }
-// }
 
 
 h4:hover {
