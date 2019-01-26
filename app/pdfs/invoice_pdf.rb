@@ -19,6 +19,7 @@ class InvoicePdf < Prawn::Document
         "#{item.quantity} ",
         "#{item.line_cost} "]
     end
+
     @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive,"], ["George & Dom"]]
     @invoice_services_totals_data = [
       ["Total", "£#{@amount}"],
@@ -32,7 +33,7 @@ class InvoicePdf < Prawn::Document
 
   def icon_map(brands)
     brands.map! do |brand|
-      "<icon size='20' color='AAAAAA'>fab-#{brand}</icon>"
+      "<link href='http://www.#{brand}.com/fourfivecbd' target='_blank'><icon size='20' color='AAAAAA'>fab-#{brand}</icon></link>"
     end
     brands.join("    ")
   end
@@ -140,6 +141,8 @@ class InvoicePdf < Prawn::Document
       style(row(0..-1).columns(0..-1), :padding => [10, 0, 10, 0], :borders => [])
       style(row(0).columns(0), :font_style => :bold)
     end
+
+    move_down 10
 
     require 'prawn/icon'
     icon @icons, inline_format: true
