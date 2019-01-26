@@ -7,11 +7,6 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Stock Sold" do
           render 'admin/stock_table'
         end
-        panel "Useful Links" do
-          div do
-            link_to("All current orders", admin_carts_path)
-          end
-        end
       end
 
       column do
@@ -29,10 +24,9 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Orders by day" do
+        panel "Useful Links" do
           div do
-            @metric = Cart.orders.group_by_day(:checked_out_at).count
-            render partial: 'charts/orders', locals: { metric: @metric }
+            link_to("All current orders", admin_carts_path)
           end
         end
       end
