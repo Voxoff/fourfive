@@ -111,5 +111,4 @@ class PaymentsController < ApplicationController
       flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly."
     end
   end
-
 end
