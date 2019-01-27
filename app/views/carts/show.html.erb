@@ -31,7 +31,6 @@
                   <%= button_to cart_item_path(item), method: :patch, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
                     <i class="fas fa-plus"></i>
                   <% end %>
-
                 </div>
               </td>
               <td class="align-right"><%= item.line_cost %></td>
@@ -66,7 +65,6 @@
             <%= f.input :coupon, input_html: { value: @coupon_code, class: "coupon-box" }, label_html: { class: "coupon-box" }, required: true, placeholder: "Enter code..." %>
             <%= f.submit "Add coupon", class: "simple-btn cart-button-margin" %>
           <% end %>
-          <%#= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
         </div>
         <div class="cart-actions-right">
           <%= link_to "checkout", new_cart_payment_path(@cart), style: "color: white; background-color: rgb(40,40,40)", class: "simple-btn no-hover cart-button-margin" %>
