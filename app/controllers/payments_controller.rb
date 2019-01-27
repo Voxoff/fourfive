@@ -11,6 +11,7 @@ class PaymentsController < ApplicationController
     user = current_or_guest_user
     check_empty_cart
     @ip = request.remote_ip
+    gdpr
     @address = @cart.build_address(address_params)
     unless @address.save
       flash[:notice] = "Address was invalid"
@@ -38,7 +39,17 @@ class PaymentsController < ApplicationController
   private
 
   def address_params
-    params.require(:checkout).permit(:first_line, :second_line, :third_line, :salutation, :country, :email, :phone_number, :postcode, :city, :first_name, :last_name)
+    params.require(:checkout).permit(:first_line, :second_line, :third_line, :salutation, :country, :email,
+                                     :phone_number, :postcode, :city, :first_name, :last_name
+                                    )
+  end
+
+  def gdpr
+    if params[:checkout][:terms] == "0"
+      flash[:notice] = "You must accept the terms and conditions."
+      return redirect_to new_cart_payment_path(@cart)
+    end
+    @cart.agree
   end
 
   def check_empty_cart

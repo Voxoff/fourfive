@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_125152) do
+ActiveRecord::Schema.define(version: 2019_01_27_153058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_125152) do
     t.datetime "checked_out_at"
     t.string "receipt"
     t.bigint "coupon_id"
+    t.boolean "terms"
     t.index ["coupon_id"], name: "index_carts_on_coupon_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
