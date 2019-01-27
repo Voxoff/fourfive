@@ -7,6 +7,7 @@ class Cart < ApplicationRecord
   mount_uploader :receipt, PhotoUploader
 
   validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
+  validates :terms, acceptance: true
 
   scope :orders, -> { where(active: false) }
   scope :not_orders, -> { where(active: true)}
@@ -34,10 +35,9 @@ class Cart < ApplicationRecord
     coupon ? calc_discount(amount) : amount
   end
 
-  # def amount
-  #   amount = cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
-  #   coupon ? calc_discount(amount) : amount
-  # end
+  def agree
+    update(terms: true)
+  end
 
   def quantity
     cart_items.map(&:quantity).reduce(:+)

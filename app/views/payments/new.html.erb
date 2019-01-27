@@ -24,7 +24,7 @@
 
           <div class="terms">
             <p><strong>Terms and conditions</strong></p>
-            <span>I agree:</span><input type="checkbox" required id="terms" style="margin-left: 10px;"><br>
+              <%= f.input :terms, as: :boolean, required: true, label: "I agree", style: "margin-left: 10px;" %>
           </div>
         </div>
       </div>
