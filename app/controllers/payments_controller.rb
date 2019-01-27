@@ -58,7 +58,6 @@ class PaymentsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path)
-
     req.set_form_data(
       'authentication.userId' => ENV['ZION_USER_ID'].to_s,
       'authentication.password' => ENV['ZION_PWD'].to_s,
@@ -66,15 +65,15 @@ class PaymentsController < ApplicationController
       'amount' => @amount.to_f.to_s,
       'currency' => 'GBP',
       'paymentType' => 'DB',
-      'customer.givenName'=> @cart.address.first_name.to_s,
-      'customer.surname'=> @cart.address.last_name.to_s,
+      'customer.givenName'=> @address.first_name.to_s,
+      'customer.surname'=> @address.last_name.to_s,
       'customer.ip'=> @ip,
-      'customer.phone'=> @cart.address.phone_number.to_s,
+      'customer.phone'=> @address.phone_number.to_s,
       'customer.email'=> params["checkout"]["email"],
-      'billing.street1' => @cart.address.first_line.to_s,
-      'billing.street2' => @cart.address.second_line.to_s,
-      'billing.city' => @cart.address.city.to_s,
-      'billing.postcode' => @cart.address.postcode.to_s,
+      'billing.street1' => @address.first_line.to_s,
+      'billing.street2' => @address.second_line.to_s,
+      'billing.city' => @address.city.to_s,
+      'billing.postcode' => @address.postcode.to_s,
       'billing.country' => "GB"
     )
     res = http.request(req)
