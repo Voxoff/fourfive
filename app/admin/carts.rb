@@ -22,21 +22,7 @@ ActiveAdmin.register Cart do
   config.sort_order = "checked_out_at_asc"
   config.per_page = [30, 100, 200]
 
-  # member_action :export do
-  #   cart = Cart.find(params[:id])
-  #   link_to "Export to CSV", export_admin_cart_path(cart), method: :get, format: "csv"
-  # end
-
   member_action :print do
-    # if resource.receipt && resource.order_id
-    #   # return send_data resource.receipt, filename: "receipt_#{resource.order_id}.pdf"
-    #   # return resource.receipt.url
-    #   data = open(resource.receipt.url).read
-    #   return send_data(data,
-    #     stream: 'true',
-    #     disposition: 'attachment',
-    #     :type => 'application/pdf')
-    # end
     amount = resource.amount
     address = resource.address
     cart_items = resource.cart_items

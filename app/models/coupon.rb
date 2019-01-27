@@ -11,10 +11,18 @@ class Coupon < ApplicationRecord
   end
 
   def amount
-    carts.orders.map(&:amount).reduce(:+)&.*(percent) || "£0"
+    carts.orders.map(&:amount).reduce(:+)&.*(percent) || "0"
   end
 
   def used?
-    carts.orders.empty?
+    !carts.orders.empty?
+  end
+
+  def activate
+    update(active: true)
+  end
+
+  def deactivate
+    update(active: false)
   end
 end
