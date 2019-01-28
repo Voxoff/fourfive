@@ -1,11 +1,13 @@
 class Cart < ApplicationRecord
   belongs_to :user, required: false
+  belongs_to :coupon, required: false
   has_many :cart_items, dependent: :destroy
   has_one :address, dependent: :destroy
 
   mount_uploader :receipt, PhotoUploader
 
   validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
+  validates :terms, acceptance: true
 
   scope :orders, -> { where(active: false) }
   scope :not_orders, -> { where(active: true)}
@@ -26,8 +28,15 @@ class Cart < ApplicationRecord
     where(checked_out_at: range)
   end
 
-  def amount
-    cart_items.includes(:product).map { |i| i.product.price * i.quantity }.reduce(:+)
+  # to cope with SQL query efficieny
+  def amount(with_includes = true)
+    active_record_relation = with_includes ? cart_items.includes(:product) : cart_items
+    amount = active_record_relation.map { |i| i.product.price * i.quantity }.reduce(:+)
+    coupon ? calc_discount(amount) : amount
+  end
+
+  def agree
+    update(terms: true)
   end
 
   def quantity
@@ -60,6 +69,10 @@ class Cart < ApplicationRecord
   def self.revenue
     orders.includes(cart_items: :product).map(&:cart_items).flatten.map { |i| i.product.price * i.quantity }.reduce(:+)
   end
-  # at the moment if you delete a user, the cart will update to have no user. This is important for real users that delete themselves.
-  # But for guests there is just a hanging cart.
+
+  private
+
+  def calc_discount(amount)
+    amount * (1 - (coupon.discount * 0.01))
+  end
 end

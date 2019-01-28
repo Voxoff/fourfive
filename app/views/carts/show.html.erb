@@ -27,12 +27,10 @@
                 <%= button_to cart_item_path(item), method: :patch, params: {quantity: -1, cart_id: @cart.id, product_id: item.product.id} do %>
                   <i class="fas fa-minus"></i>
                 <% end %>
-
                   <%= item.quantity %>
                   <%= button_to cart_item_path(item), method: :patch, params: {quantity: 1, cart_id: @cart.id, product_id: item.product.id} do %>
                     <i class="fas fa-plus"></i>
                   <% end %>
-
                 </div>
               </td>
               <td class="align-right"><%= item.line_cost %></td>
@@ -41,6 +39,16 @@
           <% end %>
         </tbody>
         <tfoot>
+          <% if @cart.coupon %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="ft-border-bold">Coupon</td>
+              <td class="ft-border-bold"><%= @cart.coupon.discount.to_s + " %" %></td>
+              <td class="ft-border-bold"><%= @cart.amount %></td>
+            </tr>
+          <% end %>
           <tr>
             <td></td>
             <td></td>
@@ -53,7 +61,10 @@
       </table>
       <div class="cart-actions">
         <div class="cart-actions-left">
-          <%= link_to "continue shopping", root_path, class: "simple-btn cart-button-margin"%>
+          <%= simple_form_for @cart, url: coupon_carts_path, method: :post do |f| %>
+            <%= f.input :coupon, input_html: { value: @coupon_code, class: "coupon-box" }, label_html: { class: "coupon-box" }, required: true, placeholder: "Enter code..." %>
+            <%= f.submit "Add coupon", class: "simple-btn cart-button-margin" %>
+          <% end %>
         </div>
         <div class="cart-actions-right">
           <%= link_to "checkout", new_cart_payment_path(@cart), style: "color: white; background-color: rgb(40,40,40)", class: "simple-btn no-hover cart-button-margin" %>

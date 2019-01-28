@@ -10,8 +10,8 @@ class PaymentsController < ApplicationController
     @cart_items = @cart.cart_items
     user = current_or_guest_user
     check_empty_cart
-    verify_coupon(params[:coupon])
     @ip = request.remote_ip
+    gdpr
     @address = @cart.build_address(address_params)
     unless @address.save
       flash[:notice] = "Address was invalid"
@@ -39,7 +39,17 @@ class PaymentsController < ApplicationController
   private
 
   def address_params
-    params.require(:checkout).permit(:first_line, :second_line, :third_line, :salutation, :country, :email, :phone_number, :postcode, :city, :first_name, :last_name)
+    params.require(:checkout).permit(:first_line, :second_line, :third_line, :salutation, :country, :email,
+                                     :phone_number, :postcode, :city, :first_name, :last_name
+                                    )
+  end
+
+  def gdpr
+    if params[:checkout][:terms] == "0"
+      flash[:notice] = "You must accept the terms and conditions."
+      return redirect_to new_cart_payment_path(@cart)
+    end
+    @cart.agree
   end
 
   def check_empty_cart
@@ -47,24 +57,6 @@ class PaymentsController < ApplicationController
 
     flash[:notice] = "You need to put items in your cart in order to buy them!"
     return redirect_to root_path
-  end
-
-  def coupons
-    [ENV['COUPON'].to_s]
-  end
-
-  def verify_coupon(coupon)
-    if coupon.present?
-      require 'coupon'
-      coupons = Coupon.coupons
-      if coupons.include?(coupon)
-        flash[:notice] = "Coupon successfully applied."
-        @amount = @amount.to_f * 0.9
-      elsif !coupons.include?(coupon)
-        flash[:notice] = "That coupon code did not work"
-        return redirect_to new_cart_payment_path
-      end
-    end
   end
 
   def zion
@@ -77,7 +69,6 @@ class PaymentsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path)
-
     req.set_form_data(
       'authentication.userId' => ENV['ZION_USER_ID'].to_s,
       'authentication.password' => ENV['ZION_PWD'].to_s,
@@ -85,15 +76,15 @@ class PaymentsController < ApplicationController
       'amount' => @amount.to_f.to_s,
       'currency' => 'GBP',
       'paymentType' => 'DB',
-      'customer.givenName'=> @cart.address.first_name.to_s,
-      'customer.surname'=> @cart.address.last_name.to_s,
+      'customer.givenName'=> @address.first_name.to_s,
+      'customer.surname'=> @address.last_name.to_s,
       'customer.ip'=> @ip,
-      'customer.phone'=> @cart.address.phone_number.to_s,
+      'customer.phone'=> @address.phone_number.to_s,
       'customer.email'=> params["checkout"]["email"],
-      'billing.street1' => @cart.address.first_line.to_s,
-      'billing.street2' => @cart.address.second_line.to_s,
-      'billing.city' => @cart.address.city.to_s,
-      'billing.postcode' => @cart.address.postcode.to_s,
+      'billing.street1' => @address.first_line.to_s,
+      'billing.street2' => @address.second_line.to_s,
+      'billing.city' => @address.city.to_s,
+      'billing.postcode' => @address.postcode.to_s,
       'billing.country' => "GB"
     )
     res = http.request(req)
@@ -130,5 +121,4 @@ class PaymentsController < ApplicationController
       flash[:notice] = "Payment rejected. It looks like you filled in your details incorrectly."
     end
   end
-
 end

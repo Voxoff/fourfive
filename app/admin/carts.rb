@@ -19,25 +19,10 @@ ActiveAdmin.register Cart do
     end
   end
 
-
-  config.sort_order = "checked_out_at_desc"
+  config.sort_order = "checked_out_at_asc"
   config.per_page = [30, 100, 200]
 
-  # member_action :export do
-  #   cart = Cart.find(params[:id])
-  #   link_to "Export to CSV", export_admin_cart_path(cart), method: :get, format: "csv"
-  # end
-
   member_action :print do
-    # if resource.receipt && resource.order_id
-    #   # return send_data resource.receipt, filename: "receipt_#{resource.order_id}.pdf"
-    #   # return resource.receipt.url
-    #   data = open(resource.receipt.url).read
-    #   return send_data(data,
-    #     stream: 'true',
-    #     disposition: 'attachment',
-    #     :type => 'application/pdf')
-    # end
     amount = resource.amount
     address = resource.address
     cart_items = resource.cart_items
@@ -76,7 +61,6 @@ ActiveAdmin.register Cart do
       else
         link_to "#{cart.user.id}", admin_user_path(cart.user)
       end
-      # item "Guest", admin_user_path if user.nil?
     end
     column :name do |cart|
       cart.address&.full_name
@@ -84,7 +68,6 @@ ActiveAdmin.register Cart do
     column :cart_items do |cart|
       cart.basket
     end
-    # column "Order?", :active do |cart| !cart.active? end
     column "Date of order", :updated_at do |cart|
       cart.checked_out_at ? cart.checked_out_at.strftime("%a, %e %b %H:%M") : cart.updated_at.strftime("%a, %e %b %H:%M")
     end
@@ -93,6 +76,13 @@ ActiveAdmin.register Cart do
         cart.address.full_address
       else
         "No address has been added. (Payment not made)."
+      end
+    end
+    column :coupon do |cart|
+      if cart.coupon
+        cart.coupon.code
+      else
+        "No coupon used."
       end
     end
     column :email do |cart|
@@ -124,8 +114,6 @@ ActiveAdmin.register Cart do
   end
 
   # permit_params :user, :active, :created_at, :updated_at, :address_email
-
-
 
   csv force_quotes: true, column_names: true do
     column :address do |cart| cart.address.full_address if cart.address end

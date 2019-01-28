@@ -10,10 +10,11 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Last 10 Orders" do
-          table_for Cart.includes(:address, cart_items: :product).orders.last(10).reverse do
+        panel "Last 30 Orders" do
+          table_for Cart.includes(:address, cart_items: :product).orders.last(30).reverse do
             column("Customer name") { |cart| link_to(cart.address&.full_name, admin_cart_path(cart)) }
-            column("Total") { |cart| number_to_currency(cart.amount, unit: "£") }
+            # to make sure SQL is efficient
+            column("Total") { |cart| number_to_currency(cart.amount(false), unit: "£") }
             column("Created at") {|c| c.checked_out_at ? c.checked_out_at.strftime("%A, %b %d %H:%M") : c.updated_at.strftime("%A, %b %d %H:%M") }
             column("Basket", &:basket)
           end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_211148) do
+ActiveRecord::Schema.define(version: 2019_01_27_153058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2019_01_10_211148) do
 
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "coupon"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,16 +66,18 @@ ActiveRecord::Schema.define(version: 2019_01_10_211148) do
     t.boolean "fulfillment", default: false
     t.datetime "checked_out_at"
     t.string "receipt"
+    t.bigint "coupon_id"
+    t.boolean "terms"
+    t.index ["coupon_id"], name: "index_carts_on_coupon_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "coupons", force: :cascade do |t|
     t.string "code"
     t.boolean "active"
-    t.bigint "cart_id"
+    t.integer "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_coupons_on_cart_id"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -168,8 +169,8 @@ ActiveRecord::Schema.define(version: 2019_01_10_211148) do
   add_foreign_key "addresses", "carts"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "carts", "coupons"
   add_foreign_key "carts", "users"
-  add_foreign_key "coupons", "carts"
   add_foreign_key "products", "product_groups"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
