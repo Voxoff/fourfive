@@ -10,9 +10,13 @@
   height: 44px;
 }
 
-.all-btn-container button{
+.all-btn-container {
+  display: flex;
+  justify-content: flex-start;
   // Mobile views reacts badly with no border on buttons
-  background-color: white;
+  button{
+    background-color: white;
+  }
 }
 .social-button {
     background-position: 25px 0px;
@@ -68,17 +72,19 @@
 
 .bigger{
   width: 155px !important;
-  margin-top: 1px;
+  margin-left: 1em;
 }
 
 .button-container{
   border: 1px $charcoal solid;
   height:40px;
-  display: inline-flex;
+  width: min-content;
+  // display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  .master-quantity{
+
+  // .button-part-container{
     display: flex;
     p{
       margin-bottom: 0px;
@@ -90,7 +96,7 @@
     #quantity{
       margin: 0 8px;
     }
-  }
+  // }
 
   .add-to-cart{
     font-size: 13px;
@@ -103,6 +109,7 @@
 
   p#pad-right{
       padding: 0px 5px 0px 0px;
+      border-right: 1px solid $charcoal;
   }
 
   p#price{
