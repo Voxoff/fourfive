@@ -33,10 +33,14 @@
   li{
     padding: 8px;
   }
-  a{
+}
+
+.link-color{
+  a {
     text-decoration: none;
-    color:black;
-    &:hover{
+    color: black;
+
+    &:hover {
       text-decoration: none;
       color: #FFE000;
     }

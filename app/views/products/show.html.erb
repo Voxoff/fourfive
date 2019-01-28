@@ -20,7 +20,8 @@
           <span>
             <div class="product-show-info">
               <div class="text lighter" style="margin-bottom:25px; font-size: 15px">
-                <p><%= @product.product_group.description %></p>
+              <%# should probs monkey patch string for this. %>
+                <p><%=raw @product.product_group.description.gsub("fourfive", "<span style='font-weight: bold'>fourfive</span>") %></p>
                 <% if @product.oil? %>
                   <p>Size: 30ml</p>
                 <% elsif @product.capsules? %>
@@ -72,7 +73,7 @@
       <div class="col-sm-offset-1 col-xs-12 col-sm-5">
         <h3 style="margin-top: 0px;">What is it?</h3>
         <p><%= @product.product_group.subtitle %></p>
-        <h3>How to use it?</h3>
+        <h3>How to use it</h3>
         <% @product.how_to_use_text do |para| %>
           <p><%= para %></p>
         <% end %>

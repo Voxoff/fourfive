@@ -206,17 +206,6 @@
 </div>
 
 <%= content_for :after_js do %>
-<script type="text/javascript">
-  function boldString(str, find){
-      var re = new RegExp(find, 'g');
-      return str.replace(re, '<b>'+find+'</b>');
-  }
-  let strings = document.querySelectorAll('.review-more-info')
-  strings.forEach((i) => {
-    res = boldString(i.innerHTML, "fourfive")
-    i.innerHTML = res
-  })
-</script>
-
+  <%= javascript_pack_tag "bold.js" %>
 <% end %>
 
