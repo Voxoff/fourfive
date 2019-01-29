@@ -1,8 +1,14 @@
 .accordion-box{
   margin-top: 0;
   margin-bottom: 3px;
-}
+  .btn-link{
+    color: $charcoal;
+  }
 
+  :focus, :active, :active:focus{
+    outline-color: white;
+  }
+}
 
 .card-accordion {
   position: relative;
@@ -37,3 +43,4 @@
 .btn-link:hover, .btn-link:focus{
   text-decoration: none;
 }
+

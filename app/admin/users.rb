@@ -1,8 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :first_name, :second_name, :admin
 
-  # filter :email
-  # filter :full_name
   menu priority: 4
 
   index do
@@ -22,7 +20,6 @@ ActiveAdmin.register User do
         column("Order", sortable: :id) do |cart|
           link_to "Order", admin_cart_path(cart)
         end
-        # column("State") { |cart| status_tag(cart.state) }
         column("Date", sortable: :updated_at) do |cart|
           pretty_format(cart.updated_at)
         end

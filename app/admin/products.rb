@@ -4,7 +4,7 @@ controller do
     super.includes :product_group
   end
 end
-menu priority: 3
+  menu priority: 3
 
   permit_params :name, :price, :availability, :description, :strength
 end

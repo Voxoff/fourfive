@@ -79,24 +79,19 @@
   border: 1px $charcoal solid;
   height:40px;
   width: min-content;
-  // display: inline-flex;
   align-items: center;
   justify-content: center;
+  display: flex;
+  p{
+    margin-bottom: 0px;
+  }
+  .cart-button{
+    margin: -3px 0px;
+  }
 
-
-  // .button-part-container{
-    display: flex;
-    p{
-      margin-bottom: 0px;
-    }
-    .cart-button{
-      margin: -3px 0px;
-    }
-
-    #quantity{
-      margin: 0 8px;
-    }
-  // }
+  #quantity{
+    margin: 0 8px;
+  }
 
   .add-to-cart{
     font-size: 13px;
@@ -128,19 +123,9 @@
 }
 
   .no-button{
-      border: none;
-      outline: none;
+    border: none;
+    outline: none;
   }
-
-.accordion-box{
-  .btn-link{
-    color: $charcoal;
-  }
-
-  :focus, :active, :active:focus{
-    outline-color: white;
-  }
-}
 
 .yellow-border-hover{
   &:hover{
