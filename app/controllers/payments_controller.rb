@@ -33,7 +33,7 @@ class PaymentsController < ApplicationController
       PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
       @cart = @cart.checkout
     elsif code.match?(/^(000\.200)/)
-      PaymentMailer.email_mike(@cart.id).deliver_later
+      PaymentMailer.alert_mike(@cart.id).deliver_later
       # @cart = @cart.checkout
     end
     redirect_to root_path
