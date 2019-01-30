@@ -21,9 +21,8 @@
           <%= f.input :city, required: true, label: "City" %>
           <%= f.input :country, collection: @countries, selected: @countries.first %>
           <%= f.input :postcode, required: false, label: "Postcode" %>
-
           <div class="terms">
-            <div class="link-color"><p><%= link_to "Terms and Conditions", terms_and_conditions_path, class: "navbar-hd-item navbar-hd-link" %></p></div>
+            <div class="link-color"><p><%= link_to "Terms and Conditions", terms_and_conditions_path, target: "_blank", class: "navbar-hd-item navbar-hd-link" %></p></div>
             <%= f.input :terms, as: :boolean, required: true, label: "I agree", style: "margin-left: 10px;" %>
           </div>
         </div>
