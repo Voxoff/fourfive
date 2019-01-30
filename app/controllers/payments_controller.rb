@@ -36,7 +36,6 @@ class PaymentsController < ApplicationController
       PaymentMailer.email_mike(@cart.id).deliver_later
       # @cart = @cart.checkout
     end
-    end
     redirect_to root_path
   end
 
