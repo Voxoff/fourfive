@@ -54,7 +54,7 @@
             <%= link_to product_path(group.products.first.name) do %>
             <% end %>
             <%= cl_image_tag group.photo, alt: group.products.first.readable_name, class: "default-photo", transformation: { quality: "auto:best",  width: 225, height: 300, crop: :scale, fetch_format: :auto } if group.photo_url %>
-            <%= image_tag group.interactive_photo_slug, alt: "Interactive", width: 225, height: 301, crop: :scale, quality: :auto, fetch_format: :auto, class: "interactive-photo" %>
+            <%= image_tag group.interactive_photo_slug, alt: "Interactive", width: 225, height: 300, crop: :scale, quality: :auto, fetch_format: :auto, class: "interactive-photo" %>
           </div>
           <div class="product-info">
               <%= link_to product_path(group.products.first.name), class: "yellow-hover" do %>
