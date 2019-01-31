@@ -22,7 +22,6 @@ class PaymentMailer < ApplicationMailer
 
   def alert_mike(cart_id)
     @cart = Cart.find(cart_id)
-    @name = @cart.address&.full_name
     if Rails.env.development?
       mail(to: "guy@fourfivecbd.co.uk", subject: "Order")
     else
