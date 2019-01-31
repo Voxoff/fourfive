@@ -1,4 +1,4 @@
-<%= button_to cart_items_path, params: { quantity: q, size: size, tincture: tincture }, id: "buy-with-dropdown", class: "flex  add-to-cart no-button" do %>
+<%= button_to cart_items_path, params: { quantity: q, size: size, tincture: tincture }, id: "buy-with-dropdown", class: "simple-btn" do %>
   <p id="pad-right">Buy now</p>
   <p id="pound">£</p>
   <p id="price"><%= humanized_money price %></p>
