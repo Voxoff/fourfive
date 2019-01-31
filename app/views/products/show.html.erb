@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="row-reverse">
     <div class="more-info">
       <div class="col-sm-offset-1 col-xs-12 col-sm-5">
         <h3 style="margin-top: 0px;">What is it?</h3>
@@ -73,9 +73,11 @@
       <% if @product.oil? %>
         <div class="col-xs-12 col-sm-5">
           <!-- Button trigger modal -->
-          <a id="oil-chart-btn" data-toggle="modal" data-target="#exampleModalCenter">
-            How much cbd is in each dose?
-          </a>
+          <div id="oil-chart-btn">
+            <a data-toggle="modal" data-target="#exampleModalCenter">
+              How much cbd is in each dose?
+            </a>
+          </div>
         </div>
       <% end %>
     </div>
