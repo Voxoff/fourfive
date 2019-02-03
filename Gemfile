@@ -38,7 +38,7 @@ gem 'sentry-raven'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
-# gem 'xeroizer'
+gem 'xeroizer'
 
 gem 'prawn'
 gem 'prawn-table'
