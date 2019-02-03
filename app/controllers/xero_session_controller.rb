@@ -2,7 +2,7 @@ class XeroSessionController < ApplicationController
   before_action :get_xero_client
 
   def new
-    request_token = @xero_client.request_token(:oauth_callback => 'http://yourapp.com/xero_session/create')
+    request_token = @xero_client.request_token(:oauth_callback => 'https://www.fourfivecbd.co.uk')
     session[:request_token] = request_token.token
     session[:request_secret] = request_token.secret
 
@@ -30,7 +30,7 @@ class XeroSessionController < ApplicationController
   private
 
   def get_xero_client
-    @xero_client = Xeroizer::PublicApplication.new(OAUTH_CONSUMER_KEY, OAUTH_CONSUMER_SECRET)
+    @xero_client = Xeroizer::PublicApplication.new(ENV["OAUTH_CONSUMER_KEY"], ENV["OAUTH_CONSUMER_SECRET"])
 
     # Add AccessToken if authorised previously.
     if session[:xero_auth]

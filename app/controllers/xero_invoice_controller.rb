@@ -1,5 +1,9 @@
 class XeroInvoiceController < ApplicationController
   def self.generate(cart)
+    xero = XeroSessionController.new
+    binding.pry
+    xero.new
+    xero.create
     invoice = create
     cart.cart_items.each do |cart_item|
       add_item(invoice, cart_item)
@@ -8,10 +12,7 @@ class XeroInvoiceController < ApplicationController
     # authorise the invoice
     invoice.approve!
 
-    invoice.save
-
-    p invoice
-    p xero.Invoice.find(invoice.id)
+    invoice.save!
   end
 
   # new invoice
@@ -20,7 +21,7 @@ class XeroInvoiceController < ApplicationController
     xero.authorize_from_access(session[:xero_auth][:access_token], session[:xero_auth][:access_key])
     invoice = xero.Invoice.build(
       :type => "ACCREC",
-      # :contact => contact,
+      :contact => contact(xero),
       :date => DateTime.now
     )
   end
@@ -30,5 +31,9 @@ class XeroInvoiceController < ApplicationController
       :unit_amount => cart_item.product.price_cents,
       :quantity => cart_item.quantity
     )
+  end
+
+  def contact(xero)
+    xero.Contact.build(name: "Sam")
   end
 end
