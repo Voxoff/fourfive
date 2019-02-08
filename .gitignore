@@ -17,3 +17,4 @@ yarn-error.log
 app/certs
 *.pdf
 /test
+email-database.csv
