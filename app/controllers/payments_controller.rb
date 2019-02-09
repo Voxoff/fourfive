@@ -30,12 +30,46 @@ class PaymentsController < ApplicationController
     code = payments["result"]["code"]
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
-      PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
-      @cart = @cart.checkout
+      # PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
+      redirect_to new_xero_session_path
     elsif code.match?(/^(000\.200)/)
-      PaymentMailer.alert_mike(@cart.id).deliver_later
+      # PaymentMailer.alert_mike(@cart.id).deliver_later
       # @cart = @cart.checkout
     end
+  end
+
+  def invoice
+    xero = Xeroizer::PublicApplication.new(ENV["OAUTH_CONSUMER_KEY"], ENV["OAUTH_CONSUMER_SECRET"])
+    xero.authorize_from_access(
+      session[:xero_auth]["access_token"],
+      session[:xero_auth]["access_key"]
+    )
+
+    contact = xero.Contact.build(
+      :name => "x",
+      :first_name => @cart.address.first_name,
+      :last_name => @cart.address.last_name)
+    contact.add_address(
+      :type => "DEFAULT",
+      :line1 => @cart.address.first_line,
+      :line2 => @cart.address.second_line,
+      :line3 => @cart.address.third_line,
+      :city => @cart.address.city,
+      # :postcode => @cart.address.postcode,
+      # :country => @cart.address.country
+    )
+    contact.add_phone(:number => @cart.address.phone_number)
+    # contact.title = @cart.address.salutation
+    # contact.add_email
+
+    invoice = xero.Invoice.build(:type => "ACCREC", :contact => contact, :date => DateTime.now, :due_date => DateTime.new(2017,11,19))
+    @cart.cart_items.each do |cart_item|
+      invoice.add_line_item(:description => cart_item.description, :unit_amount => cart_item.unit_amount, :quantity => cart_item.quantity, :account_code => '200')
+    end
+    invoice.save!
+
+    @cart = @cart.checkout
+
     redirect_to root_path
   end
 
