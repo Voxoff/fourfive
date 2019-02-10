@@ -37,35 +37,36 @@ class PaymentsController < ApplicationController
       # PaymentMailer.alert_mike(@cart.id).deliver_later
       # @cart = @cart.checkout
     end
-
     redirect_to root_path
   end
 
   def invoice
     xero = Xeroizer::PrivateApplication.new(ENV["OAUTH_CONSUMER_KEY"], ENV["OAUTH_CONSUMER_SECRET"], Rails.root.join('privatekey.pem'))
 
-    contact = xero.Contact.build(
-      :name => "x",
-      :first_name => @cart.address.first_name,
-      :last_name => @cart.address.last_name)
-    contact.add_address(
-      :type => "DEFAULT",
-      :line1 => @cart.address.first_line,
-      :line2 => @cart.address.second_line,
-      :line3 => @cart.address.third_line,
-      :city => @cart.address.city,
-      # :postcode => @cart.address.postcode,
-      # :country => @cart.address.country
-    )
-    contact.add_phone(:number => @cart.address.phone_number)
-    # contact.title = @cart.address.salutation
-    # contact.add_email
+    invoice = InvoiceService.new(@cart, xero).produce
 
-    invoice = xero.Invoice.build(:type => "ACCREC", :contact => contact, :date => DateTime.now, :due_date => DateTime.new(2017,11,19))
-    @cart.cart_items.each do |cart_item|
-      invoice.add_line_item(:description => cart_item.description, :unit_amount => cart_item.unit_amount, :quantity => cart_item.quantity, :account_code => '200')
-    end
-    invoice.save!
+    # contact = xero.Contact.build(
+    #   :name => "x",
+    #   :first_name => @cart.address.first_name,
+    #   :last_name => @cart.address.last_name)
+    # contact.add_address(
+    #   :type => "DEFAULT",
+    #   :line1 => @cart.address.first_line,
+    #   :line2 => @cart.address.second_line,
+    #   :line3 => @cart.address.third_line,
+    #   :city => @cart.address.city,
+    #   # :postcode => @cart.address.postcode,
+    #   # :country => @cart.address.country
+    # )
+    # contact.add_phone(:number => @cart.address.phone_number)
+    # # contact.title = @cart.address.salutation
+    # # contact.add_email
+
+    # invoice = xero.Invoice.build(:type => "ACCREC", :contact => contact, :date => DateTime.now, :due_date => DateTime.new(2017,11,19))
+    # @cart.cart_items.each do |cart_item|
+    #   invoice.add_line_item(:description => cart_item.description, :unit_amount => cart_item.unit_amount, :quantity => cart_item.quantity, :account_code => '200')
+    # end
+    # invoice.save!
   end
 
   private
