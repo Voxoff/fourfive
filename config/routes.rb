@@ -25,10 +25,6 @@ Rails.application.routes.draw do
   end
   # resources :reviews, only: :index
 
-  resources :xero_sessions, only: [:new, :destroy]
-  get 'xero_sessions/create', to: 'xero_sessions#create'
-  get 'payments/invoice', to: 'payments#invoice'
-
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
