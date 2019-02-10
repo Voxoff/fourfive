@@ -5,9 +5,19 @@ class InvoiceService
   end
 
   def produce
-    invoice = @xero.Invoice.build(:type => "ACCREC", :contact => build_contact, :date => DateTime.now, :due_date => DateTime.new(2017,11,19))
+    invoice = @xero.Invoice.build(
+      :type => "ACCREC",
+      :contact => build_contact,
+      :date => DateTime.now,
+      :due_date => DateTime.new(2017,11,19)
+    )
     @cart.cart_items.each do |cart_item|
-      invoice.add_line_item(:description => cart_item.description, :unit_amount => cart_item.unit_amount, :quantity => cart_item.quantity, :account_code => '200')
+      invoice.add_line_item(
+        :description => cart_item.description,
+        :unit_amount => cart_item.unit_amount,
+        :quantity => cart_item.quantity,
+        :account_code => '200'
+      )
     end
     invoice.save!
   end
