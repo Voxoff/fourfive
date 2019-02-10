@@ -31,8 +31,8 @@ class PaymentsController < ApplicationController
     code_check(code)
     if code =~ /^(000\.000\.|000\.100\.1|000\.[36])/ || code =~ /^(000\.400\.0[^3]|000\.400\.100)/
       # PaymentMailer.success(@cart.address.email, @cart.id).deliver_later
-      invoice
       @cart = @cart.checkout
+      invoice
     elsif code.match?(/^(000\.200)/)
       # PaymentMailer.alert_mike(@cart.id).deliver_later
       # @cart = @cart.checkout
@@ -42,7 +42,6 @@ class PaymentsController < ApplicationController
 
   def invoice
     xero = Xeroizer::PrivateApplication.new(ENV["OAUTH_CONSUMER_KEY"], ENV["OAUTH_CONSUMER_SECRET"], Rails.root.join('privatekey.pem'))
-
     InvoiceService.new(@cart, xero).produce
   end
 
