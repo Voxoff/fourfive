@@ -108,7 +108,6 @@ class PaymentsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     res = http.get(uri.request_uri)
-    puts JSON.parse(res.body)
     return JSON.parse(res.body)
   end
 

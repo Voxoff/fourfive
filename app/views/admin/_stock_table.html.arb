@@ -9,7 +9,7 @@ table do
     end
   end
   tbody do
-    ["January"].each do |i|
+    ["January", "February"].each do |i|
       hash = cart_item.merge(Cart.month_of(i)).group(:product_id).count
       tr do
         td do i + " Quantity" end

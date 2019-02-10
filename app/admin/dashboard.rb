@@ -11,7 +11,7 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Last 30 Orders" do
-          table_for Cart.includes(:address, cart_items: :product).orders.last(30).reverse do
+          table_for Cart.includes(:address, :coupon, cart_items: :product).orders.last(30).reverse do
             column("Customer name") { |cart| link_to(cart.address&.full_name, admin_cart_path(cart)) }
             # to make sure SQL is efficient
             column("Total") { |cart| number_to_currency(cart.amount(false), unit: "£") }
