@@ -47,7 +47,6 @@
                 <p id="quantity">1</p>
                 <button class="cart-button no-button" id="more">+</button>
               </div>
-              <div class="button-container bigger yellow-border-hover">
                 <% if @product.oil? %>
                   <%= render "shared/button", price: @price, q: 1, size: "500mg", tincture: @tinctures.first %>
                 <% elsif @product.balm? %>
@@ -55,7 +54,6 @@
                 <% else %>
                 <%= render "shared/button", price: @price, q: 1, size: nil, tincture: nil %>
                 <% end %>
-              </div>
             </div>
           </span>
         </div>

@@ -82,6 +82,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  margin-right: 32px;
   p{
     margin-bottom: 0px;
   }
@@ -102,18 +103,18 @@
       font-weight: bolder;
   }
 
-  p#pad-right{
-      padding: 0px 5px 0px 0px;
-      border-right: 1px solid $charcoal;
-  }
 
   p#price{
     padding-left: 0px;
   }
 
-  p#pound{
-    padding: 0px 0px 0px 10px;
-  }
+}
+p#pound{
+  padding: 0px 0px 0px 10px;
+}
+p#pad-right{
+    padding: 0px 10px 0px 0px;
+    border-right: 1px solid $charcoal;
 }
 
 .vertical-line{

@@ -1,16 +1,24 @@
 .simple-btn {
   border: 1px solid black;
   padding: 10px 29px;
-  font-weight: bold;
+  height: 40px;
   color: black;
   font-size: 15px;
   background-color: transparent;
   transition: 0.1s;
+  // display: flex;
+  // align-items: center;
+  p {
+    margin: 0;
+  }
 }
 
 .simple-btn:hover {
   border-color: $yellow;
   color: $yellow;
+  #pad-right {
+    border-color: $yellow;
+  }
 }
 
 .no-hover:hover{
