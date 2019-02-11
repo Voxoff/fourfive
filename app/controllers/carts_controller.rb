@@ -16,7 +16,7 @@ class CartsController < ApplicationController
       @coupon_code = @cart.coupon&.code
     end
     # this is messy but i don't know whats better. a hash?
-    @amount_without_postage = @cart.amount(no_postage: true)
+    @amount_without_postage = @cart.amount(postage: false)
     @amount_with_postage = @cart.amount
     @postage_bool = @amount_without_postage != @amount_with_postage
   end

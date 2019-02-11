@@ -34,7 +34,7 @@ class Cart < ApplicationRecord
     active_record_relation = options[:without_includes] ? cart_items : cart_items.includes(:product)
     amount = active_record_relation.map { |i| i.product.price * i.quantity }.reduce(:+)
     amount = coupon ? calc_discount(amount) : amount
-    amount += @@postage unless options[:no_postage] && postage!
+    amount += @@postage if (options[:postage].nil? || options[:postage]) && postage?(amount)
     return amount
   end
 
@@ -61,6 +61,7 @@ class Cart < ApplicationRecord
     cart_items.map {|item| "#{item.product.specific_name} x #{item.quantity}"}
   end
 
+  # for old records without checked_out_at attribute
   def checkout_time
     checked_out_at ? checked_out_at.strftime('%A, %b %d') : updated_at.strftime('%A, %b %d')
   end
@@ -77,7 +78,7 @@ class Cart < ApplicationRecord
     orders.includes(cart_items: :product).map(&:cart_items).flatten.map { |i| i.product.price * i.quantity }.reduce(:+)
   end
 
-  def postage!
+  def postage?(amount)
     amount.cents < 5000
   end
 
