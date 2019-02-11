@@ -1,0 +1,21 @@
+#oil-chart-btn a {
+  color: inherit;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+#oil-chart-btn:hover {
+  color: $yellow;
+}
+
+@media(max-width: 767px) {
+  #oil-chart-btn {
+    margin-top: 16px;
+  }
+}
+
+@media(max-width: 600px) {
+  #oil-chart-btn {
+    margin-bottom: 24px;
+  }
+}
