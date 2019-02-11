@@ -1,0 +1,25 @@
+.photo-bar {
+  display: flex;
+  height: 200px;
+  margin: calc(10% - 100px) 0;
+  padding: calc(100px - 10%) 0;
+  justify-content: center;
+  .bar-photo {
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .pair-photo {
+    flex: 3;
+  }
+  .individual-photo {
+    flex: 2;
+  }
+}
+
+@media(min-width: 768px) {
+  .photo-bar {
+    padding: 0 !important;
+  }
+}

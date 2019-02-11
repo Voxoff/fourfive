@@ -25,6 +25,14 @@
 		<%= image_tag "dom.jpg", alt: "Dom", id: "dom", transformation: { height: 500, crop: :scale, quality: :auto, :fetch_format=>:auto } %>
 		<%#= image_tag "https://res.cloudinary.com/dq2kcu9ey/image/asset/h_500,w_352,q_auto,f_auto/dom-c9c68b4d32a274b153d684744ef5ba71.jpg", height: "500", style:"width: auto" %>
 	</div>
+</div>
+  <div class="photo-bar hidden-xs">
+    <div class="bar-photo individual-photo" style="background-image: url(<%= image_url('George-rugby.jpg') %>);"></div>
+    <div class="bar-photo pair-photo" style="background-image: url(<%= image_url('Dom-George-Rugby-Red.jpg') %>);"></div>
+    <div class="bar-photo pair-photo" style="background-image: url(<%= image_url('Dom-George-business.jpg') %>);"></div>
+    <div class="bar-photo individual-photo" style="background-image: url(<%= image_url('Dom-Rugby-Determined.jpg') %>);"></div>
+  </div>
+<div class="container">
 	<div id="fourfive-div">
 		<h2 class="border-bottom" style="padding-bottom: 10px;"><span class="bold">fourfive</span> cbd</h2>
 		<div class="fourfive-text">
