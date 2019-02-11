@@ -39,14 +39,24 @@
           <% end %>
         </tbody>
         <tfoot>
-          <% if @cart.coupon %>
+          <% if @coupon %>
             <tr>
               <td></td>
               <td></td>
               <td></td>
               <td class="ft-border-bold">Coupon</td>
-              <td class="ft-border-bold"><%= @cart.coupon.discount.to_s + " %" %></td>
-              <td class="ft-border-bold"><%= @cart.amount %></td>
+              <td class="ft-border-bold"><%= @discount %></td>
+              <td class="ft-border-bold"><%= @amount_without_postage %></td>
+            </tr>
+          <% end %>
+          <% if @postage_bool %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="ft-border-bold">Postage</td>
+              <td class="ft-border-bold"><%= @amount_with_postage - @amount_without_postage %></td>
+              <td class="ft-border-bold"><%= @amount_with_postage %></td>
             </tr>
           <% end %>
           <tr>
@@ -54,8 +64,8 @@
             <td></td>
             <td></td>
             <td class="ft-border-bold">Total</td>
-            <td class="ft-border-bold"><%= @cart.quantity %></td>
-            <td class="ft-border-bold"><%= @cart.amount %></td>
+            <td class="ft-border-bold"><%= @quantity %></td>
+            <td class="ft-border-bold"><%= @amount_with_postage %></td>
           </tr>
         </tfoot>
       </table>
