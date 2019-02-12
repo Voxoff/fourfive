@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     guest_user if with_retry
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   private
 
   # def skip_pundit?
