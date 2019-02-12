@@ -7,7 +7,7 @@ gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
-gem 'rails', '5.2.1'
+gem 'rails'
 gem 'redis'
 gem 'jquery-rails'
 
