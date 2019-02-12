@@ -9,6 +9,7 @@ table do
     end
   end
   tbody do
+    products = Product.order(:id)
     ["January", "February"].each do |i|
       hash = cart_item.merge(Cart.month_of(i)).group(:product_id).count
       tr do
@@ -21,7 +22,6 @@ table do
       end
       tr do
         td do i + " Revenue" end
-        products = Product.order(:id)
         (1..Product.count).to_a.each do |id|
           td do
             hash[id] ? "£#{hash[id] * products[id - 1]&.price}" : "£0"
@@ -29,12 +29,21 @@ table do
         end
       end
     end
+    #totals
     hash = cart_item.group(:product_id).count
     tr do
       (1..Product.count).to_a.each_with_index do |id, i|
         td do "Total sold" end if i == 0
         td do
           hash[id] || "0"
+        end
+      end
+    end
+    tr do
+      (1..Product.count).to_a.each_with_index do |id, i|
+        td do "Total revenue" end if i == 0
+        td do
+          hash[id] ? "£#{hash[id] * products[id - 1]&.price}" : "£0"
         end
       end
     end
