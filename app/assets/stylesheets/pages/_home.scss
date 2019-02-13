@@ -156,7 +156,7 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  max-width: 600px;
+  max-width: 800px;
   flex: 1;
   margin: 40px 0;
 
@@ -177,11 +177,16 @@ select {
   }
 }
 
+// makes logos line up
 #bbc-sport {
   transform: translateY(-10%);
 }
 #the-sunday-times {
   transform: translateY(-23%);
+}
+
+#city-am {
+  transform: translateY(-20%)
 }
 
 .contact {
@@ -215,7 +220,7 @@ select {
 }
 
 
-@media(max-width: 600px) {
+@media(max-width: 750px) {
   .contact {
     flex-direction: column;
     .contact-option {
