@@ -2,7 +2,7 @@
   <!-- Indicators -->
   <ol class="carousel-indicators" style="bottom: 5px;">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <%# <li data-target="#carousel-example-generic" data-slide-to="1"></li> %>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
@@ -14,12 +14,14 @@
       <div class="carousel-caption">
       </div>
     </div>
+    <% if false %>
     <div class="item">
       <%= image_tag "carousel-shipping.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
       <%= image_tag 'carousel-square-lifestyle.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
       <div class="carousel-caption">
       </div>
     </div>
+    <% end %>
     <div class="item">
       <%= image_tag "carousel-capsule.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
       <%= image_tag 'carousel-square-shipping.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
