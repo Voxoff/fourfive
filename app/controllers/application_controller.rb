@@ -41,6 +41,8 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+
+
   private
 
   # def skip_pundit?
