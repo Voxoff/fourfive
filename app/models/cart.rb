@@ -17,7 +17,7 @@ class Cart < ApplicationRecord
   scope :fulfilled, -> { where(fulfillment: true) }
   scope :unfulfilled, -> { where(fulfillment: false, active: false)}
 
-  @@postage = Money.new(200)
+  @@postage = Money.new(250)
 
   def self.weeks_ago(weeks)
     where(checked_out_at: weeks.week.ago..(weeks - 1).week.ago)
