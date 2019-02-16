@@ -11,15 +11,6 @@ class PaymentMailer < ApplicationMailer
     end
   end
 
-  # def order(pdf)
-  #   add_pdf(pdf)
-  #   if Rails.env.development?
-  #     mail(to: "guy@fourfivecbd.co.uk", subject: "Order")
-  #   else
-  #     mail(to: "orders@fourfivecbd.co.uk", subject: "Order", cc: "mike@fourfivecbd.co.uk")
-  #   end
-  # end
-
   def alert_mike(cart_id)
     @cart = Cart.find(cart_id)
     if Rails.env.development?
