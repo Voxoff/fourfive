@@ -12,11 +12,11 @@
   p{
     max-width: 372px;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 30px;
 
   }
   #founder{
-    margin-bottom: 0;
+    margin-bottom: 40px;
   }
 }
 
@@ -63,6 +63,7 @@
   h2 {
     font-weight: bold;
     margin-bottom: 8px;
+    margin-top: 60px;
   }
   h5 {
     margin-top: 0;
@@ -235,4 +236,18 @@ select {
     padding: 13px;
   }
 }
+
+.banner-image{
+  position: relative
+}
+
+#banner-btn {
+  position: absolute;
+  bottom: 150px;
+  left: 270px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 

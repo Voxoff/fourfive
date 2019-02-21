@@ -1,28 +1,48 @@
 <% content_for :meta_title, "George Kruis & Dom Day" %>
 
 <div class="container">
+  <div style="padding: 0px 300px;">
+      <div>
+        <h2 id="about-title" style="font-size: 28px; margin-bottom: 40px">The <span class="bold" style="font-size: 28px;">fourfive</span> story</h2>
+        <p>Dom has been playing professional rugby for 14 years with over 250 top flight games to his name. Starting in Wales, his career took him to England, Japan, Australia and he now plays for English Premiership club Saracens. Dom was also a key part of the Wales national side throughout the 2015/16 season, including playing in the 2015 World cup.</p>
+        <%= image_tag "dom-cut-out.jpg", id:"dom", alt: "dom", transformation: { height: 300, crop: :scale, quality: :auto, :fetch_format=>:auto} %>
+        <p>George has been playing professional rugby for 10 years and is a seasoned international and British Lion. He has over 150 appearances for Saracens winning 2 European titles and 3 Premiership trophies.</p>
+        <%= image_tag "george-cut-out.jpg", alt: "george", id: "george", transformation: { height: 300, crop: :scale, quality: :auto, :fetch_format=>:auto } %>
+        <p>Between us we have 20 years experience in professional sport and have been under the surgeon's knife 12 times. We have played and trained through pain and injury more often than we would have liked.</p>
+        <p>We use cbd as part of the daily routine in our rugby careers. It helps us maintain a healthy lifestyle throughout the highs and lows of professional sport. </p>
+        <p>Now we want to spread the word about the benefits of cbd, and as founders of fourfive, we are committed to offering the highest grade cbd products available, specifically designed to help you maintain an active lifestyle.</p>
+        <p class="bold" style="margin-bottom: 0px;">Dom Day & George Kruis </p>
+        <p class="bold">Founders</p>
+      </div>
+
+  </div>
+</div>
+
+<% if false %>
+
+<div class="container">
 	<div class="section" id="top-section">
-		<%= image_tag "george.jpg", id:"george",  alt: "George", transformation: { height: 500, crop: :scale, quality: :auto, :fetch_format=>:auto} %>
+		<%= image_tag "dom-cut-out.jpg", id:"dom",  alt: "dom", transformation: { height: 300, crop: :scale, quality: :auto, :fetch_format=>:auto} %>
 		<%#= image_tag "https://res.cloudinary.com/dq2kcu9ey/image/asset/h_500,w_380,q_auto,f_auto/george-558d29c9a9371081b675d652275b1268.jpg", height: 500, style: "margin-left: 30px; width: auto" %>
 		<div class="right-team">
 			<div class="team-titles">
-        <h2>George Kruis</h2>
-			  <h4>Professional rugby player & founder of <span class="bold">fourfive</span></h4>
+        <h2>Dom Day</h2>
+        <h4>Professional rugby player & founder
 			</div>
       <hr />
-			<p>George has been playing professional rugby for 10 years and is a seasoned international and British Lion. He has over 150 appearances for Saracens winning 2 European titles and 3 Premiership trophies.</p>
+			<p>Dom has been playing professional rugby for 14 years with over 250 top flight games to his name. Starting in Wales, his career took him to England, Japan, Australia and he now plays for English Premiership club Saracens. Dom was also a key part of the Wales national side throughout the 2015/16 season, including playing in the 2015 World cup.</p>
     </div>
 	</div>
 	<div class="section" id="domsection">
 		<div class="left-team">
     <div class="team-titles">
-      <h2>Dom Day</h2>
-      <h4>Professional rugby player & founder of <span class="bold">fourfive</h4>
+      <h2>George Kruis</h2>
+      <h4>Professional rugby player & founder
     </div>
     <hr />
-			<p>Dom has been playing professional rugby for 14 years with over 250 top flight games to his name. Starting in Wales, his career took him to England, Japan, Australia and he now plays for English Premiership club Saracens. Dom was also a key part of the Wales national side throughout the 2015/16 season, including playing in the 2015 World cup.</p>
+			<p>George has been playing professional rugby for 10 years and is a seasoned international and British Lion. He has over 150 appearances for Saracens winning 2 European titles and 3 Premiership trophies.</p>
 		</div>
-		<%= image_tag "dom.jpg", alt: "Dom", id: "dom", transformation: { height: 500, crop: :scale, quality: :auto, :fetch_format=>:auto } %>
+		<%= image_tag "george-cut-out.jpg", alt: "george", id: "george", transformation: { height: 300, crop: :scale, quality: :auto, :fetch_format=>:auto } %>
 		<%#= image_tag "https://res.cloudinary.com/dq2kcu9ey/image/asset/h_500,w_352,q_auto,f_auto/dom-c9c68b4d32a274b153d684744ef5ba71.jpg", height: "500", style:"width: auto" %>
 	</div>
 	<div id="fourfive-div">
@@ -44,3 +64,6 @@
 		</div>
 	</div>
 </div>
+
+
+<% end %>

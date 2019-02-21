@@ -1,46 +1,57 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="8000">
-  <!-- Indicators -->
-  <ol class="carousel-indicators" style="bottom: 5px;">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <%# <li data-target="#carousel-example-generic" data-slide-to="1"></li> %>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+<div class="banner-image">
+  <%#= image_tag "home-banner.jpg", style: "width: 100vw;", alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+  <img class="hidden-xs" style="width: 100vw;" src="https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,w_1600,q_auto:best/home-banner-3e8c9dad427ea52cae252a199085f852" alt="">
+  <img class="visible-xs-block" style="width: 100vw;" src="https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,w_1600,q_auto:best/home-banner-tall-6058cee016652550ee20c1e762a76c4c" alt="">
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag "carousel-range.jpg",  alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
-      <%= image_tag "carousel-square-range.jpg", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block"  %>
-      <div class="carousel-caption">
-      </div>
-    </div>
-    <% if false %>
-    <div class="item">
-      <%= image_tag "carousel-shipping.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
-      <%= image_tag 'carousel-square-lifestyle.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
-      <div class="carousel-caption">
-      </div>
-    </div>
-    <% end %>
-    <div class="item">
-      <%= image_tag "carousel-capsule.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
-      <%= image_tag 'carousel-square-shipping.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
-
-      <div class="carousel-caption">
-      </div>
-    </div>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background-image:none;">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background-image:none;">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <%#= image_tag "home-banner-tall.jpg", style: "width: 100vw;", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
+  <%= link_to "Shop now", product_path("cbd_oils"), class: "simple-btn", id: "banner-btn" %>
 </div>
+
+<% if false %>
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="8000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators" style="bottom: 5px;">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <%# <li data-target="#carousel-example-generic" data-slide-to="1"></li> %>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <%= image_tag "carousel-range.jpg",  alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+        <%= image_tag "carousel-square-range.jpg", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block"  %>
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <% if false %>
+      <div class="item">
+        <%= image_tag "carousel-shipping.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+        <%= image_tag 'carousel-square-lifestyle.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <% end %>
+      <div class="item">
+        <%= image_tag "carousel-capsule.jpg", alt: "Carousel", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+        <%= image_tag 'carousel-square-shipping.jpg', alt: "Carousel", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
+
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background-image:none;">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background-image:none;">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+<% end %>
 
 <div class="container">
   <div class="border-bottom" style="border: none !important">
@@ -71,8 +82,12 @@
       </div>
     <% end %>
   </div>
-
-  <div class="thin-grey-line wider"></div>
+<%#
+  <div class="stripes" style="height: 45px; margin-top: 50px">
+    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
+    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; top: 25px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
+  </div> %>
+<%# <div class="thin-grey-line wider"></div> %>
 
 <% if false %>
   <div class="info-line">
@@ -110,17 +125,16 @@
 
   <div class="thin-grey-line wider"></div>
 <% end %>
+
+
   <div class="our-story" style="margin-bottom: 15px;">
     <h2>Our Story</h2>
     <h5>A little bit about us.</h5>
   </div>
   <div class="ajflex">
-    <%= image_tag "cartoon.jpg", alt: "dom-and-george-cartoon", crop: :scale, quality: "auto:best", fetch_format: :auto, height: 500, class: "homepage-cartoon" %>
+    <%= image_tag "the-boys-cartoon.jpg", alt: "dom-and-george-cartoon", crop: :scale, quality: "auto:best", fetch_format: :auto, height: 500, class: "homepage-cartoon" %>
   </div>
-  <div class="stripes" style="height: 45px;">
-    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
-    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; top: 25px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
-  </div>
+
 
   <div class="info-line">
     <p> We use cbd as part of our daily routine in our rugby careers. It helps us maintain a healthy lifestyle throughout the highs and lows of professional sport.
@@ -128,10 +142,12 @@
     <p>Now we want to spread the word about the benefits of cbd, and as founders of <span class="bold">fourfive</span>, we are committed to offering the highest grade cbd products available, specifically designed to help you maintain an active lifestyle.
  </p>
     <p id="founder">George Kruis & Dom Day</p>
-    <div class="fat-yellow-stripe" style="margin-bottom: 45px"></div>
     <%= link_to "Find out more", about_path, class: "simple-btn bold", style: "margin-top: 25px;" %>
   </div>
 </div>
+
+<%= image_tag "groupshot.jpg", alt: "Carousel", style: "width: 100vw;", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs over-container" %>
+
 
 <div class="graphics" id="graphics">
   <h4 id="for-the-active">The cbd brand helping you maintain an active lifestyle</h4>

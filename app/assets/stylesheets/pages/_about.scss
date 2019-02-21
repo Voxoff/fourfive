@@ -1,3 +1,15 @@
+.container p {
+  text-align: justify;
+  margin-bottom: 20px;
+  line-height: 30px;
+}
+
+#about-title {
+  text-align: justify;
+}
+
+
+
 .section {
 	display: flex;
 	h2{
@@ -22,11 +34,11 @@
 }
 
 .right-team{
-	padding: 60px 60px 60px 60px;
+	padding: 60px 60px 60px 0px;
 }
 
 .left-team{
-	padding: 60px 60px 60px 60px;
+	padding: 60px 0px 60px 60px;
 }
 
 #fourfive-div{
@@ -46,13 +58,17 @@
 
 #george {
   max-width: 400px;
-  max-height: 527px;
-  padding-left: 30px;
+  max-height: 300px;
+  // padding-left: 30px;
+  margin-left: 40px;
+  margin-top: 40px;
 }
 #dom {
   width: 90vw;
   max-width: 400px;
-  max-height: 527px;
+  max-height: 300px;
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
 @media(max-width:985px){
