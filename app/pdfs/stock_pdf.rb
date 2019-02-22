@@ -4,39 +4,64 @@ class StockPdf < Prawn::Document
     cart_item = CartItem.joins(:cart, product: :product_group)
                         .merge(Cart.orders.month_of("January"))
     @products = Product.order(:id)
-    @names = [@products.map(&:specific_name)]
-    @oil = [@products.select(&:oil?).map(&:oil_name)]
-    @capsules_and_balm = [@products.reject(&:oil?).map(&:specific_name)]
-    hash = cart_item.group(:product_id).count
-    #hardcoded!! bad!
-    @oil_count = [(4..Product.count).to_a.map { |id| hash[id] || "0" }]
-    @capsules_and_balm_count = [(1..3).to_a.map { |id| hash[id] || "0" }]
-    oil_products = Product.order(:id)
-
-    @oil_revenue = [(4..Product.count).to_a.map do |id|
-                     hash[id] ? "£#{hash[id] * oil_products.find([id]).first.price}" : "£0"
-                   end]
-    @capsules_and_balm_revenue = [(1..3).to_a.map do |id|
-                      hash[id] ? "£#{hash[id] * oil_products.find([id]).first.price}" : "£0"
-                    end]
+    @oil = [@products.select(&:oil?).map(&:oil_name).unshift("Product")]
+    @capsules_and_balm = [@products.reject(&:oil?).map(&:specific_name).unshift("Product")]
+    @hash = cart_item.group(:product_id).count
+    @oil_count = product_count("oil")
+    @capsules_and_balm_count = product_count("capsules")
+    @oil_revenue = product_revenue("oil")
+    @capsules_and_balm_revenue = product_revenue("capsules")
+    @oil_total = product_total(@oil_revenue)
+    @capsules_total = product_total(@capsules_and_balm_revenue)
     create
   end
 
-  def tables(string)
-    table([["#{string}s"]]) do
-      style(row(0..-1).columns(0..-1), borders: [], background_color: 'e9e9e9', border_color: 'dddddd')
+  def product_total(var)
+    var.first.drop(1).map{|i| i.tr("£", "").to_f}.reduce(:+).to_i
+  end
+
+  def oil?(str)
+    str == "oil"
+  end
+
+  def id_range(str)
+   oil?(str) ? (4..Product.count) : (1..3)
+  end
+
+  def product_count(str)
+    id_range = id_range(str)
+    [id_range.to_a.map { |id| @hash[id] || "0" }.unshift("Quantity")]
+  end
+
+  def product_revenue(str)
+    id_range = id_range(str)
+    [id_range.to_a.map do |id|
+      @hash[id] ? "£#{@hash[id] * @products.find([id]).first.price}" : "£0"
+    end.unshift("Price")]
+  end
+
+  def tables(str)
+    table([["#{str}s"].map{|i| i.capitalize.tr("_", " ")}], position: :left) do
+      style(row(0..-1).columns(0..-1), padding: [10,10,10,10], width: 160, borders: [], background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
     end
 
     table(self.instance_variable_get(:"@#{string}"), width: bounds.width) do
-      style(row(0..-1).columns(0..-1), borders: [], background_color: 'e9e9e9', border_color: 'dddddd')
+      style(row(0..-1).columns(0), padding: [5,5,5, 5], align: :left)
+      style(row(0..-1).columns(1..-1), borders: [], padding: [5,5,5,5], background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
     end
 
     table(self.instance_variable_get(:"@#{string}_count"), width: bounds.width) do
-      style(row(0..-1).columns(0..-1), borders: [])
+      style(row(0..-1).columns(0), align: :left, padding: [5,5,5,0])
+      style(row(0..-1).columns(1..-1),padding: [5,20,5, 20])
     end
 
      table(self.instance_variable_get(:"@#{string}_revenue"), width: bounds.width) do
-      style(row(0..-1).columns(0..-1), borders: [])
+      style(row(0..-1).columns(0), align: :left, padding: [5,5,5,5])
+      style(row(0..-1).columns(1..-1), padding: [5,5,5,5])
+    end
+
+    table(self.instance_variable_get(:"@#{string}_total"), width: bounds.width) do
+      style(row)
     end
   end
 
@@ -107,3 +132,10 @@ class StockPdf < Prawn::Document
 
   end
 end
+
+
+
+
+
+
+
