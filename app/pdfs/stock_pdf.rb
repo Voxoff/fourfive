@@ -44,37 +44,37 @@ class StockPdf < Prawn::Document
 
   def tables(str)
     table([["#{str}s"].map{|i| i.capitalize.tr("_", " ")}], position: :left) do
-      style(row(0..-1).columns(0..-1), padding: [10,10,3,10], width: 160, borders: [], background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
+      style(row(0..-1).columns(0..-1), padding: [7,10,3,10], width: 160, borders: [:bottom], border_width: 1, border_color: 'dddddd', background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
     end
 
     table(self.instance_variable_get(:"@#{str}"), width: bounds.width) do
-      style(row(0..-1).columns(0), padding: [5,5,5, 5], align: :left, borders: [], background_color: 'e9e9e9', border_color: 'dddddd')
-      style(row(0..-1).columns(1..-1), borders: [], padding: [5,5,5,5], background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
+      style(row(0..-1).columns(0), padding: [5, 5, 5,  5], align: :left, borders: [], background_color: 'e9e9e9', border_color: 'dddddd')
+      style(row(0..-1).columns(1..-1), borders: [], padding: [5, 5, 5, 5], background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
     end
 
     table(self.instance_variable_get(:"@#{str}_count"), width: bounds.width) do
-      style(row(0..-1).columns(0), align: :left, padding: [5,0,5,5], borders: [])
+      style(row(0..-1).columns(0), align: :left, padding: [5, 0, 5, 5], borders: [])
       if str == "oil"
-        style(row(0..-1).columns(1), align: :center, padding: [5,20,5, 0], borders: [])
-        style(row(0..-1).columns(2..-1), align: :center, padding: [5,20,5, 20], borders: [])
+        style(row(0..-1).columns(1), align: :center, padding: [5, 20, 5, 0], borders: [])
+        style(row(0..-1).columns(2..-1), align: :center, padding: [5, 20, 5, 20], borders: [])
       else
-        style(row(0..-1).columns(1..-1), align: :center, padding: [5,20,5, 20], borders: [])
+        style(row(0..-1).columns(1..-1), align: :center, padding: [5, 20, 5, 20], borders: [])
       end
     end
 
      table(self.instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
-      style(row(0..-1).columns(0), align: :left, padding: [5,5,5,5], borders: [])
+      style(row(0..-1).columns(0), align: :left, padding: [5, 5, 5, 5], borders: [])
       if str == "oil"
-        style(row(0..-1).columns(1), align: :left,padding: [5,0,5,10], borders: [:top], border_width: 1, border_color: 'e9e9e9')
-        style(row(0..-1).columns(2..-1), align: :center,padding: [5,5,5,5], borders: [:top], border_width: 1, border_color: 'e9e9e9')
+        style(row(0..-1).columns(1), align: :left,padding: [5, 0, 5, 0], borders: [:top], border_width: 1, border_color: 'e9e9e9')
+        style(row(0..-1).columns(2..-1), align: :center,padding: [5, 5, 5, 5], borders: [:top], border_width: 1, border_color: 'e9e9e9')
       else
-        style(row(0..-1).columns(1..-1), align: :center,padding: [5,5,5,5], borders: [:top], border_width: 1, border_color: 'e9e9e9')
+        style(row(0..-1).columns(1..-1), align: :center,padding: [5, 5, 5, 5], borders: [:top], border_width: 1, border_color: 'e9e9e9')
       end
     end
 
     table(self.instance_variable_get(:"@#{str}_total"), width: bounds.width) do
       style(row(0..1).columns(0), align: :left, borders: [:top], border_width: 1, border_color: 'e9e9e9', padding: [5, 5, 5, 5])
-      style(row(0..1).columns(1), align: :right, borders: [:top], border_width: 1, border_color: 'e9e9e9', padding: [5, str == "oil" ? 20 : 50, 5, 0])
+      style(row(0..1).columns(1), align: :right, borders: [:top], border_width: 1, border_color: 'e9e9e9', padding: [5,  str  == "oil" ? 20 : 50, 5, 0])
     end
   end
 
