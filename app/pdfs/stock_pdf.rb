@@ -108,6 +108,12 @@ class StockPdf < Prawn::Document
 
     move_cursor_to last_measured_y
 
+    move_down 50
+    last_measured_y = cursor
+    font_size 15
+    text_box "January", :at => [240,  cursor]
+    font_size font_size
+
     move_down 85
     last_measured_y = cursor
 
