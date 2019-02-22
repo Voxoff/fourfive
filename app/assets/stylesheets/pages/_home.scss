@@ -250,6 +250,12 @@ select {
   }
 }
 
+@media(max-width: 900px) {
+  #banner-btn{
+  bottom: 20%;
+  }
+}
+
 @media(max-width: 767px) {
   #banner-btn{
   left: 40% ;
