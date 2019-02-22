@@ -13,11 +13,12 @@ class InvoicePdf < Prawn::Document
   def invoice_data
     @invoice_services_data = [["Item", "Description", "Unit Cost", "Quantity", "Line Total"]]
     @cart_items.each do |item|
-      @invoice_services_data << ["#{item.product.readable_name}",
-        "#{item.product.specific_name}",
-        "#{item.product.price}",
-        "#{item.quantity} ",
-        "#{item.line_cost} "]
+      product = item.product
+      @invoice_services_data << [product.readable_name,
+                                 product.specific_name,
+                                 product.price,
+                                 item.quantity,
+                                 item.line_cost].map(&:to_s)
     end
 
     @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive,"], ["George & Dom"]]
@@ -138,8 +139,8 @@ class InvoicePdf < Prawn::Document
     move_down 25
 
     table(@invoice_notes_data, :width => 275) do
-      style(row(0..-1).columns(0..-1), :padding => [10, 0, 10, 0], :borders => [])
-      style(row(0).columns(0), :font_style => :bold)
+        style(row(0..-1).columns(0..-1), :padding => [10, 0, 10, 0], :borders => [])
+        style(row(0).columns(0), :font_style => :bold)
     end
 
     move_down 10

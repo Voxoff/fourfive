@@ -38,6 +38,10 @@ class Product < ApplicationRecord
     end
   end
 
+  def oil_name
+    "#{tincture} #{size}"
+  end
+
   def image_name
     if oil?
       change = { "500mg": "Lower", "1000mg": "Medium", "2000mg": "Higher"}

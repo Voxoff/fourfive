@@ -1,6 +1,16 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
+  # member_action :print_stock do
+  #   puts 'print'
+  # end
+  # actions :print_stock
+  controller do
+    def print_stock
+      puts "asdf"
+    end
+  end
+
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
@@ -35,6 +45,11 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Total Revenue" do
           div do
             number_to_currency(Cart.revenue, unit: "£")
+          end
+          div do
+            # link_to("print", print_STOC)
+            # pdf = StockPdf.new()
+            # send_data pdf.render, filename: "stock.pdf"
           end
           # div do
           #   Cart.includes(:address).orders.limit(10).each{|i| i.cart_items.product}
