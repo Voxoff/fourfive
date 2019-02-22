@@ -243,11 +243,23 @@ select {
 
 #banner-btn {
   position: absolute;
-  bottom: 150px;
-  left: 270px;
+  bottom: 24%;
+  left: 19%;
   &:hover{
     cursor: pointer;
   }
 }
 
+@media(max-width: 767px) {
+  #banner-btn{
+  left: 40% ;
+  bottom: 9%;
+  }
+}
 
+@media(max-width: 500px) {
+  #banner-btn{
+  left: 38% ;
+  bottom: 5%;
+  }
+}
