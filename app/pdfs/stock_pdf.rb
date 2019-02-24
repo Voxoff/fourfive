@@ -1,23 +1,33 @@
+require_relative './document.rb'
 class StockPdf < Prawn::Document
   def initialize(attributes)
     super(optimize_objects: true, compress: true)
-    cart_item = CartItem.joins(:cart, product: :product_group)
-                        .merge(Cart.orders.month_of("January"))
+    @month = attributes[:month]
+    @hash = CartItem.joins(:cart, product: :product_group)
+                    .merge(Cart.orders.month_of(attributes[:month]))
+                    .group(:product_id)
+                    .count
     @products = Product.order(:id)
-    @oil = [@products.select(&:oil?).map(&:oil_name).unshift("Product")]
-    @capsule_and_balm = [@products.reject(&:oil?).map(&:specific_name).unshift("Product")]
-    @hash = cart_item.group(:product_id).count
-    @oil_count = product_count("oil")
-    @capsule_and_balm_count = product_count("capsule_and_balm")
-    @oil_revenue = product_revenue("oil")
-    @capsule_and_balm_revenue = product_revenue("capsule_and_balm")
-    @oil_total = [product_total(@oil_revenue)]
-    @capsule_and_balm_total = [product_total(@capsule_and_balm_revenue)]
+    table_data
     create
   end
 
-  def product_total(var)
-    ["Total", "£" + var.first.drop(1).map{ |i| i.tr("£", "").to_f}.reduce(:+).to_i.to_s ]
+  def table_data
+    @oil = [@products.select(&:oil?).map(&:oil_name).unshift("Product")]
+    @capsule_and_balm = [@products.reject(&:oil?).map(&:specific_name).unshift("Product")]
+    @oil_count = product_count("oil")
+    @capsule_and_balm_count = product_count("capsule_and_balm")
+    oil_prod_revenue_data = revenue_data("oil")
+    capsule_and_balm_revenue_data = revenue_data("capsule_and_balm")
+    @oil_revenue = printable_revenue(oil_prod_revenue_data)
+    @capsule_and_balm_revenue = printable_revenue(capsule_and_balm_revenue_data)
+    @oil_total = product_total(oil_prod_revenue_data)
+    @capsule_and_balm_total = product_total(capsule_and_balm_revenue_data)
+  end
+
+  def product_total(rev_data)
+    total = ActionController::Base.helpers.humanized_money_with_symbol(rev_data.reduce(:+))
+    [Array(total).unshift("Total")]
   end
 
   def oil?(str)
@@ -25,81 +35,85 @@ class StockPdf < Prawn::Document
   end
 
   def id_range(str)
-   oil?(str) ? (4..Product.count) : (1..3)
+    oil?(str) ? (4..Product.count).to_a : (1..3).to_a
   end
 
   def product_count(str)
-    id_range = id_range(str)
-    count = id_range.to_a.map { |id| @hash[id] || "0" }
+    count = id_range(str).map { |id| @hash[id] || "0" }
     [count.unshift("Quantity")]
   end
 
-  def product_revenue(str)
-    id_range = id_range(str)
-    revenue = id_range.to_a.map do |id|
-      @hash[id] ? "£#{@hash[id] * @products.find([id]).first.price}" : "£0"
-    end
+  def revenue_data(str)
+    id_range(str).map { |id| Product.find(id).revenue(@hash[id]) }
+  end
+
+  def printable_revenue(prod_rev)
+    revenue = prod_rev.map{|i| ActionController::Base.helpers.humanized_money_with_symbol(i) }
     [revenue.unshift("Revenue")]
   end
 
   def tables(str)
+    header_borders = {border_width: 1, border_color: 'dddddd', background_color: 'e9e9e9'}
+    summary_borders = {borders: [:top], border_width: 1, border_color: 'e9e9e9'}
+
     table([["#{str}s"].map{|i| i.capitalize.tr("_", " ")}], position: :left) do
-      style(row(0..-1).columns(0..-1), padding: [7,10,3,10], width: 160, borders: [:bottom], border_width: 1, border_color: 'dddddd', background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
+      cells.style(header_borders)
+      style(row(0..-1).columns(0..-1), padding: [7, 10, 3, 10], width: 160, borders: [:bottom], align: :center)
     end
 
     table(self.instance_variable_get(:"@#{str}"), width: bounds.width) do
-      style(row(0..-1).columns(0), padding: [5, 5, 5,  5], align: :left, borders: [], background_color: 'e9e9e9', border_color: 'dddddd')
-      style(row(0..-1).columns(1..-1), borders: [], padding: [5, 5, 5, 5], background_color: 'e9e9e9', border_color: 'dddddd', align: :center)
+      cells.borders = [:top]
+      cells.padding = [5,5,5,5]
+      cells.style(header_borders)
+      style(row(0..-1).columns(0), align: :left)
+      style(row(0..-1).columns(1..-1), align: :center)
     end
 
     table(self.instance_variable_get(:"@#{str}_count"), width: bounds.width) do
-      style(row(0..-1).columns(0), align: :left, padding: [5, 0, 5, 5], borders: [])
+      cells.borders = []
+      style(row(0..-1).columns(0), align: :left, padding: [5, 0, 5, 5])
       if str == "oil"
-        style(row(0..-1).columns(1), align: :center, padding: [5, 20, 5, 0], borders: [])
-        style(row(0..-1).columns(2..-1), align: :center, padding: [5, 20, 5, 20], borders: [])
+        style(row(0..-1).columns(1), align: :center, padding: [5, 20, 5, 0])
+        style(row(0..-1).columns(2..-1), align: :center, padding: [5, 20, 5, 20])
       else
-        style(row(0..-1).columns(1..-1), align: :center, padding: [5, 20, 5, 20], borders: [])
+        style(row(0..-1).columns(1..-1), align: :center, padding: [5, 20, 5, 20])
       end
     end
 
      table(self.instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
-      style(row(0..-1).columns(0), align: :left, padding: [5, 5, 5, 5], borders: [])
+      cells.style(summary_borders)
+      cells.padding = [5,15,5,5]
+      style(row(0..-1).columns(0), align: :left, borders: [])
       if str == "oil"
-        style(row(0..-1).columns(1), align: :left,padding: [5, 0, 5, 0], borders: [:top], border_width: 1, border_color: 'e9e9e9')
-        style(row(0..-1).columns(2..-1), align: :center,padding: [5, 5, 5, 5], borders: [:top], border_width: 1, border_color: 'e9e9e9')
+        style(row(0..-1).columns(1), align: :left,padding: [5, 0, 5, 0])
+        style(row(0..-1).columns(2..-1), align: :center)
       else
-        style(row(0..-1).columns(1..-1), align: :center,padding: [5, 5, 5, 5], borders: [:top], border_width: 1, border_color: 'e9e9e9')
+        style(row(0..-1).columns(1..-1), align: :center)
       end
     end
 
     table(self.instance_variable_get(:"@#{str}_total"), width: bounds.width) do
-      style(row(0..1).columns(0), align: :left, borders: [:top], border_width: 1, border_color: 'e9e9e9', padding: [5, 5, 5, 5])
-      style(row(0..1).columns(1), align: :right, borders: [:top], border_width: 1, border_color: 'e9e9e9', padding: [5,  str  == "oil" ? 20 : 50, 5, 0])
+      cells.borders = [:top]
+      cells.border_width = 1
+      cells.border_color = 'e9e9e9'
+      style(row(0..1).columns(0), align: :left, padding: [5, 5, 5, 5])
+      style(row(0..1).columns(1), align: :right, padding: [5, str  == "oil" ? 20 : 50, 5, 0])
     end
   end
 
   def create
     initial_y = cursor
     initialmove_y = 5
-    address_x = 15
-    invoice_header_x = 325
-    lineheight_y = 12
+    @address_x = 15
+    month_header = 240
+    @lineheight_y = 12
     font_size = 10
 
     move_down initialmove_y
 
     font_size font_size
 
-    text_box "fourfive,", :at => [address_x,  cursor]
-    move_down lineheight_y
-    text_box "Flow Nutrition Ltd,", :at => [address_x,  cursor]
-    move_down lineheight_y
-    text_box "2 Victoria Square,", :at => [address_x,  cursor]
-    move_down lineheight_y
-    text_box "Victoria Street,", :at => [address_x,  cursor]
-    move_down lineheight_y
-    text_box "St. Albans, UK, AL1 3TF", :at => [address_x,  cursor]
-    move_down lineheight_y
+    many_box(["fourfive", "Flow Nutrition Ltd,", "2 Victoria Square,", "Victoria Street,", "St. Albans, UK, AL1 3TF"])
 
     last_measured_y = cursor
     move_cursor_to bounds.height + 12
@@ -109,9 +123,8 @@ class StockPdf < Prawn::Document
     move_cursor_to last_measured_y
 
     move_down 50
-    last_measured_y = cursor
     font_size 15
-    text_box "January", :at => [240,  cursor]
+    text_box @month, :at => [month_header, cursor]
     font_size font_size
 
     move_down 85
@@ -124,37 +137,5 @@ class StockPdf < Prawn::Document
     move_down 40
 
     tables("capsule_and_balm")
-    # table([["Capsules & Balms"]]) do
-    #   style(row(0..-1).columns(0..-1), :borders => [], :background_color => 'e9e9e9', :border_color => 'dddddd')
-    # end
-    # table(@capsule_and_balm, :width => bounds.width) do
-    #   # style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
-    #   # style(row(0), :background_color => 'e9e9e9', :border_color => 'dddddd', :font_style => :bold)
-    #   # style(row(0).columns(0..-1), :borders => [:top, :bottom])
-    #   # style(row(0).columns(0), :borders => [:top, :left, :bottom])
-    #   # style(row(0).columns(-1), :borders => [:top, :right, :bottom])
-    #   # style(row(-1), :border_width => 2)
-    #   # style(column(2  ..-1), :align => :right)
-    #   # style(columns(0), :width => 75)
-    #   # style(columns(1), :width => 275)
-    #   style(row(0..-1).columns(0..-1), :borders => [], :background_color => 'e9e9e9', :border_color => 'dddddd')
-    #   # style(row(0).columns(0), :font_style => :bold)
-    # end
-
-    # table(@rest_count, width: bounds.width) do
-    #   style(row(0..-1).columns(0..-1), borders: [])
-    # end
-
-    #  table(@rest_revenue, width: bounds.width) do
-    #   style(row(0..-1).columns(0..-1), borders: [])
-    # end
-
   end
 end
-
-
-
-
-
-
-

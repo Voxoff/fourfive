@@ -23,6 +23,9 @@ class Product < ApplicationRecord
     name == "cbd_capsules"
   end
 
+  def revenue(count)
+    count ? count * price : 0
+  end
 
   def readable_name
     name.tr("_", " ")
