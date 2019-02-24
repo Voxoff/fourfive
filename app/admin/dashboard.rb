@@ -1,6 +1,16 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
+  # member_action :print_stock do
+  #   puts 'print'
+  # end
+  # actions :print_stock
+  controller do
+    def print_stock
+      puts "asdf"
+    end
+  end
+
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do

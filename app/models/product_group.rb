@@ -3,6 +3,11 @@ class ProductGroup < ApplicationRecord
 
   has_many :products, dependent: :destroy
 
+  def self.oil?(oil = true)
+    hash = { name: "cbd_oils" }
+    oil ?  where(hash) : where.not(hash)
+  end
+
   def readable_name
     name.tr("_", " ")
   end
