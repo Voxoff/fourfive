@@ -14,6 +14,12 @@ FactoryBot.define do
       tincture { "Natural"}
       size { "500mg"}
       price { 29.99 }
+      trait :orange do
+        tincture { "Orange"}
+      end
+      trait :1000 do
+        size { "1000mg"}
+      end
     end
 
     factory :capsule_product do
