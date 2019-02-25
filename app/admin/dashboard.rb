@@ -29,7 +29,7 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Orders so far today" do
+        panel "Orders in last 24 hours" do
           div do
             Cart.orders.last24.size
           end
