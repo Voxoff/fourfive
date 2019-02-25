@@ -14,8 +14,13 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
-        panel "Stock Sold" do
-          render 'admin/stock_table'
+        panel "Useful Links" do
+          div do
+            link_to("All current orders", admin_carts_path)
+          end
+          div do
+            link_to("fourfive Homepage", root_path)
+          end
         end
       end
 
@@ -34,9 +39,9 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Useful Links" do
+        panel "Orders so far today" do
           div do
-            link_to("All current orders", admin_carts_path)
+            Cart.orders.last24.size
           end
         end
       end
