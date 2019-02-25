@@ -43,6 +43,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'prawn'
 gem 'prawn-table'
 gem 'prawn-icon'
+gem 'pdf-inspector', require: "pdf/inspector", group: :test
 
 gem 'puma_worker_killer'
 

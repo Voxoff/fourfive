@@ -1,6 +1,6 @@
-ActiveAdmin.register_page "Stock Table" do
+ActiveAdmin.register_page "Stock" do
   page_action :print do
-    pdf = StockPdf.new({month: params[:month]})
+    pdf = StockPdf.new(month: params[:month])
     send_data pdf.render, filename: "receipt.pdf"
   end
 
