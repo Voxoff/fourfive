@@ -1,16 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
-  # member_action :print_stock do
-  #   puts 'print'
-  # end
-  # actions :print_stock
-  controller do
-    def print_stock
-      puts "asdf"
-    end
-  end
-
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
@@ -19,7 +9,7 @@ ActiveAdmin.register_page "Dashboard" do
             link_to("All current orders", admin_carts_path)
           end
           div do
-            link_to("fourfive Homepage", root_path)
+            link_to("Homepage", root_path)
           end
         end
       end

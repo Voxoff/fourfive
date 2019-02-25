@@ -105,7 +105,7 @@ class StockPdf < Prawn::Document
     initial_y = cursor
     initialmove_y = 5
     @address_x = 15
-    month_header = 240
+    month_header = 235
     @lineheight_y = 12
     font_size = 10
 
