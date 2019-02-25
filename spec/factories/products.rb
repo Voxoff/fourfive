@@ -7,6 +7,9 @@ FactoryBot.define do
     factory :balm_product do
       association :product_group, factory: :oil_product_group
       size { "Small"}
+      trait :large do
+        size { "Large"}
+      end
     end
 
     factory :oil_product do
@@ -17,7 +20,7 @@ FactoryBot.define do
       trait :orange do
         tincture { "Orange"}
       end
-      trait :1000 do
+      trait :big do
         size { "1000mg"}
       end
     end
@@ -25,6 +28,7 @@ FactoryBot.define do
     factory :capsule_product do
       name { "cbd_capsules"}
       price { 39.99 }
+
     end
   end
 end

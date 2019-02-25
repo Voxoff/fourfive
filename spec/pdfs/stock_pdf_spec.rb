@@ -66,12 +66,25 @@ RSpec.describe 'stock_pdf' do
   context "Full database" do
     before do
       oil_product = FactoryBot.create(:oil_product)
-      balm_product = FactoryBot.create(:balm_product)
-      capsule_product = FactoryBot.create(:capsule_product)
+      FactoryBot.create :oil_product, :small
+      FactoryBot.create :oil_product, :orange, :small
+      FactoryBot.create :balm_product, :large
       view_context = ActionController::Base.new.view_context
       pdf = StockPdf.new(month: "January")
       rendered_pdf = pdf.render
       @text_analysis = PDF::Inspector::Text.analyze(rendered_pdf)
     end
+
+    describe "oil box" do
+      it "should include product names" do
+        expect(@text_analysis.strings).to include("Natural 500mg")
+        expect(@text_analysis.strings).to include("Natural 1000mg")
+        expect(@text_analysis.strings).to include("Natural 2000mg")
+        expect(@text_analysis.strings).to include("Orange 2000mg")
+        expect(@text_analysis.strings).to include("Orange 500mg")
+        expect(@text_analysis.strings).to include("Orange 1000mg")
+      end
+    end
+
   end
 end
