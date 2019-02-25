@@ -80,7 +80,7 @@ class StockPdf < Prawn::Document
       end
     end
 
-     table(self.instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
+    table(self.instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
       cells.style(summary_borders)
       cells.padding = [5,15,5,5]
       style(row(0..-1).columns(0), align: :left, borders: [])
