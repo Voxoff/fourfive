@@ -76,6 +76,7 @@ class InvoicePdf < Prawn::Document
              @address.city_and_postcode,
              @address.phone_number]
 
+    move_down 20
     many_box(array.compact.reject(&:empty?))
 
     move_cursor_to last_measured_y
