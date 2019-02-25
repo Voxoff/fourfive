@@ -12,7 +12,7 @@ class Cart < ApplicationRecord
   scope :orders, -> { where(active: false) }
   scope :not_orders, -> { where(active: true)}
   scope :has_user, -> { where(user: !nil) }
-  scope :last24, -> { where('updated_at >= :last24', last24: 1.day.ago) }
+  scope :last24, -> { where('checked_out_at >= :last24', last24: 1.day.ago) }
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
   scope :fulfilled, -> { where(fulfillment: true) }
   scope :unfulfilled, -> { where(fulfillment: false, active: false)}

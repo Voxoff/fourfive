@@ -14,7 +14,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = "logo_white.svg"
+  config.site_title_image = "https://res.cloudinary.com/dq2kcu9ey/image/asset/android-icon-36x36-44d6753274ae6787ed74442fc8469028.png"
   # == Default Namespace
   #
   # Set the default namespace each administration resource
@@ -121,7 +121,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.comments = false
+  config.comments = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
@@ -131,7 +131,7 @@ ActiveAdmin.setup do |config|
   # config.comments_order = 'created_at ASC'
   #
   # You can disable the menu item for the comments index page:
-  # config.comments_menu = false
+  config.comments_menu = false
   #
   # You can customize the comment menu:
   # config.comments_menu = { parent: 'Admin', priority: 1 }
@@ -156,10 +156,6 @@ ActiveAdmin.setup do |config|
   # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
   #
   config.localize_format = :long
-
-  # == Setting a Favicon
-  #
-  # config.favicon = 'favicon.ico'
 
   # == Meta Tags
   #
@@ -264,12 +260,6 @@ ActiveAdmin.setup do |config|
   #
   # config.max_per_page = 10_000
 
-  # == Filters
-  #
-  # By default the index screen includes a "Filters" sidebar on the right
-  # hand side with a filter for each attribute of the registered model.
-  # You can enable or disable them for all resources here.
-  #
   config.filters = true
   #
   # By default the filters include associations in a select, which means

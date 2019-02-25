@@ -35,7 +35,7 @@ class StockPdf < Prawn::Document
   end
 
   def id_range(str)
-    oil?(str) ? (4..Product.count).to_a : (1..3).to_a
+    oil?(str) ? Product.where(name: "cbd_oils").pluck(:id).sort : Product.where.not(name: "cbd_oils").pluck(:id).sort
   end
 
   def product_count(str)
@@ -80,7 +80,7 @@ class StockPdf < Prawn::Document
       end
     end
 
-     table(self.instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
+    table(self.instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
       cells.style(summary_borders)
       cells.padding = [5,15,5,5]
       style(row(0..-1).columns(0), align: :left, borders: [])
@@ -105,7 +105,7 @@ class StockPdf < Prawn::Document
     initial_y = cursor
     initialmove_y = 5
     @address_x = 15
-    month_header = 240
+    month_header = 220
     @lineheight_y = 12
     font_size = 10
 
