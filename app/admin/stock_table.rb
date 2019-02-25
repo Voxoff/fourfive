@@ -16,7 +16,7 @@ ActiveAdmin.register_page "Stock" do
       dates = (Date.parse("1st January 2019")..Date.today).map{|i| i.strftime("%B %Y")}.uniq
       dates.each do |month|
         div do
-          link_to "Print " + month + " revenue", admin_stock_table_print_path(month: month), target: "_blank"
+          link_to "Print " + month + " revenue", admin_stock_print_path(month: month), target: "_blank"
         end
       end
     end
