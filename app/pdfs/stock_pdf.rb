@@ -35,7 +35,7 @@ class StockPdf < Prawn::Document
   end
 
   def id_range(str)
-    oil?(str) ? (4..Product.count).to_a : (1..3).to_a
+    oil?(str) ? Product.where(name: "cbd_oils").pluck(:id).sort : Product.where.not(name: "cbd_oils").pluck(:id).sort
   end
 
   def product_count(str)
