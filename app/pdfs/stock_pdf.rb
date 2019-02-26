@@ -9,6 +9,8 @@ class StockPdf < Prawn::Document
     create
   end
 
+  private
+
   def table_data
     @oil_hash = { str: [["Oil"]]}
     @oil_hash[:product] = product_list("oil")
@@ -27,7 +29,7 @@ class StockPdf < Prawn::Document
 
   def product_list(str)
     arr = oil?(str) ? @products.select(&:oil?) : @products.reject(&:oil?)
-    [arr.map { |i| i.specific_name(false) }.unshift("Product")]
+    [arr.map { |i| i.specific_name(with_oil = false) }.unshift("Product")]
   end
 
   def product_total(rev_data)
@@ -65,7 +67,6 @@ class StockPdf < Prawn::Document
       cells.style(header_borders)
       style(row(0..-1).columns(0..-1), padding: [7, 10, 3, 10], width: 160, borders: [:bottom], align: :center)
     end
-
 
     table(data[:product], width: bounds.width) do
       cells.borders = [:top]

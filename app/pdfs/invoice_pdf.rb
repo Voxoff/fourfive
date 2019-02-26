@@ -11,52 +11,21 @@ class InvoicePdf < Prawn::Document
     create
   end
 
-  def invoice_data
-    @invoice_services_data = [["Item", "Description", "Unit Cost", "Quantity", "Line Total"]]
-    @cart_items.each do |item|
-      product = item.product
-      @invoice_services_data << [product.readable_name,
-                                 product.specific_name,
-                                 product.price.to_s,
-                                 item.quantity.to_s,
-                                 item.line_cost].map(&:to_s)
-    end
-
-    @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive,"], ["George & Dom"]]
-    @invoice_services_totals_data = [
-      ["Total", "£#{@amount}"],
-      ["Amount Paid", "£#{@amount}"],
-      ["Amount Due", "£0.00 GBP"]
-    ]
-    date = Date.today.strftime('%A, %b %d')
-    @invoice_header_data = [ ["Receipt #", @order_id.to_s], ["Receipt Date", date]]
-    @icons = icon_map(["facebook", "twitter", "instagram"])
-  end
-
-  def icon_map(brands)
-    brands.map! do |brand|
-      "<link href='http://www.#{brand}.com/fourfivecbd' target='_blank'><icon size='20' color='AAAAAA'>fab-#{brand}</icon></link>"
-    end
-    brands.join("    ")
-  end
+  private
 
   def create
-    # logopath = 'logo.png'
     initial_y = cursor
     initialmove_y = 5
     @address_x = 35
-    invoice_header_x = 325
+    @invoice_header_x = 325
     @lineheight_y = 12
     font_size = 10
 
     move_down initialmove_y
 
-    # Add the font style and size
-    # font "Helvetica"
     font_size font_size
 
     many_box(["fourfive", "Flow Nutrition Ltd,", "2 Victoria Square,", "Victoria Street,", "St. Albans, UK, AL1 3TF"])
-
 
     last_measured_y = cursor
     move_cursor_to bounds.height + 12
@@ -65,7 +34,6 @@ class InvoicePdf < Prawn::Document
 
     move_cursor_to last_measured_y
 
-    # client address
     move_down 65
     last_measured_y = cursor
 
@@ -82,7 +50,17 @@ class InvoicePdf < Prawn::Document
     move_cursor_to last_measured_y
     move_down 20
 
-    table(@invoice_header_data, position: invoice_header_x, width: 200) do
+    tables
+
+    require 'prawn/icon'
+    # move_right 150
+    bounding_box([40, 250], width: 300) do
+      icon @icons, inline_format: true
+    end
+  end
+
+  def tables
+    table(@invoice_header_data, position: @invoice_header_x, width: 200) do
       style(row(0..1).columns(0..1), padding: [1, 5, 1, 5], borders: [])
       style(column(1), align: :right)
     end
@@ -103,7 +81,7 @@ class InvoicePdf < Prawn::Document
 
     move_down 1
 
-    table(@invoice_services_totals_data, position: invoice_header_x - 15, width: 215) do
+    table(@invoice_services_totals_data, position: @invoice_header_x - 15, width: 215) do
       style(row(0..1).columns(0..1), padding: [1, 5, 1, 5], borders: [])
       style(row(0), font_style: :bold)
       style(row(2), background_color: 'e9e9e9', border_color: 'dddddd', font_style: :bold)
@@ -120,11 +98,33 @@ class InvoicePdf < Prawn::Document
     end
 
     move_down 10
+  end
 
-    require 'prawn/icon'
-    # move_right 150
-    bounding_box([40,250], width: 300) do
-      icon @icons, inline_format: true
+  def invoice_data
+    @invoice_services_data = [["Item", "Description", "Unit Cost", "Quantity", "Line Total"]]
+    @cart_items.each do |item|
+      product = item.product
+      @invoice_services_data << [product.readable_name,
+                                 product.specific_name,
+                                 product.price,
+                                 item.quantity,
+                                 item.line_cost].map(&:to_s)
     end
+    @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive,"], ["George & Dom"]]
+    @invoice_services_totals_data = [
+      ["Total", "£#{@amount}"],
+      ["Amount Paid", "£#{@amount}"],
+      ["Amount Due", "£0.00 GBP"]
+    ]
+    date = Date.today.strftime('%A, %b %d')
+    @invoice_header_data = [["Receipt #", @order_id.to_s], ["Receipt Date", date]]
+    @icons = icon_map(["facebook", "twitter", "instagram"])
+  end
+
+  def icon_map(brands)
+    brands.map! do |brand|
+      "<link href='http://www.#{brand}.com/fourfivecbd' target='_blank'><icon size='20' color='AAAAAA'>fab-#{brand}</icon></link>"
+    end
+    brands.join("    ")
   end
 end
