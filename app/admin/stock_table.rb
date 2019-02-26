@@ -4,19 +4,16 @@ ActiveAdmin.register_page "Stock" do
     send_data pdf.render, filename: "receipt.pdf"
   end
 
-  # action_item :print do
-  #   link_to "Add Event", admin_stock_table_print_path
-  # end
-
   content do
     panel "Stock Sold" do
       render 'admin/stock_table'
     end
     panel "Download" do
       dates = (Date.parse("1st January 2019")..Date.today).map{|i| i.strftime("%B %Y")}.uniq
-      dates.each do |month|
+      dates.each do |month_and_year|
+        month = month_and_year.split(" ").first
         div do
-          link_to "Print " + month + " revenue", admin_stock_print_path(month: month), target: "_blank"
+          link_to "Print " + month_and_year + " revenue", admin_stock_print_path(month: month), target: "_blank"
         end
       end
       div do

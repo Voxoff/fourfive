@@ -3,11 +3,7 @@ class StockPdf < Prawn::Document
   def initialize(attributes)
     super(optimize_objects: true, compress: true)
     @month = attributes[:month]
-    if @month == "TOTAL"
-      @hash = CartItem.data_hash_for_total
-    else
-      @hash = CartItem.data_hash_for_month(@month)
-    end
+    @hash = CartItem.data_hash(month: @month)
     @products = Product.order(:id)
     table_data
     create
@@ -106,7 +102,7 @@ class StockPdf < Prawn::Document
     initial_y = cursor
     initialmove_y = 5
     @address_x = 15
-    month_header = 220
+    month_header = 230
     @lineheight_y = 12
     font_size = 10
 
