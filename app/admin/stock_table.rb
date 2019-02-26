@@ -19,6 +19,10 @@ ActiveAdmin.register_page "Stock" do
           link_to "Print " + month + " revenue", admin_stock_print_path(month: month), target: "_blank"
         end
       end
+      div do
+        #is this hacky params?
+        link_to "Print all", admin_stock_print_path(month: "TOTAL")
+      end
     end
   end
 end

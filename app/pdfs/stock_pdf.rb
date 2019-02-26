@@ -3,10 +3,11 @@ class StockPdf < Prawn::Document
   def initialize(attributes)
     super(optimize_objects: true, compress: true)
     @month = attributes[:month]
-    @hash = CartItem.joins(:cart, product: :product_group)
-                    .merge(Cart.orders.month_of(attributes[:month]))
-                    .group(:product_id)
-                    .count
+    if @month == "TOTAL"
+      @hash = CartItem.data_hash_for_total
+    else
+      @hash = CartItem.data_hash_for_month(@month)
+    end
     @products = Product.order(:id)
     table_data
     create

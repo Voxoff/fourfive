@@ -11,4 +11,19 @@ class CartItem < ApplicationRecord
     q = quantity + change
     q.zero? ? destroy : update(quantity: q)
   end
+
+  def self.data_hash_for_month(month)
+    joins(:cart, product: :product_group)
+      .merge(Cart.orders.month_of(month))
+      .group(:product_id)
+      .count
+  end
+
+  # how to refactor but keep one sql query?
+  def self.data_hash_for_total
+    joins(:cart, product: :product_group)
+      .merge(Cart.orders)
+      .group(:product_id)
+      .count
+  end
 end
