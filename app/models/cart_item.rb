@@ -15,8 +15,8 @@ class CartItem < ApplicationRecord
   def self.data_hash(hash)
     @month = hash[:month]
     data = joins(:cart, product: :product_group)
-            .merge(Cart.orders)
-            .group(:product_id)
+           .merge(Cart.orders)
+           .group(:product_id)
     return @month == "TOTAL" ? data.count : data.merge(Cart.month_of(@month)).count
   end
 end
