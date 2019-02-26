@@ -20,8 +20,11 @@ FactoryBot.define do
       trait :orange do
         tincture { "Orange"}
       end
-      trait :big do
+      trait :regular do
         size { "1000mg"}
+      end
+      trait :strong do
+        size { "2000mg"}
       end
     end
 
