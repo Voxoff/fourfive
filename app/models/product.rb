@@ -31,9 +31,9 @@ class Product < ApplicationRecord
     name.tr("_", " ")
   end
 
-  def specific_name
+  def specific_name(with_oil = true)
     if oil?
-      "#{tincture} #{size} #{oil}"
+      "#{tincture} #{size} #{with_oil ? oil : nil}"
     elsif balm?
       "#{size} balm" if balm?
     else

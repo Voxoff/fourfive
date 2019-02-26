@@ -10,32 +10,24 @@ class StockPdf < Prawn::Document
   end
 
   def table_data
-    @oil = product_list("oil")
-    @capsule_and_balm = product_list("capsules_and_balm")
-    @oil_count = product_count("oil")
-    @capsule_and_balm_count = product_count("capsule_and_balm")
-    oil_prod_revenue_data = revenue_data("oil")
+    @oil_hash = { str: [["Oil"]]}
+    @oil_hash[:product] = product_list("oil")
+    @oil_hash[:count] = product_count("oil")
+    oil_revenue_data = revenue_data("oil")
+    @oil_hash[:revenue] = printable_revenue(oil_revenue_data)
+    @oil_hash[:total] = product_total(oil_revenue_data)
+
+    @capsule_and_balm_hash = { str: [["Capsules and balms"]]}
+    @capsule_and_balm_hash[:product] = product_list("capsule_and_balm")
+    @capsule_and_balm_hash[:count] = product_count("capsule_and_balm")
     capsule_and_balm_revenue_data = revenue_data("capsule_and_balm")
-    @oil_revenue = printable_revenue(oil_prod_revenue_data)
-    @capsule_and_balm_revenue = printable_revenue(capsule_and_balm_revenue_data)
-    @oil_total = product_total(oil_prod_revenue_data)
-    @capsule_and_balm_total = product_total(capsule_and_balm_revenue_data)
-  end
-
-  def table_data
-    oil_hash = {}
-    capsule_and_balm_hash = {}
-    oil_hash[:product] = product_list("oil")
-    oil_hash[:count] = product_count("oil")
-    oil_hash[:revenue_data] = product_revenue_data("oil")
-    oil_hash[:revenue] = product_revenue("oil")
-    oil_hash[:total] = product_total("oil")
-
+    @capsule_and_balm_hash[:revenue] = printable_revenue(capsule_and_balm_revenue_data)
+    @capsule_and_balm_hash[:total] = product_total(capsule_and_balm_revenue_data)
   end
 
   def product_list(str)
     arr = oil?(str) ? @products.select(&:oil?) : @products.reject(&:oil?)
-    [arr.map(&:specific_name).unshift("Product")]
+    [arr.map { |i| i.specific_name(false) }.unshift("Product")]
   end
 
   def product_total(rev_data)
@@ -65,16 +57,17 @@ class StockPdf < Prawn::Document
     [revenue.unshift("Revenue")]
   end
 
-  def tables(str)
+  def tables(data)
     header_borders = { border_width: 1, border_color: 'dddddd', background_color: 'e9e9e9' }
     summary_borders = { borders: [:top], border_width: 1, border_color: 'e9e9e9' }
 
-    table([["#{str}s"].map { |i| i.capitalize.tr("_", " ") }], position: :left) do
+    table(data[:str], position: :left) do
       cells.style(header_borders)
       style(row(0..-1).columns(0..-1), padding: [7, 10, 3, 10], width: 160, borders: [:bottom], align: :center)
     end
 
-    table(instance_variable_get(:"@#{str}"), width: bounds.width) do
+
+    table(data[:product], width: bounds.width) do
       cells.borders = [:top]
       cells.padding = [5, 5, 5, 5]
       cells.style(header_borders)
@@ -82,10 +75,10 @@ class StockPdf < Prawn::Document
       style(row(0..-1).columns(1..-1), align: :center)
     end
 
-    table(instance_variable_get(:"@#{str}_count"), width: bounds.width) do
+    table(data[:count], width: bounds.width) do
       cells.borders = []
       style(row(0..-1).columns(0), align: :left, padding: [5, 0, 5, 5])
-      if str == "oil"
+      if data[:str][0][0] == "Oil"
         style(row(0..-1).columns(1), align: :center, padding: [5, 20, 5, 0])
         style(row(0..-1).columns(2..-1), align: :center, padding: [5, 20, 5, 20])
       else
@@ -93,11 +86,11 @@ class StockPdf < Prawn::Document
       end
     end
 
-    table(instance_variable_get(:"@#{str}_revenue"), width: bounds.width) do
+    table(data[:revenue], width: bounds.width) do
       cells.style(summary_borders)
       cells.padding = [5, 15, 5, 5]
       style(row(0..-1).columns(0), align: :left, borders: [])
-      if str == "oil"
+      if data[:str][0][0] == "Oil"
         style(row(0..-1).columns(1), align: :left, padding: [5, 0, 5, 0])
         style(row(0..-1).columns(2..-1), align: :center)
       else
@@ -105,12 +98,12 @@ class StockPdf < Prawn::Document
       end
     end
 
-    table(instance_variable_get(:"@#{str}_total"), width: bounds.width) do
+    table(data[:total], width: bounds.width) do
       cells.borders = [:top]
       cells.border_width = 1
       cells.border_color = 'e9e9e9'
       style(row(0..1).columns(0), align: :left, padding: [5, 5, 5, 5])
-      style(row(0..1).columns(1), align: :right, padding: [5, str == "oil" ? 20 : 50, 5, 0])
+      style(row(0..1).columns(1), align: :right, padding: [5, data[:str][0][0] == "Oil" ? 20 : 50, 5, 0])
     end
   end
 
@@ -118,7 +111,7 @@ class StockPdf < Prawn::Document
     initial_y = cursor
     initialmove_y = 5
     @address_x = 15
-    month_header = 230
+    month_header = 235
     @lineheight_y = 12
     font_size = 10
 
@@ -145,10 +138,10 @@ class StockPdf < Prawn::Document
 
     move_cursor_to last_measured_y
 
-    tables("oil")
+    tables(@oil_hash)
 
     move_down 40
 
-    tables("capsule_and_balm")
+    tables(@capsule_and_balm_hash)
   end
 end
