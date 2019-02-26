@@ -47,12 +47,6 @@ RSpec.describe Product, type: :model do
       end
     end
 
-    describe "#oil_name" do
-      it "returns tincture and size" do
-        expect(oil_product.oil_name).to eq "Natural 500mg"
-      end
-    end
-
     describe "#revenue" do
       it "calcs revenue" do
         expect(oil_product.revenue(2)).to eq Money.new(5998)

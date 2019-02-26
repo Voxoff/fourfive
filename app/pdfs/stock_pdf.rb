@@ -10,8 +10,8 @@ class StockPdf < Prawn::Document
   end
 
   def table_data
-    @oil = [@products.select(&:oil?).map(&:oil_name).unshift("Product")]
-    @capsule_and_balm = [@products.reject(&:oil?).map(&:specific_name).unshift("Product")]
+    @oil = product_list("oil")
+    @capsule_and_balm = product_list("capsules_and_balm")
     @oil_count = product_count("oil")
     @capsule_and_balm_count = product_count("capsule_and_balm")
     oil_prod_revenue_data = revenue_data("oil")
@@ -20,6 +20,22 @@ class StockPdf < Prawn::Document
     @capsule_and_balm_revenue = printable_revenue(capsule_and_balm_revenue_data)
     @oil_total = product_total(oil_prod_revenue_data)
     @capsule_and_balm_total = product_total(capsule_and_balm_revenue_data)
+  end
+
+  def table_data
+    oil_hash = {}
+    capsule_and_balm_hash = {}
+    oil_hash[:product] = product_list("oil")
+    oil_hash[:count] = product_count("oil")
+    oil_hash[:revenue_data] = product_revenue_data("oil")
+    oil_hash[:revenue] = product_revenue("oil")
+    oil_hash[:total] = product_total("oil")
+
+  end
+
+  def product_list(str)
+    arr = oil?(str) ? @products.select(&:oil?) : @products.reject(&:oil?)
+    [arr.map(&:specific_name).unshift("Product")]
   end
 
   def product_total(rev_data)
@@ -41,7 +57,7 @@ class StockPdf < Prawn::Document
   end
 
   def revenue_data(str)
-    id_range(str).map { |id| Product.find(id).revenue(@hash[id]) }
+    id_range(str).map { |id| @products.find { |i| i.id == id}.revenue(@hash[id]) }
   end
 
   def printable_revenue(prod_rev)
@@ -82,7 +98,7 @@ class StockPdf < Prawn::Document
       cells.padding = [5, 15, 5, 5]
       style(row(0..-1).columns(0), align: :left, borders: [])
       if str == "oil"
-        style(row(0..-1).columns(1), align: :left,padding: [5, 0, 5, 0])
+        style(row(0..-1).columns(1), align: :left, padding: [5, 0, 5, 0])
         style(row(0..-1).columns(2..-1), align: :center)
       else
         style(row(0..-1).columns(1..-1), align: :center)
