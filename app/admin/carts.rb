@@ -28,8 +28,9 @@ ActiveAdmin.register Cart do
     cart_items = resource.cart_items
     date = resource.updated_at
     order_id = resource.order_id
+    coupon = resource.coupon
     if amount && address && cart_items && date
-      pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date, order_id: order_id)
+      pdf = InvoicePdf.new(amount: amount, address: address, cart_items: cart_items, date: date, order_id: order_id, coupon: coupon)
       if order_id
         send_data pdf.render, filename: "receipt_#{order_id}.pdf"
         GC.start
