@@ -1,13 +1,15 @@
 require_relative './document.rb'
 class InvoicePdf < Prawn::Document
-  def initialize(attributes)
+  def initialize(cart)
     super(optimize_objects: true, compress: true)
-    @address = attributes[:address]
-    @amount = attributes[:amount]
-    @date = attributes[:date]
-    @cart_items = attributes[:cart_items]
-    @coupon = attributes[:coupon]
-    @order_id = attributes[:order_id]
+    @cart = cart
+    @address = @cart.address
+    @amount = @cart.amount
+    # @date = @cart.updated_at
+    @cart_items = @cart.cart_items
+    @coupon = @cart.coupon
+    @order_id = @cart.order_id
+    @postage = @cart.postage?(@amount)
     invoice_data
     create
   end
@@ -83,12 +85,11 @@ class InvoicePdf < Prawn::Document
     move_down 1
 
     table(@invoice_services_totals_data, position: @invoice_header_x - 15, width: 215) do
-      style(row(0..2).columns(0..1), padding: [1, 5, 1, 5], borders: [])
-      style(row(0), font_style: :bold)
-      style(row(3), background_color: 'e9e9e9', border_color: 'dddddd', font_style: :bold)
+      style(row(0..-2).columns(0..1), padding: [1, 5, 1, 5], borders: [])
+      style(row(-1), background_color: 'e9e9e9', border_color: 'dddddd', font_style: :bold)
       style(column(1), align: :right)
-      style(row(3).columns(0), borders: [:top, :left, :bottom])
-      style(row(3).columns(1), borders: [:top, :right, :bottom])
+      style(row(-1).columns(0), borders: [:top, :left, :bottom])
+      style(row(-1).columns(1), borders: [:top, :right, :bottom])
     end
 
     move_down 25
@@ -111,16 +112,22 @@ class InvoicePdf < Prawn::Document
                                  item.quantity,
                                  item.line_cost].map(&:to_s)
     end
-    #COUPONS
+
     @invoice_notes_data = [["Notes"], ["Thank you for doing business with fourfive,"], ["George & Dom"]]
     @invoice_services_totals_data = [
       ["Total", "£#{@amount}"],
       ["Amount Paid", "£#{@amount}"],
       ["Amount Due", "£0.00 GBP"]
     ]
-    if @coupon
-      @invoice_services_totals_data.insert(1, ["Coupon", @coupon.discount.to_s + "%"])
+
+
+    if @postage
+      postage = ActionController::Base.helpers.humanized_money_with_symbol(Cart.postage.to_s)
+      @invoice_services_totals_data.insert(0, ["Postage", postage])
     end
+
+    @invoice_services_totals_data.insert(0, ["Coupon", @coupon.discount.to_s + "%"]) if @coupon
+
     date = Date.today.strftime('%A, %b %d')
     @invoice_header_data = [["Receipt #", @order_id.to_s], ["Receipt Date", date]]
     @icons = icon_map(["facebook", "twitter", "instagram"])
