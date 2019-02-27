@@ -265,7 +265,8 @@ select {
 
 @media(max-width: 500px) {
   #banner-btn{
-  left: 38% ;
-  bottom: 5%;
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%, 0)
   }
 }
