@@ -1,9 +1,9 @@
 <div class="banner-image">
-  <%#= image_tag "home-banner.jpg", style: "width: 100vw;", alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
-  <img class="hidden-xs" style="width: 100vw;" src="https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,w_1600,q_auto:best/home-banner-3e8c9dad427ea52cae252a199085f852" alt="">
-  <img class="visible-xs-block" style="width: 100vw;" src="https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,w_1600,q_auto:best/home-banner-tall-6058cee016652550ee20c1e762a76c4c" alt="">
+  <%= image_tag "home_page.jpg", style: "width: 100vw;", alt: "Carousel-range", width: 1600, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "hidden-xs" %>
+  <%# <img class="hidden-xs" style="width: 100vw;" src="https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,w_1600,q_auto:best/home-banner-3e8c9dad427ea52cae252a199085f852" alt=""> %>
+  <%# <img class="visible-xs-block" style="width: 100vw;" src="https://res.cloudinary.com/dq2kcu9ey/image/asset/c_scale,f_auto,w_1600,q_auto:best/home-banner-tall-6058cee016652550ee20c1e762a76c4c" alt=""> %>
 
-  <%#= image_tag "home-banner-tall.jpg", style: "width: 100vw;", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
+   <%= image_tag "home-banner-tall.jpg", style: "width: 100vw", alt: "Carousel-range", width: 768, crop: :scale, quality: "auto:best", fetch_format: :auto, class: "visible-xs-block" %>
   <%= link_to "Shop now", product_path("cbd_oils"), class: "simple-btn", id: "banner-btn" %>
 </div>
 
