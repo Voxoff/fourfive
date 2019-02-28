@@ -5,7 +5,6 @@ class InvoicePdf < Prawn::Document
     @cart = cart
     @address = @cart.address
     @amount = @cart.amount
-    # @date = @cart.updated_at
     @cart_items = @cart.cart_items
     @coupon = @cart.coupon
     @order_id = @cart.order_id
