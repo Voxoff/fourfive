@@ -6,30 +6,33 @@ FactoryBot.define do
     price { 29.99 }
     factory :balm_product do
       association :product_group, factory: :oil_product_group
-      size { "Small"}
+      size { "Small" }
       trait :large do
-        size { "Large"}
+        size { "Large" }
       end
     end
 
     factory :oil_product do
-      name { "cbd_oils"}
-      tincture { "Natural"}
-      size { "500mg"}
-      price { 29.99 }
+      name { "cbd_oils" }
+      tincture { "Natural" }
+      size { "500mg" }
+      price { 29.99  }
       trait :orange do
-        tincture { "Orange"}
+        tincture { "Orange" }
       end
       trait :regular do
-        size { "1000mg"}
+        size { "1000mg" }
       end
       trait :strong do
-        size { "2000mg"}
+        size { "2000mg" }
+      end
+      trait :small do
+        size { "500mg" }
       end
     end
 
     factory :capsule_product do
-      name { "cbd_capsules"}
+      name { "cbd_capsules" }
       price { 39.99 }
     end
   end

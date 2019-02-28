@@ -1,11 +1,12 @@
 require 'spec_helper'
+require "#{Rails.root}/app/pdfs/prawn_warning.rb"
 
 RSpec.describe 'stock_pdf' do
   context "Part of pdf" do
     before do
-      oil_product = FactoryBot.create(:oil_product)
-      balm_product = FactoryBot.create(:balm_product)
-      capsule_product = FactoryBot.create(:capsule_product)
+      FactoryBot.create(:oil_product)
+      FactoryBot.create(:balm_product)
+      FactoryBot.create(:capsule_product)
       view_context = ActionController::Base.new.view_context
       pdf = StockPdf.new(month: "January")
       rendered_pdf = pdf.render
@@ -13,7 +14,7 @@ RSpec.describe 'stock_pdf' do
     end
 
     describe "address" do
-      it "should include full text" do
+      it "should include full text of address" do
         expect(@text_analysis.strings).to include("fourfive")
         expect(@text_analysis.strings).to include("Flow Nutrition Ltd,")
         expect(@text_analysis.strings).to include("2 Victoria Square,")
@@ -41,19 +42,13 @@ RSpec.describe 'stock_pdf' do
     describe "oil box" do
       it "should include product names" do
         expect(@text_analysis.strings).to include("Natural 500mg")
-        expect(@text_analysis.strings).to include("Natural 1000mg")
-        expect(@text_analysis.strings).to include("Natural 2000mg")
-        expect(@text_analysis.strings).to include("Orange 2000mg")
-        expect(@text_analysis.strings).to include("Orange 500mg")
-        expect(@text_analysis.strings).to include("Orange 1000mg")
       end
     end
 
     describe "capsules and balm box" do
       it "should include product names" do
-        expect(@text_analysis.strings).to include("Capsules")
         expect(@text_analysis.strings).to include("Small balm")
-        # expect(@text_analysis.strings).to include("Large balm")
+        expect(@text_analysis.strings.join("")).to include("Capsules")
       end
     end
 
@@ -63,14 +58,16 @@ RSpec.describe 'stock_pdf' do
       end
     end
   end
+
   context "Full database" do
     before do
-      FactoryBot.create(:oil_product)
+      FactoryBot.create :oil_product
       FactoryBot.create :oil_product, :regular
       FactoryBot.create :oil_product, :strong
       FactoryBot.create :oil_product, :orange, :small
       FactoryBot.create :oil_product, :orange, :regular
       FactoryBot.create :oil_product, :orange, :strong
+      FactoryBot.create :balm_product
       FactoryBot.create :balm_product, :large
       view_context = ActionController::Base.new.view_context
       pdf = StockPdf.new(month: "January")
@@ -82,18 +79,18 @@ RSpec.describe 'stock_pdf' do
       it "should include product names" do
         expect(@text_analysis.strings).to include("Natural 500mg")
         expect(@text_analysis.strings).to include("Natural 1000mg")
-        # expect(@text_analysis.strings).to include("Natural 2000mg")
-        # expect(@text_analysis.strings).to include("Orange 2000mg")
-        # expect(@text_analysis.strings).to include("Orange 500mg")
-        # expect(@text_analysis.strings).to include("Orange 1000mg")
+        expect(@text_analysis.strings).to include("Natural 2000mg")
+        expect(@text_analysis.strings).to include("Orange 2000mg")
+        expect(@text_analysis.strings).to include("Orange 500mg")
+        expect(@text_analysis.strings).to include("Orange 1000mg")
       end
     end
 
     describe "capsules and balm box" do
       it "should include product names" do
-        expect(@text_analysis.strings).to include("Capsules")
+        expect(@text_analysis.strings.join("")).to include("Capsules")
         expect(@text_analysis.strings).to include("Small balm")
-        # expect(@text_analysis.strings).to include("Large balm")
+        expect(@text_analysis.strings).to include("Large balm")
       end
     end
   end

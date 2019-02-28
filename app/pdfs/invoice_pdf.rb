@@ -1,4 +1,6 @@
 require_relative './document.rb'
+require "#{Rails.root}/app/pdfs/prawn_warning.rb"
+
 class InvoicePdf < Prawn::Document
   def initialize(cart)
     super(optimize_objects: true, compress: true)

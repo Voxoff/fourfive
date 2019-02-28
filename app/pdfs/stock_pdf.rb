@@ -1,4 +1,6 @@
 require_relative './document.rb'
+require "#{Rails.root}/app/pdfs/prawn_warning.rb"
+
 class StockPdf < Prawn::Document
   def initialize(attributes)
     super(optimize_objects: true, compress: true)
@@ -12,14 +14,14 @@ class StockPdf < Prawn::Document
   private
 
   def table_data
-    @oil_hash = { str: [["Oil"]]}
+    @oil_hash = { str: [["Oils"]] }
     @oil_hash[:product] = product_list("oil")
     @oil_hash[:count] = product_count("oil")
     oil_revenue_data = revenue_data("oil")
     @oil_hash[:revenue] = printable_revenue(oil_revenue_data)
     @oil_hash[:total] = product_total(oil_revenue_data)
 
-    @capsule_and_balm_hash = { str: [["Capsules and balms"]]}
+    @capsule_and_balm_hash = { str: [["Capsules and balms"]] }
     @capsule_and_balm_hash[:product] = product_list("capsule_and_balm")
     @capsule_and_balm_hash[:count] = product_count("capsule_and_balm")
     capsule_and_balm_revenue_data = revenue_data("capsule_and_balm")
@@ -51,7 +53,7 @@ class StockPdf < Prawn::Document
   end
 
   def revenue_data(str)
-    id_range(str).map { |id| @products.find { |i| i.id == id}.revenue(@hash[id]) }
+    id_range(str).map { |id| @products.find { |i| i.id == id }.revenue(@hash[id]) }
   end
 
   def printable_revenue(prod_rev)

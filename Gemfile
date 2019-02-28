@@ -32,6 +32,7 @@ gem 'carrierwave', '~> 1.2'
 
 gem 'omniauth-facebook'
 gem 'scout_apm'
+
 # gem 'postmark-rails'
 gem 'newrelic_rpm'
 gem 'sentry-raven'
@@ -55,7 +56,6 @@ gem 'groupdate'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'bullet'
-  # gem "letter_opener"
 end
 
 group :development, :test do
