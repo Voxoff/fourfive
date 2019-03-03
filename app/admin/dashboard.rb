@@ -1,5 +1,5 @@
 ActiveAdmin.register_page "Dashboard" do
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  menu priority: 1
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
@@ -20,7 +20,7 @@ ActiveAdmin.register_page "Dashboard" do
             column("Customer name") { |cart| link_to(cart.address&.full_name, admin_cart_path(cart)) }
             # to make sure SQL is efficient
             column("Total") { |cart| number_to_currency(cart.amount(without_includes: true), unit: "£") }
-            column("Created at") {|c| c.checked_out_at ? c.checked_out_at.strftime("%A, %b %d %H:%M") : c.updated_at.strftime("%A, %b %d %H:%M") }
+            column("Created at") { |c| c.checked_out_at ? c.checked_out_at.strftime("%A, %b %d %H:%M") }
             column("Basket", &:basket)
           end
         end
