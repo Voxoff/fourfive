@@ -36,50 +36,6 @@
       </div>
     <% end %>
   </div>
-<%#
-  <div class="stripes" style="height: 45px; margin-top: 50px">
-    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
-    <div class="yellow-thin-stripe" id="over-image" style="width: 100vw; top: 25px; position: absolute; left: 50%; transform: translate(-50%, 0%);"></div>
-  </div> %>
-<%# <div class="thin-grey-line wider"></div> %>
-
-<% if false %>
-  <div class="info-line">
-    <h3>Your stories</h3>
-    <h5>We asked you to share your cbd experiences.</h5>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-10">
-      <div class="review-section">
-        <div class="review-column">
-          <% @reviews.each_with_index do |review, i| %>
-            <div class="review-card" id=<%= "cancel-border" if i == 2 %>>
-              <div class="review-content">
-                <div class="review-image">
-                  <%= cl_image_tag review.photo, alt: "review", class: "review-image" if review.photo.present? %>
-                </div>
-                <div class="review-text" data-toggle="collapse" data-target="#collapseExample<%= i %>" role="button" aria-expanded="false" aria-controls="collapseExample<%= i %>">
-                  <h4><%= review.content %></h4>
-                  <h5><%= review.name %></h5 style="margin-bottom: 3px;">
-                  <p><%= review.position %></p>
-                </div>
-              </div>
-              <div class="collapse" id="collapseExample<%= i %>">
-                <div class="review-more-info">
-                  <p><%= review.desc %></p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="thin-grey-line wider"></div>
-<% end %>
-
 
   <div class="our-story" style="margin-bottom: 15px;">
     <h2>Our Story</h2>
@@ -128,6 +84,7 @@
     </div>
   </div>
 </div>
+
 <div class="ajflex">
   <div class="press">
     <div class="press-item">
