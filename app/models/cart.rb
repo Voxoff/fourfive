@@ -6,16 +6,16 @@ class Cart < ApplicationRecord
 
   mount_uploader :receipt, PhotoUploader
 
-  validates :order_id, numericality: {integer: true }, allow_nil: true, uniqueness: true
+  validates :order_id, numericality: { integer: true }, allow_nil: true, uniqueness: true
   validates :terms, acceptance: true
 
   scope :orders, -> { where(active: false) }
-  scope :not_orders, -> { where(active: true)}
+  scope :not_orders, -> { where(active: true) }
   scope :has_user, -> { where(user: !nil) }
   scope :last24, -> { where('checked_out_at >= :last24', last24: 1.day.ago) }
   scope :old, -> { where('updated_at <= :thirty_days_ago', thirty_days_ago: 30.days.ago) }
   scope :fulfilled, -> { where(fulfillment: true) }
-  scope :unfulfilled, -> { where(fulfillment: false, active: false)}
+  scope :unfulfilled, -> { where(fulfillment: false, active: false) }
 
   @@postage = Money.new(250)
 
@@ -29,7 +29,7 @@ class Cart < ApplicationRecord
     where(checked_out_at: range)
   end
 
-  # to cope with SQL query efficiency
+  # ugly to cope with SQL query efficiency
   def amount(options = {})
     active_record_relation = options[:without_includes] ? cart_items : cart_items.includes(:product)
     amount = active_record_relation.map { |i| i.product.price * i.quantity }.reduce(:+)
