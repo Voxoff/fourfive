@@ -7,7 +7,6 @@ class PagesController < ApplicationController
     @user = current_or_guest_user
     @product_groups = ProductGroup.includes(:products).order(:id)
     @cart_item = CartItem.new
-    # @reviews = Review.all.take(3)
   end
 
   def about
