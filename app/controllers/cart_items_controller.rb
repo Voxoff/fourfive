@@ -1,13 +1,12 @@
 class CartItemsController < ApplicationController
   include CartControllable
+  include PunditControllable
   before_action :find_or_create_cart, only: :create
   before_action :find_cart, only: :update
-  include PunditControllable
   before_action :pundit_placeholder, only: :create
 
   def create
     @product = find_product
-    # have they already bought one of this?
     @cart_item = @cart.cart_items.includes(:product).find { |i| i.product.id == @product.id }
     if @cart_item
       @cart_item.quantity += params[:quantity].to_i

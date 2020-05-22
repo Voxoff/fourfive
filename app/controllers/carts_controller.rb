@@ -1,8 +1,7 @@
 class CartsController < ApplicationController
   include CartControllable
-  before_action :find_cart
-
   include PunditControllable
+  before_action :find_cart
   before_action :pundit_placeholder, only: :show
 
   def show
@@ -10,12 +9,11 @@ class CartsController < ApplicationController
     @cart_items = @cart.cart_items.includes(product: :product_group).sort_by{ |i| i.product.name }
     check_empty_cart
     @quantity = @cart.quantity
-    @coupon = @cart.coupon
-    if @coupon
-      @discount = @coupon.discount.to_s + " %"
-      @coupon_code = @cart.coupon&.code
+    coupon = @cart.coupon
+    if coupon
+      @discount = coupon.discount.to_s + " %"
+      @coupon_code = coupon.code
     end
-    # this is messy but i don't know whats better. a hash?
     @amount_without_postage = @cart.amount(postage: false)
     @amount_with_postage = @cart.amount
     @postage_bool = @amount_without_postage != @amount_with_postage

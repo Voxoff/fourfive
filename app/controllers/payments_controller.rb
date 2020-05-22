@@ -8,16 +8,14 @@ class PaymentsController < ApplicationController
   def checkout
     @amount = @cart.amount
     @cart_items = @cart.cart_items
-    user = current_or_guest_user
     check_empty_cart
-    @ip = request.remote_ip
     gdpr
     @address = @cart.build_address(address_params)
     unless @address.save
       flash[:notice] = "Address was invalid"
       redirect_to new_cart_payment_path(@cart)
     end
-    guest_user.email = params[:email] if user.guest? && params[:email]
+    guest_user.email = params[:email] if current_or_guest_user.guest? && params[:email]
     @checkout_id = zion
   end
 
@@ -81,7 +79,7 @@ class PaymentsController < ApplicationController
       'paymentType' => 'DB',
       'customer.givenName'=> @address.first_name.to_s,
       'customer.surname'=> @address.last_name.to_s,
-      'customer.ip'=> @ip,
+      'customer.ip'=> request.remote_ip,
       'customer.phone'=> @address.phone_number.to_s,
       'customer.email'=> params["checkout"]["email"],
       'billing.street1' => @address.first_line.to_s,
